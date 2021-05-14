@@ -1,0 +1,39 @@
+#ifndef HEAD_H
+# define HEAD_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <curses.h>
+# include <term.h>
+# include <locale.h>
+# include <limits.h>
+# include <termios.h>
+# include <errno.h>
+
+# define ERROR  0
+# define SUCCESS 1
+# define FAIL -1
+# define NULLPTR 0
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE   1
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX  10240
+# endif
+
+typedef int			t_bool;
+void	ft_putchar_fd(char c, int fd, char *color);
+void	ft_putstr_fd(char *s, int fd, char *color);
+void	ft_putnbr_fd(int n, int fd, char *color);
+int	ft_strlen(const char *s);
+void	*ft_memcpy(void *dst, const void *src, int n);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strndup(const char *s, int len);
+char	*ft_strchr(const char *s, char c);
+int	get_next_line(int fd, char **line);;
+t_bool	ft_malloc(void *target, int size);
+
+#endif
