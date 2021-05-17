@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/14 20:03:12 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 16:28:09 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+#include "../parse/split.c"
+#include "../parse/parse.h"
 
 int	main(int ac, char **av)
 {
@@ -50,6 +52,8 @@ int	main(int ac, char **av)
 	ft_putstr_fd(s, 1, 0);
 	write(1," ", 1);
 	get_next_line(0, &line);
+	meet_word(line);
+	return (0);
 	
 }
 
