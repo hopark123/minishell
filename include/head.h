@@ -59,5 +59,6 @@ void	ft_listdelone(t_list **list);
 void	ft_listclear(t_list **list);
 
 t_list	*ft_split(const char *str, const char c);
+void	ft_split_built(t_built *built);
 
 #endif

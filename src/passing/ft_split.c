@@ -12,27 +12,50 @@
 
 #include "head.h"
 
-static int	ft_wordlen(char const *s, char c)
+static int	ft_wordlen(char const *s, char c, int *flag)
 {
 	int			i;
 	int			len;
-	int			flag;
 
 	i = 0;
 	len = 0;
-	flag = 1;
-	while (s[i] && (s[i] != c || flag == -1))
+	if (ft_strchr("<>;|", s[i]))
 	{
-		if (s[i] == '"')
+		len++;
+		return (len);
+	}
+	if (*flag == 1)
+		while (s[i] && s[i] != c)
 		{
-			while (s[i] != '"')
+			if (s[i] == '"' || ft_strchr("<>;|", s[i]))
 			{
-				i++;
-				len++;
+				break;
 			}
-			flag *= -1;
+			i++;
+			len++;
 		}
+	else if ((*flag) == -1)
+	{
 		i++;
+		len++;
+		while (s[i] && s[i] != '"')
+		{
+			i++;
+			len++;
+		}
+		*flag = 1;
+		len++;
+	}
+	else if ((*flag) == -2)
+	{
+		i++;
+		len++;
+		while (s[i] && s[i] != '\'')
+		{
+			i++;
+			len++;
+		}
+		*flag = 1;
 		len++;
 	}
 	return (len);
@@ -44,7 +67,9 @@ t_list	*ft_split(const char *str, const char c)
 	t_list		*head;
 	char		*res;
 	int			len;
+	int	flag;
 
+	flag = 1;
 	head = 0;
 	if (!str)
 		return (0);
@@ -54,7 +79,11 @@ t_list	*ft_split(const char *str, const char c)
 		{
 			str++;
 		}
-		len = ft_wordlen(str, c);
+		if (*str == '"' )
+			flag = -1;
+		else if (*str == '\'')
+			flag = -2;
+		len = ft_wordlen(str, c, &flag);
 		res = ft_strndup(str, len);
 		temp = ft_listnew(res);
 		ft_listadd_tail(&head, &temp);
@@ -62,3 +91,29 @@ t_list	*ft_split(const char *str, const char c)
 	}
 	return (head);
 }
+
+// int		ft_split_str(t_built **built,t_list **list)
+// {
+	
+// }
+
+// void	ft_split_built(t_built *built)
+// {
+// 	t_list		*temp_l;
+// 	t_built		*temp_b;
+
+// 	if (!built || !built->command)
+// 		return ;
+// 	temp_b = built;
+// 	temp_l = built->command;
+// 	while (temp_l->next)
+// 	{
+// 		if (ft_strchr("<>;|", *(temp_l->str)))
+// 			ft_split_str(&temp_b, &temp_l);
+// 		else
+// 			temp_l = temp_l->next;
+// 	}
+
+// }
+
+
