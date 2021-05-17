@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:05:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 20:22:54 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 21:06:22 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,6 @@ void	ft_listadd_tail(t_list **list, t_list **new)
 		(*new)->next = temp->next;
 		temp->next = (*new);
 	}
-}
-
-void	ft_listdelone(t_list **list)
-{
-	if ((*list) == 0)
-		return ;
-	if ((*list)->next)
-		(*list)->next->prev = 0;
-	if ((*list)->prev)
-		(*list)->prev->next = 0;
-	ft_free((*list)->str);
-	ft_free(*list);
-	(*list) = 0;
 }
 
 void	ft_listclear(t_list **list)
