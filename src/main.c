@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 20:28:38 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 22:16:05 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,10 @@ int	main(int ac, char **av)
 			temp_l = temp_l->next;
 		}
 		write(1,"\n",1);
-		ft_listclear(&(temp_b->command));
 		if (temp_b->next)
 			temp_b = temp_b->next;
-	pause();
+		else
+			break;
 	}
 	ft_free(env);
-
 }
