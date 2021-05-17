@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/16 16:03:47 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 15:17:14 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,23 @@ int	main(int ac, char **av)
 	write(1," ", 1);
 	get_next_line(0, &line);
 	built->command = ft_split(line, ' ');
-	t_list *list = built->command;
-	while (list)
+
+	t_built *temp_b = built;
+	t_list *temp_l = built->command;
+	 ft_split_built(built);
+	int i = 0;
+	while (temp_b)
 	{
-		write(1,"@",1);
-		ft_putstr_fd(list->str, 1, 0);
-		write(1,"@",1);
+		temp_l = temp_b->command;
+		ft_putnbr_fd(i++, 1, 0);
+		while (temp_l)
+		{
+			ft_putstr_fd(temp_l->str, 1, 0);
+			write(1," | ",3);
+			temp_l = temp_l->next;
+		}
 		write(1,"\n",1);
-		list = list->next;
+		temp_b = temp_b->next;
 	}
-	// ft_split_built(built);
 }
 
