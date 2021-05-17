@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/14 20:03:12 by hopark           ###   ########.fr       */
+<<<<<<< HEAD
+/*   Updated: 2021/05/17 16:28:09 by suhong           ###   ########.fr       */
+=======
+/*   Updated: 2021/05/17 15:23:47 by hopark           ###   ########.fr       */
+>>>>>>> 14f97b51b86cb2f6c9667f5645f5db045d792f03
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+#include "../parse/split.c"
+#include "../parse/parse.h"
 
-int	main(int ac, char **av)
+void	draw(char	*s)
 {
-	ac = 0;
-	av = 0;
+	s = 0;
 	ft_putstr_fd("                          f)}\"\\__Xoo2o2o2o2on_sr\"{;]                           \n", 1, "\033[33m");
 	ft_putstr_fd("                            _<S2XX2oo2o2o2o2o2Snoos,                            \n", 1, "\033[33m");
 	ft_putstr_fd("                          _xooooooo2o2o2o2o2o2ooooons,                        \n", 1, "\033[33m");
@@ -41,15 +46,54 @@ int	main(int ac, char **av)
 	ft_putstr_fd("                              g {Soo2'j  b-2oo2e'j                              \n", 1, "\033[33m");
 	ft_putstr_fd("                                aaggaj    baggaa              \n", 1, "\033[33m");
 
+}
+
+int	main(int ac, char **av)
+{
 	char	*s;
-	char *line;
-	
+	char	*line;
+	t_built	*built;
+
+	if (!(ft_malloc(&built, sizeof(built))))
+		return (ERROR);
+	built->command = 0;
+	built->prev = 0;
+	built->next = 0;
+
+	ac = 0;
+	av = 0;
+	draw(0);
 	if (!ft_malloc(&s, sizeof(char) * 1024))
 		return (ERROR);
 	getcwd(s, 1024);
 	ft_putstr_fd(s, 1, 0);
 	write(1," ", 1);
 	get_next_line(0, &line);
+<<<<<<< HEAD
+	meet_word(line);
+	return (0);
 	
+=======
+	built->command = ft_split(line, ' ');
+
+	t_built *temp_b = built;
+	t_list *temp_l = built->command;
+	 ft_split_built(built);
+	int i = 0;
+	while (temp_b)
+	{
+		temp_l = temp_b->command;
+		ft_putnbr_fd(i++, 1, 0);
+		write(1,"|",1);
+		while (temp_l)
+		{
+			ft_putstr_fd(temp_l->str, 1, 0);
+			write(1,"|",1);
+			temp_l = temp_l->next;
+		}
+		write(1,"\n",1);
+		temp_b = temp_b->next;
+	}
+>>>>>>> 14f97b51b86cb2f6c9667f5645f5db045d792f03
 }
 
