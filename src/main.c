@@ -6,16 +6,15 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/14 20:03:12 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/16 16:03:47 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	main(int ac, char **av)
+void	draw(char	*s)
 {
-	ac = 0;
-	av = 0;
+	s = 0;
 	ft_putstr_fd("                          f)}\"\\__Xoo2o2o2o2on_sr\"{;]                           \n", 1, "\033[33m");
 	ft_putstr_fd("                            _<S2XX2oo2o2o2o2o2Snoos,                            \n", 1, "\033[33m");
 	ft_putstr_fd("                          _xooooooo2o2o2o2o2o2ooooons,                        \n", 1, "\033[33m");
@@ -41,15 +40,38 @@ int	main(int ac, char **av)
 	ft_putstr_fd("                              g {Soo2'j  b-2oo2e'j                              \n", 1, "\033[33m");
 	ft_putstr_fd("                                aaggaj    baggaa              \n", 1, "\033[33m");
 
+}
+
+int	main(int ac, char **av)
+{
 	char	*s;
-	char *line;
-	
+	char	*line;
+	t_built	*built;
+
+	if (!(ft_malloc(&built, sizeof(built))))
+		return (ERROR);
+	built->command = 0;
+	built->prev = 0;
+	built->next = 0;
+
+	ac = 0;
+	av = 0;
+	draw(0);
 	if (!ft_malloc(&s, sizeof(char) * 1024))
 		return (ERROR);
 	getcwd(s, 1024);
 	ft_putstr_fd(s, 1, 0);
 	write(1," ", 1);
 	get_next_line(0, &line);
-	
+	built->command = ft_split(line, ' ');
+	t_list *list = built->command;
+	while (list)
+	{
+		write(1,"@",1);
+		ft_putstr_fd(list->str, 1, 0);
+		write(1,"@",1);
+		write(1,"\n",1);
+		list = list->next;
+	}
 }
 
