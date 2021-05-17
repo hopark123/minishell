@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 16:32:50 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 20:28:38 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,22 @@ int	main(int ac, char **av)
 	ft_putstr_fd(s, 1, 0);
 	write(1," ", 1);
 	get_next_line(0, &line);
-	built->command = ft_split(line, ' ');
+	built->command = ft_split2(line, ' ');
 
 	t_built *temp_b = built;
 	t_list *temp_l = built->command;
-	 ft_split_built(built);
+	ft_split_built(built);
 	int i = 0;
+
+	t_list	*env;
+	ft_malloc(&env, sizeof(t_list));
+
+	env->id = "test";
+	env->str = "swap";
 	while (temp_b)
 	{
 		temp_l = temp_b->command;
+		ft_envswap(env , temp_l);
 		ft_putnbr_fd(i++, 1, 0);
 		write(1,"|",1);
 		while (temp_l)
@@ -81,6 +88,11 @@ int	main(int ac, char **av)
 			temp_l = temp_l->next;
 		}
 		write(1,"\n",1);
-		temp_b = temp_b->next;
+		ft_listclear(&(temp_b->command));
+		if (temp_b->next)
+			temp_b = temp_b->next;
+	pause();
 	}
+	ft_free(env);
+
 }

@@ -27,6 +27,7 @@
 typedef struct s_list
 {
 	char			*str;
+	char			*id;
 	struct s_list	*prev;
 	struct s_list	*next;
 }				t_list;
@@ -39,6 +40,7 @@ typedef struct s_built
 }				t_built;
 
 typedef int			t_bool;
+
 void	ft_putchar_fd(char c, int fd, char *color);
 void	ft_putstr_fd(char *s, int fd, char *color);
 void	ft_putnbr_fd(int n, int fd, char *color);
@@ -49,16 +51,18 @@ char	*ft_strndup(const char *s, int len);
 char	*ft_strchr(const char *s, char c);
 int		get_next_line(int fd, char **line);;
 t_bool	ft_malloc(void *target, int size);
+int		ft_strncmp(const char *s1, const char *s2, int n);
 void	ft_free(void *memory);
 void	ft_free2(char **s, int i);
 
-t_list	*ft_listnew(char *str);
+t_list	*ft_listnew(char *str, char *id);
 void	ft_listadd_front(t_list **list, t_list **new);
 void	ft_listadd_tail(t_list **list, t_list **new);
 void	ft_listdelone(t_list **list);
 void	ft_listclear(t_list **list);
 
-t_list	*ft_split(const char *str, const char c);
+t_list	*ft_split2(const char *str, const char c);
 int		ft_split_built(t_built *built);
-
+char	*ft_getenv(t_list *list, const char *varname, int varlen);
+int		*ft_envswap(t_list *env, t_list *list);
 #endif

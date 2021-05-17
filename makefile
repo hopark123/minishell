@@ -6,7 +6,7 @@
 #    By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 18:03:34 by hopark            #+#    #+#              #
-#    Updated: 2021/05/14 15:02:07 by hopark           ###   ########.fr        #
+#    Updated: 2021/05/17 20:28:41 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ vpath %.c \
 	$(SRC_DIR) \
 	$(UTIL_DIR) \
 	$(PASSING_DIR)\
+	$(ENGINE_DIR) \
 
 SRC = \
 	$(ENGINE) \
