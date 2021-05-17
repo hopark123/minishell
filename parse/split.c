@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 17:31:22 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/17 13:46:19 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/17 16:17:48 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,25 @@ int	meet_word(char *str)
 	char	*tmp;
 	size_t	i;
 	int	flag;
-	//int	old_flag;
+	int	old_flag;
 
 	tmp = 0;
 	i = 0;
 	start = str;
 	flag = 0;
-	//old_flag = 0;
+	old_flag = 0;
 	while (str[i])
 	{
 		//연속된 공백 넘어가기
-		while (str[i] == ' ' && !flag)
+		//while (str[i] == ' ' && !flag)
+		while (str[i] == ' ')
 			start = &str[++i];
 		flag = remember_quo(str[i]);
 		i++;
+		printf("start: %c current: %c flag: %d old_flag: %d\n", *start, str[i], flag, old_flag);
+		if (flag == 1 || (str[i] == ' ' && !flag) || str[i] == '\0')
 		//if (flag != old_flag || (str[i] == ' ' && !flag) || str[i] == '\0')
-		if ((str[i] == ' ' && !flag) || str[i] == '\0')
+		//if ((str[i] == ' ' && !flag) || str[i] == '\0')
 		{
 			tmp = ft_substr(start, 0, &str[i] - start);
 			if (!tmp)
@@ -62,7 +65,7 @@ int	meet_word(char *str)
 			free(tmp);
 			start = &str[i];
 		}
-		//old_flag = flag;
+		old_flag = flag;
 	}
 	return (1);
 }
