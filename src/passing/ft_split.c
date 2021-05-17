@@ -12,19 +12,28 @@
 
 #include "head.h"
 
-static int	ft_wordlen(char const *s, char c, int flag)
+static int	ft_wordlen(char const *s, char c)
 {
 	int			i;
 	int			len;
+	int			flag;
 
 	i = 0;
 	len = 0;
-	while (s[i] && s[i] != c && flag == 1)
+	flag = 1;
+	while (s[i] && (s[i] != c || flag == -1))
 	{
+		if (s[i] == '"')
+		{
+			while (s[i] != '"')
+			{
+				i++;
+				len++;
+			}
+			flag *= -1;
+		}
 		i++;
 		len++;
-		if (s[i] == '"')
-			flag *= -1;
 	}
 	return (len);
 }
@@ -35,19 +44,17 @@ t_list	*ft_split(const char *str, const char c)
 	t_list		*head;
 	char		*res;
 	int			len;
-	static int	flag;
 
-	flag = 1;
 	head = 0;
 	if (!str)
 		return (0);
 	while (*str)
 	{
-		while ((*str) && (*str) == c && flag == 1)
+		while (((*str) && (*str) == c))
 		{
 			str++;
 		}
-		len = ft_wordlen(str, c, flag);
+		len = ft_wordlen(str, c);
 		res = ft_strndup(str, len);
 		temp = ft_listnew(res);
 		ft_listadd_tail(&head, &temp);
