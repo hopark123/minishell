@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 15:17:14 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 15:23:47 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,11 @@ int	main(int ac, char **av)
 	{
 		temp_l = temp_b->command;
 		ft_putnbr_fd(i++, 1, 0);
+		write(1,"|",1);
 		while (temp_l)
 		{
 			ft_putstr_fd(temp_l->str, 1, 0);
-			write(1," | ",3);
+			write(1,"|",1);
 			temp_l = temp_l->next;
 		}
 		write(1,"\n",1);
