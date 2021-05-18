@@ -1,0 +1,29 @@
+echo aa >> a >  > >"hello    ;     ' "' "''"  "'''"    $test>"       $test"aa"t>c
+echo aa> "$test ccc" $test
+
+* 공백으로 split"       >> "", ''추가
+echo
+aa
+"hello                   $test>"
+$test
+"aa"
+t>c
+
+< > ; |  쪼개기 (연결리스트) "", '' 무시
+
+echo
+aa
+"hello                   $test>"$test
+"aa"
+t
+>
+c
+
+
+
+
+
+>
+c
+
+
