@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 17:31:31 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 12:58:03 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/18 13:09:11 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,31 @@ static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 												ft_strlen(old + oldlen));
 	res[ft_strlen(list->str) - oldlen + ft_strlen(new)] = 0;
 	ft_free(list->str);
+	ft_free(new);
 	return (res);
 }
 
 int	*ft_envswap(t_list *env, t_list *list)
 {
 	t_list	*temp_l;
-	char	*temp_c;
-	char	len;
+	char	*old;
+	char	oldlen;
 	char	*new;
 
 	temp_l = list;
 	while (temp_l)
 	{
-		temp_c = ft_strchr(temp_l->str, '$');
-		if (temp_c)
+		old = ft_strchr(temp_l->str, '$');
+		if (old)
 		{
-			len = ft_envlen(temp_c);
-			while (--len)
+			oldlen = ft_envlen(old);
+			while (--oldlen)
 			{
-				new = ft_getenv(env, temp_c + 1, len);
+				new = ft_getenv(env, old + 1, oldlen);
 				if (new)
 					break ;
 			}
-			temp_l->str = ft_strswap(temp_l, temp_c, new, len);
+			temp_l->str = ft_strswap(temp_l, old, new, oldlen);
 		}
 		else
 			temp_l = temp_l->next;
