@@ -14,6 +14,8 @@
 # define ERROR  0
 # define SUCCESS 1
 # define FAIL -1
+# define NULLPTR 0
+
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE   1024
