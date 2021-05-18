@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:37:44 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/18 23:17:53 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	main(int ac, char **av, char **envp)
 	ft_split_built(built);
 	env_list = ft_init_env_list(envp);
 
+#if 0
 																t_list	*lista = env_list;
 																/////환경변수 출력
 																while (lista)
@@ -126,4 +127,5 @@ int	main(int ac, char **av, char **envp)
 		else
 			break;
 	}
+#endif
 }
