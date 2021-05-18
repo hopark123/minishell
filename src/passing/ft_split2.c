@@ -1,12 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
+<<<<<<< HEAD
 /*   ft_split2.c                                        :+:      :+:    :+:   */
+=======
+/*   ft_split.c                                         :+:      :+:    :+:   */
+>>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:00:11 by hopark            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/05/17 19:50:53 by hopark           ###   ########.fr       */
+=======
+/*   Updated: 2021/05/17 18:34:29 by suhong           ###   ########.fr       */
+>>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +36,27 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 		return (len);
 	}
 	if (*flag == 1)
+<<<<<<< HEAD
 	{
+=======
+>>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
 		while (s[i] && s[i] != c)
 		{
 			if (s[i] == '"' || ft_strchr("<>;|", s[i]))
 			{
+<<<<<<< HEAD
 				break ;
+=======
+				break;
+>>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
 			}
 			i++;
 			len++;
 		}
+<<<<<<< HEAD
 	}
+=======
+>>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
 	else if ((*flag) == -1)
 	{
 		i++;
@@ -133,3 +151,7 @@ int		ft_split_built(t_built *built)
 	}
 	return (SUCCESS);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876

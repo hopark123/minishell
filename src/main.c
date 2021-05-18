@@ -1,19 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/18 12:42:50 by hopark           ###   ########.fr       */
-=======
-/*   Updated: 2021/05/17 22:16:05 by hopark           ###   ########.fr       */
->>>>>>> d8a6ffb07884f0fe5192e527d0e5131470b2ce8d
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "head.h"
 
 void	draw(char	*s)
@@ -46,7 +30,7 @@ void	draw(char	*s)
 
 }
 
-int	main(int ac, char **av)
+int	main(int ac, char **av, char **envp)
 {
 	char	*s;
 	char	*line;
@@ -68,11 +52,24 @@ int	main(int ac, char **av)
 	write(1," ", 1);
 	get_next_line(0, &line);
 	built->command = ft_split2(line, ' ');
-
 	t_built *temp_b = built;
 	t_list *temp_l = built->command;
-	ft_split_built(built);
+	 ft_split_built(built);
 	int i = 0;
+	while (temp_b)
+	{
+		temp_l = temp_b->command;
+		ft_putnbr_fd(i++, 1, 0);
+		write(1,"|",1);
+		while (temp_l)
+		{
+			ft_putstr_fd(temp_l->str, 1, 0);
+			write(1,"|",1);
+			temp_l = temp_l->next;
+		}
+		write(1,"\n",1);
+		temp_b = temp_b->next;
+	}
 
 	t_list	*env;
 	ft_malloc(&env, sizeof(t_list));
