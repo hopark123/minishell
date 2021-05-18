@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
+/*   Updated: 2021/05/18 15:36:22 by hopark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "head.h"
 
@@ -31,6 +42,7 @@ void	draw(char	*s)
 
 }
 
+
 int	main(int ac, char **av, char **envp)
 {
 	char	*s;
@@ -44,73 +56,70 @@ int	main(int ac, char **av, char **envp)
 	built->prev = 0;
 	built->next = 0;
 
-	ac = 0;
-	av = 0;
-	draw(0);
 	if (!ft_malloc(&s, sizeof(char) * 1024))
 		return (ERROR);
+	draw(0);
 	getcwd(s, BUFFER_SIZE);
 	ft_putstr_fd(s, 1, 0);
-	write(1," ", 1);
+	free(s);
+	write(1,"$ ", 2);
 	get_next_line(0, &line);
 	built->command = ft_split2(line, ' ');
+	free(line);
 	ft_split_built(built);
-	int i = 0;
-
 	env_list = ft_init_env_list(envp);
 
-									t_list	*lista = env_list;
-									/////환경변수 출력
-									while (lista)
-									{
-											ft_putstr_fd(lista->id, 1, 0);
-										write(1,"=",1);
-											ft_putstr_fd(lista->str, 1, 0);
-										write(1,"\n",1);
-										if(lista->next)
-											lista = lista->next;
-										else
-											break;
-									}
-									write(1,"\n\n\n",3);
-
+																t_list	*lista = env_list;
+																/////환경변수 출력
+																while (lista)
+																{
+																		ft_putstr_fd(lista->id, 1, 0);
+																	write(1,"=",1);
+																		ft_putstr_fd(lista->str, 1, 0);
+																	write(1,"\n",1);
+																	if(lista->next)
+																		lista = lista->next;
+																	else
+																		break;
+																}
+																write(1,"\n\n\n",3);
 	t_built *temp_b = built;
-	t_list *temp_l = built->command;
-	while (temp_b)
-	{
+																t_list *temp_l = built->command;
+																int		i = 0;
+																while (temp_b)
+																{
+																	temp_l = temp_b->command;
+																	ft_putnbr_fd(i++, 1, 0);
+																	write(1,"|",1);
 
-		temp_l = temp_b->command;
-																ft_putnbr_fd(i++, 1, 0);
-																write(1,"|",1);
-
-		while (temp_l)
-		{
-																ft_putstr_fd(temp_l->str, 1, 0);
-																write(1,"|",1);
-			temp_l = temp_l->next;
-		}
+																	while (temp_l)
+																	{
+																	ft_putstr_fd(temp_l->str, 1, 0);
+																	write(1,"|",1);
+																		temp_l = temp_l->next;
+																	}
+																	write(1,"\n",1);
+																	if (temp_b->next)
+																		temp_b = temp_b->next;
+																	else
+																		break;
+																}
 																write(1,"\n",1);
-		if (temp_b->next)
-			temp_b = temp_b->next;
-		else
-			break;
-	}
-									write(1,"\n",1);
-									temp_b = built;
+																temp_b = built;
 	while (temp_b)
 	{
 
-		temp_l = temp_b->command;
-		ft_envswap(env_list , temp_l);
+		ft_envswap(temp_b, env_list);
+		ft_parsing(temp_b, env_list);
+																temp_l = temp_b->command;
 																ft_putnbr_fd(i++, 1, 0);
 																write(1,"|",1);
-
-		while (temp_l)
-		{
+																while (temp_l)
+																{
 																ft_putstr_fd(temp_l->str, 1, 0);
 																write(1,"|",1);
-			temp_l = temp_l->next;
-		}
+																temp_l = temp_l->next;
+																}
 																write(1,"\n",1);
 		if (temp_b->next)
 			temp_b = temp_b->next;

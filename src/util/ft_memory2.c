@@ -1,16 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_memory2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 14:01:32 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/17 18:56:39 by suhong           ###   ########.fr       */
+/*   Created: 2021/05/18 15:34:52 by hopark            #+#    #+#             */
+/*   Updated: 2021/05/18 15:35:53 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+int	ft_strncmp(const char *s1, const char *s2, int n)
+{
+	int				i;
+	unsigned char	*c1;
+	unsigned char	*c2;
+
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (i < n)
+	{
+		if (c1[i] != c2[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

@@ -6,11 +6,12 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 12:07:14 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/14 15:05:20 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/18 15:34:47 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
 static int	storejoin(char **store, char *buf, int readsize)
 {
 	char		*temp;

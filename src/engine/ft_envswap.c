@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_envswap.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
+/*   Updated: 2021/05/18 15:36:30 by hopark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "head.h"
 
@@ -32,37 +43,26 @@ static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 	return (res);
 }
 
-int	*ft_envswap(t_list *env, t_list *list)
+int	*ft_envswap(t_built *built, t_list *env)
 {
 	t_list	*temp_l;
 	char	*old;
 	char	oldlen;
 	char	*new;
 
-	temp_l = list;
+	temp_l = built->command;
 	while (temp_l)
 	{
-	//write(1,"A\n",2);
-		old = ft_strchr(temp_l->str, '$');
-	//write(1,"B\n",2);
-
+		if (*(temp_l->str) != '\'')
+			old = ft_strchr(temp_l->str, '$');
 		if (old)
 		{
-	//write(1,"C\n",2);
 			oldlen = ft_envlen(old);
-	//write(1,"D\n",2);
 			new = ft_getenv(env, old + 1, oldlen);
-	//write(1,"E\n",2);
 			temp_l->str = ft_strswap(temp_l, old, new, oldlen);
-	//write(1,"F\n",2);
-
-
 		}
 		else
 			temp_l = temp_l->next;
 	}
-	//write(1,"E\n",2);
-
-
 	return (0);
 }
