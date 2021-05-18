@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_envswap.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 17:31:31 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 13:09:11 by hopark           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "head.h"
 
@@ -53,20 +42,27 @@ int	*ft_envswap(t_list *env, t_list *list)
 	temp_l = list;
 	while (temp_l)
 	{
+	//write(1,"A\n",2);
 		old = ft_strchr(temp_l->str, '$');
+	//write(1,"B\n",2);
+
 		if (old)
 		{
+	//write(1,"C\n",2);
 			oldlen = ft_envlen(old);
-			while (--oldlen)
-			{
-				new = ft_getenv(env, old + 1, oldlen);
-				if (new)
-					break ;
-			}
+	//write(1,"D\n",2);
+			new = ft_getenv(env, old + 1, oldlen);
+	//write(1,"E\n",2);
 			temp_l->str = ft_strswap(temp_l, old, new, oldlen);
+	//write(1,"F\n",2);
+
+
 		}
 		else
 			temp_l = temp_l->next;
 	}
+	//write(1,"E\n",2);
+
+
 	return (0);
 }

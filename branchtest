@@ -1,4 +1,4 @@
-echo aa >> a >  > >"hello    ;     ' "' "''"  "'''"    $test>"       $test"aa"t>c
+echo $makaa >> a >  > >"hello    ;     ' "' "''"  "'''"    '$test>"'       $ab"aa"t>c'
 echo aa> "$test ccc" $test
 
 * 공백으로 split"       >> "", ''추가
@@ -25,5 +25,9 @@ c
 
 >
 c
+
+
+
+
 
 

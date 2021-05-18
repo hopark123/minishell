@@ -1,22 +1,4 @@
-<<<<<<< HEAD
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/18 13:03:56 by hopark           ###   ########.fr       */
-=======
-/*   Updated: 2021/05/18 13:08:23 by hopark           ###   ########.fr       */
->>>>>>> hopark
-/*                                                                            */
-/* ************************************************************************** */
 
-=======
->>>>>>> suhong
 #include "head.h"
 
 void	draw(char	*s)
@@ -54,6 +36,7 @@ int	main(int ac, char **av, char **envp)
 	char	*s;
 	char	*line;
 	t_built	*built;
+	t_list	*env_list;
 
 	if (!(ft_malloc(&built, sizeof(built))))
 		return (ERROR);
@@ -71,47 +54,67 @@ int	main(int ac, char **av, char **envp)
 	write(1," ", 1);
 	get_next_line(0, &line);
 	built->command = ft_split2(line, ' ');
+	ft_split_built(built);
+	int i = 0;
+
+	env_list = ft_init_env_list(envp);
+
+									t_list	*lista = env_list;
+									/////환경변수 출력
+									while (lista)
+									{
+											ft_putstr_fd(lista->id, 1, 0);
+										write(1,"=",1);
+											ft_putstr_fd(lista->str, 1, 0);
+										write(1,"\n",1);
+										if(lista->next)
+											lista = lista->next;
+										else
+											break;
+									}
+									write(1,"\n\n\n",3);
+
 	t_built *temp_b = built;
 	t_list *temp_l = built->command;
-	 ft_split_built(built);
-	int i = 0;
 	while (temp_b)
 	{
+
 		temp_l = temp_b->command;
-		ft_putnbr_fd(i++, 1, 0);
-		write(1,"|",1);
+																ft_putnbr_fd(i++, 1, 0);
+																write(1,"|",1);
+
 		while (temp_l)
 		{
-			ft_putstr_fd(temp_l->str, 1, 0);
-			write(1,"|",1);
+																ft_putstr_fd(temp_l->str, 1, 0);
+																write(1,"|",1);
 			temp_l = temp_l->next;
 		}
-		write(1,"\n",1);
-		temp_b = temp_b->next;
-	}
-
-	t_list	*env;
-	ft_malloc(&env, sizeof(t_list));
-
-	env->id = "test";
-	env->str = "swap";
-	while (temp_b)
-	{
-		temp_l = temp_b->command;
-		ft_envswap(env , temp_l);
-		ft_putnbr_fd(i++, 1, 0);
-		write(1,"|",1);
-		while (temp_l)
-		{
-			ft_putstr_fd(temp_l->str, 1, 0);
-			write(1,"|",1);
-			temp_l = temp_l->next;
-		}
-		write(1,"\n",1);
+																write(1,"\n",1);
 		if (temp_b->next)
 			temp_b = temp_b->next;
 		else
 			break;
 	}
-	ft_free(env);
+									write(1,"\n",1);
+									temp_b = built;
+	while (temp_b)
+	{
+
+		temp_l = temp_b->command;
+		ft_envswap(env_list , temp_l);
+																ft_putnbr_fd(i++, 1, 0);
+																write(1,"|",1);
+
+		while (temp_l)
+		{
+																ft_putstr_fd(temp_l->str, 1, 0);
+																write(1,"|",1);
+			temp_l = temp_l->next;
+		}
+																write(1,"\n",1);
+		if (temp_b->next)
+			temp_b = temp_b->next;
+		else
+			break;
+	}
 }

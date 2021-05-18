@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   env_list.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 17:50:57 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/18 11:21:28 by suhong           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "head.h"
 
@@ -60,7 +49,7 @@ int	ft_add_env_list(t_list **list, char *id, char *str)
 char	*ft_delenv(t_list *list, char *str)
 {
 	char	*tmp;
-	
+
 	while (list)
 	{
 		if (!ft_strncmp(list->id, str, ft_strlen(str)))
@@ -79,11 +68,7 @@ void	ft_show_env_list(t_list *list)
 	while (list)
 	{
 		ft_putstr_fd(list->id, 1, 0);
-		write(1, ":", 1);
 		ft_putstr_fd(list->str, 1, 0);
-		write(1, "\n", 1);
 		list = list->next;
 	}
 }
-
-

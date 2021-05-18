@@ -6,7 +6,7 @@
 #    By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 18:03:34 by hopark            #+#    #+#              #
-#    Updated: 2021/05/17 22:00:57 by hopark           ###   ########.fr        #
+#    Updated: 2021/05/18 13:37:41 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ RMFLAGS = -f
 SRC_DIR = src
 INC_DIR = include
 ENGINE_DIR = $(SRC_DIR)/engine
+UTIL_DIR = $(SRC_DIR)/util
 PASSING_DIR = $(SRC_DIR)/passing
 UTIL_DIR = $(SRC_DIR)/util
 OBJ_DIR = obj

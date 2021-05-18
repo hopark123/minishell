@@ -1,21 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_list.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-<<<<<<< HEAD
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:05:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 22:15:41 by hopark           ###   ########.fr       */
-=======
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:05:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 11:24:10 by suhong           ###   ########.fr       */
->>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "head.h"
 
@@ -82,17 +64,11 @@ void	ft_listdelone(t_list **list)
 	if ((*list) == 0)
 		return ;
 	if ((*list)->next)
-<<<<<<< HEAD
-		(*list)->next->prev = 0;
-	if ((*list)->prev)
-		(*list)->prev->next = 0;
-=======
 		(*list)->next->prev = (*list)->prev;
 	if ((*list)->prev)
 		(*list)->prev->next = (*list)->next;
 	ft_free((*list)->id);
 	ft_free((*list)->str);
->>>>>>> 03f0d6cde2b84ca2cb37292e5b353ca5bd207876
 	ft_free(*list);
 	(*list) = 0;
 }
