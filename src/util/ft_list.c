@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:05:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/16 16:02:41 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/18 11:24:10 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-t_list	*ft_listnew(char *str)
+t_list	*ft_listnew(char *str, char *id)
 {
 	t_list		*res;
 
 	if (!ft_malloc(&res, sizeof(t_list)))
 		return (0);
 	res->str = str;
+	res->id = id;
 	res->next = 0;
 	res->prev = 0;
 	return (res);
@@ -74,9 +75,11 @@ void	ft_listdelone(t_list **list)
 	if ((*list) == 0)
 		return ;
 	if ((*list)->next)
-		(*list)->next->prev = 0;
+		(*list)->next->prev = (*list)->prev;
 	if ((*list)->prev)
-		(*list)->prev->next = 0;
+		(*list)->prev->next = (*list)->next;
+	ft_free((*list)->id);
+	ft_free((*list)->str);
 	ft_free(*list);
 	(*list) = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 15:00:11 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 15:12:28 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/17 18:34:29 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	return (len);
 }
 
-t_list	*ft_split(const char *str, const char c)
+t_list	*ft_split2(const char *str, const char c)
 {
 	t_list		*temp;
 	t_list		*head;
@@ -88,7 +88,7 @@ t_list	*ft_split(const char *str, const char c)
 			flag = -2;
 		len = ft_wordlen(str, c, &flag);
 		res = ft_strndup(str, len);
-		temp = ft_listnew(res);
+		temp = ft_listnew(res, 0);
 		ft_listadd_tail(&head, &temp);
 		str += len;
 	}
