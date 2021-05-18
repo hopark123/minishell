@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:35:37 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/18 23:14:06 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,20 @@ t_list	*ft_init_env_list(char **envp)
 int	ft_add_env_list(t_list **list, char *id, char *str)
 {
 	t_list	*tmp;
-	char	*tmp_str;
-	char	*tmp_id;
 
-	tmp_str = 0;
-	tmp_id = 0;
-	if (str)
-		tmp_str = ft_strndup(str, ft_strlen(str));
-	if (id)
-		tmp_id = ft_strndup(id, ft_strlen(id));
-	tmp = ft_listnew(tmp_str, tmp_id);
+	if (!id)
+		return (0);
+	if (!str)
+		str = ft_strndup("", 1);
+	if (!str)
+		return (0);
+	tmp = ft_listnew(str, id);
+	if (!tmp)
+	{
+		free(id);
+		free(str);
+		return (0);
+	}
 	ft_listadd_tail(list, &tmp);
 	return (1);
 }
