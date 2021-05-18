@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/10/06 18:14:15 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/06 23:47:49 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+t_list	*ft_lstnew(void *content)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
+	t_list	*elmt;
 
-void	ft_free2(char **s, int i)
-{
-	while (i--)
-	{
-		if (s[i])
-			ft_free(s[i]);
-	}
-	ft_free(s);
+	elmt = (t_list *)malloc(sizeof(t_list));
+	if (!elmt)
+		return (0);
+	elmt->content = content;
+	elmt->next = 0;
+	return (elmt);
 }

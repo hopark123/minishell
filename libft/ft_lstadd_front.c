@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/10/07 05:50:15 by suhong            #+#    #+#             */
+/*   Updated: 2020/10/08 19:16:26 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
-
-void	ft_free2(char **s, int i)
-{
-	while (i--)
-	{
-		if (s[i])
-			ft_free(s[i]);
-	}
-	ft_free(s);
+	if (lst == 0 || new == 0)
+		return ;
+	new->next = lst[0];
+	lst[0] = new;
 }

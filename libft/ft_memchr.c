@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/09/30 11:35:52 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/06 23:13:02 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
+	unsigned char	*p;
 
-void	ft_free2(char **s, int i)
-{
-	while (i--)
+	p = (unsigned char *)s;
+	while (n--)
 	{
-		if (s[i])
-			ft_free(s[i]);
+		if (*p == (unsigned char)c)
+			return (p);
+		p++;
 	}
-	ft_free(s);
+	return (0);
 }

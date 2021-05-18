@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/09/30 13:55:55 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/06 17:49:54 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
+	void			*p;
+	unsigned char	*c;
+	size_t			i;
 
-void	ft_free2(char **s, int i)
-{
-	while (i--)
-	{
-		if (s[i])
-			ft_free(s[i]);
-	}
-	ft_free(s);
+	i = 0;
+	p = (void *)malloc(nmemb * size);
+	if (!p)
+		return (0);
+	c = p;
+	while (i++ < nmemb * size)
+		*c++ = 0;
+	return (p);
 }

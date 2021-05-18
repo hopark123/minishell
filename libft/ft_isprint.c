@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/09/29 12:54:01 by suhong            #+#    #+#             */
+/*   Updated: 2020/10/06 11:51:09 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+int	ft_isprint(int c)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
-
-void	ft_free2(char **s, int i)
-{
-	while (i--)
-	{
-		if (s[i])
-			ft_free(s[i]);
-	}
-	ft_free(s);
+	if (c >= 32 && c <= 126)
+		return (1);
+	return (0);
 }

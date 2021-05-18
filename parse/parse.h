@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2021/05/16 15:21:12 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/17 06:03:22 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#ifndef PARSE_H
+# define PARSE_H
 
-void	ft_free(void *memory)
-{
-	if (memory)
-		free(memory);
-	memory = 0;
-}
+# include "../libft/libft.h"
 
-void	ft_free2(char **s, int i)
+# define ERROR	-1
+
+typedef struct s_string
 {
-	while (i--)
-	{
-		if (s[i])
-			ft_free(s[i]);
-	}
-	ft_free(s);
-}
+	char	word;
+	char	*str;
+	struct s_string	*next;
+}	t_string;
+
+//char	**split_comma(char *str);
+int	meet_word(char *str);
+
+#endif

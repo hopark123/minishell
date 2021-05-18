@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/10/08 17:56:01 by suhong            #+#    #+#             */
+/*   Updated: 2020/10/08 19:18:28 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
-
-void	ft_free2(char **s, int i)
-{
-	while (i--)
+	if (f == 0)
+		return ;
+	while (lst)
 	{
-		if (s[i])
-			ft_free(s[i]);
+		f(lst->content);
+		lst = lst->next;
 	}
-	ft_free(s);
 }

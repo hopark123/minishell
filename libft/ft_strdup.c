@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/09/30 17:55:26 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/06 23:14:21 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+char	*ft_strdup(const char *s)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
+	char			*p;
+	int				i;
+	int				size;
 
-void	ft_free2(char **s, int i)
-{
-	while (i--)
+	size = ft_strlen(s);
+	i = 0;
+	p = (char *)malloc((size + 1) * sizeof(char));
+	if (!p)
+		return (0);
+	while (i < size)
 	{
-		if (s[i])
-			ft_free(s[i]);
+		p[i] = s[i];
+		i++;
 	}
-	ft_free(s);
+	p[i] = '\0';
+	return (p);
 }

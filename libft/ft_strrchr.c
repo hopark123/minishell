@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/28 18:22:29 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 21:29:19 by suhong           ###   ########.fr       */
+/*   Created: 2020/09/28 18:42:23 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/06 23:17:55 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "libft.h"
 
-void	ft_free(void *memory)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (memory)
-		free(memory);
-	memory = 0;
-}
+	char	*p;
+	char	*i;
 
-void	ft_free2(char **s, int i)
-{
-	while (i--)
+	p = (char *)s;
+	i = 0;
+	while (*p != '\0')
 	{
-		if (s[i])
-			ft_free(s[i]);
+		if (*p == c)
+			i = p;
+		p++;
 	}
-	ft_free(s);
+	if (c == 0)
+		return (p);
+	return (i);
 }
