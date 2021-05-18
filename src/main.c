@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/28 18:03:34 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/17 22:16:05 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/18 13:08:23 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 	draw(0);
 	if (!ft_malloc(&s, sizeof(char) * 1024))
 		return (ERROR);
-	getcwd(s, 1024);
+	getcwd(s, BUFFER_SIZE);
 	ft_putstr_fd(s, 1, 0);
 	write(1," ", 1);
 	get_next_line(0, &line);

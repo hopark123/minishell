@@ -17,7 +17,7 @@
 # define NULLPTR 0
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE   1
+#  define BUFFER_SIZE   1024
 # endif
 
 # ifndef OPEN_MAX
