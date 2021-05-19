@@ -3,7 +3,10 @@
 
 # include "type.h"
 # include "builtin_2.h"
+<<<<<<< HEAD
 # include "echo.h"
+=======
+>>>>>>> cbdb8e98a072b8dc5bf3433d3d13cc4c491e51e8
 
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
