@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 14:59:09 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 17:48:59 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,35 @@ t_list	*ft_split2(const char *str, const char c)
 
 	flag = 1;
 	head = 0;
+	len = 0;
 	if (!str)
 		return (0);
 	while (*str)
 	{
+		len = 0;
 		while (((*str) && (*str) == c))
+		{
 			str++;
-		if (*str == '"')
-			flag = -1;
-		else if (*str == '\'')
-			flag = -2;
-		len = ft_wordlen(str, c, &flag);
-		res = ft_strndup(str, len);
-		temp = ft_listnew(res, 0);
-		ft_listadd_tail(&head, &temp);
-		str += len;
+			len++;
+		}
+		if (len)
+		{
+			res = ft_strndup("", 0);
+			temp = ft_listnew(res, 0);
+			ft_listadd_tail(&head, &temp);
+		}
+		else
+		{
+			if (*str == '"')
+				flag = -1;
+			else if (*str == '\'')
+				flag = -2;
+			len = ft_wordlen(str, c, &flag);
+			res = ft_strndup(str, len);
+			temp = ft_listnew(res, 0);
+			ft_listadd_tail(&head, &temp);
+			str += len;
+		}
 	}
 	return (head);
 }

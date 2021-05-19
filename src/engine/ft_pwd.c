@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_quotes.c                                    :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 15:43:00 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 18:25:21 by hopark           ###   ########.fr       */
+/*   Created: 2021/05/19 21:23:24 by hopark            #+#    #+#             */
+/*   Updated: 2021/05/19 21:25:45 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_del_quotes(t_built *built)
+int	ft_pwd(t_built *built)
 {
-	t_list	*temp_l;
-	char	*new;
+	char	*cwd;
 
-	temp_l = built->command;
-	new = 0;
-	while (temp_l)
-	{
-		if (*(temp_l->str) == '\'' || *(temp_l->str) == '\"')
-		{
-			if (!(ft_malloc(&new, sizeof(ft_strlen(temp_l->str) - 1))))
-				return (ERROR);
-			new = ft_strndup(temp_l->str + 1, ft_strlen(temp_l->str + 1) - 1);
-			ft_free(temp_l->str);
-			temp_l->str = new;
-		}
-		if (temp_l->next)
-			temp_l = temp_l->next;
-		else
-			break ;
-	}
+	cwd = getcwd(0, BUFFER_SIZE);
+	ft_putstr_fd(cwd, 1, 0);
+	ft_putchar_fd('\n', 1, 0);
+	ft_free(cwd);
 	return (SUCCESS);
 }

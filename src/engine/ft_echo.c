@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 14:32:39 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 21:13:27 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_echo(t_built *built)
 
 	n_flag = 0;
 	temp_l = built->command;
-								write(1, "*****echo{", 11);
+										write(1, "*****echo{", 11);
 	if (temp_l->next)
 	{
 		temp_l = temp_l->next;
@@ -36,9 +36,10 @@ int	ft_echo(t_built *built)
 			temp_l = temp_l->next;
 		else
 			break ;
-		ft_putchar_fd(' ', 1, 0);
 	}
+										write(1, "}", 1);
 	if (!n_flag)
 		ft_putchar_fd('\n', 1, 0);
-								write(1, "}\n", 3);
+										write(1, "}\n", 3);
+				//// errno 처리 필요
 }

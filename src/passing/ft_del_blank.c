@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_quotes.c                                    :+:      :+:    :+:   */
+/*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 15:43:00 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 18:25:21 by hopark           ###   ########.fr       */
+/*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
+/*   Updated: 2021/05/19 18:45:41 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_del_quotes(t_built *built)
+void	ft_del_blank(t_built *built)
 {
 	t_list	*temp_l;
-	char	*new;
+	t_list	*temp_l2;
 
 	temp_l = built->command;
-	new = 0;
 	while (temp_l)
 	{
-		if (*(temp_l->str) == '\'' || *(temp_l->str) == '\"')
+		temp_l2 = temp_l->next;
+		if (ft_strlen(temp_l->str) == 0)
 		{
-			if (!(ft_malloc(&new, sizeof(ft_strlen(temp_l->str) - 1))))
-				return (ERROR);
-			new = ft_strndup(temp_l->str + 1, ft_strlen(temp_l->str + 1) - 1);
-			ft_free(temp_l->str);
-			temp_l->str = new;
+			if (temp_l->prev && ft_strlen(temp_l->prev->str) == 0)
+			{
+				temp_l2 = temp_l->next;
+				ft_listdelone(&temp_l);
+			}
+			else if (!(temp_l->prev))
+			{
+				temp_l2 = temp_l->next;
+				ft_putstr_fd(temp_l->str, 1, 0);
+				built->command = temp_l2;
+				ft_listdelone(&temp_l);
+			}
 		}
-		if (temp_l->next)
-			temp_l = temp_l->next;
-		else
-			break ;
+		temp_l = temp_l2;
 	}
-	return (SUCCESS);
 }

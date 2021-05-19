@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:36:15 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 20:11:10 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ int	ft_split_built(t_built *built)
 		return (ERROR);
 	temp_b = built;
 	temp_l = built->command;
-	while (temp_l->next)
+	while (temp_l)
 	{
-		if (ft_strchr("<>;|", *(temp_l->str)))
+		if (*(temp_l->str) && ft_strchr("<>;|", *(temp_l->str)))
 		{
-			if (!(temp_l->next))
-				return (ERROR);
 			new_b = ft_builtnup(temp_l);
 			temp_b->next = new_b;
 			new_b->prev = temp_b;
