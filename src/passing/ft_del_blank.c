@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_built.c                                   :+:      :+:    :+:   */
+/*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:35:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 17:47:36 by hopark           ###   ########.fr       */
+/*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
+/*   Updated: 2021/05/19 18:43:04 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_split_built(t_built *built)
+void	ft_del_blank(t_built *built)
 {
-	t_list		*temp_l;
-	t_built		*temp_b;
-	t_built		*new_b;
+	t_list	*temp_l;
+	t_list	*temp_l2;
 
-	if (!built || !built->command)
-		return (ERROR);
-	temp_b = built;
 	temp_l = built->command;
-	while (temp_l->next)
+	while (temp_l)
 	{
-		if (*(temp_l->str) && ft_strchr("<>;|", *(temp_l->str)))
+		temp_l2 = temp_l->next;
+		if (ft_strlen(temp_l->str) == 0)
 		{
-			if (!(temp_l->next))
-				return (ERROR);
-			new_b = ft_builtnup(temp_l);
-			temp_b->next = new_b;
-			new_b->prev = temp_b;
-			temp_l->prev->next = 0;
-			temp_b = new_b;
+			if (temp_l->prev && ft_strlen(temp_l->prev->str) == 0)
+			{
+				temp_l2 = temp_l->next;
+				ft_listdelone(&temp_l);
+			}
+			else if (!(temp_l->prev))
+			{
+				temp_l2 = temp_l->next;
+				ft_putstr_fd(temp_l->str, 1, 0);
+				built->command = temp_l2;
+				ft_listdelone(&temp_l);
+			}
 		}
-		temp_l = temp_l->next;
+		temp_l = temp_l2;
 	}
-	return (SUCCESS);
 }

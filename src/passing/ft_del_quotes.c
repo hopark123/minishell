@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:43:00 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 15:52:34 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 18:25:21 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,21 @@ int	ft_del_quotes(t_built *built)
 	char	*new;
 
 	temp_l = built->command;
+	new = 0;
 	while (temp_l)
 	{
 		if (*(temp_l->str) == '\'' || *(temp_l->str) == '\"')
 		{
-			if (!(ft_malloc(&new, sizeof(ft_strlen(temp_l->str) - 2))))
+			if (!(ft_malloc(&new, sizeof(ft_strlen(temp_l->str) - 1))))
 				return (ERROR);
-			ft_memcpy(new, temp_l->str + 1, ft_strlen(temp_l->str) - 1);
-			new[ft_strlen(temp_l->str) - 2] = 0;
+			new = ft_strndup(temp_l->str + 1, ft_strlen(temp_l->str + 1) - 1);
 			ft_free(temp_l->str);
 			temp_l->str = new;
 		}
-		temp_l = temp_l->next;
+		if (temp_l->next)
+			temp_l = temp_l->next;
+		else
+			break ;
 	}
 	return (SUCCESS);
 }

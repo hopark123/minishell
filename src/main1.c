@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 16:30:35 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 05:09:08 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,32 +67,10 @@ int	main(int ac, char **av, char **envp)
 	built->command = ft_split2(line, ' ');
 	free(line);
 	ft_split_built(built);
-#if 1
+	
 	env_list = ft_init_env_list(envp);
-	ft_show_env_list(env_list);
-	write(1, "/////////////\n", 14);
-	ft_export(built->next->command, env_list);
-	write(1, "/////////////\n", 14);
-	ft_show_env_list(env_list);
-	ft_listclear(&env_list);
-#endif
-#if 0
-																t_list	*lista = env_list;
-																/////환경변수 출력
-																while (lista)
-																{
-																		ft_putstr_fd(lista->id, 1, 0);
-																	write(1,"=",1);
-																		ft_putstr_fd(lista->str, 1, 0);
-																	write(1,"\n",1);
-																	if(lista->next)
-																		lista = lista->next;
-																	else
-																		break;
-																}
-#endif
-																write(1,"\n\n\n",3);
-																t_built *temp_b = built;
+#if 1
+			t_built *temp_b = built;
 																t_list *temp_l = built->command;
 																int		i = 0;
 																while (temp_b)
@@ -127,6 +105,7 @@ int	main(int ac, char **av, char **envp)
 		ft_del_quotes(temp_b);
 																ft_putnbr_fd(i++, 1, 0);
 																temp_l = temp_b->command;
+#if 0
 																while (temp_l)
 																{
 																write(1,"[",1);
@@ -138,10 +117,22 @@ int	main(int ac, char **av, char **envp)
 																	break ;
 																}
 																write(1,"\n",1);
+#endif
 		ft_parsing(temp_b, env_list);
 		if (temp_b->next)
 			temp_b = temp_b->next;
 		else
 			break;
 	}
+#if 1
+	ft_show_env_list(env_list);
+	write(1, "/////////////\n", 14);
+	//ft_export(built->command, env_list);
+	write(1, "/////////////\n", 14);
+	//ft_show_env_list(env_list);
+	ft_show_env_list(sort_env_list(env_list));
+	ft_listclear(&env_list);
+
+#endif
+#endif
 }

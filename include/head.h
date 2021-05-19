@@ -3,10 +3,7 @@
 
 # include "type.h"
 # include "builtin_2.h"
-<<<<<<< HEAD
 # include "echo.h"
-=======
->>>>>>> cbdb8e98a072b8dc5bf3433d3d13cc4c491e51e8
 
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
@@ -38,8 +35,9 @@ void	*ft_memcpy(void *dst, const void *src, int n);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strndup(const char *s, int len);
 char	*ft_strchr(const char *s, char c);
-int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, int n);
+int		ft_strncmp2(const char *s1, const char *s2, int n);
+int		ft_strncmp3(const char *s1, const char *s2, size_t n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
 int		ft_putchar_fd(char c, int fd, char *color);
@@ -50,6 +48,7 @@ int		get_next_line(int fd, char **line);;
 
 
 int	ft_del_quotes(t_built *built);
+void	ft_del_black(t_built *built);
 
 
 
