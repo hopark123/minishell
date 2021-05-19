@@ -2,12 +2,9 @@
 # define HEAD_H
 
 # include "type.h"
-<<<<<<< HEAD
 # include "builtin_2.h"
-
-=======
 # include "echo.h"
->>>>>>> 1b333c86660a206c814c74abfefa8f4f543680f6
+
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
 int	ft_add_env_list(t_list **list, char *id, char *str);

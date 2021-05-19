@@ -6,11 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/19 15:25:56 by suhong           ###   ########.fr       */
-=======
-/*   Updated: 2021/05/19 15:47:43 by hopark           ###   ########.fr       */
->>>>>>> 1b333c86660a206c814c74abfefa8f4f543680f6
+/*   Updated: 2021/05/19 16:30:35 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +67,17 @@ int	main(int ac, char **av, char **envp)
 	built->command = ft_split2(line, ' ');
 	free(line);
 	ft_split_built(built);
-#if 0
+#if 1
 	env_list = ft_init_env_list(envp);
 	ft_show_env_list(env_list);
 	write(1, "/////////////\n", 14);
-	ft_export(built->command, env_list);
+	ft_export(built->next->command, env_list);
 	write(1, "/////////////\n", 14);
 	ft_show_env_list(env_list);
 	ft_listclear(&env_list);
 #endif
 #if 0
 																t_list	*lista = env_list;
-<<<<<<< HEAD
 																/////환경변수 출력
 																while (lista)
 																{
@@ -97,23 +92,7 @@ int	main(int ac, char **av, char **envp)
 																}
 #endif
 																write(1,"\n\n\n",3);
-=======
-																///환경변수 출력
-																//write(1,"**********************\n",24);
-																//while (lista)
-																//{
-																//		ft_putstr_fd(lista->id, 1, 0);
-																//	write(1,"=",1);
-																//		ft_putstr_fd(lista->str, 1, 0);
-																//	write(1,"\n",1);
-																//	if(lista->next)
-																//		lista = lista->next;
-																//	else
-																//		break;
-																//}
-																//write(1,"**********************\n",24);
->>>>>>> 1b333c86660a206c814c74abfefa8f4f543680f6
-	t_built *temp_b = built;
+																t_built *temp_b = built;
 																t_list *temp_l = built->command;
 																int		i = 0;
 																while (temp_b)
@@ -165,5 +144,4 @@ int	main(int ac, char **av, char **envp)
 		else
 			break;
 	}
-#endif
 }
