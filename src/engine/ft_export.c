@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/19 12:48:04 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/19 16:01:00 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	ft_export(t_list *command, t_list *env_list)
 		return (0);
 	if (!ft_strchr(str, '=') || str[0] == '=')
 	{
-		printf("export: '%s': not a valid identifier\n", command->str);
+		if (command->next)
+			printf("export: '%s': not a valid identifier\n", command->next->str);
 		free(str);
 		return (0);
 	}

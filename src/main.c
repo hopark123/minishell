@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 12:26:50 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/19 15:25:56 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	main(int ac, char **av, char **envp)
 	built->command = ft_split2(line, ' ');
 	free(line);
 	ft_split_built(built);
+#if 0
 	env_list = ft_init_env_list(envp);
 	ft_show_env_list(env_list);
 	write(1, "/////////////\n", 14);
@@ -74,6 +75,7 @@ int	main(int ac, char **av, char **envp)
 	write(1, "/////////////\n", 14);
 	ft_show_env_list(env_list);
 	ft_listclear(&env_list);
+#endif
 #if 0
 																t_list	*lista = env_list;
 																/////환경변수 출력
@@ -88,6 +90,7 @@ int	main(int ac, char **av, char **envp)
 																	else
 																		break;
 																}
+#endif
 																write(1,"\n\n\n",3);
 	t_built *temp_b = built;
 																t_list *temp_l = built->command;
