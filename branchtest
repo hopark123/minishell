@@ -1,5 +1,8 @@
-echo $makaa >> a >  ; > >"hello    ;     ' "' "''"  "'''"    '$test>"'       $ab"aa"t>c'
-echo aa> "$test ccc" $test
+echo $makte >> a >  ; > >"hello    ;     ' "' "''"  "'''"    '$ac>"'       $ab"aa"t>c' > echo a "$aa"
+echo "-n" aa cc dd easfsd> "$test ccc" $test
+
+
+echo "'$aa'" '"$aa'""
 
 * 공백으로 split"       >> "", ''추가
 echo
@@ -31,3 +34,5 @@ c
 
 
 
+
+export 

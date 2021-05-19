@@ -10,7 +10,6 @@
 # include <limits.h>
 # include <termios.h>
 # include <errno.h>
-
 # define ERROR  0
 # define SUCCESS 1
 # define FAIL -1
@@ -18,7 +17,7 @@
 
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE   1024
+#  define BUFFER_SIZE	1024
 # endif
 
 # ifndef OPEN_MAX

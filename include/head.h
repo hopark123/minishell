@@ -2,11 +2,11 @@
 # define HEAD_H
 
 # include "type.h"
-
+# include "echo.h"
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
 char	*ft_getenv(t_list *list, const char *varname, int varlen);
-int		*ft_envswap(t_built *built, t_list *env);
+int		*ft_envswap(t_built *built, t_list *env_list);
 
 
 
@@ -32,14 +32,19 @@ void	*ft_memcpy(void *dst, const void *src, int n);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strndup(const char *s, int len);
 char	*ft_strchr(const char *s, char c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, int n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	**ft_split(char const *s, char c);
-void	ft_putchar_fd(char c, int fd, char *color);
-void	ft_putstr_fd(char *s, int fd, char *color);
-void	ft_putnbr_fd(int n, int fd, char *color);
+int		ft_putchar_fd(char c, int fd, char *color);
+int		ft_putstr_fd(char *s, int fd, char *color);
+int		ft_putnbr_fd(int n, int fd, char *color);
 ////////////////////////////////////////
 int		get_next_line(int fd, char **line);;
+
+
+int	ft_del_quotes(t_built *built);
+
 
 
 #endif

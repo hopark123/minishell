@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:36:30 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 15:40:45 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static int	ft_envlen(char *str)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
 	while (str[i])
 	{
-		if (ft_strchr("$ ><|;", str[i]))
-			return (i);
 		i++;
+		if (ft_strchr("$ ><|;\'\"", str[i]))
+			return (i--);
 	}
-	return (i);
+	return (i--);
 }
 
 static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
@@ -43,7 +43,7 @@ static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 	return (res);
 }
 
-int	*ft_envswap(t_built *built, t_list *env)
+int	*ft_envswap(t_built *built, t_list *env_list)
 {
 	t_list	*temp_l;
 	char	*old;
@@ -57,9 +57,10 @@ int	*ft_envswap(t_built *built, t_list *env)
 			old = ft_strchr(temp_l->str, '$');
 		if (old)
 		{
-			oldlen = ft_envlen(old);
-			new = ft_getenv(env, old + 1, oldlen);
+			oldlen = ft_envlen(old + 1);
+			new = ft_getenv(env_list, old + 1, oldlen);
 			temp_l->str = ft_strswap(temp_l, old, new, oldlen);
+			old += oldlen + 1;
 		}
 		else
 			temp_l = temp_l->next;
