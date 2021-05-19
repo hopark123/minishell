@@ -6,11 +6,13 @@
 #    By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 18:03:34 by hopark            #+#    #+#              #
-#    Updated: 2021/05/18 13:37:41 by hopark           ###   ########.fr        #
+#    Updated: 2021/05/18 17:02:37 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
+NAME2 = echo
+NAME3 = cd
 
 CC = gcc
 CFLAGS = -O2

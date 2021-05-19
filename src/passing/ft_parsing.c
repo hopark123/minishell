@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:36:37 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 13:50:24 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_parsing(t_built *temp_b, t_list *env_list)
 {
 	int		res;
 
-	//if (ft_strncmp(temp_b->command->str, "echo", 4)
-	//	res = ft_echo();
+	if (ft_strncmp(temp_b->command->str, "echo", 4))
+		res = ft_echo(temp_b);
 	//else if (ft_strncmp(temp_b->command->str, "cd", 2)
 	//	res = ft_cd();
 	//else if (ft_strncmp(temp_b->command->str, "pwd", 3)
@@ -35,3 +35,6 @@ int	ft_parsing(t_built *temp_b, t_list *env_list)
 	//else
 	return (res);
 }
+
+
+//// 글자수도 체크해줘야함!!!

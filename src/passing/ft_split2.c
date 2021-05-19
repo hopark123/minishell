@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:35:20 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 14:59:09 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_list	*ft_split2(const char *str, const char c)
 	{
 		while (((*str) && (*str) == c))
 			str++;
-		if (*str == '"' )
+		if (*str == '"')
 			flag = -1;
 		else if (*str == '\'')
 			flag = -2;

@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:36:03 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/19 14:10:28 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ t_built	*ft_builtnup(t_list *list)
 	if (!ft_malloc(&res, sizeof(t_built)))
 		return (ERROR);
 	res->command = list;
+	res->next = 0;
+	res->prev = 0;
 	return (res);
 }
