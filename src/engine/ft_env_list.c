@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 23:14:06 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/19 12:07:46 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ void	ft_show_env_list(t_list *list)
 	while (list)
 	{
 		ft_putstr_fd(list->id, 1, 0);
+		write(1, ":", 1);
 		ft_putstr_fd(list->str, 1, 0);
+		write(1, "\n", 1);
 		list = list->next;
 	}
 }
