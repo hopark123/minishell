@@ -7,7 +7,7 @@
 
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
-int	ft_add_env_list(t_list **list, char *id, char *str);
+int		ft_add_env_list(t_list **list, char *id, char *str);
 char	*ft_delenv(t_list *list, char *str);
 void	ft_show_env_list(t_list *list);
 char	*ft_getenv(t_list *list, const char *varname, int varlen);
@@ -47,9 +47,7 @@ int		ft_putnbr_fd(int n, int fd, char *color);
 int		get_next_line(int fd, char **line);;
 
 
-int	ft_del_quotes(t_built *built);
-void	ft_del_black(t_built *built);
-
-
+int		ft_del_quotes(t_built *built);
+void	ft_del_blank(t_built *built);
 
 #endif

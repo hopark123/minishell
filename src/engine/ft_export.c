@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/20 17:07:05 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 17:32:28 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	list_size(t_list *list)
 {
 	t_list	*i;
-	int	size;
+	int		size;
 
 	i = list;
 	size = 0;
@@ -73,6 +73,7 @@ int	ft_export(t_built *built, t_list *env_list)
 		return (print_sorted_env_list(env_list));
 	if (!ft_strncmp2(built->command->next->str, " ", 2))
 		return (ERROR);
+	write(1, "in\n", 3);
 	order = built->command->next->next;
 	if (!order->str)
 		return (ERROR);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main1.c                                            :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 17:48:06 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 17:19:30 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,8 @@ int	main(int ac, char **av, char **envp)
 
 	if (!(ft_malloc(&built, sizeof(built))))
 		return (ERROR);
-#if 0
 	if (!(ft_malloc(&env_list, sizeof(env_list))))
 		return (ERROR);
-#endif
 	built->command = 0;
 	built->prev = 0;
 	built->next = 0;
@@ -89,8 +87,8 @@ int	main(int ac, char **av, char **envp)
 		built->command = ft_split2(line, ' ');
 		free(line);
 		ft_split_built(built);
+		//ft_show_env_list(env_list);
 		temp_b = built;
-#if 0
 		while (temp_b)
 		{
 			ft_envswap(temp_b, env_list);
@@ -100,17 +98,5 @@ int	main(int ac, char **av, char **envp)
 			test_print_passing(temp_b);
 			temp_b = temp_b->next;
 		}
-#else
-		ft_envswap(temp_b, env_list);
-		ft_del_quotes(temp_b);
-		ft_del_blank(temp_b);
-		ft_export(temp_b, env_list);
-		ft_show_env_list(env_list);
-		//ft_parsing(temp_b, env_list);
-		test_print_passing(temp_b);
-		temp_b = temp_b->next;
-#endif
 	}
-	ft_listclear(&env_list);
-	return (0);
 }
