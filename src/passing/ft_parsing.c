@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 17:42:32 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 18:54:29 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	ft_parsing(t_built *built, t_list *env_list)
 	else if (ft_strncmp(built->command->str, "pwd", 3))
 		res = ft_pwd(built);
 	else if (ft_strncmp(built->command->str, "export", 6))
+	{
+		write(1, "in export\n", 10);
 		res = ft_export(built, env_list);
+	}
 	else if (ft_strncmp(built->command->str, "unset", 5))
 		res = ft_unset(built, env_list);
 	else if (ft_strncmp(built->command->str, "env", 3))

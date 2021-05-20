@@ -6,11 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/20 17:52:52 by suhong           ###   ########.fr       */
-=======
-/*   Updated: 2021/05/20 17:48:06 by suhong           ###   ########.fr       */
->>>>>>> master
+/*   Updated: 2021/05/20 18:52:59 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,23 +104,11 @@ int	main(int ac, char **av, char **envp)
 		ft_envswap(temp_b, env_list);
 		ft_del_quotes(temp_b);
 		ft_del_blank(temp_b);
-		ft_export(temp_b, env_list);
-		ft_show_env_list(env_list);
-		//ft_parsing(temp_b, env_list);
+		ft_parsing(temp_b, env_list);
 		test_print_passing(temp_b);
 		temp_b = temp_b->next;
 #endif
 	}
-<<<<<<< HEAD
-#if 1
-	ft_show_env_list(env_list);
-	write(1, "/////////////\n", 14);
-	ft_export(built, env_list);
-	write(1, "/////////////\n", 14);
-	ft_show_env_list(env_list);
-	//ft_show_env_list(sort_env_list(env_list));
-=======
->>>>>>> master
 	ft_listclear(&env_list);
 	return (0);
 }
