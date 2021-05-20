@@ -77,7 +77,6 @@ int	main(int ac, char **av, char **envp)
 	built->command = ft_split2(line, ' ');
 	free(line);
 	ft_split_built(built);
-<<<<<<< HEAD:src/main2.c
 	env_list = ft_init_env_list(envp);
 																t_list	*lista = env_list;
 																///환경변수 출력
@@ -94,12 +93,10 @@ int	main(int ac, char **av, char **envp)
 																//}
 																//write(1,"\n\n\n",3);
 	t_built *temp_b = built;
-=======
 	
 	env_list = ft_init_env_list(envp);
 #if 1
 			t_built *temp_b = built;
->>>>>>> eb9b11cb69af1d51316b9c2821ce1388ac3aa5a3:src/main1.c
 																t_list *temp_l = built->command;
 																int		i = 0;
 																while (temp_b)
@@ -156,8 +153,6 @@ int	main(int ac, char **av, char **envp)
 		else
 			break;
 	}
-<<<<<<< HEAD:src/main2.c
-=======
 #if 1
 	ft_show_env_list(env_list);
 	write(1, "/////////////\n", 14);
@@ -169,5 +164,4 @@ int	main(int ac, char **av, char **envp)
 
 #endif
 #endif
->>>>>>> eb9b11cb69af1d51316b9c2821ce1388ac3aa5a3:src/main1.c
 }

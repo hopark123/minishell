@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:52 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 15:20:40 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 13:27:18 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 	c1 = (unsigned char *)s1;
 	c2 = (unsigned char *)s2;
 	i = 0;
-	if (n == 0)
+	if (n == 0 || !s1 || !s2)
 		return (0);
 	if (ft_strlen(s1) != n)
 		return (0);

@@ -47,7 +47,7 @@ int		ft_putnbr_fd(int n, int fd, char *color);
 int		get_next_line(int fd, char **line);;
 
 
-int	ft_del_quotes(t_built *built);
+int		ft_del_quotes(t_built *built);
 void	ft_del_blank(t_built *built);
 
 #endif
