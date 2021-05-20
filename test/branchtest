@@ -2,6 +2,12 @@
 
 
 
+cd /             완전 처음으로
+
+cd /aa		error
+
+cd .. >> 터짐
+cd . >> 터짐
 
 
 
@@ -12,47 +18,24 @@
 
 
 
+/Users/hjpark/Desktop/hopark/3_circle/minishell/src/util
+
+
+cd aa"$aa"'$aa'"$aaa"'$aaa'  Cc
+[cd][][aa][12][$aa][$aaa][][Cc]
+make
 
 
 
+cd ' ' >> 안에꺼 찾기
+cd "" >> 그자리make
+cd / 완전처음
 
+cd ~
+cd 
 
-    echo $makte >> a >  ; > >"hello    ;     ' "' "''"  "'''"    '$ad>"export '   export    $ab"aa"t>f' > echo a "$aa""$aa""$aa""$aa"
-echo "-n" aa cc dd easfsd> "$test ccc" $test 
+a = s;
+s = "       ' '         "
+s = s2 =        ' '         "
 
-
-echo "'$aa'" '"$aa'""
-
-* 공백으로 split"       >> "", ''추가
-echo
-aa
-"hello                   $test>"
-$test
-"aa"
-t>c
-
-< > ; |  쪼개기 (연결리스트) "", '' 무시
-
-echo
-aa
-"hello                   $test>"$test
-"aa"
-t
->
-c
-
-
-
-
-
->
-c
-
-
-
-  echo {""''""}
-
-
-export 
-
-cd ..
+'       " "         '

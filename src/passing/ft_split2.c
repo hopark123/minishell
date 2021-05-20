@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 17:17:12 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 20:11:45 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ static void	ft_quotes(char const *s, int *i, int *flag, char c)
 	(*flag) = 1;
 	(*i)++;
 }
-
 static int	ft_wordlen(char const *s, char c, int *flag)
 {
 	int			i;
-
 	i = 0;
-	if (ft_strchr("<>;|", s[i]))
+	if (ft_strchr("<>;|.", s[i]))
 	{
 		i++;
 		if (ft_strchr(">", s[i]))
@@ -48,7 +46,6 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 		ft_quotes(s, &i, flag, '\'');
 	return (i);
 }
-
 t_list	*ft_split2(const char *str, const char c)
 {
 	t_list		*temp;
@@ -56,7 +53,6 @@ t_list	*ft_split2(const char *str, const char c)
 	char		*res;
 	int			len;
 	int			flag;
-
 	flag = 1;
 	head = 0;
 	if (!str || !(*str))
@@ -71,7 +67,7 @@ t_list	*ft_split2(const char *str, const char c)
 		}
 		if (len)
 		{
-			res = ft_strndup("", 0);
+			res = ft_strndup(" ", 1);
 			temp = ft_listnew(res, 0);
 			ft_listadd_tail(&head, &temp);
 		}

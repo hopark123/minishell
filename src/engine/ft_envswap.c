@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 12:48:50 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:36:16 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	ft_envlen(char *str)
 {
 	int		i;
-
 	i = 0;
 	while (str[i])
 	{
@@ -25,11 +24,9 @@ static int	ft_envlen(char *str)
 	}
 	return (i--);
 }
-
 static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 {
 	char	*res;
-
 	if (!ft_malloc(&res, sizeof(ft_strlen(list->str) \
 									- oldlen + ft_strlen(new))))
 		return (0);
@@ -42,14 +39,12 @@ static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 	ft_free(new);
 	return (res);
 }
-
 int	*ft_envswap(t_built *built, t_list *env_list)
 {
 	t_list	*temp_l;
 	char	*old;
 	char	oldlen;
 	char	*new;
-
 	temp_l = built->command;
 	while (temp_l)
 	{
