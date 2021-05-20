@@ -22,7 +22,8 @@ cd . >> 터짐
 
 
 cd aa"$aa"'$aa'"$aaa"'$aaa'  Cc
-cd aa"$bb"'$cc'"$ddd"'$eee' Cc
+[cd][][aa][12][$aa][$aaa][][Cc]
+make
 
 
 
@@ -32,3 +33,9 @@ cd / 완전처음
 
 cd ~
 cd 
+
+a = s;
+s = "       ' '         "
+s = s2 =        ' '         "
+
+'       " "         '

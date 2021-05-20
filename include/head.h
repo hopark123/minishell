@@ -17,8 +17,7 @@ int		*ft_envswap(t_built *built, t_list *env_list);
 int		ft_parsing(t_built *temp_b, t_list *env_list);
 int		ft_split_built(t_built *built);
 t_list	*ft_split2(const char *str, const char c);
-
-
+int	ft_listjoin(t_built *built);
 
 ///////////////util
 t_built	*ft_builtnup(t_list *list);
@@ -50,4 +49,5 @@ int		get_next_line(int fd, char **line);;
 int		ft_del_quotes(t_built *built);
 void	ft_del_blank(t_built *built);
 void	ft_del_blank2(t_built *built);
+
 #endif

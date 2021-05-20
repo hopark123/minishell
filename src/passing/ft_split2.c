@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 19:07:51 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 20:11:45 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,16 @@
 static void	ft_quotes(char const *s, int *i, int *flag, char c)
 {
 	(*i)++;
-	while (s[(*i)] && s[(*i)] != ' ')
-	{
-		if (s[(*i)] == c)
-			(*flag) = 1;
+	while (s[(*i)] && s[(*i)] != c)
 		(*i)++;
-	}
+	(*flag) = 1;
 	(*i)++;
 }
-
 static int	ft_wordlen(char const *s, char c, int *flag)
 {
 	int			i;
-
 	i = 0;
-	if (ft_strchr("<>;|", s[i]))
+	if (ft_strchr("<>;|.", s[i]))
 	{
 		i++;
 		if (ft_strchr(">", s[i]))
@@ -39,7 +34,11 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	if (*flag == 1)
 	{
 		while (s[i] && s[i] != c)
+		{
+			if (s[i] == '"' || s[i] == '\'' || ft_strchr("<>;|", s[i]))
+				break ;
 			i++;
+		}
 	}
 	else if ((*flag) == -1)
 		ft_quotes(s, &i, flag, '"');
@@ -47,7 +46,6 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 		ft_quotes(s, &i, flag, '\'');
 	return (i);
 }
-
 t_list	*ft_split2(const char *str, const char c)
 {
 	t_list		*temp;
@@ -55,7 +53,6 @@ t_list	*ft_split2(const char *str, const char c)
 	char		*res;
 	int			len;
 	int			flag;
-
 	flag = 1;
 	head = 0;
 	if (!str || !(*str))
