@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 13:49:54 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 14:05:53 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	{
 		while (s[i] && s[i] != c)
 		{
-			if (s[i] == '"' || ft_strchr("<>;|", s[i]))
+			if (s[i] == '"' || s[i] == '\'' || ft_strchr("<>;|", s[i]))
 				break ;
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 13:30:00 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 14:04:16 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_cd(t_built *built, t_list *env_list)
 	list = built->command;
 	if (list->next && list->next->next && (*list->next->next->str) != '~')
 	{
+
 		list = list->next->next;
 		cwd = getcwd(0, BUFFER_SIZE);
 		if ('/' != *(list->str))
@@ -31,16 +32,24 @@ int	ft_cd(t_built *built, t_list *env_list)
 			free(cwd);
 			cwd = temp;
 		}
-		while ((*list->str) == '.')
+		while ((list) && (*list->str) == '.')
 		{
+			write(1,"[\n",2);
 			temp = ft_strjoin(cwd, ".");
 			free(cwd);
 			cwd = temp;
 			list = list->next;
+			write(1,"]\n",2);
 		}
+			write(1,"A\n",2);
+
 		temp = ft_strjoin(cwd, list->str);
+			write(1,"B\n",2);
+
 		free(cwd);
 		cwd = temp;
+			write(1,"C\n",2);
+
 												//printf("\n**|%s|**\n",cwd);
 	}
 	else 
