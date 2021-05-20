@@ -25,7 +25,7 @@ t_built	*ft_builtnup(t_list *list);
 void	ft_free(void *memory);
 void	ft_free2(char **s, int i);
 t_list	*ft_listnew(char *str, char *id);
-void	ft_listadd_front(t_list **list, t_list **new);
+void	ft_listadd_back(t_list **list, t_list **new);
 void	ft_listadd_tail(t_list **list, t_list **new);
 void	ft_listdelone(t_list **list);
 void	ft_listclear(t_list **list);
@@ -49,5 +49,5 @@ int		get_next_line(int fd, char **line);;
 
 int		ft_del_quotes(t_built *built);
 void	ft_del_blank(t_built *built);
-
+void	ft_del_blank2(t_built *built);
 #endif

@@ -6,7 +6,7 @@
 #    By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/28 18:03:34 by hopark            #+#    #+#              #
-#    Updated: 2021/05/20 17:21:33 by suhong           ###   ########.fr        #
+#    Updated: 2021/05/20 19:06:00 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CC = gcc
 CFLAGS = -O2
 #CFLAGS = -Wall -Wextra -Werror
 #CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+#CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src
