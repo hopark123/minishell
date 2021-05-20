@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 18:57:10 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:22:15 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	ft_envlen(char *str)
 	{
 		i++;
 		if (ft_strchr("$ ><|;\"", str[i]))
-			return (i--);
+			return (i);
 	}
-	return (i--);
+	return (i);
 }
 
 static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
@@ -63,20 +63,17 @@ int	*ft_envswap(t_built *built, t_list *env_list)
 				while ((temp_l->str)[i] != '\'')
 					i++;
 				i++;
-				ft_putstr_fd(&(temp_l->str)[i], 1, 0);
-				write(1,"\n",1);
 			}
-			else if ((temp_l->str)[i] == '&')
+			else if ((temp_l->str)[i] == '$')
 			{
 				oldlen = ft_envlen(&(temp_l->str)[i + 1]);
 				new = ft_getenv(env_list, &(temp_l->str)[i + 1], oldlen);
 				temp_l->str = ft_strswap(temp_l, &(temp_l->str)[i], new, oldlen);
-				i += oldlen;
+				i += ft_strlen(new);
 			}
-			i++;
-	
+			else
+				i++;
 		}
-			i++;
 		temp_l = temp_l->next;
 	}
 	return (0);
