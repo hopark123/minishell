@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 20:11:45 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 21:00:26 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	ft_quotes(char const *s, int *i, int *flag, char c)
 	(*flag) = 1;
 	(*i)++;
 }
+
 static int	ft_wordlen(char const *s, char c, int *flag)
 {
 	int			i;
