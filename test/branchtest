@@ -22,7 +22,8 @@ cd . >> 터짐
 
 
 cd aa"$aa"'$aa'"$aaa"'$aaa'  Cc
-cd aa"$bb"'$cc'"$ddd"'$eee' Cc
+[cd][][aa][12][$aa][$aaa][][Cc]
+make
 
 
 

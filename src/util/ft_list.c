@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 14:47:05 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 20:04:38 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,18 @@ void	ft_listdelone(t_list **list)
 		(*list)->next->prev = (*list)->prev;
 	if ((*list)->prev)
 		(*list)->prev->next = (*list)->next;
+	write(1, "X",1);
+	ft_putstr_fd((*list)->str, 1, 0);
+	write(1, "X\n",2);
+
+	write(1, "Y",1);
+	ft_putstr_fd((*list)->prev->str, 1, 0);
+	write(1, "Y\n",2);
+
+	write(1, "Z",1);
+	ft_putstr_fd((*list)->next->str, 1, 0);
+	write(1, "Z\n",2);
+
 	ft_free((*list)->id);
 	ft_free((*list)->str);
 	ft_free(*list);

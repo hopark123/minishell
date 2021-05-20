@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 19:22:26 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:56:56 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	main(int ac, char **av, char **envp)
 			ft_del_quotes(temp_b);
 			ft_del_blank(temp_b);
 			ft_del_blank2(temp_b);
+			ft_listjoin(temp_b);
+			test_print_passing(temp_b);
 			ft_parsing(temp_b, env_list);
 			test_print_passing(temp_b);
 			temp_b = temp_b->next;

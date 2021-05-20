@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 19:22:15 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 19:36:16 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 static int	ft_envlen(char *str)
 {
 	int		i;
-
 	i = 0;
 	while (str[i])
 	{
 		i++;
-		if (ft_strchr("$ ><|;\"", str[i]))
-			return (i);
+		if (ft_strchr("$ ><|;\'\"", str[i]))
+			return (i--);
 	}
-	return (i);
+	return (i--);
 }
-
 static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 {
 	char	*res;
-
 	if (!ft_malloc(&res, sizeof(ft_strlen(list->str) \
 									- oldlen + ft_strlen(new))))
 		return (0);
@@ -42,39 +39,26 @@ static char	*ft_strswap(t_list *list, char *old, char *new, int oldlen)
 	ft_free(new);
 	return (res);
 }
-
 int	*ft_envswap(t_built *built, t_list *env_list)
 {
 	t_list	*temp_l;
 	char	*old;
 	char	oldlen;
 	char	*new;
-	int		i;
-
 	temp_l = built->command;
 	while (temp_l)
 	{
-		i = 0;
-		while ((temp_l->str)[i])
+		if (*(temp_l->str) != '\'')
+			old = ft_strchr(temp_l->str, '$');
+		if (old)
 		{
-			if ((temp_l->str)[i] == '\'')
-			{
-				i++;
-				while ((temp_l->str)[i] != '\'')
-					i++;
-				i++;
-			}
-			else if ((temp_l->str)[i] == '$')
-			{
-				oldlen = ft_envlen(&(temp_l->str)[i + 1]);
-				new = ft_getenv(env_list, &(temp_l->str)[i + 1], oldlen);
-				temp_l->str = ft_strswap(temp_l, &(temp_l->str)[i], new, oldlen);
-				i += ft_strlen(new);
-			}
-			else
-				i++;
+			oldlen = ft_envlen(old + 1);
+			new = ft_getenv(env_list, old + 1, oldlen);
+			temp_l->str = ft_strswap(temp_l, old, new, oldlen);
+			old += oldlen + 1;
 		}
-		temp_l = temp_l->next;
+		else
+			temp_l = temp_l->next;
 	}
 	return (0);
 }
