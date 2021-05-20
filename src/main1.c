@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 05:09:08 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 17:09:48 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ int	main(int ac, char **av, char **envp)
 #if 1
 	ft_show_env_list(env_list);
 	write(1, "/////////////\n", 14);
-	//ft_export(built->command, env_list);
+	ft_export(built, env_list);
+	ft_unset(built, env_list);
 	write(1, "/////////////\n", 14);
-	//ft_show_env_list(env_list);
-	ft_show_env_list(sort_env_list(env_list));
+	ft_show_env_list(env_list);
 	ft_listclear(&env_list);
 
 #endif

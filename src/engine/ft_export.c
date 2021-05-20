@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/20 05:33:27 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 17:07:05 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,73 +27,63 @@ static int	list_size(t_list *list)
 	return (size);
 }
 
-static t_list	*init_node_point(t_list **node_1, t_list **node_2, t_list *start)
+static void	swap_node(t_list *node_1, t_list *node_2)
 {
-	t_list	*index;
+	char	*tmp;
 
-	index = start;
-	while (index->prev)
-		index = index->prev;
-	*node_1 = index;
-	*node_2 = index->next;
-	return (index);
+
+	tmp = node_1->str;
+	node_1->str = node_2->str;
+	node_2->str = tmp;
+	tmp = node_1->id;
+	node_1->id = node_2->id;
+	node_2->id = tmp;
 }
 
-t_list	*sort_env_list(t_list *env_list)
+static int	print_sorted_env_list(t_list *env_list)
 {
 	t_list	*node_1;
 	t_list	*node_2;
-	t_list	*tmp;
-	t_list	*start;
+	char	*tmp;
 	int	i;
 
 	i = list_size(env_list);
-	start = env_list;
 	while (i--)
 	{
-		start = init_node_point(&node_1, &node_2, start);
+		node_1 = env_list;
+		node_2 = node_1->next;
 		while (node_2)
 		{
-			if (ft_strncmp3(node_1->id, node_2->id, ft_strlen(node_1->id)) < 0)
-			{
-				tmp = node_1;
-				node_1 = node_2;
-				node_2 = tmp;
-				node_1->prev = tmp->prev;
-				node_2->prev = node_1;
-				node_2->next = node_1->next;
-				node_1->next = tmp->next;
-			}
+			if (ft_strncmp3(node_1->id, node_2->id, ft_strlen(node_1->id)) > 0)
+				swap_node(node_1, node_2);
 			node_1 = node_1->next;
 			node_2 = node_2->next;
 		}
 	}
-	return (init_node_point(&node_1, &node_2, start));
+	ft_show_env_list (env_list);
+	return (1);
 }
 
-int	ft_export(t_list *command, t_list *env_list)
+int	ft_export(t_built *built, t_list *env_list)
 {
-	char	*str;
+	t_list	*order;
 	char	**tmp;
 
-	if (!command)
-		return (0);
-	str = command->str;
-	if (!str)
-		return (0);
-	if (!ft_strchr(str, '=') || str[0] == '=')
+	if (!built->command->next)
+		return (print_sorted_env_list(env_list));
+	if (!ft_strncmp2(built->command->next->str, " ", 2))
+		return (ERROR);
+	order = built->command->next->next;
+	if (!order->str)
+		return (ERROR);
+	if (!ft_strchr(order->str, '=') || order->str[0] == '=')
 	{
-		if (command->next->str)
-			printf("export: '%s': not a valid identifier\n", command->next->str);
-		free(str);
-		return (0);
+		if (order->next && order->next->next)
+			printf("export: '%s': not a valid identifier\n", order->next->next->str);
+		return (ERROR);
 	}
-	tmp = ft_split(str, '=');
-	free(str);
+	tmp = ft_split(order->str, '=');
 	if (!tmp)
-		return (0);
-	if (command->next && command->next->str)
-		if (tmp[1] == 0 && !ft_strncmp2(command->next->str, " ", 2))
-			return (ft_add_env_list(&env_list, tmp[0], command->next->str));
+		return (ERROR);
 	return (ft_add_env_list(&env_list, tmp[0], tmp[1]));
 }

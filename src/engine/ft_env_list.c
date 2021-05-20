@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 12:07:46 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 16:05:49 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_add_env_list(t_list **list, char *id, char *str)
 		str = ft_strndup("", 1);
 	if (!str)
 		return (0);
+	ft_delenv(*list, id);
 	tmp = ft_listnew(str, id);
 	if (!tmp)
 	{
@@ -67,7 +68,7 @@ char	*ft_delenv(t_list *list, char *str)
 
 	while (list)
 	{
-		if (!ft_strncmp(list->id, str, ft_strlen(str)))
+		if (ft_strncmp(list->id, str, ft_strlen(str)))
 		{
 			tmp = list->str;
 			ft_listdelone(&list);
@@ -83,7 +84,7 @@ void	ft_show_env_list(t_list *list)
 	while (list)
 	{
 		ft_putstr_fd(list->id, 1, 0);
-		write(1, ":", 1);
+		write(1, "=", 1);
 		ft_putstr_fd(list->str, 1, 0);
 		write(1, "\n", 1);
 		list = list->next;
