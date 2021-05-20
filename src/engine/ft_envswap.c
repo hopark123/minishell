@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 12:48:50 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 18:57:10 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_envlen(char *str)
 	while (str[i])
 	{
 		i++;
-		if (ft_strchr("$ ><|;\'\"", str[i]))
+		if (ft_strchr("$ ><|;\"", str[i]))
 			return (i--);
 	}
 	return (i--);
@@ -49,21 +49,35 @@ int	*ft_envswap(t_built *built, t_list *env_list)
 	char	*old;
 	char	oldlen;
 	char	*new;
+	int		i;
 
 	temp_l = built->command;
 	while (temp_l)
 	{
-		if (*(temp_l->str) != '\'')
-			old = ft_strchr(temp_l->str, '$');
-		if (old)
+		i = 0;
+		while ((temp_l->str)[i])
 		{
-			oldlen = ft_envlen(old + 1);
-			new = ft_getenv(env_list, old + 1, oldlen);
-			temp_l->str = ft_strswap(temp_l, old, new, oldlen);
-			old += oldlen + 1;
+			if ((temp_l->str)[i] == '\'')
+			{
+				i++;
+				while ((temp_l->str)[i] != '\'')
+					i++;
+				i++;
+				ft_putstr_fd(&(temp_l->str)[i], 1, 0);
+				write(1,"\n",1);
+			}
+			else if ((temp_l->str)[i] == '&')
+			{
+				oldlen = ft_envlen(&(temp_l->str)[i + 1]);
+				new = ft_getenv(env_list, &(temp_l->str)[i + 1], oldlen);
+				temp_l->str = ft_strswap(temp_l, &(temp_l->str)[i], new, oldlen);
+				i += oldlen;
+			}
+			i++;
+	
 		}
-		else
-			temp_l = temp_l->next;
+			i++;
+		temp_l = temp_l->next;
 	}
 	return (0);
 }

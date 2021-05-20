@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 13:28:33 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 15:46:54 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_parsing(t_built *built, t_list *env_list)
 	//else if (ft_strchr("><|;",(built->command->str)))
 	//	res = ft_parsing2()
 	//else
+	return (res);
 }
 
 
