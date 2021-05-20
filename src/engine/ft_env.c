@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp3.c                                      :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/28 23:17:58 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/20 04:10:00 by suhong           ###   ########.fr       */
+/*   Created: 2021/05/19 20:40:10 by suhong            #+#    #+#             */
+/*   Updated: 2021/05/20 17:05:55 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "builtin_2.h"
 
-int	ft_strncmp3(const char *s1, const char *s2, size_t n)
+int	ft_env(t_built *built, t_list *env_list)
 {
-	size_t			i;
-	unsigned char	*f;
-	unsigned char	*b;
-
-	i = 0;
-	f = (unsigned char *)s1;
-	b = (unsigned char *)s2;
-	while (i < n && f[i] != '\0' && b[i] != '\0')
+	if (!built)
+		return (ERROR);
+	if (built->command->next)
 	{
-		if (f[i] > b[i])
-			return (1);
-		if (b[i] > f[i])
-			return (-1);
-		i++;
+		printf("we need no arg\n");
+		return (ERROR);
 	}
-	if (i < n)
-	{
-		if (f[i] != '\0')
-			return (1);
-		if (b[i] != '\0')
-			return (-1);
-	}
-	return (0);
+	ft_show_env_list(env_list);
+	return (1);
 }

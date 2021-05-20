@@ -6,11 +6,33 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:52 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 15:20:40 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/20 14:12:05 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+int	ft_strncmp(const char *s1, const char *s2, int n)
+{
+	int				i;
+	unsigned char	*c1;
+	unsigned char	*c2;
+
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	i = 0;
+	if (n == 0 || !s1 || !s2)
+		return (0);
+	if (ft_strlen(s1) != n)
+		return (0);
+	while (i < n)
+	{
+		if (c1[i] != c2[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	ft_strncmp2(const char *s1, const char *s2, int n)
 {
@@ -31,26 +53,31 @@ int	ft_strncmp2(const char *s1, const char *s2, int n)
 	return (1);
 }
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+int	ft_strncmp3(const char *s1, const char *s2, size_t n)
 {
-	int				i;
-	unsigned char	*c1;
-	unsigned char	*c2;
+	size_t			i;
+	unsigned char	*f;
+	unsigned char	*b;
 
-	c1 = (unsigned char *)s1;
-	c2 = (unsigned char *)s2;
 	i = 0;
-	if (n == 0)
-		return (0);
-	if (ft_strlen(s1) != n)
-		return (0);
-	while (i < n)
+	f = (unsigned char *)s1;
+	b = (unsigned char *)s2;
+	while (i < n && f[i] != '\0' && b[i] != '\0')
 	{
-		if (c1[i] != c2[i])
-			return (0);
+		if (f[i] > b[i])
+			return (1);
+		if (b[i] > f[i])
+			return (-1);
 		i++;
 	}
-	return (1);
+	if (i < n)
+	{
+		if (f[i] != '\0')
+			return (1);
+		if (b[i] != '\0')
+			return (-1);
+	}
+	return (0);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
