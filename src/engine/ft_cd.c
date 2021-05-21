@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 16:18:09 by hopark           ###   ########.fr       */
+/*   Updated: 2021/05/21 16:03:27 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,42 @@
 int	ft_cd(t_built *built, t_list *env_list)
 {
 	t_list	*list;
-	char	*cwd;
 	char	*temp;
+	char	*dest;
 	int		res;
-	int		i;
+	int		flag;
 
-	list = built->command;
-	if (ft_strncmp(list->next->str, " ", 1))
+	flag = 1;
+	if (built->command->next->next)
 	{
-		list = list->next->next;
-		if (list->next && list->next->next && (*list->next->next->str) != '~')
+		list = built->command->next->next;
+		if (*(list->str) == '/' && flag)
+			temp = 0;
+		else if (*(list->str) == '~' || !flag)
+			flag = 0;
+		else
 		{
-			list = list->next->next;
-			cwd = getcwd(0, BUFFER_SIZE);
-			if ('/' != *(list->str))
-			{
-				temp = ft_strjoin(cwd, "/");
-				free(cwd);
-				cwd = temp;
-			}
-			while ((list) && (*list->str) == '.')
-			{
-				//write(1,"[\n",2);
-				temp = ft_strjoin(cwd, ".");
-				free(cwd);
-				cwd = temp;
-				list = list->next;
-				//write(1,"]\n",2);
-			}
-				//write(1,"A\n",2);
-
-			temp = ft_strjoin(cwd, list->str);
-				//write(1,"B\n",2);
-
-			free(cwd);
-			cwd = temp;
-				//write(1,"C\n",2);
-
-													//printf("\n**|%s|**\n",cwd);
+			temp = getcwd(0, BUFFER_SIZE);
+			dest = ft_strjoin(temp, "/");
+			ft_free(temp);
+			temp = dest;
 		}
-		
-		else 
-		{
-			cwd = ft_getenv(env_list, "HOME", 4);
-													//printf("\n@@|%s|@@\n",cwd);
-		}
-		res = chdir(cwd);
-		free(cwd);
-									//write(1, ">>>>cwd{",9);
-									//cwd = getcwd(0, BUFFER_SIZE);
-									//ft_putstr_fd(cwd, 1, 0);
-									//write(1, "}\n",2);
-									//// errno 처리 필요
 	}
+	else
+		flag = 0;
+	if (flag)
+	{
+		dest = ft_strjoin(temp, list->str);
+		ft_free(temp);
+		ft_free(list->str);
+	}
+	else
+	{
+		temp = ft_getenv(env_list, "HOME", 4);
+		dest = ft_strndup(temp, ft_strlen(temp));
+	}
+	res = chdir(dest);
+	ft_putstr_fd(dest, 1, 0);
+	free(dest);
 	return (res);
 }

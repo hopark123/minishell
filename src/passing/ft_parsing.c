@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 20:15:44 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/21 15:21:40 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_parsing(t_built *built, t_list *env_list)
 
 	if (!built || !built->command)
 		return (0);
+
 	if (ft_strncmp(built->command->str, "echo", 4))
 		res = ft_echo(built);
 	else if (ft_strncmp(built->command->str, "cd", 2))
