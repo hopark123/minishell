@@ -6,9 +6,10 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 18:52:59 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 21:24:08 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "head.h"
 
@@ -70,10 +71,8 @@ int	main(int ac, char **av, char **envp)
 
 	if (!(ft_malloc(&built, sizeof(built))))
 		return (ERROR);
-#if 0
 	if (!(ft_malloc(&env_list, sizeof(env_list))))
 		return (ERROR);
-#endif
 	built->command = 0;
 	built->prev = 0;
 	built->next = 0;
@@ -89,26 +88,19 @@ int	main(int ac, char **av, char **envp)
 		built->command = ft_split2(line, ' ');
 		free(line);
 		ft_split_built(built);
+		//ft_show_env_list(env_list);
 		temp_b = built;
-#if 0
 		while (temp_b)
 		{
 			ft_envswap(temp_b, env_list);
 			ft_del_quotes(temp_b);
 			ft_del_blank(temp_b);
-			ft_parsing(temp_b, env_list);
+			ft_del_blank2(temp_b);
+			ft_listjoin(temp_b);
 			test_print_passing(temp_b);
+			ft_parsing(temp_b, env_list);
 			temp_b = temp_b->next;
 		}
-#else
-		ft_envswap(temp_b, env_list);
-		ft_del_quotes(temp_b);
-		ft_del_blank(temp_b);
-		ft_parsing(temp_b, env_list);
-		test_print_passing(temp_b);
-		temp_b = temp_b->next;
-#endif
 	}
-	ft_listclear(&env_list);
-	return (0);
+	ft_free(built);
 }

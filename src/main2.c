@@ -6,9 +6,14 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/05/20 21:20:07 by suhong           ###   ########.fr       */
+=======
+/*   Updated: 2021/05/20 21:13:17 by hopark           ###   ########.fr       */
+>>>>>>> 5127962a6fe6493e57ae543631d2699b0b90503f
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "head.h"
 
@@ -98,7 +103,6 @@ int	main(int ac, char **av, char **envp)
 			ft_listjoin(temp_b);
 			test_print_passing(temp_b);
 			ft_parsing(temp_b, env_list);
-			test_print_passing(temp_b);
 			temp_b = temp_b->next;
 		}
 	}

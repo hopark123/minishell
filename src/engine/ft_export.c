@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/20 18:56:16 by suhong           ###   ########.fr       */
+/*   Updated: 2021/05/20 21:36:33 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ int	ft_export(t_built *built, t_list *env_list)
 
 	if (!built->command->next)
 		return (print_sorted_env_list(env_list));
-	if (!ft_strncmp(built->command->next->str, " ", 2))
+	if (!ft_strncmp(built->command->next->str, " ", 1))
 		return (ERROR);
-	write(1, "in\n", 3);
 	order = built->command->next->next;
 	if (!order->str)
 		return (ERROR);
