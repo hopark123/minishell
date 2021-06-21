@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 21:24:08 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:41:43 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **envp)
 	built->prev = 0;
 	built->next = 0;
 	env_list = ft_init_env_list(envp);
-		draw(0);
+		// draw(0);
 	while (1)
 	{
 		pwd = getcwd(0, BUFFER_SIZE);
@@ -87,7 +87,7 @@ int	main(int ac, char **av, char **envp)
 		get_next_line(0, &line);
 		built->command = ft_split2(line, ' ');
 		free(line);
-		ft_split_built(built);
+		ft_split_built(built, "|;");
 		//ft_show_env_list(env_list);
 		temp_b = built;
 		while (temp_b)

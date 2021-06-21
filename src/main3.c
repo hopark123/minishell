@@ -69,7 +69,7 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	args->prev = 0;
 	args->next = 0;
 	args->command = ft_split2(line, ' ');
-	ft_split_built(args);
+	ft_split_built(args, "|;");
 	tmp = args;
 	while (tmp)
 	{
@@ -86,22 +86,23 @@ t_built	*ft_parse(char *line, t_list *env_list)
 void	loop(t_list *env_list)
 {
 	char	*line;
+	char	*pwd;
 	t_built	*built;
 	int	status;
 
 	status = 1;
 	while (status)
 	{
-		ft_putstr_fd(getcwd(0, BUFFER_SIZE), 1, 0);
-		ft_putstr_fd(">", 1, 0);
-		
+		pwd = getcwd(0, BUFFER_SIZE);
+		ft_putstr_fd(pwd, 1, "\x1b[32m");
+		free(pwd);
+		ft_putstr_fd("$ ", 1, "\x1b[32m");
 		get_next_line(0, &line);
 		built = ft_parse(line, env_list);
-#if 0 
-		status = ft_execute(built);
+#if 1 
+		status = ft_execute(built,  env_list);
 #else
 		print_built_list(built);
-		status = 0;
 #endif
 		free(line);
 		//ft_free(built);
@@ -113,7 +114,7 @@ int	main(int argc, char **argv, char **envp)
 	t_list	*env_list;
 	
 	env_list = ft_init_env_list(envp);
-	draw(0);
+	// draw(0);
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_built.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 12:39:26 by hopark           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:29:20 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_split_built(t_built *built)
+int	ft_split_built(t_built *built, char *str)
 {
 	t_list		*temp_l;
 	t_built		*temp_b;
@@ -24,9 +24,9 @@ int	ft_split_built(t_built *built)
 	temp_l = built->command;
 	while (temp_l)
 	{
-		if (*(temp_l->str) && ft_strchr("<>;|", *(temp_l->str)))
+		if (*(temp_l->str) && ft_strchr(str, *(temp_l->str)))
 		{
-			new_b = ft_builtnup(temp_l);
+			new_b = ft_builtndup(temp_l);
 			temp_b->next = new_b;
 			new_b->prev = temp_b;
 			temp_l->prev->next = 0;
