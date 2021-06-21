@@ -114,7 +114,7 @@ int	main(int argc, char **argv, char **envp)
 	t_list	*env_list;
 	
 	env_list = ft_init_env_list(envp);
-	draw(0);
+	// draw(0);
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

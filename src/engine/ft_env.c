@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:40:10 by suhong            #+#    #+#             */
-/*   Updated: 2021/05/20 17:05:55 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 22:08:56 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtin_2.h"
+#include "head.h"
 
 int	ft_env(t_built *built, t_list *env_list)
 {

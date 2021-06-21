@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/21 18:22:16 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/21 22:07:32 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_builtin(t_built *built, t_list *env_list)
 	//else if (ft_strchr("><|;",(built->command->str)))
 	//	res = ft_parsing2()
 	else
-		return (0);
+		res = ft_execve(built, env_list);
 	return (res);
 }
 
