@@ -46,5 +46,5 @@ int	ft_listjoin(t_built *built)
 		else
 			temp_l = temp_l->next;
 	}
-
+	return (1);
 }
