@@ -15,7 +15,7 @@ int		*ft_envswap(t_built *built, t_list *env_list);
 
 ///////////////passing
 int		ft_parsing(t_built *temp_b, t_list *env_list);
-int		ft_split_built(t_built *built);
+int		ft_split_built(t_built *built, char *str);
 t_list	*ft_split2(const char *str, const char c);
 int	ft_listjoin(t_built *built);
 
@@ -28,6 +28,7 @@ void	ft_listadd_back(t_list **list, t_list **new);
 void	ft_listadd_tail(t_list **list, t_list **new);
 void	ft_listdelone(t_list **list);
 void	ft_listclear(t_list **list);
+char	**ft_listtochar(t_list *list);
 t_bool	ft_malloc(void *target, int size);
 int		ft_strlen(const char *s);
 void	*ft_memcpy(void *dst, const void *src, int n);

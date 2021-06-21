@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/21 16:25:22 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:33:15 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ int	ft_parsing(t_built *built, t_list *env_list)
 	//	res = ft_exit()
 	//else if (ft_strchr("><|;",(built->command->str)))
 	//	res = ft_parsing2()
-	//else
 	else
 		return (0);
 	return (res);
 }
-
 
 //// 글자수도 체크해줘야함!!!

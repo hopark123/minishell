@@ -3,16 +3,14 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 21:22:58 by suhong            #+#    #+#              #
-#    Updated: 2021/05/20 21:23:24 by suhong           ###   ########.fr        #
+#    Updated: 2021/06/21 17:42:14 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-NAME2 = echo
-NAME3 = cd
 
 CC = gcc
 CFLAGS = -O2
@@ -44,7 +42,7 @@ SRC = \
 	$(ENGINE) \
 	$(UTIL) \
 	$(PASSING)\
-	main1.c
+	main2.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
