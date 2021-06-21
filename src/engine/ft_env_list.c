@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 17:16:41 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:02:38 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,12 @@ char	*ft_delenv(t_list *list, char *str)
 
 void	ft_show_env_list(t_list *list)
 {
+	int i = 0;
+	ft_putstr_fd("-------env_list--------\n", 1, 0);
 	while (list)
 	{
+		i++;
+		ft_putnbr_fd(i,1,0);
 		ft_putstr_fd(list->id, 1, 0);
 		write(1, "=", 1);
 		ft_putstr_fd(list->str, 1, 0);

@@ -3,16 +3,14 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: suhong <suhong@student.42seoul.kr>         +#+  +:+       +#+         #
+#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 21:22:58 by suhong            #+#    #+#              #
-#    Updated: 2021/05/20 21:23:24 by suhong           ###   ########.fr        #
+#    Updated: 2021/06/21 18:16:34 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
-NAME2 = echo
-NAME3 = cd
 
 CC = gcc
 CFLAGS = -O2

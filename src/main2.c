@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/21 16:21:23 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:05:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,27 @@ int	main(int ac, char **av, char **envp)
 	built->prev = 0;
 	built->next = 0;
 	env_list = ft_init_env_list(envp);
-		draw(0);
+		// draw(0);
+	char **a;
+	a = ft_listtochar(env_list);
+	int j = 0;
+	while(a[j])
+	{
+		ft_putstr_fd(a[j], 1, "\x1b[31m");
+		write(1,"\n",1);
+		j++;
+	}
 	while (1)
 	{
 		pwd = getcwd(0, BUFFER_SIZE);
-		ft_putstr_fd(pwd, 1, 0);
+		ft_putstr_fd(pwd, 1, "\x1b[32m");
 		free(pwd);
-		write(1,"$ ", 2);
+		ft_putstr_fd("$ ", 1, "\x1b[32m");
 		get_next_line(0, &line);
 		built->command = ft_split2(line, ' ');
 		free(line);
-		ft_split_built(built);
-		//ft_show_env_list(env_list);
+		ft_split_built(built, "|;");
+		ft_show_env_list(env_list);
 		temp_b = built;
 		while (temp_b)
 		{
