@@ -12,6 +12,7 @@
 
 #include "head.h"
 
-int	ft_execute(t_built *built, t_list *env_list)
+int	ft_execute(t_built *built)
 {
+	return (1);
 }
