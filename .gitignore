@@ -2,3 +2,4 @@
 .makefile
 .vscode
 obj
+minishell
