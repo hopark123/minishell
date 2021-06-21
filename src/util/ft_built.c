@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/19 14:10:28 by hopark           ###   ########.fr       */
+/*   Updated: 2021/06/21 18:29:23 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-t_built	*ft_builtnup(t_list *list)
+t_built	*ft_builtndup(t_list *list)
 {
 	t_built		*res;
 
