@@ -31,7 +31,7 @@ SRC = \
 	$(ENGINE) \
 	$(UTIL) \
 	$(PASSING)\
-	main1.c
+	main3.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
