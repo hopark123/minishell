@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/20 21:22:58 by suhong            #+#    #+#              #
-#    Updated: 2021/06/21 17:42:14 by hjpark           ###   ########.fr        #
+#    Updated: 2021/06/21 18:16:34 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SRC = \
 	$(ENGINE) \
 	$(UTIL) \
 	$(PASSING)\
-	main2.c
+	main3.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
