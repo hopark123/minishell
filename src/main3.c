@@ -91,8 +91,8 @@ void	loop(t_list *env_list)
 	int	status;
 
 	status = 1;
-	while (status)
-	{
+	// while (status)
+	// {
 		pwd = getcwd(0, BUFFER_SIZE);
 		ft_putstr_fd(pwd, 1, "\x1b[32m");
 		free(pwd);
@@ -106,7 +106,7 @@ void	loop(t_list *env_list)
 #endif
 		free(line);
 		//ft_free(built);
-	}
+	// }
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -114,7 +114,7 @@ int	main(int argc, char **argv, char **envp)
 	t_list	*env_list;
 	
 	env_list = ft_init_env_list(envp);
-	draw(0);
+	// draw(0);
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

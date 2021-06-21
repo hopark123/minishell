@@ -10,10 +10,16 @@
 # include <limits.h>
 # include <termios.h>
 # include <errno.h>
+# include<sys/types.h>
+# include<sys/stat.h>
+# include<fcntl.h>
 # define ERROR  0
 # define SUCCESS 1
 # define FAIL -1
 # define NULLPTR 0
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
 
 # ifndef BUFFER_SIZE

@@ -1,33 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main1.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:34:44 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/21 17:41:43 by hjpark           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 #include "head.h"
-
-void	test_print_passing(t_built *built)
-{
-	t_list	*temp_l;
-
-	temp_l = built->command;
-	write(1, "          passing print : ", 27);
-	while (temp_l)
-	{
-		write(1, "[", 1);
-		ft_putstr_fd(temp_l->str, 1, 0);
-		write(1, "]", 1);
-		temp_l = temp_l->next;
-	}
-	write(1, "\n", 1);
-}
 
 void	draw(char	*s)
 {
@@ -59,48 +30,92 @@ void	draw(char	*s)
 
 }
 
-
-int	main(int ac, char **av, char **envp)
+void	test_print_passing(t_built *built)
 {
-	char	*pwd;
+	t_list	*temp_l;
+
+	temp_l = built->command;
+	write(1, "          passing print : ", 27);
+	while (temp_l)
+	{
+		write(1, "[", 1);
+		ft_putstr_fd(temp_l->str, 1, 0);
+		write(1, "]", 1);
+		temp_l = temp_l->next;
+	}
+	write(1, "\n", 1);
+}
+
+void	print_built_list(t_built *built)
+{
+	t_built	*tmp;
+
+	tmp = built;
+	while (tmp)
+	{
+		test_print_passing(tmp);
+		tmp = tmp->next;
+	}
+}
+
+t_built	*ft_parse(char *line, t_list *env_list)
+{
+	t_built	*args;
+	t_built	*tmp;
+
+	if (!(ft_malloc(&args, sizeof(t_built))))
+		return (ERROR);
+	args->command = 0;
+	args->prev = 0;
+	args->next = 0;
+	args->command = ft_split2(line, ' ');
+	ft_split_built(args, "|;");
+	tmp = args;
+	while (tmp)
+	{
+		ft_envswap(tmp, env_list);
+		ft_del_quotes(tmp);
+		ft_del_blank(tmp);
+		ft_del_blank2(tmp);
+		ft_listjoin(tmp);
+		tmp = tmp->next;
+	}
+	return (args);
+}
+
+void	loop(t_list *env_list)
+{
 	char	*line;
+	char	*pwd;
 	t_built	*built;
-	t_list	*env_list;
-	t_built	*temp_b;
+	int	status;
 
-
-	if (!(ft_malloc(&built, sizeof(built))))
-		return (ERROR);
-	if (!(ft_malloc(&env_list, sizeof(env_list))))
-		return (ERROR);
-	built->command = 0;
-	built->prev = 0;
-	built->next = 0;
-	env_list = ft_init_env_list(envp);
-		// draw(0);
-	while (1)
+	status = 1;
+	while (status)
 	{
 		pwd = getcwd(0, BUFFER_SIZE);
-		ft_putstr_fd(pwd, 1, 0);
+		ft_putstr_fd(pwd, 1, "\x1b[32m");
 		free(pwd);
-		write(1,"$ ", 2);
+		ft_putstr_fd("$ ", 1, "\x1b[32m");
 		get_next_line(0, &line);
-		built->command = ft_split2(line, ' ');
+		built = ft_parse(line, env_list);
+#if 1 
+		status = ft_execute(built,  env_list);
+#else
+		print_built_list(built);
+#endif
 		free(line);
-		ft_split_built(built, "|;");
-		//ft_show_env_list(env_list);
-		temp_b = built;
-		while (temp_b)
-		{
-			ft_envswap(temp_b, env_list);
-			ft_del_quotes(temp_b);
-			ft_del_blank(temp_b);
-			ft_del_blank2(temp_b);
-			ft_listjoin(temp_b);
-			test_print_passing(temp_b);
-			ft_parsing(temp_b, env_list);
-			temp_b = temp_b->next;
-		}
+		//ft_free(built);
 	}
-	ft_free(built);
+}
+
+int	main(int argc, char **argv, char **envp)
+{
+	t_list	*env_list;
+	
+	env_list = ft_init_env_list(envp);
+	// draw(0);
+	loop(env_list);
+	ft_listclear(&env_list);
+	return (0);
 }
