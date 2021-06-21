@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/21 20:23:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/21 21:49:38 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	ft_execute(t_built *built, t_list *env_list)
 	fd[1] = -1;
 	temp = ft_builtndup(built->command);
 	ft_split_built(temp, "><");
-	ft_execute2(temp, env_list, &fd);
-	printf("@@%d\n", fd[0]);
-	dup2(STDOUT, fd[1]);
+	ft_execute2(temp, env_list, fd);
+	dup2(1, STDOUT);
+	write(1, "A", 1);
 	ft_close(fd[0]);
+	write(1, "B", 1);
 	ft_close(fd[1]);
+	write(1, "C", 1); 
 	return (1);
 }
 
@@ -35,14 +37,14 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 		return (0);
 	test_print_passing(built);
 	printf("{%s}\n", built->command->str);
-	printf("##%d\n", fd[0]);
+	// printf("##%d\n", fd[0]);
 
 	if (built->next)
 		ft_execute2(built->next, env_list, fd);
 	if (ft_strncmp(built->command->str, ">", 1))
 	{
 		ft_redirect(built, "TRUNC", fd);
-	printf("UU%d\n", fd[0]);
+	// printf("UU%d\n", fd[0]);
 
 	}
 	else if (ft_strncmp(built->command->str, ">>", 2))
@@ -53,13 +55,16 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 	// 	ft_redirect(built, 1);
 	else
 		ft_builtin(built, env_list);
-
+	return (SUCCESS);
 }
 
 void	ft_close(int fd)
 {
+	printf("@@%d@@\n", fd);
 	if (fd > 0)
 		close(fd);
+	printf("@@%d@@\n", fd);
+
 }
 
 int	ft_redirect(t_built *built, char *type, int *fd)
@@ -77,7 +82,8 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 	}
 	else if (ft_strncmp(type, "APPEND", 6))
 		fd[0] = open(list->str, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
-	printf("**%d\n", fd[0]);
+	// printf("**%d\n", fd[0]);
 	dup2(fd[0], STDOUT);
-	printf("**%d\n", fd[0]);
+	// printf("**%d\n", fd[0]);
+	return (SUCCESS);
 }
