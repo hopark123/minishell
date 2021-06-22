@@ -1,0 +1,5 @@
+.DS_Store
+.makefile
+.vscode
+obj
+minishell

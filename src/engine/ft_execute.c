@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/21 22:35:28 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:45:07 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	ft_execute(t_built *built, t_list *env_list)
 	temp = ft_builtndup(built->command);
 	ft_split_built(temp, "><");
 	ft_execute2(temp, env_list, fd);
-	dup2(1, STDOUT);
+	// dup2(1, STDOUT);
 	write(1, "A", 1);
 	ft_close(fd[0]);
-	write(1, "B", 1);
-	ft_close(fd[1]);
-	write(1, "C", 1); 
+	// write(1, "B", 1);
+	// ft_close(fd[1]);
+	// write(1, "C", 1); 
 	return (1);
 }
 
