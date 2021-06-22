@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 21:04:57 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 21:32:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_cd(t_built *built, t_list *env_list)
 	int		flag;
 
 	flag = 1;
-	if (built->command->next->next)
+	if (built->command->next && built->command->next->next)
 	{
 		list = built->command->next->next;
 		if (*(list->str) == '/' && flag)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 21:43:03 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 22:30:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	ft_del_blank3(t_built *built)
 {
 	t_list	*temp_l;
 	t_list	*temp_l2;
+
 	temp_l = built->command;
 	while (temp_l)
 	{
