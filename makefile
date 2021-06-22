@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/06/22 15:49:25 by hjpark           ###   ########.fr        #
+#    Updated: 2021/06/22 20:30:08 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME = minishell
 CC = gcc
 CFLAGS = -O2
 #CFLAGS = -Wall -Wextra -Werror
-#CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-#CFLAGS = -g3 -fsanitize=address
+# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+# CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src

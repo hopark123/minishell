@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"head.h": "c",
-		"hopark.h": "c"
+		"hopark.h": "c",
+		"*.text": "c"
 	}
 }

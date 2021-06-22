@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 21:18:28 by hopark           ###   ########.fr       */
+/*   Updated: 2021/06/22 19:46:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	int			i;
 
 	i = 0;
-	if (ft_strchr("<>;|.", s[i]))
+	if (ft_strchr("<>;|", s[i]))
 	{
 		i++;
-		if (ft_strchr(">", s[i]))
+		if (ft_strchr("><", s[i]))
 			i++;
 		return (i);
 	}
@@ -59,12 +59,12 @@ t_list	*ft_split2(const char *str, const char c)
 
 	flag = 1;
 	head = 0;
-	if (!str || !(*str))
+	if (!str)
 		return (0);
 	while (*str)
 	{
 		len = 0;
-		while (((*str) && (*str) == c))
+		while (*str && (*str) == c)
 		{
 			str++;
 			len++;
