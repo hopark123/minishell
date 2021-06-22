@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/22 20:25:59 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 20:52:45 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_execute(t_built *built, t_list *env_list)
 	ft_close(fd[1]);
 	dup2(tempout, 1);
 	dup2(tempin, 0);
-	ft_builtclear(&temp);
+	// ft_builtclear(&temp);
 	return (1);
 }
 
