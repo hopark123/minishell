@@ -14,6 +14,9 @@
 # define SUCCESS 1
 # define FAIL -1
 # define NULLPTR 0
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
 
 
 # ifndef BUFFER_SIZE
