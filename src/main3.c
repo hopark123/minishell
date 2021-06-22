@@ -94,8 +94,8 @@ void	loop(t_list *env_list)
 	int		status;
 
 	status = 1;
-	// while (status)
-	// {
+	while (status)
+	{
 		draw2();
 		if (get_next_line(0, &line) > 0 && *line)
 		{
@@ -103,7 +103,7 @@ void	loop(t_list *env_list)
 			status = ft_execute(built, env_list);
 		}
 		ft_free(line);
-	// }
+	}
 }
 
 int	main(int argc, char **argv, char **envp)

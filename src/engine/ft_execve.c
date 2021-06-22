@@ -37,7 +37,7 @@ static char	*change_content(char *str, t_list *env_list, int index)
 		tmp = ft_strjoin(join, &str[1]);
 		free(join);
 	}
-	else if (index == 0 && str[0] != '/')
+	else if (index == 0 && str[0] != '/' && str[0] != '.')
 	{
 		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str));
 	}
@@ -91,6 +91,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 	{
 		if (execve(argv[0], argv, envp) < 0)
 		{
+			// printf("argv[0] : [%s]\n",argv[0]);
 			perror("error");
 			return (-1);
 		}
