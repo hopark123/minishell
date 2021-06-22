@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 20:36:37 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 22:25:32 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_listtochar(t_list *list)
 		temp = temp->next;
 		n++;
 	}
-	if (!ft_malloc(&res, sizeof(char *) * n))
+	if (!ft_malloc(&res, sizeof(char *) * (n + 1)))
 		return (ERROR);
 	i = 0;
 	while (i < n)
@@ -40,9 +40,8 @@ char	**ft_listtochar(t_list *list)
 		else
 			res[i] = ft_strndup(list->str, ft_strlen(list->str));
 		list = list->next;
-		// ft_putstr_fd(res[i], 1, "\x1b[34m");
-		// write(1,"\n",1);
 		i++;
 	}
+	res[i] = 0;
 	return (res);
 }
