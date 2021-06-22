@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/21 22:27:00 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:24:51 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_echo(t_built *built)
 
 	n_flag = 0;
 	list = built->command;
+	if (!list->next)
+		return (0);
 	if (ft_strncmp(list->next->str, " ", 1))
 	{
 		list = list->next->next;
@@ -38,6 +40,5 @@ int	ft_echo(t_built *built)
 	}
 	if (!n_flag)
 		ft_putchar_fd('\n', 1, 0);
-				//// errno 처리 필요
 	return (1);
 }

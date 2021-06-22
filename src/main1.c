@@ -111,11 +111,14 @@ void	loop(t_list *env_list)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_list	*env_list;
-	
-	env_list = ft_init_env_list(envp);
-	// draw(0);
-	loop(env_list);
-	ft_listclear(&env_list);
-	return (0);
+int fd; /* | O_APPEND 가 붙으면 기존에 파일이 존재하면 파일에 추가한다. */ 
+if((fd = open("aa", O_WRONLY | O_CREAT | O_APPEND)) == -1) 
+{ return 0; } /* 표준 출력을 program.log 파일로 redirection 함 */ 
+dup2(fd, 1); /* 표준 오류를 program.log 파일로 redirection 함 */ 
+dup2(fd, 2); close(fd);
+// dup2(STDOUT, 1);
+dup2(1, STDOUT);
+
+write(1,"@@@@@@@@@\n",11);
+return 1;
 }
