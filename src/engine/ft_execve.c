@@ -43,15 +43,8 @@ static char	*change_content(char *str, t_list *env_list, int index)
 		tmp = ft_strjoin(join, &str[1]);
 		free(join);
 	}
-<<<<<<< HEAD
-	else if (index == 0 && str[0] != '/' && str[0] != '.')
-	{
-		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str));
-	}
-=======
 	else if (index == 0)
 		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str), ft_strndup(str, size));
->>>>>>> 4426ca26e7892fc8a918b1738606da02ab92ba2d
 	else
 		tmp = ft_strndup(str, size);
 	return (tmp);
@@ -102,7 +95,6 @@ int	ft_execve(t_built *built, t_list *env_list)
 	{
 		if (execve(argv[0], argv, envp) < 0)
 		{
-			// printf("argv[0] : [%s]\n",argv[0]);
 			perror("error");
 			return (-1);
 		}

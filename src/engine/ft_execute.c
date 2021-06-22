@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/06/22 21:07:04 by hjpark           ###   ########.fr       */
-=======
-/*   Updated: 2021/06/22 20:52:45 by suhong           ###   ########.fr       */
->>>>>>> 4426ca26e7892fc8a918b1738606da02ab92ba2d
+/*   Updated: 2021/06/22 21:21:10 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +55,7 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 		ft_redirect2(built, "INPUT", fd);
 	else
 		ft_builtin(built, env_list);
+	
 	return (SUCCESS);
 }
 

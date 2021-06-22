@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   ft_guard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 18:20:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/22 21:31:09 by hjpark           ###   ########.fr       */
+/*   Created: 2021/05/18 15:35:06 by hopark            #+#    #+#             */
+/*   Updated: 2021/06/22 21:28:24 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_unset(t_built *built, t_list *env_list)
+int	ft_guard_next(t_built *built, int n)
 {
-	t_list	*i;
+	t_built	*temp;
 
-	if (!ft_guard_next(built, 1))
-		return (ERROR);
-	if (!ft_strncmp2(built->command->next->str, " ", 1))
-		return (ERROR);
-	i = built->command->next->next;
-	while (i)
+	temp = built;
+	while (n--)
 	{
-		if (!ft_strncmp2(i->str, " ", 1))
-			ft_delenv(env_list, i->str);
-		i = i->next;
+		if (temp->next)
+			temp = temp->next;
+		else
+			return (ERROR);
 	}
-	return (1);
+	return (SUCCESS);
 }
