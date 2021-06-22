@@ -1,18 +1,48 @@
 #include "head.h"
 
+int	check_file_exist(char *name)
+{
+	struct stat	sb;
 
-static char	*change_content(char *str, t_list *env_list)
+	return (stat(name, &sb));
+}
+
+static char	*choose_bin(char *str1, char *str2)
+{
+	if (check_file_exist(str1) == -1)
+	{
+		free(str1);
+		if (check_file_exist(str2) == -1)
+		{
+			free(str2);
+			//실행파일 없음 에러.
+			return (0);
+		}
+		return (str2);
+	}
+	free(str2);
+	return (str1);
+}
+
+static char	*change_content(char *str, t_list *env_list, int index)
 {
 	char	*tmp;
+	char	*join;
 	int	size;
 	
 	size = ft_strlen(str);
-	if (!ft_strncmp3("~", str, size))
-		tmp = ft_getenv(env_list, "HOME", 4);
-	else
+	if (str[0] == '~')
 	{
-		tmp = ft_strndup(str, size);
+		join = ft_getenv(env_list, "HOME", 4);
+		tmp = ft_strjoin(join, &str[1]);
+		free(join);
 	}
+	else if (index == 0 && str[0] != '/')
+	{
+		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str));
+	}
+	else
+		tmp = ft_strndup(str, size);
 	return (tmp);
 }
 
@@ -20,24 +50,24 @@ static char	**del_space_square(char **list, t_list *env_list)
 {
 	int	i;
 	int	j;
-	int	size;
 	char	**tmp;
 
 	i = 0;
 	j = 0;
-	size = 0;
-	while (list[size])
-		size++;
-	tmp = (char **)malloc(sizeof(char *) * (size + 1));
-	write(1, "a", 1);
+	while (list[i])
+		i++;
+	tmp = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!tmp)
 		return (0);
+	i = 0;
 	while (list[i])
 	{
 		if (list[i][0] != ' ')
-			tmp[j++] = change_content(list[i], env_list);
-		free(list[i]);
-		i++;
+		{
+			tmp[j] = change_content(list[i], env_list, j);
+			j++;
+		}
+		free(list[i++]);
 	}
 	tmp[j] = 0;
 	free(list);
@@ -60,7 +90,10 @@ int	ft_execve(t_built *built, t_list *env_list)
 	else if (pid == 0)
 	{
 		if (execve(argv[0], argv, envp) < 0)
+		{
+			perror("error");
 			return (-1);
+		}
 	}
 	else
 	{
