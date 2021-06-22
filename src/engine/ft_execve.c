@@ -7,7 +7,7 @@ int	check_file_exist(char *name)
 	return (stat(name, &sb));
 }
 
-static char	*choose_bin(char *str1, char *str2)
+static char	*choose_bin(char *str1, char *str2, char *str3)
 {
 	if (check_file_exist(str1) == -1)
 	{
@@ -15,12 +15,18 @@ static char	*choose_bin(char *str1, char *str2)
 		if (check_file_exist(str2) == -1)
 		{
 			free(str2);
-			//실행파일 없음 에러.
-			return (0);
+			if (check_file_exist(str3) == -1)
+			{
+				//실행파일 없음 에러.
+				return (0);
+			}
+			return (str3);
 		}
+		free(str3);
 		return (str2);
 	}
 	free(str2);
+	free(str3);
 	return (str1);
 }
 
@@ -37,10 +43,15 @@ static char	*change_content(char *str, t_list *env_list, int index)
 		tmp = ft_strjoin(join, &str[1]);
 		free(join);
 	}
+<<<<<<< HEAD
 	else if (index == 0 && str[0] != '/' && str[0] != '.')
 	{
 		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str));
 	}
+=======
+	else if (index == 0)
+		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str), ft_strndup(str, size));
+>>>>>>> 4426ca26e7892fc8a918b1738606da02ab92ba2d
 	else
 		tmp = ft_strndup(str, size);
 	return (tmp);
