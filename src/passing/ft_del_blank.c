@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 20:19:59 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 21:43:03 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,19 @@ void	ft_del_lastblank(t_built *built)
 			ft_listdelone(&temp_l);
 			return ;
 		}
+		temp_l = temp_l->next;
+	}
+}
+
+void	ft_del_blank3(t_built *built)
+{
+	t_list	*temp_l;
+	t_list	*temp_l2;
+	temp_l = built->command;
+	while (temp_l)
+	{
+		if (ft_strncmp(temp_l->str, " ", 1) && !(temp_l->next))
+			ft_listdelone(&temp_l);
 		temp_l = temp_l->next;
 	}
 }
