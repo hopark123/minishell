@@ -88,7 +88,7 @@ void	loop(t_list *env_list)
 	char	*line;
 	char	*pwd;
 	t_built	*built;
-	int	status;
+	int		status;
 
 	status = 1;
 	while (status)
@@ -99,11 +99,7 @@ void	loop(t_list *env_list)
 		ft_putstr_fd("$ ", 1, "\x1b[32m");
 		get_next_line(0, &line);
 		built = ft_parse(line, env_list);
-#if 1 
-		status = ft_execute(built,  env_list);
-#else
-		print_built_list(built);
-#endif
+		status = ft_execute(built, env_list);
 		free(line);
 		//ft_free(built);
 	}
@@ -112,7 +108,6 @@ void	loop(t_list *env_list)
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
-	
 	env_list = ft_init_env_list(envp);
 	// draw(0);
 	loop(env_list);

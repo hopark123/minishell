@@ -10,7 +10,9 @@
 # include <limits.h>
 # include <termios.h>
 # include <errno.h>
-# include <fcntl.h>
+# include<sys/types.h>
+# include<sys/stat.h>
+# include<fcntl.h>
 # define ERROR  0
 # define SUCCESS 1
 # define FAIL -1
