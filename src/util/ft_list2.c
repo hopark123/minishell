@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/21 22:10:42 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/22 20:36:37 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**ft_listtochar(t_list *list)
 		temp = temp->next;
 		n++;
 	}
-	if (!ft_malloc(&res, sizeof(char*) * n))
+	if (!ft_malloc(&res, sizeof(char *) * n))
 		return (ERROR);
 	i = 0;
 	while (i < n)
