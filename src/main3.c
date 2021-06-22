@@ -1,8 +1,7 @@
 #include "head.h"
 
-void	draw(char	*s)
+void	draw(void)
 {
-	s = 0;
 	ft_putstr_fd("                          f)}\"\\__Xoo2o2o2o2on_sr\"{;]                           \n", 1, "\033[33m");
 	ft_putstr_fd("                            _<S2XX2oo2o2o2o2o2Snoos,                            \n", 1, "\033[33m");
 	ft_putstr_fd("                          _xooooooo2o2o2o2o2o2ooooons,                        \n", 1, "\033[33m");
@@ -28,6 +27,16 @@ void	draw(char	*s)
 	ft_putstr_fd("                              g {Soo2'j  b-2oo2e'j                              \n", 1, "\033[33m");
 	ft_putstr_fd("                                aaggaj    baggaa              \n", 1, "\033[33m");
 
+}
+
+void	draw2(void)
+{
+	char	*pwd;
+
+	pwd = getcwd(0, BUFFER_SIZE);
+	ft_putstr_fd(pwd, 1, "\x1b[32m");
+	free(pwd);
+	ft_putstr_fd("$ ", 1, "\x1b[32m");
 }
 
 void	test_print_passing(t_built *built)
@@ -60,17 +69,12 @@ void	print_built_list(t_built *built)
 
 t_built	*ft_parse(char *line, t_list *env_list)
 {
-	t_built	*args;
+	t_built	*res;
 	t_built	*tmp;
 
-	if (!(ft_malloc(&args, sizeof(t_built))))
-		return (ERROR);
-	args->command = 0;
-	args->prev = 0;
-	args->next = 0;
-	args->command = ft_split2(line, ' ');
-	ft_split_built(args, "|;");
-	tmp = args;
+	res = ft_builtndup(ft_split2(line, ' '));
+	ft_split_built(res, "|;");
+	tmp = res;
 	while (tmp)
 	{
 		ft_envswap(tmp, env_list);
@@ -80,28 +84,26 @@ t_built	*ft_parse(char *line, t_list *env_list)
 		ft_listjoin(tmp);
 		tmp = tmp->next;
 	}
-	return (args);
+	return (res);
 }
 
 void	loop(t_list *env_list)
 {
 	char	*line;
-	char	*pwd;
 	t_built	*built;
 	int		status;
 
 	status = 1;
 	while (status)
 	{
-		pwd = getcwd(0, BUFFER_SIZE);
-		ft_putstr_fd(pwd, 1, "\x1b[32m");
-		free(pwd);
-		ft_putstr_fd("$ ", 1, "\x1b[32m");
-		get_next_line(0, &line);
-		built = ft_parse(line, env_list);
-		status = ft_execute(built, env_list);
-		free(line);
-		//ft_free(built);
+		draw2();
+		if (get_next_line(0, &line) > 0 && *line)
+		{
+			built = ft_parse(line, env_list);
+			status = ft_execute(built, env_list);
+		}
+
+		ft_free(line);
 	}
 }
 
@@ -109,7 +111,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
 	env_list = ft_init_env_list(envp);
-	// draw(0);
+	// draw();
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

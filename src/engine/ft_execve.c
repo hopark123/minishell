@@ -29,7 +29,6 @@ static char	**del_space_square(char **list, t_list *env_list)
 	while (list[size])
 		size++;
 	tmp = (char **)malloc(sizeof(char *) * (size + 1));
-	write(1, "a", 1);
 	if (!tmp)
 		return (0);
 	while (list[i])

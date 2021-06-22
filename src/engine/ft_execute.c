@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/22 17:11:04 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/22 19:53:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_execute(t_built *built, t_list *env_list)
 	int		tempout;
 	int		tempin;
 
+	if (!built || !built->command || !built->command->str)
+		return (1);
 	tempout = dup(STDOUT);
 	tempin = dup(STDIN);
 	fd[0] = STDIN;
@@ -30,14 +32,12 @@ int	ft_execute(t_built *built, t_list *env_list)
 	ft_close(fd[1]);
 	dup2(tempout, 1);
 	dup2(tempin, 0);
-	write(1, "END\n", 4);
 	return (1);
 }
 
 int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 {
-	write(1,"A",1);
-	if (!built)
+	if (!built || !built->command || !built->command->str)
 		return (0);
 	test_print_passing(built);
 	printf("{%s}\n", built->command->str);
@@ -53,7 +53,6 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 		ft_redirect2(built, "INPUT", fd);
 	else
 		ft_builtin(built, env_list);
-	write(1,"B",1);
 	return (SUCCESS);
 }
 
