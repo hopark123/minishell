@@ -30,59 +30,31 @@ static char	*choose_bin(char *str1, char *str2, char *str3)
 	return (str1);
 }
 
-static char	*change_content(char *str, t_list *env_list, int index)
+static char	**change_content(char **str)
 {
 	char	*tmp;
 	char	*join;
-	int	size;
-	
-	size = ft_strlen(str);
-	if (str[0] == '~')
-	{
-		join = ft_getenv(env_list, "HOME", 4);
-		tmp = ft_strjoin(join, &str[1]);
-		free(join);
-	}
-<<<<<<< HEAD
-	else if (index == 0 && str[0] != '/' && str[0] != '.')
-	{
-		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str));
-	}
-=======
-	else if (index == 0)
-		tmp = choose_bin(ft_strjoin("/bin/", str), ft_strjoin("/usr/bin/", str), ft_strndup(str, size));
->>>>>>> 4426ca26e7892fc8a918b1738606da02ab92ba2d
-	else
-		tmp = ft_strndup(str, size);
-	return (tmp);
-}
-
-static char	**del_space_square(char **list, t_list *env_list)
-{
 	int	i;
-	int	j;
-	char	**tmp;
-
+	
 	i = 0;
-	j = 0;
-	while (list[i])
-		i++;
-	tmp = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!tmp)
+	if (!str)
 		return (0);
-	i = 0;
-	while (list[i])
+	while (str[i])
 	{
-		if (list[i][0] != ' ')
+		if (str[i][0] == '~')
 		{
-			tmp[j] = change_content(list[i], env_list, j);
-			j++;
+			join = getenv("HOME");
+			tmp = ft_strjoin(join, &str[i][1]);
+			free(str[i]);
+			free(join);
+			str[i] = tmp;
 		}
-		free(list[i++]);
+		i++;
 	}
-	tmp[j] = 0;
-	free(list);
-	return (tmp);
+	tmp = str[0];
+	str[0] = choose_bin(ft_strjoin("/bin/", tmp), ft_strjoin("/usr/bin/", tmp), ft_strndup(tmp, ft_strlen(tmp)));
+	free(tmp);
+	return (str);
 }
 
 int	ft_execve(t_built *built, t_list *env_list)
@@ -93,16 +65,19 @@ int	ft_execve(t_built *built, t_list *env_list)
 	char	**argv;
 	char	**envp;
 	
-	argv = del_space_square(ft_listtochar(built->command), env_list);
+	ft_del_blank3(built);
+	char **a = ft_listtochar(built->command);
+	argv = change_content(a);
 	envp = ft_listtochar(env_list);
+
 	pid = fork();
+
 	if (pid < 0)
 		return (-1);
 	else if (pid == 0)
 	{
 		if (execve(argv[0], argv, envp) < 0)
 		{
-			// printf("argv[0] : [%s]\n",argv[0]);
 			perror("error");
 			return (-1);
 		}
