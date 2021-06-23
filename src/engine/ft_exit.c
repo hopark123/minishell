@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/23 14:46:27 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 20:00:28 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ int	ft_exit(t_built *built)
 		ft_putstr_fd("exit\nbash: exit: too many arguments\n", 1, "\x1b[31m" );
 	}
 	return (ERROR);
+}
+
+void	ft_close(int fd)
+{
+	if (fd > 1)
+		close(fd);
 }
