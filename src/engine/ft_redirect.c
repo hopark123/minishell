@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/23 17:19:51 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 18:59:17 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 	t_list	*list;
 
 	list = built->command;
+	ft_close(fd[0]);
 	fd[0] = fd[1];
 	if (!list->next || !list->next->next)
 		return (ERROR);
@@ -35,11 +36,13 @@ int	ft_redirect2(t_built *built, int *fd)
 	t_list	*list;
 
 	ft_close(fd[0]);
+	fd[0] = fd[1];
 	if (!ft_guard_next(built, 2))
 		return (ERROR);
 	list = built->command->next->next;
-	fd[1] = open(list->str, O_RDONLY, S_IRWXU);
-	dup2(fd[0], fd[1]);
+	fd[0] = open(list->str, O_RDONLY, S_IRWXU);
+	dup2(fd[0], STDIN);
+	ft_close(fd[0]);
 	return (SUCCESS);
 }
 
@@ -48,16 +51,15 @@ int	ft_redirect3(t_built *built, int *fd)
 	t_list	*list;
 	char	*line;
 
-	fd[1] = fd[0];
+	ft_close(fd[0]);
+	fd[0] = fd[1];
 	if (!ft_guard_next(built, 2))
 		return (ERROR);
 	list = built->command->next->next;
-	if (get_next_line(fd[1], &line) >= 0)
+	while (get_next_line(STDIN, &line) >= 0)
 	{
-		ft_putstr_fd(line, fd[0], 0);
 		if (ft_strncmp(line, list->str, ft_strlen(list->str)))
 		{
-			write(1,"@@@@@@@@@\n",1);
 			return (SUCCESS);
 		}
 	}
