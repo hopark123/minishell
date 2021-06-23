@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/23 14:44:18 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:01:34 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+static t_list	*del_pipe(t_built *built)
+{
+	// if (built->command->str[0] == '|')
+	if (ft_strncmp(built->command->str, "|", ft_strlen(built->command->str)))
+		return (built->command->next->next);
+	return (built->command);
+}
 
 int	ft_execute(t_built *built, t_list *env_list)
 {
@@ -26,6 +34,7 @@ int	ft_execute(t_built *built, t_list *env_list)
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
 	temp = ft_builtndup(built->command);
+	// temp = ft_builtndup(del_pipe(built));
 	ft_split_built(temp, "><");
 	ft_execute2(temp, env_list, fd);
 	ft_close(fd[0]);
