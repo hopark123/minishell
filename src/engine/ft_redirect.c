@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/23 16:19:40 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 17:19:51 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 {
 	t_list	*list;
 
-	fd[0] = fd[1];
 	list = built->command;
+	fd[0] = fd[1];
 	if (!list->next || !list->next->next)
 		return (ERROR);
 	list = list->next->next;
@@ -34,11 +34,11 @@ int	ft_redirect2(t_built *built, int *fd)
 {
 	t_list	*list;
 
-	fd[1] = fd[0];
+	ft_close(fd[0]);
 	if (!ft_guard_next(built, 2))
 		return (ERROR);
 	list = built->command->next->next;
-	fd[0] = open(list->str, O_RDONLY, S_IRWXU);
+	fd[1] = open(list->str, O_RDONLY, S_IRWXU);
 	dup2(fd[0], fd[1]);
 	return (SUCCESS);
 }

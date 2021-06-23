@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/23 16:19:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:41:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	ft_execute(t_built *built, t_list *env_list)
 
 	if (!built || !built->command || !built->command->str)
 		return (1);
-	tempout = dup(STDOUT);
 	tempin = dup(STDIN);
+	tempout = dup(STDOUT);
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
 	temp = ft_builtndup(built->command);

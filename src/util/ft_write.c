@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 15:07:08 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 12:40:04 by hopark           ###   ########.fr       */
+/*   Updated: 2021/06/23 17:05:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int	ft_putchar_fd(char c, int fd, char *color)
 {
 	int		res;
 
-	res = write(1, color, 6);
+	if (color)
+		res = write(1, color, 6);
 	res = write(fd, &c, 1);
 	if (res == -1)
 		return (-1);
-	res = write(1, "\x1b[0m", 5);
+	if (color)
+		res = write(1, "\x1b[0m", 5);
 	return (1);
 }
 
