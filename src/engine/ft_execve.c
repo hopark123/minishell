@@ -66,12 +66,9 @@ int	ft_execve(t_built *built, t_list *env_list)
 	char	**envp;
 	
 	ft_del_blank3(built);
-	char **a = ft_listtochar(built->command);
-	argv = change_content(a);
+	argv = change_content(ft_listtochar(built->command));
 	envp = ft_listtochar(env_list);
-
 	pid = fork();
-
 	if (pid < 0)
 		return (-1);
 	else if (pid == 0)
