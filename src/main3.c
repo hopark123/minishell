@@ -100,8 +100,8 @@ void	loop(t_list *env_list)
 		if (get_next_line(0, &line) > 0 && *line)
 		{
 			built = ft_parse(line, env_list);
-			status = ft_execute(built, env_list);
-			// status = ft_subshell(built, env_list);
+			// status = ft_execute(built, env_list);
+			status = ft_subshell(built, env_list);
 		}
 		ft_free(line);
 	}
