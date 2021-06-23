@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/23 14:44:34 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:35:58 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	ft_builtin(t_built *built, t_list *env_list)
 		res = ft_env(built, env_list);
 	else if (ft_strncmp(built->command->str, "exit", 4))
 		res = ft_exit(built);
-	//else if (ft_strchr("><|;",(built->command->str)))
-	//	res = ft_parsing2()
 	else
 		res = ft_execve(built, env_list);
 	return (res);

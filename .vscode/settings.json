@@ -2,6 +2,7 @@
 	"files.associations": {
 		"head.h": "c",
 		"hopark.h": "c",
-		"*.text": "c"
+		"*.text": "c",
+		"*.txt": "c"
 	}
 }

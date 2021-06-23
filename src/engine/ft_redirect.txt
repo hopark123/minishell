@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/23 17:19:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:18:19 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	ft_redirect3(t_built *built, int *fd)
 		// ft_putstr_fd(line, fd[0], 0);
 		if (ft_strncmp(line, list->str, ft_strlen(list->str)))
 		{
-			write(1,"@@@@@@@@@\n",11);
 			return (SUCCESS);
 		}
 	}
