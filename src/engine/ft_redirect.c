@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/23 19:00:09 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:04:12 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int	ft_redirect3(t_built *built, int *fd)
 	if (!ft_guard_next(built, 2))
 		return (ERROR);
 	list = built->command->next->next;
+	dup2(fd[0], STDIN);
 	while (get_next_line(STDIN, &line) >= 0)
 	{
+		ft_putstr_fd(line, fd[0], 0);
 		if (ft_strncmp(line, list->str, ft_strlen(list->str)))
 		{
 			return (SUCCESS);
