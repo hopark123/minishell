@@ -12,5 +12,8 @@ void	ft_builtclear(t_built **built);
 int	ft_guard_next(t_built *built, int n);
 void	ft_del_blank3(t_built *built);
 
+int	ft_exit(t_built *built);
+int	ft_is_num(const char *nptr);
+int	ft_atoi(const char *nptr);
 
 #endif
