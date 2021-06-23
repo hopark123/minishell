@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/23 14:44:18 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:19:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,53 +50,13 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 	else if (ft_strncmp(built->command->str, ">>", 2))
 		ft_redirect(built, "APPEND", fd);
 	else if (ft_strncmp(built->command->str, "<", 1))
-		ft_redirect2(built, "INPUT", fd);
+		ft_redirect2(built, fd);
 	else if (ft_strncmp(built->command->str, "<<", 2))
-		ft_redirect2(built, "INPUT", fd);
+		ft_redirect3(built, fd);
 	else
 		ft_builtin(built, env_list);
 	
 	return (SUCCESS);
 }
 
-void	ft_close(int fd)
-{
-	if (fd > 0)
-		close(fd);
-}
 
-int	ft_redirect(t_built *built, char *type, int *fd)
-{
-	t_list	*list;
-
-	fd[0] = fd[1];
-	list = built->command;
-	if (!list->next || !list->next->next)
-		return (ERROR);
-	list = list->next->next;
-	if (ft_strncmp(type, "TRUNC", 5))
-		fd[1] = open(list->str, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
-	else if (ft_strncmp(type, "APPEND", 6))
-		fd[1] = open(list->str, O_CREAT | O_WRONLY | O_APPEND, S_IRWXU);
-	dup2(fd[1], fd[0]);
-	ft_close(fd[1]);
-	return (SUCCESS);
-}
-
-int	ft_redirect2(t_built *built, char *type, int *fd)
-{
-	t_list	*list;
-
-	fd[1] = fd[0];
-	list = built->command;
-	if (!list->next || !list->next->next)
-		return (ERROR);
-	list = list->next->next;
-	if (ft_strncmp(type, "INPUT", 5))
-		fd[0] = open(list->str, O_RDONLY, S_IRWXU);
-	else if (ft_strncmp(type, "INPUT", 6))
-		fd[0] = open(list->str, O_RDONLY, S_IRWXU);
-	dup2(fd[0], fd[1]);
-	// ft_close(fd[0]);
-	return (SUCCESS);
-}
