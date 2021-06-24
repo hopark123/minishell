@@ -3,6 +3,7 @@
 		"head.h": "c",
 		"hopark.h": "c",
 		"*.text": "c",
-		"*.txt": "c"
+		"*.txt": "c",
+		"signal.h": "c"
 	}
 }
