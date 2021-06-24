@@ -2,6 +2,7 @@
 # define HOPARK_H
 
 # include "head.h"
+# include "signal.h"
 
 void	test_print_passing(t_built *built);
 int	ft_execute2(t_built *built, t_list *env_list, int *fd);
