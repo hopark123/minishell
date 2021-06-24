@@ -92,18 +92,24 @@ void	loop(t_list *env_list)
 	char	*line;
 	t_built	*built;
 	int		status;
+	t_built	*temp;
 
-	status = 1;
+	status = SUCCESS;
 	while (status)
 	{
 		draw2();
-		if (get_next_line(0, &line) > 0 && *line)
+		if (get_next_line(0, &line) > 0)
 		{
 			built = ft_parse(line, env_list);
 			// status = ft_execute(built, env_list);
-			status = ft_start(built, env_list);
+			ft_free(line);
 		}
-		ft_free(line);
+		temp = built;
+		while (temp && status)
+		{
+			status = ft_start(temp, env_list);
+			temp = temp->next;
+		}
 	}
 }
 
