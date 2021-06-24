@@ -25,7 +25,6 @@ int ft_start(t_built *built, t_list *env_list)
 	}
 	else
 	{
-		write(1,"&&",2);
 		ft_execute(built, env_list);
 	}
 	return (1);

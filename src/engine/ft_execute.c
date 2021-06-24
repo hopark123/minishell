@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/23 20:07:17 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/24 15:23:11 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 	if (!built || !built->command || !built->command->str)
 		return (0);
 	ft_del_lastblank(built);
-	test_print_passing(built);
-	printf("{%s}\n", built->command->str);
+	// test_print_passing(built);
 	if (built->next)
 		ft_execute2(built->next, env_list, fd);
 	if (ft_strncmp(built->command->str, ">", 1))
@@ -63,7 +62,12 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 	else if (ft_strncmp(built->command->str, "<<", 2))
 		ft_redirect3(built, fd);
 	else
+	{
+		// char *line2;
+		// printf("[%d]\n", fd[1]);
+		// get_next_line(fd[1], &line2);
 		ft_builtin(built, env_list);
+	}
 	return (SUCCESS);
 }
 
