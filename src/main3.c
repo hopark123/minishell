@@ -44,7 +44,7 @@ void	test_print_passing(t_built *built)
 	t_list	*temp_l;
 
 	temp_l = built->command;
-	write(1, "          passing print : ", 27);
+	write(1, "          passing print : ", 26);
 	while (temp_l)
 	{
 		write(1, "[", 1);
@@ -82,6 +82,7 @@ t_built	*ft_parse(char *line, t_list *env_list)
 		ft_del_blank(tmp);
 		ft_del_blank2(tmp);
 		ft_listjoin(tmp);
+		ft_del_lastblank(tmp);
 		tmp = tmp->next;
 	}
 	return (res);
@@ -98,14 +99,20 @@ void	loop(t_list *env_list)
 	while (status)
 	{
 		draw2();
+		ft_signal();
+		if (pipe(g_mini.pip) < 0)
+			status = ERROR;
 		if (get_next_line(0, &line) > 0)
 		{
 			built = ft_parse(line, env_list);
-			status = ft_start(temp, env_list);
+			status = ft_start(built, env_list);
 			ft_free(line);
 		}
 	}
 }
+
+
+
 
 int	main(int argc, char **argv, char **envp)
 {

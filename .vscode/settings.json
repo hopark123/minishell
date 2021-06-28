@@ -4,6 +4,7 @@
 		"hopark.h": "c",
 		"*.text": "c",
 		"*.txt": "c",
-		"signal.h": "c"
+		"signal.h": "c",
+		"*.txx2": "c"
 	}
 }

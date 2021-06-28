@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/23 20:00:28 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/27 15:29:08 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	ft_exit(t_built *built)
 	return (ERROR);
 }
 
-void	ft_close(int fd)
+int	ft_close(int fd)
 {
 	if (fd > 1)
-		close(fd);
+		return close(fd);
 }

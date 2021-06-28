@@ -64,16 +64,24 @@ int	ft_execve(t_built *built, t_list *env_list)
 	int	status;
 	char	**argv;
 	char	**envp;
+	int		t_pip[2];
 	
 	ft_del_blank3(built);
 	argv = change_content(ft_listtochar(built->command));
 	envp = ft_listtochar(env_list);
 	pid = fork();
+	if (pipe(t_pip) < 0)
+		return (ERROR);
+	dup2(g_mini.pip[0], t_pip[0]);
+	dup2(g_mini.pip[0], t_pip[1]);
 	if (pid < 0)
 		return (-1);
 	else if (pid == 0)
 	{
-		if (execve(argv[0], argv, envp) < 0)
+		dup2(t_pip[0], STDIN);
+		status = execve(argv[0], argv, envp);
+		int j = 0;
+		if (status < 0)
 		{
 			perror("error");
 			return (-1);
