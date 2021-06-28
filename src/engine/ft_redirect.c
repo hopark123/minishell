@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/28 20:10:39 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/28 21:08:21 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_redirect3(t_built *built, int *fd)
 	int		temp;
 	int		heredoc[2];
 
+	if (pipe(g_mini.pip) < 0)
+		return (ERROR);
 	if (!ft_guard_next(built, 2))
 		return (ERROR);
 	list = built->command->next->next;
