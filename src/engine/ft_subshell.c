@@ -3,7 +3,7 @@
 static int	**free_pipe(int ***pipe, int size)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < size)
 	{
@@ -18,7 +18,7 @@ static int	count_pipe(t_built *built)
 {
 	int	i;
 	t_built	*tmp;
-	
+
 	i = 0;
 	tmp = built;
 	if (tmp)
@@ -159,8 +159,8 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order, int size)
 	}
 	if (pid == 0) //자식
 	{
-		dup2(g_mini.pip[0], STDIN);
-		dup2(g_mini.pip[1], STDOUT);
+		g_mini.pip[0] = dup(STDIN);
+		g_mini.pip[1] = dup(STDOUT);
 		if (order == 0)
 			do_piping(-1, fd[order][1]);
 		else if (order == size)

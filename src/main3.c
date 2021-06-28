@@ -44,15 +44,15 @@ void	test_print_passing(t_built *built)
 	t_list	*temp_l;
 
 	temp_l = built->command;
-	write(1, "          passing print : ", 26);
+	write(2, "          passing print : ", 26);
 	while (temp_l)
 	{
-		write(1, "[", 1);
-		ft_putstr_fd(temp_l->str, 1, 0);
-		write(1, "]", 1);
+		write(2, "[", 1);
+		ft_putstr_fd(temp_l->str, 2, 0);
+		write(2, "]", 1);
 		temp_l = temp_l->next;
 	}
-	write(1, "\n", 1);
+	write(2, "\n", 1);
 }
 
 void	print_built_list(t_built *built)
@@ -100,8 +100,8 @@ void	loop(t_list *env_list)
 	{
 		draw2();
 		ft_signal();
-		if (pipe(g_mini.pip) < 0)
-			status = ERROR;
+		g_mini.pip[0] = dup(STDIN);
+		g_mini.pip[1] = dup(STDOUT);
 		if (get_next_line(0, &line) > 0)
 		{
 			built = ft_parse(line, env_list);
