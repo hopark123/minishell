@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/24 15:50:08 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/28 15:30:21 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ int	ft_redirect2(t_built *built, int *fd)
 		return (ERROR);
 	list = built->command->next->next;
 	temp = open(list->str, O_RDONLY, S_IRWXU);
-	dup2(temp, fd[0]);
+	dup2(temp, g_mini.pip[0]);
 	ft_close(temp);
-	fd[0] = temp;
 	return (SUCCESS);
 }
 
@@ -51,16 +50,25 @@ int	ft_redirect3(t_built *built, int *fd)
 	t_list	*list;
 	char	*line;
 	int		temp;
+	int		heredoc[2];
 
 	if (!ft_guard_next(built, 2))
 		return (ERROR);
 	list = built->command->next->next;
+	ft_putstr_fd("strart\n", 2, 0);
 	while (get_next_line(fd[0], &line) >= 0)
 	{
 		if (ft_strncmp(line, list->str, ft_strlen(list->str)))
 		{
-			ft_exit(built);
+			ft_close(g_mini.pip[1]);
+			ft_free(line);
 			return (SUCCESS);
+		}
+		else
+		{
+			ft_putstr_fd(line, g_mini.pip[1], 0);
+			ft_putstr_fd("\n", g_mini.pip[1], 0);
+			ft_free(line);
 		}
 	}
 	return (SUCCESS);
