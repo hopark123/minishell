@@ -126,7 +126,6 @@ static void	do_piping(int pip_in, int pip_out)
 	}
 	if (pip_out != -1)
 	{
-		// printf("pipout[%d]\n", pip_out);
 		if (dup2(pip_out, STDOUT) < 0)
 			perror("pipe_out:error");
 		if (pip_out == 0 || pip_out > 1)
@@ -142,7 +141,6 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order, int size)
 	pid_t	w_pid;
 
 	pid = fork();
-
 	if (pid < 0)
 	{
 		perror("forkerror");
