@@ -74,8 +74,8 @@ int	ft_execve(t_built *built, t_list *env_list)
 		return (-1);
 	else if (pid == 0)
 	{
-		dup2(g_mini.pip[0], STDIN);
-		dup2(g_mini.pip[1], STDOUT);
+		// dup2(g_mini.pip[0], STDIN);
+		// dup2(g_mini.pip[1], STDOUT);
 		status = execve(argv[0], argv, envp);
 		if (status < 0)
 		{
