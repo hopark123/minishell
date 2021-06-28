@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/28 20:05:41 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/28 20:14:22 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 {
 	if (!built || !built->command || !built->command->str)
 		return (0);
-	
 	if (built->next)
 		ft_execute2(built->next, env_list, fd);
 	if (ft_strncmp(built->command->str, ">", 1))
