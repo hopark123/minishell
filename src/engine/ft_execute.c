@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/24 17:21:08 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/24 18:44:57 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static t_list	*del_pipe_col(t_built *built)
 {
+	if (!built->command || !built->command->next)
+		return (built->command);
 	if (ft_strncmp(built->command->str, "|", ft_strlen(built->command->str)))
 		return (built->command->next->next);
-	else if (ft_strncmp(built->command->str, ";", ft_strlen(built->command->str)))
+	if (ft_strncmp(built->command->str, ";", ft_strlen(built->command->str)))
 		return (built->command->next->next);
 	return (built->command);
 }

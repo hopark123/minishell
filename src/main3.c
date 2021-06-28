@@ -44,7 +44,7 @@ void	test_print_passing(t_built *built)
 	t_list	*temp_l;
 
 	temp_l = built->command;
-	write(1, "          passing print : ", 27);
+	write(1, "          passing print : ", 26);
 	while (temp_l)
 	{
 		write(1, "[", 1);
