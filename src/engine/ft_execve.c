@@ -74,8 +74,8 @@ int	ft_execve(t_built *built, t_list *env_list)
 		return (-1);
 	else if (pid == 0)
 	{
-		// dup2(g_mini.pip[0], STDIN);
-		// dup2(g_mini.pip[1], STDOUT);
+		if (g_mini.pip[0] > 0)
+			dup2(g_mini.pip[0], STDIN);
 		status = execve(argv[0], argv, envp);
 		if (status < 0)
 		{
@@ -85,6 +85,8 @@ int	ft_execve(t_built *built, t_list *env_list)
 	}
 	else
 	{
+		if (g_mini.pip[1] > 0)
+			dup2(g_mini.pip[1], STDOUT);
 		w_pid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			w_pid = waitpid(pid, &status, WUNTRACED);
