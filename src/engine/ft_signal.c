@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/29 19:57:08 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/29 20:23:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,15 @@ void	ft_signal(void)
 	signal(SIGQUIT, ft_sigquit);
 	signal(SIGTERM, ft_sigterm);
 }
+
+// void	ft_sigint2(int code)
+// {
+// 	printf("[SIGNAL]22 %d at %s\n", code, __func__);
+// 	exit(0);
+// }
+
+
+// void	ft_signal2(void)
+// {
+// 	signal(SIGINT, ft_sigint2);
+// }

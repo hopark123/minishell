@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/29 19:50:55 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/29 20:23:19 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	ft_execute(t_built *built, t_list *env_list)
 	tempout = dup(STDOUT);
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
+	// test_print_passing(built);
 	temp = ft_builtndup(del_pipe_col(built));
 	test_print_passing(built);
 	ft_split_built(temp, "><");
@@ -45,8 +46,6 @@ int	ft_execute(t_built *built, t_list *env_list)
 	ft_close(fd[1]);
 	dup2(tempout, STDOUT);
 	dup2(tempin, STDIN);
-	g_mini.pip[0] = dup(STDIN);
-	g_mini.pip[1] = dup(STDOUT);
 	// ft_builtclear(&temp);
 	return (1);
 }
