@@ -93,26 +93,15 @@ void	loop(t_list *env_list)
 		ft_get_line();
 		if (g_mini.line)
 		{
-<<<<<<< HEAD
 			// add_history(line);
 			// rl_replace_line("", 0);
 			// rl_redisplay();
 			built = ft_parse(g_mini.line, env_list);
-			status = ft_start(built, env_list);
-=======
-			built = ft_parse(line, env_list);
 			status = ft_shell(built, env_list);
-			ft_free(line);
->>>>>>> a72d4ed17436f2c414ec9be8ffa89e3286fd0f2e
 		}
 	}
 }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a72d4ed17436f2c414ec9be8ffa89e3286fd0f2e
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
