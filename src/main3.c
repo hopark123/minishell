@@ -105,14 +105,11 @@ void	loop(t_list *env_list)
 		if (get_next_line(0, &line) > 0)
 		{
 			built = ft_parse(line, env_list);
-			status = ft_start(built, env_list);
+			status = ft_shell(built, env_list);
 			ft_free(line);
 		}
 	}
 }
-
-
-
 
 int	main(int argc, char **argv, char **envp)
 {

@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/27 15:29:08 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/29 20:18:59 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+static void	clean_child_exit(int status)
+{
+
+}
 
 int	ft_exit(t_built *built)
 {
@@ -22,7 +27,10 @@ int	ft_exit(t_built *built)
 		ft_putstr_fd("exit\n", 1, "\x1b[34m");
 		exit(0);
 	}
-	else if (list->next && !list->next->next)
+	if (!ft_strncmp(list->next->str, " ", 1))
+		ft_error("exit error : ");
+	list = list->next;
+	if (list->next && !list->next->next)
 	{
 		if (ft_is_num(list->next->str))
 			exit(ft_atoi(list->next->str));
@@ -43,5 +51,6 @@ int	ft_exit(t_built *built)
 int	ft_close(int fd)
 {
 	if (fd > 1)
-		return close(fd);
+		return (close(fd));
+	return (1);
 }
