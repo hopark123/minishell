@@ -1,124 +1,117 @@
 #include "head.h"
 
-void	draw(void)
+int	nbr_length(int n)
 {
-	ft_putstr_fd("                          f)}\"\\__Xoo2o2o2o2on_sr\"{;]                           \n", 1, "\033[33m");
-	ft_putstr_fd("                            _<S2XX2oo2o2o2o2o2Snoos,                            \n", 1, "\033[33m");
-	ft_putstr_fd("                          _xooooooo2o2o2o2o2o2ooooons,                        \n", 1, "\033[33m");
-	ft_putstr_fd("                        'Jno2r\"\"\"\"\"\"2o2o2o2o\"\"\"\"\"\"{2oos\"                        \n", 1, "\033[33m");
-	ft_putstr_fd("                        ooo2o222S22So2o2o2o22222S2So2ooo                       \n", 1, "\033[33m");
-	ft_putstr_fd("                        o2o2oo2o( )oo2o2oo2oo( )noooo2oo                        \n", 1, "\033[33m");
-	ft_putstr_fd("                        2o2o2o2o222or\"\"\"\"\"\"{So2ooo2o2o2o                        \n", 1, "\033[33m");
-	ft_putstr_fd("                        {oo2o2o2oor_j  aa  b/1o2o2o2o2or]                       \n", 1, "\033[33m");
-	ft_putstr_fd("                         {o2o2o2o2o,????????_2o2oo2o2or_                        \n", 1, "\033[33m");
-	ft_putstr_fd("                          \"oo2oo2o2S222oo2o222o2o2o2o^a                         \n", 1, "\033[33m");
-	ft_putstr_fd("                            \"{2o2o2oooo22o2oo2o2o2r\"a                           \n", 1, "\033[33m");
-	ft_putstr_fd("                             \'_%\"{oo2o2oo2o2o2}\"\\_)                             \n", 1, "\033[33m");
-	ft_putstr_fd("                            _oX22os__s_%__s__anoo2o,4                           \n", 1, "\033[33m");
-	ft_putstr_fd("                           .Sor{ooomm22 mX2 mooor{o2,4                          \n", 1, "\033[33m");
-	ft_putstr_fd("                           )no()n          W  po()no(]                          \n", 1, "\033[33m");
-	ft_putstr_fd("                          [{oo()vm        W   mo()non.                          \n", 1, "\033[33m");
-	ft_putstr_fd("                           )no()v$            Do(=no(]                          \n", 1, "\033[33m");
-	ft_putstr_fd("                           ,{o()voW          @no(=2}_                           \n", 1, "\033[33m");
-	ft_putstr_fd("                            aa/)noodVU$  @VUnnoo(_aa                            \n", 1, "\033[33m");
-	ft_putstr_fd("                              [)vo2oo_ aa _2oo2o(]                              \n", 1, "\033[33m");
-	ft_putstr_fd("                              f)no2ooe.  ,{Xo2o2(]", 1, "\033[33m");
-	ft_putstr_fd("        @hopark @suhong        \n", 1, "\033[36m");
-	ft_putstr_fd("                              g {Soo2'j  b-2oo2e'j                              \n", 1, "\033[33m");
-	ft_putstr_fd("                                aaggaj    baggaa              \n", 1, "\033[33m");
+	int	i = 0;
 
-}
-
-void	draw2(void)
-{
-	char	*pwd;
-
-	pwd = getcwd(0, BUFFER_SIZE);
-	ft_putstr_fd(pwd, 1, "\x1b[32m");
-	free(pwd);
-	ft_putstr_fd("$ ", 1, "\x1b[32m");
-}
-
-void	test_print_passing(t_built *built)
-{
-	t_list	*temp_l;
-
-	temp_l = built->command;
-	write(2, "          passing print : ", 26);
-	while (temp_l)
+	if (n <= 0)
+		i++;
+	while (n != 0)
 	{
-		write(2, "[", 1);
-		ft_putstr_fd(temp_l->str, 2, 0);
-		write(2, "]", 1);
-		temp_l = temp_l->next;
+		n /= 10;
+		i++;
 	}
-	write(2, "\n", 1);
+	return (i);
 }
 
-void	print_built_list(t_built *built)
+void	get_cursor_position(int *col, int *rows)
 {
-	t_built	*tmp;
+	int		a = 0;
+	int		i = 1;
+	char	buf[255];
+	int		ret;
+	int		temp;
 
-	tmp = built;
-	while (tmp)
+	write(0, "\033[6n", 4);  //report cursor location
+	ret = read(0, buf, 254);
+	buf[ret] = '\0';
+	while (buf[i])
 	{
-		test_print_passing(tmp);
-		tmp = tmp->next;
+		if (buf[i] >= '0' && buf[i] <= '9')
+		{
+			if (a == 0)
+				*rows = atoi(&buf[i]) - 1;
+			else
+			{
+				temp = atoi(&buf[i]);
+				*col = temp - 1;
+			}
+			a++;
+			i += nbr_length(temp) - 1;
+		}
+		i++;
 	}
 }
 
-t_built	*ft_parse(char *line, t_list *env_list)
+int		putchar_tc(int tc)
 {
-	t_built	*res;
-	t_built	*tmp;
-
-	res = ft_builtndup(ft_split2(line, ' '));
-	ft_split_built(res, "|;");
-	tmp = res;
-	while (tmp)
-	{
-		ft_envswap(tmp, env_list);
-		ft_del_quotes(tmp);
-		ft_del_blank(tmp);
-		ft_del_blank2(tmp);
-		ft_listjoin(tmp);
-		ft_del_lastblank(tmp);
-		tmp = tmp->next;
-	}
-	return (res);
+	write(1, &tc, 1);
+	return (0);
 }
+
+void	move_cursor_left(int *col, int *row, char *cm)
+{
+	if (*col == 0)
+		return ;
+	--(*col);
+	tputs(tgoto(cm, *col, *row), 1, putchar_tc);
+
+}
+
+void	move_cursor_right(int *col, int *row, char *cm)
+{
+	++(*col);
+	tputs(tgoto(cm, *col, *row), 1, putchar_tc);
+
+}
+
+void	delete_end(int *col, int *row, char *cm, char *ce)
+{
+	if (*col != 0)
+		--(*col);
+	tputs(tgoto(cm, *col, *row), 1, putchar_tc);
+	tputs(ce, 1, putchar_tc);
+}
+
 
 void	loop(t_list *env_list)
 {
-	char	*line;
 	t_built	*built;
 	int		status;
 	t_built	*temp;
-
+	char	*c;
+	char	*temp2;
+	
 	status = SUCCESS;
+
 	while (status)
 	{
 		draw2();
 		ft_signal();
 		g_mini.pip[0] = dup(STDIN);
 		g_mini.pip[1] = dup(STDOUT);
-		if (get_next_line(0, &line) > 0)
+		ft_get_line();
+		if (g_mini.line)
 		{
-			built = ft_parse(line, env_list);
+			// add_history(line);
+			// rl_replace_line("", 0);
+			// rl_redisplay();
+			built = ft_parse(g_mini.line, env_list);
 			status = ft_start(built, env_list);
-			ft_free(line);
 		}
 	}
 }
 
 
 
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
+
 	env_list = ft_init_env_list(envp);
 	// draw();
+
+	ft_init_term();
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

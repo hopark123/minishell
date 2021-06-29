@@ -77,6 +77,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 		if (g_mini.pip[0] > 0)
 			dup2(g_mini.pip[0], STDIN);
 		status = execve(argv[0], argv, envp);
+		ft_signal();
 		if (status < 0)
 		{
 			perror("error");

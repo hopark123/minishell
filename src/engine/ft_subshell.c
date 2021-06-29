@@ -161,6 +161,7 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order, int size)
 	{
 		g_mini.pip[0] = dup(STDIN);
 		g_mini.pip[1] = dup(STDOUT);
+		ft_signal();
 		if (order == 0)
 			do_piping(-1, fd[order][1]);
 		else if (order == size)

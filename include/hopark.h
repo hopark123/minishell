@@ -3,6 +3,22 @@
 
 # include "head.h"
 # include "signal.h"
+# include <termios.h>
+# include <termcap.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+
+
+# define BACKSPACE 127
+# define LEFT_ARROW 4479771
+# define RIGHT_ARROW 4414235
+# define UP_ARROW 4283163
+# define DOWN_ARROW 4348699
+
+
+t_built	*ft_parse(char *line, t_list *env_list);
+void	draw(void);
+void	draw2(void);
 
 void	test_print_passing(t_built *built);
 int	ft_execute2(t_built *built, t_list *env_list, int *fd);
@@ -26,10 +42,21 @@ void	ft_sigquit(int code);
 void	ft_sigterm(int code);
 void	ft_signal(void);
 
+void	ft_sigint2(int code);
+void	ft_signal2(void);
+
+
+
+void	ft_get_line(void);
+
+void	ft_init_term(void);
+
+
 typedef struct s_mini
 {
 	int			pip[2];
 	int			signal;
+	char		*line;
 }				t_mini;
 
 t_mini		g_mini;

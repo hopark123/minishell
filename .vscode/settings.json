@@ -5,6 +5,8 @@
 		"*.text": "c",
 		"*.txt": "c",
 		"signal.h": "c",
-		"*.txx2": "c"
+		"*.txx2": "c",
+		"history.h": "c",
+		"readline.h": "c"
 	}
 }

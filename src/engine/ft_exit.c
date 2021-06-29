@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/27 15:29:08 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/29 15:13:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@ int	ft_exit(t_built *built)
 		ft_putstr_fd("exit\nbash: exit: too many arguments\n", 1, "\x1b[31m" );
 	}
 	return (ERROR);
+}
+
+ft_exit2(pid_t pid)
+{
+	open(".minishell_history", O_CREAT | O_WRONLY | O_APPEND, S_IRWXU);
+	exit(pid);
 }
 
 int	ft_close(int fd)
