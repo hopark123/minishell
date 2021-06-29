@@ -6,22 +6,14 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2021/06/29 19:04:09 by hjpark           ###   ########.fr        #
-=======
-#    Updated: 2021/06/29 14:57:39 by suhong           ###   ########.fr        #
->>>>>>> a72d4ed17436f2c414ec9be8ffa89e3286fd0f2e
+#    Updated: 2021/06/29 20:24:17 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-<<<<<<< HEAD
 CFLAGS = -O2 -lreadline -lncurses
-=======
-CFLAGS = -O2 
->>>>>>> a72d4ed17436f2c414ec9be8ffa89e3286fd0f2e
 #CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS = -g3 -fsanitize=address
