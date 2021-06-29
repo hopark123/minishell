@@ -90,8 +90,9 @@ void	loop(t_list *env_list)
 		ft_signal();
 		g_mini.pip[0] = dup(STDIN);
 		g_mini.pip[1] = dup(STDOUT);
-		ft_get_line();
-		if (g_mini.line)
+		// ft_get_line();
+		// if (g_mini.line)
+		if (get_next_line(0, &g_mini.line) > 0)
 		{
 			// add_history(line);
 			// rl_replace_line("", 0);
@@ -109,7 +110,7 @@ int	main(int argc, char **argv, char **envp)
 	env_list = ft_init_env_list(envp);
 	// draw();
 
-	ft_init_term();
+	// ft_init_term();
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/29 20:07:42 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/29 20:27:48 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	ft_get_line(void)
 	c[0] = 0;
 	while (read(STDIN, &n, sizeof(int)) > 0)
 	{
-
 		// ft_putnbr_fd(n, STDERR, 0);
 		c[0] = n;
 		tmp = ft_strjoin(g_mini.line, c);
