@@ -62,6 +62,7 @@ void	print_built_list(t_built *built)
 	while (tmp)
 	{
 		test_print_passing(tmp);
+		write(2,"\n",1);
 		tmp = tmp->next;
 	}
 }

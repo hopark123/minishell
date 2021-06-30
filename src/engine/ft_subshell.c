@@ -90,7 +90,7 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order)
 		close_pip_child(fd, order - 1, order);
 		exit(ft_execute(built, env_list));
 	}
-	else // 부모
+	else 
 	{
 		close_pip_parent(fd, order);
 		w_pid = waitpid(pid, &w_status, WUNTRACED);
