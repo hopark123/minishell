@@ -1,27 +1,30 @@
 #include "head.h"
 
-void	ft_perror(char *str)
+void	ft_perror(char *filename, char *message)
 {
 	char	*error_str;
-	char	*output;
 
 	error_str = strerror(errno);
-	if (str)
+	ft_putstr_fd("minish : ", STDERR, 0);
+	if (filename)
 	{
-		output = ft_strjoin(str, error_str);
-		free(error_str);
-		free(str);
+		ft_putstr_fd(filename, STDERR, 0);
+		ft_putstr_fd(": ", STDERR, 0);
+	}
+	if (message)
+	{
+		ft_putstr_fd(message, STDERR, 0);
+		ft_putstr_fd("\n", STDERR, 0);
 	}
 	else
-		output = error_str;
-	if (output)
-		ft_putstr_fd(output, STDERR, "\033[0;31m");
-	free(output);	
+	{
+		ft_putstr_fd(strerror(errno), STDERR, 0);
+		ft_putstr_fd("\n", STDERR, 0);
+	}
 }
 
 void	ft_error(char *str)
 {
-	ft_perror(str);
-	// return (EXIT_FAILURE);
+	ft_perror(0, str);
 	exit(EXIT_FAILURE);
 }

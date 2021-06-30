@@ -2,9 +2,9 @@
 # define SUHONG_H
 
 # include "head.h"
-# include <sys/stat.h>
-# include <errno.h>
 # include <string.h>
+
+# define REDIRECTION_ERROR 258
 
 int	ft_execve(t_built *built, t_list *env_list);
 int	check_file_exist(char *name);
@@ -18,8 +18,10 @@ int	count_pipe(t_built *built);
 int	**init_pipe(int size);
 int	get_pipe_size(int **pipe);
 
-void	ft_perror(char *str);
+void	ft_perror(char *filename, char *message);
 void	ft_error(char *Str);
+
+char	*ft_itoa(int n);
 
 int	ft_subshell2(t_built *built, t_list *env_list, int *fd, int *mini);
 
