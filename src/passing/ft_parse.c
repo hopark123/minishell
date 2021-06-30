@@ -19,6 +19,6 @@ t_built	*ft_parse(char *line, t_list *env_list)
 		ft_del_lastblank(tmp);
 		tmp = tmp->next;
 	}
-	free(g_mini.line);
+	ft_free(g_mini.line);
 	return (res);
 }

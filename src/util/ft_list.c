@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 21:00:51 by hopark           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:42:56 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ t_list	*ft_listnew(char *str, char *id)
 	t_list		*res;
 
 	if (!ft_malloc(&res, sizeof(t_list)))
+	{
 		return (0);
+	}
 	res->str = str;
 	res->id = id;
-	res->next = 0;
-	res->prev = 0;
+	res->next = res;
+	res->prev = res;
+
 	return (res);
 }
 
