@@ -13,6 +13,11 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <string.h>
+# include <termios.h>
+# include <termcap.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # define ERROR  1
 # define SUCCESS 0
 # define FAIL -1
@@ -20,6 +25,14 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
+
+# define REDIRECTION_ERROR 258
+
+# define BACKSPACE 127
+# define LEFT_ARROW 4479771
+# define RIGHT_ARROW 4414235
+# define UP_ARROW 4283163
+# define DOWN_ARROW 4348699
 
 
 # ifndef BUFFER_SIZE
@@ -44,6 +57,22 @@ typedef struct s_built
 	struct s_built	*prev;
 	struct s_built	*next;
 }				t_built;
+typedef struct s_mini
+{
+	int			pip[2];
+	int			signal;
+	char		*line;
+	struct termios	term;
+	struct termios	backup;
+
+	int			len;
+	int			cursor;
+	t_list		*history;
+	t_list		*head;
+	char		*cm;
+	char		*ce;
+}				t_mini;
+t_mini		g_mini;
 
 typedef int			t_bool;
 

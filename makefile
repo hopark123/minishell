@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
+#    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/06/30 20:13:42 by hjpark           ###   ########.fr        #
+#    Updated: 2021/06/30 21:40:36 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ INC_DIR = include
 ENGINE_DIR = $(SRC_DIR)/engine
 UTIL_DIR = $(SRC_DIR)/util
 PASSING_DIR = $(SRC_DIR)/passing
-# TERM_DIR = $(SRC_DIR)/term
+TERM_DIR = $(SRC_DIR)/term
 OBJ_DIR = obj
 
 INCLUDE = $(wildcard $(INC_DIR)/*.h)

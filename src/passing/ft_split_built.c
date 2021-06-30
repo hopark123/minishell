@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_built.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/25 18:33:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 21:19:49 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+
 
 int	ft_split_built(t_built *built, char *str)
 {
