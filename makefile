@@ -6,14 +6,14 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/06/29 20:24:17 by hjpark           ###   ########.fr        #
+#    Updated: 2021/06/29 21:01:37 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-CFLAGS = -O2 -lreadline -lncurses
+CFLAGS = -O2 -lncurses
 #CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS = -g3 -fsanitize=address
@@ -30,6 +30,7 @@ OBJ_DIR = obj
 INCLUDE = $(wildcard $(INC_DIR)/*.h)
 ENGINE = $(wildcard $(ENGINE_DIR)/*.c)
 PASSING = $(wildcard $(PASSING_DIR)/*.c)
+
 UTIL = $(wildcard $(UTIL_DIR)/*.c)
 
 vpath %.c \

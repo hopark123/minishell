@@ -13,13 +13,13 @@ char	*ft_delenv(t_list *list, char *str);
 void	ft_show_env_list(t_list *list);
 char	*ft_getenv(t_list *list, const char *varname, int varlen);
 int		*ft_envswap(t_built *built, t_list *env_list);
-int	ft_execute(t_built *built, t_list *env_list);
+int		ft_execute(t_built *built, t_list *env_list);
 int		ft_builtin(t_built *temp_b, t_list *env_list);
 
 ///////////////passing
 int		ft_split_built(t_built *built, char *str);
 t_list	*ft_split2(const char *str, const char c);
-int	ft_listjoin(t_built *built);
+int		ft_listjoin(t_built *built);
 
 ///////////////util
 t_built	*ft_builtndup(t_list *list);

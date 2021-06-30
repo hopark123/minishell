@@ -85,7 +85,7 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order)
 		ft_perror("Fork error:");
 		return (EXIT_FAILURE);
 	}
-	if (pid == 0) //자식
+	if (pid == 0)
 	{
 		fprintf(stderr, "ppid : %d, pgid : %d\n", getppid(), getpgid(pid));
 		g_mini.pip[0] = dup(STDIN);//init global pipe for redirection
@@ -94,7 +94,7 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order)
 		close_pip_child(fd, order - 1, order);
 		exit(ft_execute(built, env_list));
 	}
-	else // 부모
+	else 
 	{
 		close_pip_parent(fd, order);
 		w_pid = waitpid(pid, &w_status, WUNTRACED);
