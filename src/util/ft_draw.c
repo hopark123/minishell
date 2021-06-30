@@ -32,9 +32,9 @@ void	draw2(void)
 {
 	char	*pwd;
 
-	// pwd = getcwd(0, BUFFER_SIZE);
-	// ft_putstr_fd(pwd, 1, "\x1b[32m");
-	// free(pwd);
+	pwd = getcwd(0, BUFFER_SIZE);
+	ft_putstr_fd(pwd, 1, "\x1b[32m");
+	free(pwd);
 	ft_putstr_fd("$ ", 1, "\x1b[32m");
 }
 

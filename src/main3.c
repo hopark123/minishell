@@ -7,10 +7,9 @@ void	loop(t_list *env_list)
 	t_built	*temp;
 	char	*c;
 	char	*temp2;
-	
-	status = SUCCESS;
 
-	while (status)
+	status = SUCCESS;
+	while (1)
 	{
 		draw2();
 		ft_signal();
