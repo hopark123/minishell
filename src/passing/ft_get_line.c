@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/30 20:43:03 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:45:55 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_getchar(int *cursor, int *len, int n)
 	tputs(tgetstr("ic", NULL), 1, ft_putchar_tc);
 	(*cursor)++;
 	(*len)++;
-	ft_putchar_fd((char)n, STDOUT, "\x1b[34m");
+	ft_putchar_fd((char)n, STDOUT, 0);
 	tputs(tgetstr("ip", NULL), 1, ft_putchar_tc);
 	tputs(tgetstr("ei", NULL), 1, ft_putchar_tc);
 	g_mini.line = ft_add_char(g_mini.line, (char)n, (*cursor));

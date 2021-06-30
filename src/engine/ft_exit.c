@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/30 17:43:30 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:52:18 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_exit(t_built *built)
 	list = list->next;
 	if (list->next && !list->next->next)
 	{
-		if (ft_is_num(list->next->str))
+		if (ft_is_num(list->next->str) == SUCCESS)
 			exit(ft_atoi(list->next->str));
 		else
 		{
