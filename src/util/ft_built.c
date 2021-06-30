@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 20:23:07 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:27:46 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_built	*ft_builtndup(t_list *list)
 	t_built		*res;
 
 	if (!ft_malloc(&res, sizeof(t_built)))
-		return (ERROR);
+		return (0);
 	res->command = list;
 	res->next = 0;
 	res->prev = 0;
