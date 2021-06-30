@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:17:04 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/30 15:04:58 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 17:56:34 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	ft_init_term(void)
 		return ;
 	tcgetattr(STDIN, &g_mini.backup);
 	tcgetattr(STDIN, &g_mini.term);
-	g_mini.term.c_lflag &= ~ICANON;    // non-canonical input 설정
-	g_mini.term.c_lflag &= ~ECHO;      // 입력 시 터미널에 보이지 않게
-	g_mini.term.c_cc[VMIN] = 1;        // 최소 입력 버퍼 크기
-	g_mini.term.c_cc[VTIME] = 0;       //버퍼 비우는 시간 (timeout)
+	g_mini.term.c_lflag &= ~ICANON;
+	g_mini.term.c_lflag &= ~ECHO;
+	g_mini.term.c_cc[VMIN] = 1;
+	g_mini.term.c_cc[VTIME] = 0;
 	tcsetattr(STDIN, TCSANOW, &g_mini.term);
 	ft_init_termcap();
 }

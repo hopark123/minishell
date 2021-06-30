@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/06/29 21:01:37 by hjpark           ###   ########.fr        #
+#    Updated: 2021/06/30 20:13:42 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,26 +24,30 @@ INC_DIR = include
 ENGINE_DIR = $(SRC_DIR)/engine
 UTIL_DIR = $(SRC_DIR)/util
 PASSING_DIR = $(SRC_DIR)/passing
-UTIL_DIR = $(SRC_DIR)/util
+# TERM_DIR = $(SRC_DIR)/term
 OBJ_DIR = obj
 
 INCLUDE = $(wildcard $(INC_DIR)/*.h)
 ENGINE = $(wildcard $(ENGINE_DIR)/*.c)
 PASSING = $(wildcard $(PASSING_DIR)/*.c)
-
 UTIL = $(wildcard $(UTIL_DIR)/*.c)
+# TERM = $(wildcard $(TERM_DIR)/*.c)
+
 
 vpath %.c \
 	$(SRC_DIR) \
-	$(UTIL_DIR) \
-	$(PASSING_DIR)\
 	$(ENGINE_DIR) \
+	$(PASSING_DIR)\
+	$(UTIL_DIR) \
+	# $(TERM_DIR) \
+
 
 SRC = \
 	$(ENGINE) \
-	$(UTIL) \
 	$(PASSING)\
+	$(UTIL) \
 	main3.c
+	# $(TERM) \
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 22:25:32 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:17:15 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,24 @@ char	**ft_listtochar(t_list *list)
 	}
 	res[i] = 0;
 	return (res);
+}
+
+void	ft_listadd_front(t_list **list, t_list **new)
+{
+	if ((*list) == 0 && (*new) == 0)
+		return ;
+	if ((*list) == 0)
+	{
+		(*new)->next = (*new);
+		(*new)->prev = (*new);
+		(*list) = (*new);
+	}
+	else
+	{
+		(*list)->prev->next = (*new);
+		(*new)->prev = (*list)->prev;
+		(*list)->prev = (*new);
+		(*new)->next = *list;
+		(*list) = (*new);
+	}
 }

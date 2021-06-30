@@ -51,23 +51,25 @@ void	ft_sigint2(int code);
 void	ft_signal2(void);
 
 
+void	ft_listadd_front(t_list **list, t_list **new);
 int		ft_num_len(int num);
 
-
+int		ft_putchar_tc(int tc);
+void	ft_getchar(int *cursor, int *len, int n);
 void	ft_get_line(void);
 void	ft_left_arrow(int *cursor, int *len);
 void	ft_right_arrow(int *cursor, int *len);
-void	ft_up_arrow(int *cursor, int *len);
-void	ft_down_arrow(int *cursor, int *len);
 void	ft_backspace(int *cursor, int *len);
 
-
-
-
+void	ft_add_history(void);
+void	ft_up_arrow(int *cursor, int *len);
+void	ft_down_arrow(int *cursor, int *len);
 
 void	ft_init_term(void);
 void	ft_reset_term(void);
 void	ft_init_termcap(void);
+
+
 
 
 typedef struct s_mini
@@ -78,6 +80,10 @@ typedef struct s_mini
 	struct termios	term;
 	struct termios	backup;
 
+	int			len;
+	int			cursor;
+	t_list		*history;
+	t_list		*head;
 	char		*cm;
 	char		*ce;
 }				t_mini;
