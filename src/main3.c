@@ -9,7 +9,7 @@ void	loop(t_list *env_list)
 	char	*temp2;
 
 	status = SUCCESS;
-	while (1)
+	while (!ft_strncmp(g_mini.line, "exit", 4))
 	{
 		draw2();
 		ft_signal();
