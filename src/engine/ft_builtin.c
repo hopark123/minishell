@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/29 19:58:48 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 17:39:20 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_builtin(t_built *built, t_list *env_list)
 	int		res;
 
 	if (!built || !built->command)
-		return (0);
+		return (EXIT_FAILURE);
 	if (ft_strncmp(built->command->str, "echo", 4))
 		res = ft_echo(built);
 	else if (ft_strncmp(built->command->str, "cd", 2))
@@ -33,9 +33,7 @@ int	ft_builtin(t_built *built, t_list *env_list)
 	else if (ft_strncmp(built->command->str, "exit", 4))
 		res = ft_exit(built);
 	else
-	{
 		res = ft_execve(built, env_list);
-	}
 	return (res);
 }
 

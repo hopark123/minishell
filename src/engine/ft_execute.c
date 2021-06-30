@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/29 20:23:19 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:16:30 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,50 +27,58 @@ int	ft_execute(t_built *built, t_list *env_list)
 	int		fd[2];
 	int		tempout;
 	int		tempin;
+	int		status;
 
 	if (!built || !built->command || !built->command->str)
-		return (1);
+		return (EXIT_SUCCESS);
 	tempin = dup(STDIN);
 	tempout = dup(STDOUT);
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
 	// test_print_passing(built);
 	temp = ft_builtndup(del_pipe_col(built));
-	test_print_passing(built);
+	// test_print_passing(built);
 	ft_split_built(temp, "><");
 	ft_del_lastblank(built);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
-	ft_execute2(temp, env_list, fd);
+	status = ft_execute2(temp, env_list, fd);
 	ft_close(fd[0]);
 	ft_close(fd[1]);
 	dup2(tempout, STDOUT);
 	dup2(tempin, STDIN);
 	// ft_builtclear(&temp);
-	return (1);
+	return (status);
 }
 
 
 int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 {
+	int	res;
 
 	if (!built || !built->command || !built->command->str)
-		return (0);
+		return (EXIT_SUCCESS);
 	if (built->next)
-		ft_execute2(built->next, env_list, fd);
-	if (ft_strncmp(built->command->str, ">", 1))
-		ft_redirect(built, "TRUNC", fd);
-	else if (ft_strncmp(built->command->str, ">>", 2))
-		ft_redirect(built, "APPEND", fd);
-	else if (ft_strncmp(built->command->str, "<", 1))
-		ft_redirect2(built, fd);
-	else if (ft_strncmp(built->command->str, "<<", 2))
-		ft_redirect3(built, fd);
-	else
 	{
-		ft_builtin(built, env_list);
+		res = ft_execute2(built->next, env_list, fd);
+		if (res == ERROR || res == REDIRECTION_ERROR)
+		{
+			if (res == REDIRECTION_ERROR)
+				ft_perror(0, "syntax error near unexpected token");
+			return (res);
+		}
 	}
-	return (SUCCESS);
+	if (ft_strncmp(built->command->str, ">", 1))
+		res = ft_redirect(built, "TRUNC", fd);
+	else if (ft_strncmp(built->command->str, ">>", 2))
+		res = ft_redirect(built, "APPEND", fd);
+	else if (ft_strncmp(built->command->str, "<", 1))
+		res = ft_redirect2(built, fd);
+	else if (ft_strncmp(built->command->str, "<<", 2))
+		res = ft_redirect3(built, fd);
+	else
+		res = ft_builtin(built, env_list);
+	return (res);
 }
 
 

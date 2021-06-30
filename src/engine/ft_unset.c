@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:20:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/22 21:31:09 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 18:08:27 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	ft_unset(t_built *built, t_list *env_list)
 			ft_delenv(env_list, i->str);
 		i = i->next;
 	}
-	return (1);
+	return (SUCCESS);
 }

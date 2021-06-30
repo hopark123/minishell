@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:40:10 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/22 14:10:28 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 18:08:59 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_env(t_built *built, t_list *env_list)
 		return (ERROR);
 	}
 	ft_show_env_list(env_list);
-	return (1);
+	return (SUCCESS);
 }

@@ -83,8 +83,7 @@ void	loop(t_list *env_list)
 	char	*temp2;
 	
 	status = SUCCESS;
-
-	while (status)
+	while (1)
 	{
 		draw2();
 		ft_signal();
@@ -100,6 +99,7 @@ void	loop(t_list *env_list)
 			built = ft_parse(g_mini.line, env_list);
 			status = ft_shell(built, env_list);
 		}
+		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(status));
 	}
 }
 

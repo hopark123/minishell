@@ -47,14 +47,14 @@ static void	do_piping(int pip_in, int pip_out)
 	if (pip_in != -1)
 	{
 		if (dup2(pip_in, STDIN) < 0)
-			perror("pipe_in:error");
+			ft_error("pipe_in: dup2 error");
 		if (pip_in > 0)
 			close(pip_in);
 	}
 	if (pip_out != -1)
 	{
 		if (dup2(pip_out, STDOUT) < 0)
-			perror("pipe_out:error");
+			ft_error("pipe_in: dup2 error");
 		if (pip_out == 0 || pip_out > 1)
 			close(pip_out);
 	}
@@ -81,13 +81,9 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order)
 
 	pid = fork();
 	if (pid < 0)
-	{
-		ft_perror("Fork error:");
-		return (EXIT_FAILURE);
-	}
+		ft_error("Fork error");
 	if (pid == 0) //자식
 	{
-		fprintf(stderr, "ppid : %d, pgid : %d\n", getppid(), getpgid(pid));
 		g_mini.pip[0] = dup(STDIN);//init global pipe for redirection
 		g_mini.pip[1] = dup(STDOUT);
 		do_pipe_by_order(order, fd);
