@@ -13,7 +13,7 @@ static int	run_subshell(t_built **built, t_list *env_list)
 	fd = init_pipe(size);
 	if (!fd)
 		return (-1);
-	while (*built && order <= size && !status)
+	while (*built && order <= size)
 	{
 		status = ft_subshell(*built, env_list, fd, order);
 		*built = (*built)->next;
@@ -30,8 +30,8 @@ int	ft_shell(t_built *built, t_list *env_list)
 	int	order;
 	int	size;
 
-	status = 0;
-	while (built && !status)
+	status = SUCCESS;
+	while (built && status == SUCCESS)
 	{
 		if (built->next && built->next->command->str[0] == '|')
 		{

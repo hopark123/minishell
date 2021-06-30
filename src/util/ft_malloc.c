@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:59 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/18 15:35:00 by hopark           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:43:13 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ t_bool	ft_malloc(void *target, int size)
 	*pt = malloc(size);
 	if (*pt == NULLPTR)
 		return (FALSE);
-	return (SUCCESS);
+	return (1);
 }

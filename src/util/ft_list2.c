@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 22:25:32 by suhong           ###   ########.fr       */
+/*   Updated: 2021/06/30 20:33:22 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**ft_listtochar(t_list *list)
 		n++;
 	}
 	if (!ft_malloc(&res, sizeof(char *) * (n + 1)))
-		return (ERROR);
+		return (0);
 	i = 0;
 	while (i < n)
 	{
