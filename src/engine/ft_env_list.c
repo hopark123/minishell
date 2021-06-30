@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/21 18:02:38 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/06/30 18:07:48 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ int	ft_add_env_list(t_list **list, char *id, char *str)
 	t_list	*tmp;
 
 	if (!id)
-		return (0);
+		return (ERROR);
 	if (!str)
 		str = ft_strndup("", 1);
 	if (!str)
-		return (0);
+		return (ERROR);
 	ft_delenv(*list, id);
 	tmp = ft_listnew(str, id);
 	if (!tmp)
 	{
 		free(id);
 		free(str);
-		return (0);
+		return (ERROR);
 	}
 	ft_listadd_tail(list, &tmp);
-	return (1);
+	return (SUCCESS);
 }
 
 char	*ft_delenv(t_list *list, char *str)

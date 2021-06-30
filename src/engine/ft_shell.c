@@ -8,11 +8,12 @@ static int	run_subshell(t_built **built, t_list *env_list)
 	int	status;
 
 	order = 0;
+	status = 0;
 	size = count_pipe(*built);
 	fd = init_pipe(size);
 	if (!fd)
 		return (-1);
-	while (*built && order <= size)
+	while (*built && order <= size && !status)
 	{
 		status = ft_subshell(*built, env_list, fd, order);
 		*built = (*built)->next;
@@ -29,16 +30,15 @@ int	ft_shell(t_built *built, t_list *env_list)
 	int	order;
 	int	size;
 
-	status = 1;
-	while (built)
+	status = 0;
+	while (built && !status)
 	{
 		if (built->next && built->next->command->str[0] == '|')
 		{
-			run_subshell(&built, env_list);
+			status = run_subshell(&built, env_list);
 		}
 		else
 		{
-			fprintf(stderr, "promptpid : %d, pgid : %d\n", getpid(), getpgid(getpid()));
 			status = ft_execute(built, env_list);
 			built = built->next;
 		}

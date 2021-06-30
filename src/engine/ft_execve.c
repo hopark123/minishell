@@ -1,33 +1,52 @@
 #include "head.h"
 
-int	check_file_exist(char *name)
+static char	*judge_execfile(char *str)
 {
 	struct stat	sb;
-
-	return (stat(name, &sb));
+	char	*command;
+	
+	if (!str)
+		return (0);
+	command = ft_strndup(str, ft_strlen(str));
+	if (!command)
+		ft_error("malloc error");
+	if (stat(command, &sb) == -1)
+		ft_perror(command, 0);
+	else if (S_ISDIR(sb.st_mode))
+		ft_perror(command, "is a Directory");
+	else if (!(sb.st_mode & S_IEXEC))
+		ft_perror(command, "Permission denied");
+	else
+		return (command);
+	free(command);
+	return (0);
 }
 
-static char	*choose_bin(char *str1, char *str2, char *str3)
+static char	*judge_command(char *str)
 {
-	if (check_file_exist(str1) == -1)
+	char	*bin;
+	char	*ubin;
+	struct stat	sb;
+
+	if (!str)
+		return (0);
+	bin = ft_strjoin("/bin/", str);
+	ubin = ft_strjoin("/usr/bin/", str);
+	if (!bin || !ubin)
+		ft_error("malloc error");
+	if (stat(bin, &sb) == -1)
 	{
-		free(str1);
-		if (check_file_exist(str2) == -1)
+		free(bin);
+		if (stat(ubin, &sb) == -1)
 		{
-			free(str2);
-			if (check_file_exist(str3) == -1)
-			{
-				//실행파일 없음 에러.
-				return (0);
-			}
-			return (str3);
+			free(ubin);
+			ft_perror(str, "command not found");
+			return (0);
 		}
-		free(str3);
-		return (str2);
+		return (ubin);
 	}
-	free(str2);
-	free(str3);
-	return (str1);
+	free(ubin);
+	return (bin);
 }
 
 static char	**change_content(char **str)
@@ -43,16 +62,17 @@ static char	**change_content(char **str)
 	{
 		if (str[i][0] == '~')
 		{
-			join = getenv("HOME");
-			tmp = ft_strjoin(join, &str[i][1]);
+			tmp = ft_strjoin(getenv("HOME"), &str[i][1]);
 			free(str[i]);
-			free(join);
 			str[i] = tmp;
 		}
 		i++;
 	}
 	tmp = str[0];
-	str[0] = choose_bin(ft_strjoin("/bin/", tmp), ft_strjoin("/usr/bin/", tmp), ft_strndup(tmp, ft_strlen(tmp)));
+	if (ft_strchr(tmp, '/'))
+		str[0] = judge_execfile(tmp);
+	else
+		str[0] = judge_command(tmp);
 	free(tmp);
 	return (str);
 }
@@ -64,24 +84,21 @@ int	ft_execve(t_built *built, t_list *env_list)
 	int	status;
 	char	**argv;
 	char	**envp;
-	int		t_pip[2];
 	
 	ft_del_blank3(built);
 	argv = change_content(ft_listtochar(built->command));
 	envp = ft_listtochar(env_list);
 	pid = fork();
 	if (pid < 0)
-		return (-1);
+		ft_error("fork error");
 	else if (pid == 0)
 	{
+		if (!argv[0])
+			exit(127);
 		if (g_mini.pip[0] > 0)
 			dup2(g_mini.pip[0], STDIN);
-		status = execve(argv[0], argv, envp);
-		if (status < 0)
-		{
-			perror("error");
-			return (-1);
-		}
+		if (execve(argv[0], argv, envp) < 0)
+			ft_error("execve error");
 	}
 	else
 	{
@@ -91,5 +108,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			w_pid = waitpid(pid, &status, WUNTRACED);
 	}
-	return (1);
+	ft_free2(argv, ft_strlen2(argv));
+	ft_free2(envp, ft_strlen2(envp));
+	return (WEXITSTATUS(status));
 }
