@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 15:06:49 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 15:08:37 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static t_list	*del_pipe_col(t_built *built)
 {
 	if (!built->command || !built->command->next)
 	{
-		if (ft_strchr("|;", built->command->str[0] && !built->command->next)
-			ft_builtdelone(built);
+		// if (ft_strchr("|;", built->command->str[0] && !built->command->next)
+		// 	ft_free(built->command->str);
 		return (built->command);
 	}
 	if (ft_strchr("|;", built->command->str[0]))
