@@ -9,7 +9,7 @@ void	loop(t_list *env_list)
 	char	*temp2;
 
 	status = SUCCESS;
-	while (!ft_strncmp(g_mini.line, "exit", 4))
+	while (1)
 	{
 		draw2();
 		ft_signal();
@@ -26,7 +26,6 @@ void	loop(t_list *env_list)
 		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(status));
 	}
 }
-
 void	ft_init_mini(void)
 {
 	g_mini.history = ft_listnew(0, 0);

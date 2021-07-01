@@ -6,6 +6,6 @@
 
 
 
-void	ft_builtclear(t_built **built);
+void	ft_builtdelone(t_list **built);
 
 #endif
