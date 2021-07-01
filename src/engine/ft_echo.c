@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/30 18:00:01 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 15:16:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int	ft_echo(t_built *built)
 	if (list->next && ft_strncmp(list->next->str, " ", 1))
 	{
 		list = list->next->next;
-		if (ft_strncmp(list->str, "-n", 2) && list->next)
+		while (ft_strncmp2(list->str, "-", 1) && list->next)
 		{
-			list = list->next;
-			n_flag = 1;
+			if (ft_strncmp(list->str, "-n", 2))
+				n_flag = 1;
+			list = list->next->next;
 		}
 		while (list)
 		{

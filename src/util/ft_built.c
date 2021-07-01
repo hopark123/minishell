@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/01 15:06:27 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 16:02:46 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_built	*ft_builtndup(t_list *list)
 {
 	t_built		*res;
 
-	if (!ft_malloc(&res, sizeof(t_built)))
+	if (!list || !ft_malloc(&res, sizeof(t_built)))
 		return (0);
 	res->command = list;
 	res->next = 0;
@@ -44,7 +44,7 @@ void	ft_builtclear(t_built **built)
 	*built = 0;
 }
 
-void	ft_builtdelone(t_list **built)
+void	ft_builtdelone(t_built **built)
 {
 	if ((*built) == 0)
 		return ;
@@ -54,4 +54,19 @@ void	ft_builtdelone(t_list **built)
 		(*built)->prev->next = (*built)->next;
 	ft_listclear(&((*built)->command));
 	(*built) = 0;
+}
+
+int	ft_built_cnt(t_built *built)
+{
+	t_built	*temp;
+	int		i;
+
+	i = 0;
+	temp = built;
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/01 14:38:07 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 15:25:19 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ int	ft_builtin(t_built *built, t_list *env_list)
 		res = ft_execve(built, env_list);
 	return (res);
 }
-
