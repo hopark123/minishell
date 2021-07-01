@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 16:42:35 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 16:48:34 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	ft_execute(t_built *built, t_list *env_list)
 	tempout = dup(STDOUT);
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
-	test_print_passing(built);
+	// test_print_passing(built);
 	if (!(list = del_pipe_col(built)))
 		return (REDIRECTION_ERROR);
-	test_print_passing(built);
+	// test_print_passing(built);
 	temp = ft_builtndup(list);
 	ft_split_built(temp, "><");
 	ft_del_lastblank(built);
