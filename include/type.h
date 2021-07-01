@@ -61,6 +61,7 @@ typedef struct s_mini
 {
 	int			pip[2];
 	int			signal;
+	int			status;
 	char		*line;
 	struct termios	term;
 	struct termios	backup;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/01 15:06:27 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 15:24:12 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_builtclear(t_built **built)
 	*built = 0;
 }
 
-void	ft_builtdelone(t_list **built)
+void	ft_builtdelone(t_built **built)
 {
 	if ((*built) == 0)
 		return ;

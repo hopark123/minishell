@@ -1,14 +1,13 @@
 #include "head.h"
 
+// int	loop(t_list *env_list)
 void	loop(t_list *env_list)
 {
 	t_built	*built;
-	int		status;
 	t_built	*temp;
 	char	*c;
 	char	*temp2;
 
-	status = SUCCESS;
 	while (1)
 	{
 		draw2();
@@ -19,12 +18,14 @@ void	loop(t_list *env_list)
 		ft_get_line();
 		ft_reset_term();
 		if (g_mini.line)
+		// if (get_next_line(STDIN, &g_mini.line))
 		{
 			built = ft_parse(g_mini.line, env_list);
-			status = ft_shell(built, env_list);
+			ft_shell(built, env_list);
 		}
-		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(status));
+		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(g_mini.status));
 	}
+	// return (status);
 }
 void	ft_init_mini(void)
 {
@@ -39,10 +40,12 @@ void	ft_init_mini(void)
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
+	// int	status;
 
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);
+	// return (status);
 }

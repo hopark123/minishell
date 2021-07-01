@@ -41,7 +41,7 @@ int	get_pipe_size(int **pipe);
 ///////////////shell
 int	ft_execve(t_built *built, t_list *env_list);
 int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order);
-int	ft_shell(t_built *built, t_list *env_list);
+void	ft_shell(t_built *built, t_list *env_list);
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
 int		ft_add_env_list(t_list **list, char *id, char *str);

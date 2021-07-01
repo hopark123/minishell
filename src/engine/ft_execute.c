@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 15:08:37 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 16:41:20 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static t_list	*del_pipe_col(t_built *built)
 		return (built->command);
 	}
 	if (ft_strchr("|;", built->command->str[0]))
+	{
 		return (built->command->next->next);
+	}
 	return (built->command);
 }
 
@@ -39,7 +41,7 @@ int	ft_execute(t_built *built, t_list *env_list)
 	tempout = dup(STDOUT);
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
-	// test_print_passing(built);
+	test_print_passing(built);
 	temp = ft_builtndup(del_pipe_col(built));
 	// test_print_passing(built);
 	ft_split_built(temp, "><");
@@ -62,7 +64,6 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	test_print_passing(built);
 	if (built->next)
 	{
 		res = ft_execute2(built->next, env_list, fd);
