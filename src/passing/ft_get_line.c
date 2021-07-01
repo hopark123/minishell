@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 21:04:46 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 22:02:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_get_line(void)
 	n = 0;
 	while ((k = read(STDIN, &n, sizeof(int))) > 0)
 	{
-		
 		if (n == LEFT_ARROW && g_mini.cursor > 0)
 			ft_left_arrow(&g_mini.cursor, &g_mini.len);
 		else if (n == RIGHT_ARROW && g_mini.cursor < g_mini.len)
@@ -58,7 +57,7 @@ void	ft_get_line(void)
 			ft_up_arrow(&g_mini.cursor, &g_mini.len);
 		else if (n == DOWN_ARROW)
 			ft_down_arrow(&g_mini.cursor, &g_mini.len);
-		else if (ft_isprint(n) || n == '\n')
+		else if (ft_isprint(n) || n == '\ns')
 		{
 			i = 0;
 			c = n;
