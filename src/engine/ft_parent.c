@@ -1,10 +1,22 @@
 #include "head.h"
 
-pid_t	ft_parent(pid_t pid, int *status)
+int	ft_status_control(int status)
 {
-	pid_t	w_pid;
+	int	signal;
 
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	if (WIFSIGNALED(status))
+	{
+		signal = WTERMSIG(status);
+		return (128 + signal);
+	}
+	return (ERROR);
+}
+
+void	ft_parent(pid_t pid, int *status)
+{
+	waitpid(pid, status, WUNTRACED);
 	while (!WIFEXITED(*status) && !WIFSIGNALED(*status))
-		w_pid = waitpid(pid, status, WUNTRACED);
-	return (0);
+		waitpid(pid, status, WUNTRACED);
 }

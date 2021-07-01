@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 19:06:41 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 20:59:59 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,8 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 	if (built->next)
 	{
 		res = ft_execute2(built->next, env_list, fd);
-		if (res == ERROR || res == REDIRECTION_ERROR)
-		{
-			if (res == REDIRECTION_ERROR)
-				ft_perror(0, "syntax error near unexpected token");
+		if (res == ERROR)
 			return (res);
-		}
 	}
 	if (ft_strncmp(built->command->str, ">", 1))
 		res = ft_redirect(built, "TRUNC", fd);

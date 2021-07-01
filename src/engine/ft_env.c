@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 20:40:10 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/30 18:08:59 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 21:59:51 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	ft_env(t_built *built, t_list *env_list)
 		printf("we need no arg\n");
 		return (ERROR);
 	}
-	ft_show_env_list(env_list);
+	ft_show_env_list(env_list, 0);
 	return (SUCCESS);
 }

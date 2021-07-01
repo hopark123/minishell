@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/06/30 18:08:10 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 22:00:32 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	print_sorted_env_list(t_list *env_list)
 			node_2 = node_2->next;
 		}
 	}
-	ft_show_env_list (env_list);
+	ft_show_env_list (env_list, "declare -x ");
 	return (SUCCESS);
 }
 

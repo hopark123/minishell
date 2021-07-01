@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 22:02:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 22:06:55 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_get_line(void)
 			ft_up_arrow(&g_mini.cursor, &g_mini.len);
 		else if (n == DOWN_ARROW)
 			ft_down_arrow(&g_mini.cursor, &g_mini.len);
-		else if (ft_isprint(n) || n == '\ns')
+		else if (ft_isprint(n) || n == '\n')
 		{
 			i = 0;
 			c = n;
