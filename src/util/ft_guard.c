@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:06 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/23 19:04:44 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 19:04:56 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ int	ft_guard_next(t_built *built, int n)
 		else
 			return (ERROR);
 	}
-
 	return (SUCCESS);
 }

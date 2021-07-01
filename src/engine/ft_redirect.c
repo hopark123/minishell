@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/06/30 19:39:30 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 19:05:27 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_redirect2(t_built *built, int *fd)
 	t_list	*list;
 	int		temp;
 
-	if (!ft_guard_next(built, 2))
+	if (ft_guard_next(built, 2) == ERROR)
 		return (REDIRECTION_ERROR);
 	list = built->command->next->next;
 	temp = open(list->str, O_RDONLY, S_IRWXU);
@@ -54,7 +54,7 @@ int	ft_redirect3(t_built *built, int *fd)
 
 	if (pipe(g_mini.pip) < 0)
 		ft_error("ft_redirect3: pipe error");
-	if (!ft_guard_next(built, 2))
+	if (ft_guard_next(built, 2) == ERROR)
 		return (REDIRECTION_ERROR);
 	list = built->command->next->next;
 	ft_putstr_fd("start\n", 2, 0);

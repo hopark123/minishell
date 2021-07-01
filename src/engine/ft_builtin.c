@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/01 15:19:53 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 17:19:02 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ int	ft_builtin(t_built *built, t_list *env_list)
 		res = ft_execve(built, env_list);
 	return (res);
 }
-
