@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 16:48:34 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 17:01:47 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static t_list	*del_pipe_col(t_built *built)
 		return (0);
 	}
 	if (ft_strchr("|;", built->command->str[0]))
+	{
 		return (built->command->next->next);
+	}
 	return (built->command);
 }
 

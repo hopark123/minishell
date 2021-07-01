@@ -3,4 +3,6 @@
 
 # include "head.h"
 
+pid_t	ft_parent(pid_t pid, int *status);
+
 #endif

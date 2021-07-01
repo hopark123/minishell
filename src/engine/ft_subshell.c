@@ -94,6 +94,7 @@ int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order)
 	{
 		close_pip_parent(fd, order);
 		w_pid = waitpid(pid, &w_status, WUNTRACED);
+		fprintf(stderr, "pid: %d w_pid: %d\n", pid, w_pid);
 		while (!WIFEXITED(w_status) && !WIFSIGNALED(w_status))
 			w_pid = waitpid(pid, &w_status, WUNTRACED);
 	}
