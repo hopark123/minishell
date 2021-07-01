@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 15:19:41 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 20:36:15 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_get_line(void)
 
 	ft_init_get_line(&g_mini.cursor, &g_mini.len);
 	n = 0;
-	while ((k = read(STDIN, &n, 1)) >= 0)
+	while ((k = read(STDIN, &n, 1)) > 0)
 	{
 		// fprintf(stderr, "\nn : [%d] [%c] | \n", n, (char)n);
 		// fprintf(stderr, "k : [%d]\n", k);

@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 16:41:20 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 18:56:24 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ static t_list	*del_pipe_col(t_built *built)
 {
 	if (!built->command || !built->command->next)
 	{
-		// if (ft_strchr("|;", built->command->str[0] && !built->command->next)
-		// 	ft_free(built->command->str);
 		return (built->command);
 	}
 	if (ft_strchr("|;", built->command->str[0]))
@@ -67,12 +65,8 @@ int	ft_execute2(t_built *built, t_list *env_list, int *fd)
 	if (built->next)
 	{
 		res = ft_execute2(built->next, env_list, fd);
-		if (res == ERROR || res == REDIRECTION_ERROR)
-		{
-			if (res == REDIRECTION_ERROR)
-				ft_perror(0, "syntax error near unexpected token");
+		if (res == ERROR)
 			return (res);
-		}
 	}
 	if (ft_strncmp(built->command->str, ">", 1))
 		res = ft_redirect(built, "TRUNC", fd);
