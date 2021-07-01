@@ -46,7 +46,7 @@ void	ft_shell(t_built *built, t_list *env_list);
 t_list	*ft_init_env_list(char **envp);
 int		ft_add_env_list(t_list **list, char *id, char *str);
 char	*ft_delenv(t_list *list, char *str);
-void	ft_show_env_list(t_list *list);
+void	ft_show_env_list(t_list *list, char *str);
 char	*ft_getenv(t_list *list, const char *varname, int varlen);
 int		*ft_envswap(t_built *built, t_list *env_list);
 int		ft_execute(t_built *built, t_list *env_list);

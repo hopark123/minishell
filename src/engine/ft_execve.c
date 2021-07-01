@@ -80,7 +80,6 @@ static char	**change_content(char **str)
 int	ft_execve(t_built *built, t_list *env_list)
 {
 	pid_t	pid;
-	pid_t	w_pid;
 	int	status;
 	char	**argv;
 	char	**envp;
@@ -104,11 +103,9 @@ int	ft_execve(t_built *built, t_list *env_list)
 	{
 		if (g_mini.pip[1] > 0)
 			dup2(g_mini.pip[1], STDOUT);
-		w_pid = waitpid(pid, &status, WUNTRACED);
-		while (!WIFEXITED(status) && !WIFSIGNALED(status))
-			w_pid = waitpid(pid, &status, WUNTRACED);
+		ft_parent(pid, &status);
 	}
 	ft_free2(argv, ft_strlen2(argv));
 	ft_free2(envp, ft_strlen2(envp));
-	return (WEXITSTATUS(status));
+	return (ft_status_control(status));
 }

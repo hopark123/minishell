@@ -44,12 +44,12 @@ void	ft_init_mini(void)
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
-	// int	status;
 
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
 	loop(env_list);
 	ft_listclear(&env_list);
+	// return (0);
 	return (g_mini.status);
 	// return (status);
 }
