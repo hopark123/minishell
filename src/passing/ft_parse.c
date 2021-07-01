@@ -30,25 +30,12 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	tmp = res;
 	while (tmp)
 	{
-		test_print_passing(res);
 		ft_envswap(tmp, env_list); //>>>>>>>>>>>>>>>>>>> error
-		test_print_passing(res);
-
 		ft_del_quotes(tmp);
-		test_print_passing(res);
-
 		ft_del_blank(tmp);
-		test_print_passing(res);
-
 		ft_del_blank2(tmp);
-		test_print_passing(res);
-
 		ft_listjoin(tmp);
-		test_print_passing(res);
-
 		ft_del_lastblank(tmp);
-		test_print_passing(res);
-
 		tmp = tmp->next;
 	}
 	ft_free(g_mini.line);
