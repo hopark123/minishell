@@ -8,6 +8,6 @@
 
 void	ft_builtdelone(t_built **built);
 int		ft_built_cnt(t_built *built);
-void	ft_quotes(char const *s, int *i, int *flag, char c);
+int	ft_check_syntax(char *str);
 
 #endif
