@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/30 17:39:20 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 14:38:07 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	ft_builtin(t_built *built, t_list *env_list)
 
 	if (!built || !built->command)
 		return (EXIT_FAILURE);
-	if (ft_strncmp(built->command->str, "echo", 4))
-		res = ft_echo(built);
-	else if (ft_strncmp(built->command->str, "cd", 2))
+	if (ft_strncmp(built->command->str, "cd", 2))
 		res = ft_cd(built, env_list);
+	else if (ft_strncmp(built->command->str, "echo", 4))
+		res = ft_echo(built);
 	else if (ft_strncmp(built->command->str, "pwd", 3))
 		res = ft_pwd(built);
 	else if (ft_strncmp(built->command->str, "export", 6))

@@ -19,7 +19,7 @@ static int	run_subshell(t_built **built, t_list *env_list)
 		*built = (*built)->next;
 		order++;
 	}
-	free_pipe(&fd, size);	
+	free_pipe(&fd, size);
 	return (status);
 }
 

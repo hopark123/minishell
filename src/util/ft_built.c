@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/30 20:47:41 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 15:06:27 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,16 @@ void	ft_builtclear(t_built **built)
 		*built = temp;
 	}
 	*built = 0;
+}
+
+void	ft_builtdelone(t_list **built)
+{
+	if ((*built) == 0)
+		return ;
+	if ((*built)->next)
+		(*built)->next->prev = (*built)->prev;
+	if ((*built)->prev)
+		(*built)->prev->next = (*built)->next;
+	ft_listclear(&((*built)->command));
+	(*built) = 0;
 }
