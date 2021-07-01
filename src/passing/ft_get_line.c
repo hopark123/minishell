@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 20:47:21 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 21:04:46 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,8 @@ void	ft_getchar(int *cursor, int *len, int n)
 	(*cursor)++;
 	(*len)++;
 	c = (char)n;
-	// if (ft_isprint(c))
-	// {
-		ft_putchar_fd(c, STDERR, "\x1b[34m");
-		g_mini.line = ft_add_char(g_mini.line, c, (*cursor));
-	// }
-	// c = (char)(n >> 8);
-	// if (ft_isprint(c))
-	// {
-	// 	ft_putchar_fd(c, STDERR, "\x1b[34m");
-	// 	g_mini.line = ft_add_char(g_mini.line, c, (*cursor));
-	// }
-	// c = (char)(n >> 16);
-	// if (ft_isprint(c))
-	// {
-	// 	ft_putchar_fd(c, STDERR, "\x1b[34m");
-	// 	g_mini.line = ft_add_char(g_mini.line, c, (*cursor));
-	// }
-	// c = (char)(n >> 24);
-	// if (ft_isprint(c))
-	// {
-	// 	ft_putchar_fd(c, STDERR, "\x1b[34m");
-	// 	g_mini.line = ft_add_char(g_mini.line, c, (*cursor));
-	// }
+	ft_putchar_fd(c, STDERR, "\x1b[34m");
+	g_mini.line = ft_add_char(g_mini.line, c, (*cursor));
 	tputs(tgetstr("ip", NULL), 1, ft_putchar_tc);
 	tputs(tgetstr("ei", NULL), 1, ft_putchar_tc);
 }
@@ -63,19 +42,12 @@ void	ft_get_line(void)
 	int		k;
 	int		i;
 	int		c;
-// 01101111
-// 01101000
-// 01100011
-// 01100101
+
 	ft_init_get_line(&g_mini.cursor, &g_mini.len);
 	n = 0;
-	while ((k = read(STDIN, &n, sizeof(int))) >= 0)
+	while ((k = read(STDIN, &n, sizeof(int))) > 0)
 	{
-		// ft_isprint(n);
-		// ft_getchar(&g_mini.cursor, &g_mini.len, n);
-	
-		// fprintf(stderr, "\nn : [%d] [%c][%c][%c][%c] | \n", n, a, b, c, d);
-		// fprintf(stderr, "k : [%d] n : [%d]\n", k, n);
+		
 		if (n == LEFT_ARROW && g_mini.cursor > 0)
 			ft_left_arrow(&g_mini.cursor, &g_mini.len);
 		else if (n == RIGHT_ARROW && g_mini.cursor < g_mini.len)
@@ -86,18 +58,14 @@ void	ft_get_line(void)
 			ft_up_arrow(&g_mini.cursor, &g_mini.len);
 		else if (n == DOWN_ARROW)
 			ft_down_arrow(&g_mini.cursor, &g_mini.len);
-		else if (n == EOF)
-			break ;
-		else
+		else if (ft_isprint(n) || n == '\n')
 		{
 			i = 0;
 			c = n;
 			while (i < 4 && c)
 			{
 				c = n >> (8 * i);
-				// !(c = n & (0xFF << (8 * i))) || 
 				c = (char)c;
-				// fprintf(stderr, "[%d][%d][%d][%x]\n", i, n, (char)c, c);
 				if (ft_isprint(c))
 					ft_getchar(&g_mini.cursor, &g_mini.len, c);
 				else if (c == '\n' || c == 4)
