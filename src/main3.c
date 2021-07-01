@@ -17,14 +17,16 @@ void	loop(t_list *env_list)
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
-		if (g_mini.line && ft_check_syntax(g_mini.line) == SUCCESS)
+		if (g_mini.line)
 		{
+			if (ft_check_syntax(g_mini.line))
+				return ;
 			// fprintf(stderr, "[%d]\n", ft_check_syntax(g_mini.line));
 			built = ft_parse(g_mini.line, env_list);
 			ft_shell(built, env_list);
 		}
 		else
-			return ; 
+			return ;
 		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(g_mini.status));
 	}
 	// return (status);
@@ -47,5 +49,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_init_mini();
 	loop(env_list);
 	ft_listclear(&env_list);
-	return (0);
+	// return (0);
+	return (g_mini.status);
+	// return (status);
 }
