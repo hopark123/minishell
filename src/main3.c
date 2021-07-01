@@ -4,12 +4,10 @@
 void	loop(t_list *env_list)
 {
 	t_built	*built;
-	int		status;
 	t_built	*temp;
 	char	*c;
 	char	*temp2;
 
-	status = SUCCESS;
 	while (1)
 	{
 		draw2();
@@ -23,13 +21,12 @@ void	loop(t_list *env_list)
 		// if (get_next_line(STDIN, &g_mini.line))
 		{
 			built = ft_parse(g_mini.line, env_list);
-			status = ft_shell(built, env_list);
+			ft_shell(built, env_list);
 		}
-		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(status));
+		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(g_mini.status));
 	}
 	// return (status);
 }
-
 void	ft_init_mini(void)
 {
 	g_mini.history = ft_listnew(0, 0);
@@ -47,7 +44,6 @@ int	main(int argc, char **argv, char **envp)
 
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
-	// status = loop(env_list);
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (0);

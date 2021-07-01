@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 15:07:12 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/01 15:19:41 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,14 @@ static void	ft_init_get_line(int *cursor, int *len)
 void	ft_get_line(void)
 {
 	int		n;
+	int		k;
 
 	ft_init_get_line(&g_mini.cursor, &g_mini.len);
 	n = 0;
-	while (read(STDIN, &n, sizeof(int)) >= 0)
+	while ((k = read(STDIN, &n, 1)) >= 0)
 	{
+		// fprintf(stderr, "\nn : [%d] [%c] | \n", n, (char)n);
+		// fprintf(stderr, "k : [%d]\n", k);
 		if (n == LEFT_ARROW && g_mini.cursor > 0)
 			ft_left_arrow(&g_mini.cursor, &g_mini.len);
 		else if (n == RIGHT_ARROW && g_mini.cursor < g_mini.len)
