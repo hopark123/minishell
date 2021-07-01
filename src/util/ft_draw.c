@@ -33,9 +33,11 @@ void	draw2(void)
 	char	*pwd;
 
 	pwd = getcwd(0, BUFFER_SIZE);
-	ft_putstr_fd(pwd, 1, "\x1b[32m");
+	// ft_putstr_fd(pwd, 1, "\x1b[32m");
+	ft_putstr_fd(pwd, STDERR, "\x1b[32m");
 	free(pwd);
-	ft_putstr_fd("$ ", 1, "\x1b[32m");
+	// ft_putstr_fd("$ ", 1, "\x1b[32m");
+	ft_putstr_fd("$ ", STDERR, "\x1b[32m");
 }
 
 void	test_print_passing(t_built *built)

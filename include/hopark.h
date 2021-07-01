@@ -7,5 +7,7 @@
 
 
 void	ft_builtdelone(t_built **built);
+int		ft_built_cnt(t_built *built);
+int	ft_check_syntax(char *str);
 
 #endif

@@ -17,12 +17,14 @@ void	loop(t_list *env_list)
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
-		if (g_mini.line)
-		// if (get_next_line(STDIN, &g_mini.line))
+		if (g_mini.line && ft_check_syntax(g_mini.line) == SUCCESS)
 		{
+			// fprintf(stderr, "[%d]\n", ft_check_syntax(g_mini.line));
 			built = ft_parse(g_mini.line, env_list);
 			ft_shell(built, env_list);
 		}
+		else
+			return ; 
 		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(g_mini.status));
 	}
 	// return (status);
