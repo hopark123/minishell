@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/01 15:22:52 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/01 21:49:33 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_exit(t_built *built)
 	list = built->command;
 	if (!list->next)
 	{
-		ft_putstr_fd("exit\n", 1, "\x1b[34m");
+		// ft_putstr_fd("exit\n", 1, "\x1b[34m");
 		exit(0);
 	}
 	list = list->next;
