@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 03:45:45 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 06:11:35 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,24 +89,27 @@ static char	**change_content(char **str)
 	return (str);
 }
 
+static void	make_arg(t_built *built, t_list *env_list, \
+	char ***argv, char ***envp)
+{
+	ft_del_blank3(built);
+	(*argv) = change_content(ft_listtochar(built->command));
+	(*envp) = ft_env_listtochar(env_list);
+}
+
 int	ft_execve(t_built *built, t_list *env_list)
 {
 	int		status;
 	char	**argv;
 	char	**envp;
 
-	ft_del_blank3(built);
-	argv = change_content(ft_listtochar(built->command));
-	envp = ft_env_listtochar(env_list);
+	make_arg(built, env_list, &argv, &envp);
 	g_mini.pid = fork();
-	signal(SIGINT, proc_signal_handler);
-	signal(SIGQUIT, proc_signal_handler);
+	ft_proc_signal();
 	if (g_mini.pid < 0)
 		ft_error("fork error");
 	else if (g_mini.pid == 0)
 	{
-		if (!argv[0])
-			exit(127);
 		if (g_mini.pip[0] > 0)
 			dup2(g_mini.pip[0], STDIN);
 		if (execve(argv[0], argv, envp) < 0)

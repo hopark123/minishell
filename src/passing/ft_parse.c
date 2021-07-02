@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:11:57 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:19:41 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	ft_put_blank(res);
 	ft_split_built(res, "|;");
 	tmp = res;
-	
 	while (tmp)
 	{
 		if (syntaxerror(tmp) == ERROR)

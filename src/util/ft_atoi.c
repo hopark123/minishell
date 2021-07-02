@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:26:12 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 03:17:00 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:37:27 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	ft_sign(int sign)
 
 int	ft_is_num(const char *nptr)
 {
-	int			i;
+	int				i;
 	long long		num;
 	long long		temp;
-	int			sign;
+	int				sign;
 
 	i = 0;
 	num = 0;
@@ -50,36 +50,12 @@ int	ft_is_num(const char *nptr)
 	return (SUCCESS);
 }
 
-// int	ft_atoi(const char *nptr)
-// {
-// 	int				num;
-// 	int				sign;
-// 	int				i;
-// 	int				cnt;
-
-// 	i = 0;
-// 	sign = 1;
-// 	num = 0;
-// 	if (nptr[i] == '+' || nptr[i] == '-')
-// 		if (nptr[i++] == '-')
-// 			sign = -1;
-// 	cnt = i;
-// 	while (ft_isdigit(nptr[i]))
-// 	{
-// 		num = num * 10 + nptr[i] - '0';
-// 		i++;
-// 	}
-// 	if (nptr[i] != 0)
-// 		return (ERROR);
-// 	return (num * sign);
-// }
-
 long long	ft_atoi(const char *nptr)
 {
 	long long			num;
-	int				sign;
-	int				i;
-	int				cnt;
+	int					sign;
+	int					i;
+	int					cnt;
 
 	i = 0;
 	sign = 1;

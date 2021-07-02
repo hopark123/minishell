@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_termcap.c                                       :+:      :+:    :+:   */
+/*   ft_list3.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/02 21:30:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:30:51 by hjpark           ###   ########.fr       */
+/*   Created: 2021/07/03 05:29:58 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/03 05:31:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int putchar_tc(int tc)
+int	ft_list_cnt(t_list *head)
 {
-	write(1, &tc, 1);
-	return (0);
+	t_list	*temp;
+	int		i;
+
+	i = 0;
+	temp = head;
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }

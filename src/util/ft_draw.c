@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:11:38 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:15:27 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ static void	draw_2(void)
 	ft_putstr_fd("                              [)vo2oo_ aa _2oo2o(]                     \
 		        \n", STDERR, "\033[33m");
 	ft_putstr_fd("                              f)no2ooe.\
-		,{Xo2o2(]", 1, "\033[33m");
-	ft_putstr_fd("        @hopark @suhong        \n", 1, "\033[36m");
+		,{Xo2o2(]", STDERR, "\033[33m");
+	ft_putstr_fd("        @hopark @suhong        \n", STDERR, "\033[36m");
 	ft_putstr_fd("                              g {Soo2'j  b-2oo2e'j                   \
-		          \n", 1, "\033[33m");
+		          \n", STDERR, "\033[33m");
 	ft_putstr_fd("                                aaggaj    baggaa            \
-		 \n", 1, "\033[33m");
+		 \n", STDERR, "\033[33m");
 }
 
 void	draw2(void)

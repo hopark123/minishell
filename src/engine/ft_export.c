@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 22:03:00 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:50:59 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static char	**split_equal(char *str)
 	if (!tmp[0] || !tmp[1])
 		ft_error("malloc error");
 	tmp[2] = 0;
-	free(str);
 	return (tmp);
 }
 
