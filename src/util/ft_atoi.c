@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 12:26:12 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:12:28 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 03:17:00 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	ft_sign(int sign)
 int	ft_is_num(const char *nptr)
 {
 	int			i;
-	int			num;
-	int			temp;
+	long long		num;
+	long long		temp;
 	int			sign;
 
 	i = 0;
@@ -44,21 +44,39 @@ int	ft_is_num(const char *nptr)
 		if (nptr[i++] == '-')
 			sign = -1;
 	while (ft_isdigit(nptr[i]))
-	{
-		temp = num;
-		num = num * 10 + nptr[i] - '0';
 		i++;
-		if ((sign != -1 && num < 0) || (temp > num && num != INT_MIN))
-			return (ERROR);
-	}
 	if (nptr[i] != 0)
 		return (ERROR);
 	return (SUCCESS);
 }
 
-int	ft_atoi(const char *nptr)
+// int	ft_atoi(const char *nptr)
+// {
+// 	int				num;
+// 	int				sign;
+// 	int				i;
+// 	int				cnt;
+
+// 	i = 0;
+// 	sign = 1;
+// 	num = 0;
+// 	if (nptr[i] == '+' || nptr[i] == '-')
+// 		if (nptr[i++] == '-')
+// 			sign = -1;
+// 	cnt = i;
+// 	while (ft_isdigit(nptr[i]))
+// 	{
+// 		num = num * 10 + nptr[i] - '0';
+// 		i++;
+// 	}
+// 	if (nptr[i] != 0)
+// 		return (ERROR);
+// 	return (num * sign);
+// }
+
+long long	ft_atoi(const char *nptr)
 {
-	int				num;
+	long long			num;
 	int				sign;
 	int				i;
 	int				cnt;

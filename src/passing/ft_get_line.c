@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 01:18:32 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 02:04:35 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_get_line(void)
 		else if (ft_isprint(n) || n == '\n')
 			if (ft_printchar(&g_mini.cursor, &g_mini.len, n) == SUCCESS)
 				return ;
+		ctrl_d_checker(n);
 		n = 0;
 	}
 }
