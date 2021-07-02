@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 21:26:02 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 22:03:00 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	print_sorted_env_list(t_list *env_list)
 		}
 		i++;
 	}
-	ft_show_env_list (dup, "declare -x ");
+	ft_show_env_list_2(dup, "declare -x ");
 	ft_listclear(&dup);
 	return (SUCCESS);
 }

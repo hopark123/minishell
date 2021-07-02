@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:12:02 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 22:38:58 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_sigint(int code)
 			ft_free(g_mini.line);
 		}
 	}
-	g_mini.status = -1;
+	// g_mini.status = -1;
 }
 
 void	ft_sigquit(int code)
@@ -57,4 +57,29 @@ void	ft_signal(void)
 	signal(SIGINT, ft_sigint);
 	signal(SIGQUIT, ft_sigquit);
 	signal(SIGTERM, ft_sigterm);
+}
+
+void	proc_signal_handler(int signo)
+{
+	if (signo == SIGINT)
+	{
+		ft_putstr_fd("\n", 1, 0);
+		signal(SIGINT, proc_signal_handler);
+	}
+}
+
+void	signal_handler(int signo)
+{
+	if (signo == SIGINT)
+	{
+		ft_putstr_fd("\n", 1, 0);
+		ft_init_get_line(&g_mini.cursor, &g_mini.len);
+		if (ft_strlen(g_mini.line))
+		{
+			fprintf(stderr, "[%s]\n", g_mini.line);
+			ft_free(g_mini.line);
+		}
+		draw2();
+		signal(SIGINT, signal_handler);
+	}
 }
