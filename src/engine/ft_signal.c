@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 01:34:54 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 02:04:16 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,17 @@ void	signal_handler(int signo)
 	if (signo == SIGQUIT)
 	{
 		signal(SIGQUIT, signal_handler);
+	}
+}
+
+void	ctrl_d_checker(int c)
+{
+	if (c == 4)
+	{
+		if (!*g_mini.line)
+		{
+			ft_putstr_fd("exit", 2, 0);
+			exit(0);
+		}
 	}
 }

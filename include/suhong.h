@@ -15,5 +15,6 @@ t_list	*ft_listdup(t_list *list);
 void	ft_show_env_list_2(t_list *list, char *str);
 void	proc_signal_handler(int signo);
 void	signal_handler(int signo);
+void	ctrl_d_checker(int c);
 
 #endif

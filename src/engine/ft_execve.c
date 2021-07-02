@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 00:18:19 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 03:45:45 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 
 	ft_del_blank3(built);
 	argv = change_content(ft_listtochar(built->command));
-	envp = ft_listtochar(env_list);
+	envp = ft_env_listtochar(env_list);
 	g_mini.pid = fork();
 	signal(SIGINT, proc_signal_handler);
 	signal(SIGQUIT, proc_signal_handler);
