@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/07/03 00:03:01 by hjpark           ###   ########.fr       */
-=======
-/*   Updated: 2021/07/03 05:12:22 by suhong           ###   ########.fr       */
->>>>>>> 579f513dce32dc06f0a3274e0f0d558f61512d8d
+/*   Updated: 2021/07/03 05:16:52 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,17 +63,8 @@ int	ft_execute(t_built *built, t_list **env_list)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-<<<<<<< HEAD
 	list = del_pipe_col(built);
 	if (!(list))
-=======
-	// test_print_passing(built);
-	temp_p[0] = dup(STDIN);
-	temp_p[1] = dup(STDOUT);
-	fd[0] = STDIN;
-	fd[1] = STDOUT;
-	if (!(list = del_pipe_col(built)))
->>>>>>> 579f513dce32dc06f0a3274e0f0d558f61512d8d
 		return (REDIRECTION_ERROR);
 	ft_open_execute(temp_p, fd);
 	temp = ft_builtndup(list);
