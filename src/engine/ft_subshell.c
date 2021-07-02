@@ -76,12 +76,11 @@ static void	do_pipe_by_order(int order, int **fd)
 int	ft_subshell(t_built *built, t_list **env_list, int **fd, int order)
 {
 	int	w_status;
-	pid_t	pid;
 
-	pid = fork();
-	if (pid < 0)
+	g_mini.pid = fork();
+	if (g_mini.pid < 0)
 		ft_error("Fork error");
-	if (pid == 0) //자식
+	if (g_mini.pid == 0) //자식
 	{
 		g_mini.pip[0] = dup(STDIN);//init global pipe for redirection
 		g_mini.pip[1] = dup(STDOUT);
@@ -92,7 +91,7 @@ int	ft_subshell(t_built *built, t_list **env_list, int **fd, int order)
 	else 
 	{
 		close_pip_parent(fd, order);
-		ft_parent(pid, &w_status);
+		ft_parent(g_mini.pid, &w_status);
 	}
 	return (ft_status_control(w_status));
 }

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 22:10:46 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 16:43:29 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_getchar(int *cursor, int *len, int n)
 	tputs(tgetstr("ei", NULL), 1, ft_putchar_tc);
 }
 
-static void	ft_init_get_line(int *cursor, int *len)
+void	ft_init_get_line(int *cursor, int *len)
 {
 	if (!ft_malloc(&g_mini.line, sizeof(char)))
 		return ;
