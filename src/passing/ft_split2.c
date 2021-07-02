@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 22:46:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 22:52:39 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ static void	ft_quotes(char const *s, int *i, int *flag, char c)
 	(*flag) = 1;
 	(*i)++;
 }
-
 static int	ft_wordlen(char const *s, char c, int *flag)
 {
 	int			i;
-
 	i = 0;
 	if (ft_strchr("<>;|", s[i]))
 	{
