@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 19:57:14 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 20:00:58 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,7 @@ int	ft_echo(t_built *built)
 		while (list)
 		{
 			ft_putstr_fd(list->str, STDOUT, 0);
-			if (list->next)
-				list = list->next;
-			else
-				break ;
+			list = list->next;
 		}
 	}
 	if (!n_flag)
