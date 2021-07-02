@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 18:31:10 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 18:44:22 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,7 @@ static char	*ft_strswap(t_list **list, char *old, char *new, int oldlen)
 	(*list)->str = res;
 	return (res);
 }
-// echo "$USER2$TE$AE=lol$AT"
-// echo "$USER2"
-// echo "$TE$"
+
 int	*ft_envswap(t_built *built, t_list *env_list)
 {
 	t_list	*temp_l;
