@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:54 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/20 12:57:46 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/02 18:17:54 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	*ft_memcpy(void *dst, const void *src, int n)
 {
 	unsigned char		*s1;
 	const unsigned char	*s2;
+	int					i;
 
 	if (!dst && !src)
 		return (0);
@@ -35,7 +36,8 @@ void	*ft_memcpy(void *dst, const void *src, int n)
 	s2 = src;
 	while (n-- > 0)
 	{
-		*s1++ = *s2++;
+		s1[i] = s2[i];
+		i++;
 	}
 	return (dst);
 }
