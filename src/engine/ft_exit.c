@@ -6,11 +6,16 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 01:41:44 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:15:00 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+static int	ll_cut(long long n)
+{
+	return ((int)(n % 256));
+}
 
 int	ft_exit(t_built *built)
 {
@@ -25,8 +30,10 @@ int	ft_exit(t_built *built)
 	list = list->next;
 	if (list->next && !list->next->next)
 	{
+		int debug = ft_is_num(list->next->str);
+		fprintf(stderr, "isnum:%d\n", debug);
 		if (ft_is_num(list->next->str) == SUCCESS)
-			exit(ft_atoi(list->next->str));
+			exit(ll_cut(ft_atoi(list->next->str)));
 		else
 		{
 			ft_putstr_fd("minish: exit: ", STDERR, "\x1b[31m");
@@ -36,6 +43,7 @@ int	ft_exit(t_built *built)
 	}
 	else
 		ft_putstr_fd("exit\nminish: exit: too many arguments\n", STDERR, "\x1b[31m" );
+	exit(255);
 	return (EXIT_FAILURE);
 }
 
