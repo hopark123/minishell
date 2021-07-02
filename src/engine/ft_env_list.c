@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 15:05:16 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 17:42:07 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_list	*ft_init_env_list(char **envp)
 			return (0);
 		if (!env_str[1])
 			env_str[1] = ft_strndup("", 1);
-		tmp = ft_listnew(env_str[1], env_str[0]);
+		tmp = ft_listnew2(env_str[1], env_str[0]);
 		if (!tmp)
 		{
 			ft_listclear(&list);
@@ -49,44 +49,44 @@ int	ft_add_env_list(t_list **list, char *id, char *str)
 	if (!str)
 		str = ft_strndup("", 1);
 	if (!str)
-		return (ERROR);
-	ft_delenv(*list, id);
-	tmp = ft_listnew(str, id);
+		ft_error("malloc error");
+	ft_delenv(list, id);
+	tmp = ft_listnew2(str, id);
 	if (!tmp)
-	{
-		free(id);
-		free(str);
-		return (ERROR);
-	}
+		ft_error("malloc error");
 	ft_listadd_tail(list, &tmp);
 	return (SUCCESS);
 }
 
-char	*ft_delenv(t_list *list, char *str)
+void	ft_delenv(t_list **list, char *str)
 {
-	char	*tmp;
+	t_list	*i;
+	t_list	*tmp;
+	t_list	*prev;
 
-	while (list)
+	i = *list;
+	while (i)
 	{
-		if (ft_strncmp(list->id, str, ft_strlen(str)))
+		tmp = i->next;
+		if (ft_strncmp(i->id, str, ft_strlen(str)))
 		{
-			tmp = list->str;
-			ft_listdelone(&list);
-			return (tmp);
+			fprintf(stderr, "deladdr: %p\n", i);
+			ft_listdelone(&i);
 		}
-		list = list->next;
+		else
+			prev = i;
+		i = tmp;
 	}
-	return (0);
+	while (prev->prev)
+		prev = prev->prev;
+	fprintf(stderr, "startaddr: %p\n", prev);
+	*list = prev;
 }
 
 void	ft_show_env_list(t_list *list, char *str)
 {
-	int i;
-
-	i = 0;
 	while (list)
 	{
-		i++;
 		if (str)
 			ft_putstr_fd(str, 1, 0);
 		ft_putstr_fd(list->id, 1, 0);

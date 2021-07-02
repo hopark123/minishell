@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/30 20:47:49 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 18:34:56 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,22 @@ void	ft_listadd_front(t_list **list, t_list **new)
 		(*new)->next = *list;
 		(*list) = (*new);
 	}
+}
+
+t_list	*ft_listdup(t_list *list)
+{
+	t_list	*copy;
+	t_list	*dup;
+	t_list	*add;
+
+	dup = list;
+	while (dup)
+	{
+		add = ft_listnew2(ft_strndup(dup->str, ft_strlen(dup->str)), ft_strndup(dup->id, ft_strlen(dup->id)));
+		if (!add)
+			ft_error("malloc error");
+		ft_listadd_back(&copy, &add);
+		dup = dup->next;
+	}
+	return (copy);
 }

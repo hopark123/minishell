@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 20:59:59 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 17:51:49 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_list	*del_pipe_col(t_built *built)
 	return (built->command);
 }
 
-int	ft_execute(t_built *built, t_list *env_list)
+int	ft_execute(t_built *built, t_list **env_list)
 {
 	t_built	*temp;
 	t_list	*list;
@@ -66,7 +66,7 @@ int	ft_execute(t_built *built, t_list *env_list)
 }
 
 
-int	ft_execute2(t_built *built, t_list *env_list, int *fd)
+int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
 

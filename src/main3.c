@@ -24,13 +24,12 @@ void	loop(t_list *env_list)
 				if (ft_check_syntax(g_mini.line) == SUCCESS)
 				{
 					built = ft_parse(g_mini.line, env_list);
-					ft_shell(built, env_list);
+					ft_shell(built, &env_list);
 				}
 			}
 		}
 		else
 			g_mini.status = 0;
-		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(g_mini.status));
 	}
 	// return (status);
 }

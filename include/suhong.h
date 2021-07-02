@@ -10,5 +10,7 @@
 
 void	ft_parent(pid_t pid, int *status);
 int	ft_status_control(int status);
+t_list	*ft_listnew2(char *str, char *id);
+t_list	*ft_listdup(t_list *list);
 
 #endif

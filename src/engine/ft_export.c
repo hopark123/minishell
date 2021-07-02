@@ -6,26 +6,11 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/01 22:00:32 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 18:37:05 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
-
-static int	list_size(t_list *list)
-{
-	t_list	*i;
-	int		size;
-
-	i = list;
-	size = 0;
-	while (i)
-	{
-		size++;
-		i = i->next;
-	}
-	return (size);
-}
 
 static void	swap_node(t_list *node_1, t_list *node_2)
 {
@@ -40,17 +25,34 @@ static void	swap_node(t_list *node_1, t_list *node_2)
 	node_2->id = tmp;
 }
 
-static int	print_sorted_env_list(t_list *env_list)
+static int	get_list_size(t_list *list)
 {
-	t_list	*node_1;
-	t_list	*node_2;
-	char	*tmp;
+	t_list	*tmp;
 	int	i;
 
-	i = list_size(env_list);
-	while (i--)
+	i = 0;
+	tmp = list;
+	while (tmp)
 	{
-		node_1 = env_list;
+		i++;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+static int	print_sorted_env_list(t_list *env_list)
+{
+	t_list	*dup;
+	t_list	*node_1;
+	t_list	*node_2;
+	int	i;
+
+	i = 0;
+	// dup = ft_listdup(env_list);
+	dup = env_list;
+	while (i < get_list_size(dup))
+	{
+		node_1 = dup;
 		node_2 = node_1->next;
 		while (node_2)
 		{
@@ -59,22 +61,24 @@ static int	print_sorted_env_list(t_list *env_list)
 			node_1 = node_1->next;
 			node_2 = node_2->next;
 		}
+		i++;
 	}
 	ft_show_env_list (env_list, "declare -x ");
+	// ft_listclear(&dup);
 	return (SUCCESS);
 }
 
-int	ft_export(t_built *built, t_list *env_list)
+int	ft_export(t_built *built, t_list **env_list)
 {
 	t_list	*order;
 	char	**tmp;
 
 	if (!built->command->next)
-		return (print_sorted_env_list(env_list));
+		return (print_sorted_env_list(*env_list));
 	if (!ft_strncmp(built->command->next->str, " ", 1))
 		return (ERROR);
 	order = built->command->next->next;
-	if (!order->str)
+	if (!order || !order->str)
 		return (ERROR);
 	if (!ft_strchr(order->str, '=') || order->str[0] == '=')
 	{
@@ -85,5 +89,5 @@ int	ft_export(t_built *built, t_list *env_list)
 	tmp = ft_split(order->str, '=');
 	if (!tmp)
 		return (ERROR);
-	return (ft_add_env_list(&env_list, tmp[0], tmp[1]));
+	return (ft_add_env_list(env_list, tmp[0], tmp[1]));
 }
