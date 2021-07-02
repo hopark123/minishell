@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:11:58 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 00:28:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 
 	list = built->command;
 	if (!list->next || !list->next->next)
-		return (ERROR);
+	{
+		g_mini.status = ERROR_INVALID_ARGUMENT;
+		ft_perror(">", "syntax error");
+		return (ERROR_INVALID_ARGUMENT);
+	}
 	list = list->next->next;
 	if (ft_strncmp(type, "TRUNC", 5))
 		temp = open(list->str, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);

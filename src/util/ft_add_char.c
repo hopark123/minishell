@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:11:15 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:12:26 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 01:17:04 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ char	*ft_add_char(char *str, char c, int pt)
 
 	pt--;
 	len = ft_strlen(str);
-	if (!(ft_malloc(&result, sizeof(char) * (len + 1))))
+	if (!(ft_malloc(&result, sizeof(char) * (len + 2))))
 		return (0);
-	ft_memcpy(result, str, pt);
+	if (str)
+		ft_memcpy(result, str, pt);
 	result[pt] = c;
 	ft_memcpy(result + pt + 1, str + pt, len - pt);
 	result[len + 1] = 0;

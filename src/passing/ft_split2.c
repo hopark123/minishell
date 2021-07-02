@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 22:57:23 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 23:38:42 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ static void	ft_quotes(char const *s, int *i, int *flag, char c)
 	(*flag) = 1;
 	(*i)++;
 }
+
 static int	ft_wordlen(char const *s, char c, int *flag)
 {
 	int			i;
+
 	i = 0;
 	if (ft_strchr("<>;|", s[i]))
 	{
@@ -47,44 +49,55 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	return (i);
 }
 
+static t_list	*ft_split2_1(char *str, int *i, int len, char c)
+{
+	t_list	*temp_l;
+	char	*temp_s;
+	int		flag;
+
+	flag = 1;
+	if (len)
+	{
+		temp_s = ft_strndup(" ", 1);
+		temp_l = ft_listnew(temp_s, 0);
+	}
+	else
+	{
+		if (str[(*i)] == '"')
+			flag = -1;
+		else if (str[(*i)] == '\'')
+			flag = -2;
+		len = ft_wordlen(&str[(*i)], c, &flag);
+		temp_s = ft_strndup(&str[(*i)], len);
+		temp_l = ft_listnew(temp_s, 0);
+		(*i) += len;
+	}
+	return (temp_l);
+}
+
 t_list	*ft_split2(char *str, char c)
 {
 	t_list		*temp;
 	t_list		*head;
-	char		*res;
 	int			len;
 	int			flag;
+	int			i;
 
+	i = 0;
 	flag = 1;
 	head = 0;
 	if (!str)
 		return (0);
-	while (*str)
+	while (str[i])
 	{
 		len = 0;
-		while (*str && (*str) == c)
+		while (str[i] && (str[i]) == c)
 		{
-			str++;
+			i++;
 			len++;
 		}
-		if (len)
-		{
-			res = ft_strndup(" ", 1);
-			temp = ft_listnew(res, 0);
-			ft_listadd_tail(&head, &temp);
-		}
-		else
-		{
-			if (*str == '"')
-				flag = -1;
-			else if (*str == '\'')
-				flag = -2;
-			len = ft_wordlen(str, c, &flag);
-			res = ft_strndup(str, len);
-			temp = ft_listnew(res, 0);
-			ft_listadd_tail(&head, &temp);
-			str += len;
-		}
+		temp = ft_split2_1(str, &i, len, c);
+		ft_listadd_tail(&head, &temp);
 	}
 	return (head);
 }

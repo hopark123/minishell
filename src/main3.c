@@ -22,7 +22,6 @@ void	loop(t_list *env_list)
 				ft_shell(built, &env_list);
 			}
 		}
-		fprintf(stderr, "exitcode:%d\n", g_mini.status);
 	}
 }
 

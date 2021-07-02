@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 21:17:53 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 00:03:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,22 @@ static t_list	*del_pipe_col(t_built *built)
 	return (built->command);
 }
 
+static void	ft_open_execute(int *temp_p, int *fd)
+{
+	temp_p[0] = dup(STDIN);
+	temp_p[1] = dup(STDOUT);
+	fd[0] = STDIN;
+	fd[1] = STDOUT;
+}
+
+static void	ft_close_execute(int *temp_p, int *fd)
+{
+	ft_close(fd[0]);
+	ft_close(fd[1]);
+	dup2(temp_p[1], STDOUT);
+	dup2(temp_p[0], STDIN);
+}
+
 int	ft_execute(t_built *built, t_list **env_list)
 {
 	t_built	*temp;
@@ -44,22 +60,17 @@ int	ft_execute(t_built *built, t_list **env_list)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	temp_p[0] = dup(STDIN);
-	temp_p[1] = dup(STDOUT);
-	fd[0] = STDIN;
-	fd[1] = STDOUT;
-	if (!(list = del_pipe_col(built)))
+	list = del_pipe_col(built);
+	if (!(list))
 		return (REDIRECTION_ERROR);
+	ft_open_execute(temp_p, fd);
 	temp = ft_builtndup(list);
 	ft_split_built(temp, "><");
 	ft_del_lastblank(built);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
 	status = ft_execute2(temp, env_list, fd);
-	ft_close(fd[0]);
-	ft_close(fd[1]);
-	dup2(temp_p[1], STDOUT);
-	dup2(temp_p[0], STDIN);
+	ft_close_execute(temp_p, fd);
 	// ft_builtclear(&temp);
 	return (status);
 }
