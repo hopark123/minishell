@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 18:42:17 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 15:08:42 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	ft_check_syntax(char *str)
 	i = 0;
 	while (str[i])
 	{
-		// fprintf(stderr, "[%c]", str[i]);
 		if (flag == 1)
 		{
 			if (str[i] && ft_strchr("><;|", str[i]))
@@ -45,28 +44,11 @@ int	ft_check_syntax(char *str)
 				i++;
 				while (str[i] == ' ')
 					i++;
-				// if (!str[i])
-				// {
-				// 	if (find == ';' && i == 0)
-				// 	{
-				// 		// fprintf(stderr, "a[%c]\n", find);
-				// 		g_mini.status = 128;
-				// 		ft_free(str);
-				// 		return (124);
-				// 	}
-				// 	else if (ft_strchr("><|", find))
-				// 	{
-				// 		// fprintf(stderr, "b[%c]\n", find);
-				// 		g_mini.status = 128;
-				// 		ft_free(str);
-				// 		return (122);
-				// 	}
-				// }
 				if (!str[i] && ((find == ';' && i == 0) || ft_strchr("><|", find)))
 				{
-						g_mini.status = 128;
-						ft_free(str);
-						return (127);
+					g_mini.status = 128;
+					ft_free(str);
+					return (128);
 				}
 				i++;
 			}

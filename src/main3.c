@@ -19,11 +19,11 @@ void	loop(t_list *env_list)
 		ft_reset_term();
 		if (g_mini.line)
 		{
-			if (ft_check_syntax(g_mini.line))
-				return ;
-			// fprintf(stderr, "[%d]\n", ft_check_syntax(g_mini.line));
-			built = ft_parse(g_mini.line, env_list);
-			ft_shell(built, env_list);
+			if (ft_check_syntax(g_mini.line) == SUCCESS)
+			{
+				built = ft_parse(g_mini.line, env_list);
+				ft_shell(built, env_list);
+			}
 		}
 		else
 			return ;
