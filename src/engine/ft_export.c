@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 19:28:17 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:23:40 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	swap_node(t_list *node_1, t_list *node_2)
 {
 	char	*tmp;
-
 
 	tmp = node_1->str;
 	node_1->str = node_2->str;
@@ -28,7 +27,7 @@ static void	swap_node(t_list *node_1, t_list *node_2)
 static int	get_list_size(t_list *list)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	tmp = list;
@@ -45,11 +44,10 @@ static int	print_sorted_env_list(t_list *env_list)
 	t_list	*dup;
 	t_list	*node_1;
 	t_list	*node_2;
-	int	i;
+	int		i;
 
 	i = 0;
 	dup = ft_listdup(env_list);
-	// dup = env_list;
 	while (i < get_list_size(dup))
 	{
 		node_1 = dup;
@@ -68,6 +66,24 @@ static int	print_sorted_env_list(t_list *env_list)
 	return (SUCCESS);
 }
 
+static char	**split_equal(char *str)
+{
+	char	**tmp;
+	char	*spot;
+
+	tmp = (char **)malloc(sizeof(char *) * 3);
+	if (!tmp)
+		ft_error("malloc error");
+	spot = ft_strchr(str, '=');
+	tmp[0] = ft_strndup(str, spot - str);
+	tmp[1] = ft_strndup(spot + 1, ft_strlen(spot) - 1);
+	if (!tmp[0] || !tmp[1])
+		ft_error("malloc error");
+	tmp[2] = 0;
+	free(str);
+	return (tmp);
+}
+
 int	ft_export(t_built *built, t_list **env_list)
 {
 	t_list	*order;
@@ -83,10 +99,10 @@ int	ft_export(t_built *built, t_list **env_list)
 	if (!ft_strchr(order->str, '=') || order->str[0] == '=')
 	{
 		if (order->next && order->next->next)
-			printf("export: '%s': not a valid identifier\n", order->next->next->str);
+			ft_perror(order->next->next->str, "not a valid identifier");
 		return (ERROR);
 	}
-	tmp = ft_split(order->str, '=');
+	tmp = split_equal(order->str);
 	if (!tmp)
 		return (ERROR);
 	return (ft_add_env_list(env_list, tmp[0], tmp[1]));

@@ -30,7 +30,7 @@ static void	close_pip_child(int **fd, int in_index, int out_index)
 	while (i < size)
 	{
 		if (i == in_index)
-			ft_close(fd[i][1]);	
+			ft_close(fd[i][1]);
 		else if (i == out_index)
 			ft_close(fd[i][0]);
 		else
@@ -80,15 +80,15 @@ int	ft_subshell(t_built *built, t_list **env_list, int **fd, int order)
 	g_mini.pid = fork();
 	if (g_mini.pid < 0)
 		ft_error("Fork error");
-	if (g_mini.pid == 0) //자식
+	if (g_mini.pid == 0)
 	{
-		g_mini.pip[0] = dup(STDIN);//init global pipe for redirection
+		g_mini.pip[0] = dup(STDIN);
 		g_mini.pip[1] = dup(STDOUT);
 		do_pipe_by_order(order, fd);
 		close_pip_child(fd, order - 1, order);
 		exit(ft_execute(built, env_list));
 	}
-	else 
+	else
 	{
 		close_pip_parent(fd, order);
 		ft_parent(g_mini.pid, &w_status);
