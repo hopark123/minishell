@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 17:51:49 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:17:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,13 @@ int	ft_execute(t_built *built, t_list **env_list)
 	t_built	*temp;
 	t_list	*list;
 	int		fd[2];
-	int		tempout;
-	int		tempin;
+	int		temp_p[2];
 	int		status;
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	tempin = dup(STDIN);
-	tempout = dup(STDOUT);
+	temp_p[0] = dup(STDIN);
+	temp_p[1] = dup(STDOUT);
 	fd[0] = STDIN;
 	fd[1] = STDOUT;
 	if (!(list = del_pipe_col(built)))
@@ -59,12 +58,11 @@ int	ft_execute(t_built *built, t_list **env_list)
 	status = ft_execute2(temp, env_list, fd);
 	ft_close(fd[0]);
 	ft_close(fd[1]);
-	dup2(tempout, STDOUT);
-	dup2(tempin, STDIN);
+	dup2(temp_p[1], STDOUT);
+	dup2(temp_p[0], STDIN);
 	// ft_builtclear(&temp);
 	return (status);
 }
-
 
 int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
@@ -72,7 +70,6 @@ int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	// test_print_passing(built);
 	if (built->next)
 	{
 		res = ft_execute2(built->next, env_list, fd);

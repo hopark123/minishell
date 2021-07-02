@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_listjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 19:38:13 by hopark            #+#    #+#             */
-/*   Updated: 2021/05/21 13:18:06 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/02 20:21:59 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	ft_listjoin(t_built *built)
 	temp_l = built->command;
 	while (temp_l)
 	{
-		if (*(temp_l->str) != ' ' && temp_l->next && *(temp_l->next->str) != ' ')
+		if (*(temp_l->str) != ' ' && temp_l->next \
+				&& *(temp_l->next->str) != ' ')
 			temp_l = ft_list_join(temp_l, temp_l->next);
 		else
 			temp_l = temp_l->next;
