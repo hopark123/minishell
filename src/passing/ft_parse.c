@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 20:22:14 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 23:14:33 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	while (tmp)
 	{
 		ft_envswap(tmp, env_list);
-		test_print_passing(tmp);
+		// test_print_passing(tmp);
 		ft_del_quotes(tmp);
 		ft_del_blank(tmp);
 		ft_del_blank2(tmp);

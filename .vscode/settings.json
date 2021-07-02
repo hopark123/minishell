@@ -9,6 +9,8 @@
 		"history.h": "c",
 		"readline.h": "c",
 		"sstream": "c",
-		"__locale": "c"
+		"__locale": "c",
+		"cdefs.h": "c",
+		"_types.h": "c"
 	}
 }
