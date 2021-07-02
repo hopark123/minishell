@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main3.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/03 05:20:31 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/03 05:55:30 by hjpark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 void	loop(t_list *env_list)
@@ -10,8 +22,7 @@ void	loop(t_list *env_list)
 	while (1)
 	{
 		draw2();
-		signal(SIGINT, signal_handler);
-		signal(SIGQUIT, signal_handler);
+		ft_prompt_signal();
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();

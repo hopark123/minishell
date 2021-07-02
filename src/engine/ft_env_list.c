@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 22:02:31 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:51:52 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	ft_delenv(t_list **list, char *str)
 		tmp = i->next;
 		if (ft_strncmp(i->id, str, ft_strlen(str)))
 		{
-			fprintf(stderr, "deladdr: %p\n", i);
 			ft_listdelone(&i);
 		}
 		else
@@ -79,7 +78,6 @@ void	ft_delenv(t_list **list, char *str)
 	}
 	while (prev->prev)
 		prev = prev->prev;
-	fprintf(stderr, "startaddr: %p\n", prev);
 	*list = prev;
 }
 

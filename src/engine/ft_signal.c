@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:15:03 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:36:47 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ void	signal_handler(int signo)
 	{
 		signal(SIGQUIT, signal_handler);
 	}
+}
+
+void	ft_prompt_signal(void)
+{
+	signal(SIGINT, signal_handler);
+	signal(SIGQUIT, signal_handler);
+}
+
+void	ft_proc_signal(void)
+{
+	signal(SIGINT, proc_signal_handler);
+	signal(SIGQUIT, proc_signal_handler);
 }
 
 void	ctrl_d_checker(int c)

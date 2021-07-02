@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:15:10 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 05:52:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	face_normal_char(char *str, int *i, int *flag)
 		if ((!str[(*i)] && ((find == ';' && *i == 0) \
 				|| ft_strchr("><|", find))))
 		{
-			fprintf(stderr, "[%s]\n", &str[(*i)]);
 			ft_syntaxerror(find);
 			g_mini.status = ERROR_INVALID_ARGUMENT;
 			ft_free(str);

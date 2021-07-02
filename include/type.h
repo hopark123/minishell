@@ -33,8 +33,6 @@
 # define RIGHT_ARROW 4414235
 # define UP_ARROW 4283163
 # define DOWN_ARROW 4348699
-
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	1024
 # endif
@@ -59,23 +57,22 @@ typedef struct s_built
 }				t_built;
 typedef struct s_mini
 {
-	int			pip[2];
-	int			signal;
-	int			status;
-	char		*line;
+	int				pip[2];
+	int				signal;
+	int				status;
+	char			*line;
 	struct termios	term;
 	struct termios	backup;
-
-	int			len;
-	int			cursor;
-	t_list		*history;
-	t_list		*head;
-	char		*cm;
-	char		*ce;
-	pid_t		pid;
+	int				len;
+	int				cursor;
+	t_list			*history;
+	t_list			*head;
+	char			*cm;
+	char			*ce;
+	pid_t			pid;
 }				t_mini;
-t_mini		g_mini;
 
-typedef int			t_bool;
+t_mini					g_mini;
+typedef int				t_bool;
 
 #endif
