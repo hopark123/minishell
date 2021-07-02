@@ -73,7 +73,7 @@ static void	do_pipe_by_order(int order, int **fd)
 		do_piping(fd[order - 1][0], fd[order][1]);
 }
 
-int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order)
+int	ft_subshell(t_built *built, t_list **env_list, int **fd, int order)
 {
 	int	w_status;
 	pid_t	pid;

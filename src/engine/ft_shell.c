@@ -1,6 +1,6 @@
 #include "suhong.h"
 
-static void	run_subshell(t_built **built, t_list *env_list)
+static void	run_subshell(t_built **built, t_list **env_list)
 {
 	int	order;
 	int	**fd;
@@ -20,7 +20,7 @@ static void	run_subshell(t_built **built, t_list *env_list)
 	free_pipe(&fd, size);
 }
 
-void	ft_shell(t_built *built, t_list *env_list)
+void	ft_shell(t_built *built, t_list **env_list)
 {
 	int	**fd;
 	int	order;

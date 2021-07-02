@@ -40,18 +40,18 @@ int	**init_pipe(int size);
 int	get_pipe_size(int **pipe);
 ///////////////shell
 int	ft_execve(t_built *built, t_list *env_list);
-int	ft_subshell(t_built *built, t_list *env_list, int **fd, int order);
-void	ft_shell(t_built *built, t_list *env_list);
+int	ft_subshell(t_built *built, t_list **env_list, int **fd, int order);
+void	ft_shell(t_built *built, t_list **env_list);
 ///////////////engine
 t_list	*ft_init_env_list(char **envp);
 int		ft_add_env_list(t_list **list, char *id, char *str);
-char	*ft_delenv(t_list *list, char *str);
+void	ft_delenv(t_list **list, char *str);
 void	ft_show_env_list(t_list *list, char *str);
 char	*ft_getenv(t_list *list, const char *varname, int varlen);
 int		*ft_envswap(t_built *built, t_list *env_list);
-int		ft_execute(t_built *built, t_list *env_list);
-int		ft_execute2(t_built *built, t_list *env_list, int *fd);
-int		ft_builtin(t_built *temp_b, t_list *env_list);
+int		ft_execute(t_built *built, t_list **env_list);
+int		ft_execute2(t_built *built, t_list **env_list, int *fd);
+int		ft_builtin(t_built *temp_b, t_list **env_list);
 int		ft_exit(t_built *built);
 ////////////init
 void	ft_init_term(void);

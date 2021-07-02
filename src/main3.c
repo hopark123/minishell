@@ -10,6 +10,7 @@ void	loop(t_list *env_list)
 
 	while (1)
 	{
+		fprintf(stderr, "envaddr: %p\n", env_list);
 		draw2();
 		ft_signal();
 		g_mini.pip[0] = dup(STDIN);
@@ -19,15 +20,14 @@ void	loop(t_list *env_list)
 		ft_reset_term();
 		if (g_mini.line)
 		{
-			if (ft_check_syntax(g_mini.line))
-				return ;
-			// fprintf(stderr, "[%d]\n", ft_check_syntax(g_mini.line));
-			built = ft_parse(g_mini.line, env_list);
-			ft_shell(built, env_list);
+			if (ft_check_syntax(g_mini.line) == SUCCESS)
+			{
+				built = ft_parse(g_mini.line, env_list);
+				ft_shell(built, &env_list);
+			}
 		}
 		else
 			return ;
-		ft_add_env_list(&env_list, ft_strndup("?", 1), ft_itoa(g_mini.status));
 	}
 	// return (status);
 }

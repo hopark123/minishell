@@ -6,13 +6,13 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:20:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 15:02:57 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 17:43:30 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_unset(t_built *built, t_list *env_list)
+int	ft_unset(t_built *built, t_list **env_list)
 {
 	t_list	*i;
 
