@@ -72,6 +72,7 @@ typedef struct s_mini
 	t_list		*head;
 	char		*cm;
 	char		*ce;
+	pid_t		pid;
 }				t_mini;
 t_mini		g_mini;
 

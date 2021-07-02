@@ -79,7 +79,6 @@ static char	**change_content(char **str)
 
 int	ft_execve(t_built *built, t_list *env_list)
 {
-	pid_t	pid;
 	int	status;
 	char	**argv;
 	char	**envp;
@@ -87,10 +86,10 @@ int	ft_execve(t_built *built, t_list *env_list)
 	ft_del_blank3(built);
 	argv = change_content(ft_listtochar(built->command));
 	envp = ft_listtochar(env_list);
-	pid = fork();
-	if (pid < 0)
+	g_mini.pid = fork();
+	if (g_mini.pid < 0)
 		ft_error("fork error");
-	else if (pid == 0)
+	else if (g_mini.pid == 0)
 	{
 		if (!argv[0])
 			exit(127);
@@ -103,7 +102,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 	{
 		if (g_mini.pip[1] > 0)
 			dup2(g_mini.pip[1], STDOUT);
-		ft_parent(pid, &status);
+		ft_parent(g_mini.pid, &status);
 	}
 	ft_free2(argv, ft_strlen2(argv));
 	ft_free2(envp, ft_strlen2(envp));
