@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 22:45:01 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 23:09:54 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	ft_exit(t_built *built)
 
 	list = built->command;
 	if (!list->next)
+	{
+		ft_putstr_fd("exit", 1, 0);
 		exit(g_mini.status);
+	}
 	list = list->next;
 	if (list->next && !list->next->next)
 	{
