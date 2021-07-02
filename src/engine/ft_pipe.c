@@ -1,5 +1,5 @@
-#include "head.h"
-	
+#include "head.h"	
+
 int	**free_pipe(int ***pipe, int size)
 {
 	int	i;
