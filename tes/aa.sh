@@ -60,22 +60,17 @@ printf "| |  | |_| |_| |\  |_| |_ ____) | |  | | |____| |____| |____ \n"
 printf "|_|  |_|_____|_| \_|_____|_____/|_|  |_|______|______|______|\n$RESET"
 echo
 
-# REDIRECTIONS
-exec_test 'echo test > ls ; cat ls'
-exec_test 'echo test > ls >> ls >> ls ; echo test >> ls; cat ls'
-exec_test '> lol echo test lol; cat lol'
-exec_test '>lol echo > test>lol>test>>lol>test mdr >lol test >test; cat test'
-exec_test 'cat < ls'
-exec_test 'cat < ls > ls'
-
-# MULTI TESTS
-exec_test 'echo testing multi ; echo "test 1 ; | and 2" ; cat tests/lorem.txt | grep Lorem'
-
-# SYNTAX ERROR
-exec_test ';; test'
-exec_test '| test'
-exec_test 'echo > <'
-exec_test 'echo | |'
-exec_test '<'
+exec_test 'export ='
+exec_test 'export 1TEST= ;' $ENV_SHOW
+exec_test 'export TEST ;' $EXPORT_SHOW
+exec_test 'export ""="" ; ' $ENV_SHOW
+exec_test 'export TES=T="" ;' $ENV_SHOW
+exec_test 'export TE+S=T="" ;' $ENV_SHOW
+exec_test 'export TEST=LOL ; echo $TEST ;' $ENV_SHOW
+exec_test 'export TEST=LOL ; echo $TEST$TEST$TEST=lol$TEST'
+exec_test 'export TEST=LOL; export TEST+=LOL ; echo $TEST ;' $ENV_SHOW
+exec_test $ENV_SHOW
+exec_test $EXPORT_SHOW
+exec_test 'export TEST="ls       -l     - a" ; echo $TEST ; $LS ; ' $ENV_SHOW
 
 rm lol ls test

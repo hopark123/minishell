@@ -9,7 +9,8 @@ void	loop(t_list *env_list)
 
 	while (1)
 	{
-		ft_signal();
+		// ft_signal();
+		signal(SIGINT, signal_handler);
 		if (g_mini.status == 0)
 		{
 			draw2();
@@ -49,7 +50,7 @@ int	main(int argc, char **argv, char **envp)
 
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
-	draw();
+	// draw();
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (g_mini.status);

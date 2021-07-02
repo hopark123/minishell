@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:07:41 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 22:46:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,46 +49,22 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	return (i);
 }
 
-static void	ft_split2_2(t_list *head, const char *str, int len, const char c)
-{
-	// char	*res;
-	// if (len)
-	// {
-	// 	res = ft_strndup(" ", 1);
-	// 	temp = ft_listnew(res, 0);
-	// 	ft_listadd_tail(&head, &temp);
-	// }
-	// else
-	// {
-	// 	if (str[i] == '"')
-	// 		flag = -1;
-	// 	else if (str[i] == '\'')
-	// 		flag = -2;
-	// 	len = ft_wordlen(str, c, &flag);
-	// 	res = ft_strndup(str, len);
-	// 	temp = ft_listnew(res, 0);
-	// 	ft_listadd_tail(&head, &temp);
-	// 	str += len;
-	// }
-}
-
-t_list	*ft_split2(char *str, char c)
+t_list	*ft_split2(const char *str, const char c)
 {
 	t_list		*temp;
 	t_list		*head;
 	char		*res;
 	int			len;
 	int			flag;
-	int			i;
 
 	flag = 1;
 	head = 0;
 	if (!str)
 		return (0);
-	while (str[i])
+	while (*str)
 	{
 		len = 0;
-		while (str[i] && (str[i]) == c)
+		while (*str && (*str) == c)
 		{
 			str++;
 			len++;
@@ -101,9 +77,9 @@ t_list	*ft_split2(char *str, char c)
 		}
 		else
 		{
-			if (str[i] == '"')
+			if (*str == '"')
 				flag = -1;
-			else if (str[i] == '\'')
+			else if (*str == '\'')
 				flag = -2;
 			len = ft_wordlen(str, c, &flag);
 			res = ft_strndup(str, len);

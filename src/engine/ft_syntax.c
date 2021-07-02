@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:26:32 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:53:48 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	face_space_at_start_case(char *str)
 	i = 0;
 	while (str[i] == ' ')
 		i++;
-	if (ft_strchr("><;|", str[i]))
+	if (ft_strchr(";|", str[i]))
 	{
 		g_mini.status = ERROR_INVALID_ARGUMENT;
 		ft_perror(&str[i], "syntax error");
@@ -69,13 +69,19 @@ int	ft_check_syntax(char *str)
 
 	flag = 1;
 	if (face_space_at_start_case(str) != SUCCESS)
+	{
+		write(2, "a\n",2);
 		return (ERROR_INVALID_ARGUMENT);
+	}
 	i = 0;
 	while (str[i])
 	{
 		if (flag == 1)
 			if (face_normal_char(str, &i, &flag) != SUCCESS)
+			{
+		write(2, "c\n",2);
 				return (ERROR_INVALID_ARGUMENT);
+			}
 		if (flag == -1 && str[i] == '"')
 			ft_quotes(str, &i, &flag, '"');
 		else if (flag == -2 && str[i] == '\'')

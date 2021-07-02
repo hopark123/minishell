@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 20:22:14 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 22:17:37 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	while (tmp)
 	{
 		ft_envswap(tmp, env_list);
-		test_print_passing(tmp);
 		ft_del_quotes(tmp);
 		ft_del_blank(tmp);
 		ft_del_blank2(tmp);
@@ -52,6 +51,5 @@ t_built	*ft_parse(char *line, t_list *env_list)
 		ft_del_lastblank(tmp);
 		tmp = tmp->next;
 	}
-	ft_free(g_mini.line);
 	return (res);
 }
