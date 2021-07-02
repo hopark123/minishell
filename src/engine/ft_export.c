@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 18:37:05 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 19:28:17 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	print_sorted_env_list(t_list *env_list)
 	int	i;
 
 	i = 0;
-	// dup = ft_listdup(env_list);
-	dup = env_list;
+	dup = ft_listdup(env_list);
+	// dup = env_list;
 	while (i < get_list_size(dup))
 	{
 		node_1 = dup;
@@ -63,8 +63,8 @@ static int	print_sorted_env_list(t_list *env_list)
 		}
 		i++;
 	}
-	ft_show_env_list (env_list, "declare -x ");
-	// ft_listclear(&dup);
+	ft_show_env_list (dup, "declare -x ");
+	ft_listclear(&dup);
 	return (SUCCESS);
 }
 
