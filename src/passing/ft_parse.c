@@ -30,7 +30,6 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	tmp = res;
 	while (tmp)
 	{
-		test_print_passing(tmp);
 		ft_envswap(tmp, env_list);
 		test_print_passing(tmp);
 		ft_del_quotes(tmp);

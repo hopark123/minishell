@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 18:29:43 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 18:31:10 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ static char	*ft_strswap(t_list **list, char *old, char *new, int oldlen)
 
 	res[ft_strlen((*list)->str) - oldlen + ft_strlen(new) - 1] = 0;
 	// fprintf(stderr, "res4[%s][%d]\n", res, ft_strlen((*list)->str) - oldlen - 1 + ft_strlen(new));
-	write(2,"{{",2);
-	ft_putstr_fd((*list)->str, 2, 0);
-	write(2,"}}",2);
-	fprintf(stderr, "bf[%p]/|old[%s][%d]|new[%s]|af[%s]\n", (*list)->str, old, oldlen, new, res);
+	// write(2,"{{",2);
+	// ft_putstr_fd((*list)->str, 2, 0);
+	// write(2,"}}",2);
+	// fprintf(stderr, "bf[%p]/|old[%s][%d]|new[%s]|af[%s]\n", (*list)->str, old, oldlen, new, res);
 	ft_free((*list)->str);
 	ft_free(new);
 	(*list)->str = res;
@@ -94,13 +94,9 @@ int	*ft_envswap(t_built *built, t_list *env_list)
 			old = ft_strchr(temp_l->str, '$');
 		if (old)
 		{
-			fprintf(stderr, "@bf[%p]\n",temp_l->str);
 			oldlen = ft_envlen(old + 1, env_list);
-			fprintf(stderr, "@2f[%s]\n",temp_l->str);
 			new = ft_getenv(env_list, old + 1, oldlen);
-			fprintf(stderr, "@3f[%s]\n",temp_l->str);
 			ft_strswap(&temp_l, old, new, oldlen);
-			fprintf(stderr, "@4f[%s]\n",temp_l->str);
 		}
 		else
 			temp_l = temp_l->next;
