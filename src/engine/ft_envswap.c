@@ -6,31 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 18:31:10 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 20:01:38 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
-
-
-// char	*ft_getenv(t_list *(*list), const char *varname, int varlen)
-// {
-// 	t_list	*env;
-// 	char	*res;
-
-// 	res = 0;
-// 	env = list;
-// 	while (env)
-// 	{
-// 		if (ft_strncmp(env->id, (char *)varname, varlen))
-// 		{
-// 			res = ft_strndup(env->str, ft_strlen(env->str));
-// 			break ;
-// 		}
-// 		env = env->next;
-// 	}
-// 	return (res);
-// }
 
 static int	ft_envlen(char *str, t_list *env_list)
 {
@@ -55,31 +35,17 @@ static char	*ft_strswap(t_list **list, char *old, char *new, int oldlen)
 	if (!ft_malloc(&res, sizeof(char) * (ft_strlen((*list)->str) \
 									- oldlen + ft_strlen(new))))
 		return (0);
-	// fprintf(stderr, "bf[%s]|old[%s][%d]|new[%s]|af[%s]\n", (*list)->str, old, oldlen, new, res);
-	// fprintf(stderr, "[%d][%d][%s][%d][%d]\n", ft_strlen((*list)->str), oldlen, old, ft_strlen((*list)->str) - oldlen + ft_strlen(new), ft_strlen(new));
 	ft_memcpy(res, (*list)->str, old - (*list)->str);
-	// fprintf(stderr, "res1[%s][%ld]\n", res, old - (*list)->str);
 	ft_memcpy(res + (old - (*list)->str), new, ft_strlen(new));
-	// fprintf(stderr, "res2[%s][%d]\n", res, ft_strlen(new));
-
 	ft_memcpy(res + (old - (*list)->str) + ft_strlen(new), old + oldlen + 1, \
 												ft_strlen(old + oldlen + 1));
-	// fprintf(stderr, "res3[%s][%s][%d]\n", res, old + oldlen + 1,ft_strlen(old + oldlen + 1));
-
 	res[ft_strlen((*list)->str) - oldlen + ft_strlen(new) - 1] = 0;
-	// fprintf(stderr, "res4[%s][%d]\n", res, ft_strlen((*list)->str) - oldlen - 1 + ft_strlen(new));
-	// write(2,"{{",2);
-	// ft_putstr_fd((*list)->str, 2, 0);
-	// write(2,"}}",2);
-	// fprintf(stderr, "bf[%p]/|old[%s][%d]|new[%s]|af[%s]\n", (*list)->str, old, oldlen, new, res);
 	ft_free((*list)->str);
 	ft_free(new);
 	(*list)->str = res;
 	return (res);
 }
-// echo "$USER2$TE$AE=lol$AT"
-// echo "$USER2"
-// echo "$TE$"
+
 int	*ft_envswap(t_built *built, t_list *env_list)
 {
 	t_list	*temp_l;
@@ -101,7 +67,6 @@ int	*ft_envswap(t_built *built, t_list *env_list)
 		else
 			temp_l = temp_l->next;
 		old = 0;
-		write(1,"\n",1);
 	}
 	return (0);
 }

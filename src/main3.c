@@ -1,6 +1,5 @@
 #include "head.h"
 
-// int	loop(t_list *env_list)
 void	loop(t_list *env_list)
 {
 	t_built	*built;
@@ -14,8 +13,6 @@ void	loop(t_list *env_list)
 		if (g_mini.status == 0)
 		{
 			draw2();
-			g_mini.pip[0] = dup(STDIN);
-			g_mini.pip[1] = dup(STDOUT);
 			ft_init_term();
 			ft_get_line();
 			ft_reset_term();
@@ -31,8 +28,8 @@ void	loop(t_list *env_list)
 		else
 			g_mini.status = 0;
 	}
-	// return (status);
 }
+
 void	ft_init_mini(void)
 {
 	g_mini.pid = -1;
@@ -42,6 +39,8 @@ void	ft_init_mini(void)
 	g_mini.head = g_mini.history;
 	g_mini.head->next = g_mini.history;
 	g_mini.head->prev = g_mini.history;
+	g_mini.pip[0] = dup(STDIN);
+	g_mini.pip[1] = dup(STDOUT);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -50,9 +49,8 @@ int	main(int argc, char **argv, char **envp)
 
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
+	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
-	// return (0);
 	return (g_mini.status);
-	// return (status);
 }

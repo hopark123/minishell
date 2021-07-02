@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 16:01:49 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:18:34 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,24 +98,4 @@ void	ft_listdelone(t_list **list)
 	ft_free((*list)->str);
 	ft_free(*list);
 	(*list) = 0;
-}
-
-void	ft_listclear(t_list **list)
-{
-	t_list	*temp;
-	t_list	*temp2;
-
-	if (list == 0 || (*list) == 0)
-		return ;
-	temp2 = (*list);
-	while ((*list))
-	{
-		if ((*list)->next)
-			temp = (*list)->next;
-		else
-			temp = 0;
-		ft_listdelone(list);
-		*list = temp;
-	}
-	*list = 0;
 }

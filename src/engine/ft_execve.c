@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_execve.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/02 21:26:49 by hjpark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 static char	*judge_execfile(char *str)
 {
 	struct stat	sb;
-	char	*command;
-	
+	char		*command;
+
 	if (!str)
 		return (0);
 	command = ft_strndup(str, ft_strlen(str));
@@ -24,8 +36,8 @@ static char	*judge_execfile(char *str)
 
 static char	*judge_command(char *str)
 {
-	char	*bin;
-	char	*ubin;
+	char		*bin;
+	char		*ubin;
 	struct stat	sb;
 
 	if (!str)
@@ -53,8 +65,8 @@ static char	**change_content(char **str)
 {
 	char	*tmp;
 	char	*join;
-	int	i;
-	
+	int		i;
+
 	i = 0;
 	if (!str)
 		return (0);
@@ -79,10 +91,10 @@ static char	**change_content(char **str)
 
 int	ft_execve(t_built *built, t_list *env_list)
 {
-	int	status;
+	int		status;
 	char	**argv;
 	char	**envp;
-	
+
 	ft_del_blank3(built);
 	argv = change_content(ft_listtochar(built->command));
 	envp = ft_listtochar(env_list);

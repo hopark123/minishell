@@ -6,51 +6,58 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/06/22 21:32:57 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 19:57:03 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
+static char	*ft_make_str(t_built *built, int *flag)
+{
+	char	*prev;
+	char	*temp;
+	t_list	*list;
+
+	list = built->command->next->next;
+	if (*(list->str) == '/')
+	{
+		prev = 0;
+	}
+	else if (*(list->str) == '~')
+		(*flag) = 0;
+	else
+	{
+		prev = getcwd(0, BUFFER_SIZE);
+		temp = ft_strjoin(prev, "/");
+		ft_free(prev);
+		prev = temp;
+	}
+	return (prev);
+}
+
 int	ft_cd(t_built *built, t_list *env_list)
 {
 	t_list	*list;
-	char	*temp;
+	char	*prev;
 	char	*dest;
-	int		res;
 	int		flag;
+	int		res;
 
 	flag = 1;
+	list = built->command->next->next;
 	if (built->command->next && built->command->next->next)
-	{
-		list = built->command->next->next;
-		if (*(list->str) == '/' && flag)
-			temp = 0;
-		else if (*(list->str) == '~' || !flag)
-			flag = 0;
-		else
-		{
-			temp = getcwd(0, BUFFER_SIZE);
-			dest = ft_strjoin(temp, "/");
-			ft_free(temp);
-			temp = dest;
-		}
-	}
+		prev = ft_make_str(built, &flag);
 	else
 		flag = 0;
 	if (flag)
-	{
-		dest = ft_strjoin(temp, list->str);
-		ft_free(temp);
-		ft_free(list->str);
-	}
+		dest = ft_strjoin(prev, list->str);
 	else
 	{
-		temp = ft_getenv(env_list, "HOME", 4);
-		free(temp);
-		dest = ft_strndup(temp, ft_strlen(temp));
+		prev = ft_getenv(env_list, "HOME", 4);
+		dest = ft_strndup(prev, ft_strlen(prev));
 	}
 	res = chdir(dest);
+	ft_free(prev);
 	free(dest);
 	return (res);
 }
