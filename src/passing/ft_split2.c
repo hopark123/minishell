@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:16 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 22:52:39 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/02 22:57:23 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_wordlen(char const *s, char c, int *flag)
 	return (i);
 }
 
-t_list	*ft_split2(const char *str, const char c)
+t_list	*ft_split2(char *str, char c)
 {
 	t_list		*temp;
 	t_list		*head;

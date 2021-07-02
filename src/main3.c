@@ -9,18 +9,12 @@ void	loop(t_list *env_list)
 
 	while (1)
 	{
-<<<<<<< HEAD
-		// ft_signal();
-		signal(SIGINT, signal_handler);
-		if (g_mini.status == 0)
-=======
 		draw2();
 		signal(SIGINT, signal_handler);
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
 		if (g_mini.line)
->>>>>>> 59ce33f3981c11c2a47e8a585a1ee134c7148545
 		{
 			if (ft_check_syntax(g_mini.line) == SUCCESS)
 			{
