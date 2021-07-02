@@ -6,6 +6,9 @@
 
 
 void	ft_init_get_line(int *cursor, int *len);
+void	ft_syntaxerror(char type);
+
+
 
 void	ft_builtdelone(t_built **built);
 int		ft_built_cnt(t_built *built);

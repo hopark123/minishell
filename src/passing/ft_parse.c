@@ -6,11 +6,28 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 01:42:05 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 02:42:55 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+static int	syntaxerror(t_built *built)
+{
+	t_list	*temp;
+
+	temp = built->command;
+	while (temp)
+	{
+		if (ft_strchr(";|><", temp->str[0]) && !temp->next)
+		{
+			ft_syntaxerror(temp->str[0]);
+			return (ERROR);
+		}
+		temp = temp->next;
+	}
+	return (SUCCESS);
+}
 
 void	ft_put_blank(t_built *built)
 {
@@ -43,6 +60,11 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	tmp = res;
 	while (tmp)
 	{
+		if (syntaxerror(tmp) == ERROR)
+		{
+			res = 0;
+			break ;
+		}
 		ft_envswap(tmp, env_list);
 		ft_del_quotes(tmp);
 		ft_del_blank(tmp);
@@ -51,5 +73,6 @@ t_built	*ft_parse(char *line, t_list *env_list)
 		ft_del_lastblank(tmp);
 		tmp = tmp->next;
 	}
+	ft_free(g_mini.line);
 	return (res);
 }

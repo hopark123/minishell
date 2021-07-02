@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 01:42:13 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 03:26:09 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_quotes(char const *s, int *i, int *flag, char c)
 
 static int	face_space_at_start_case(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i] == ' ')
@@ -30,7 +30,7 @@ static int	face_space_at_start_case(char *str)
 	if (ft_strchr("|;", str[i]))
 	{
 		g_mini.status = ERROR_INVALID_ARGUMENT;
-		ft_perror(&str[i], "syntax error");
+		ft_syntaxerror(str[i]);
 		free(str);
 		return (ERROR_INVALID_ARGUMENT);
 	}
@@ -40,17 +40,20 @@ static int	face_space_at_start_case(char *str)
 static int	face_normal_char(char *str, int *i, int *flag)
 {
 	char	find;
+	char	*type;
 
 	if (str[*i] && ft_strchr("><;|", str[*i]))
 	{
 		find = str[*i];
-		i++;
+		(*i)++;
 		while (str[*i] == ' ')
 			(*i)++;
-		if (((find == ';' && *i == 0) || ft_strchr("><|", find)))
+		if ((!str[(*i)] && ((find == ';' && *i == 0) \
+				|| ft_strchr("><|", find))))
 		{
+			fprintf(stderr, "[%s]\n", &str[(*i)]);
+			ft_syntaxerror(find);
 			g_mini.status = ERROR_INVALID_ARGUMENT;
-			ft_perror(&find, "syntax error");
 			ft_free(str);
 			return (ERROR_INVALID_ARGUMENT);
 		}
@@ -76,8 +79,10 @@ int	ft_check_syntax(char *str)
 	while (str[i])
 	{
 		if (flag == 1)
+		{
 			if (face_normal_char(str, &i, &flag) != SUCCESS)
 				return (ERROR_INVALID_ARGUMENT);
+		}
 		if (flag == -1 && str[i] == '"')
 			ft_quotes(str, &i, &flag, '"');
 		else if (flag == -2 && str[i] == '\'')
