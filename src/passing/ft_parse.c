@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/02 20:22:14 by hjpark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 void	ft_put_blank(t_built *built)
@@ -9,10 +21,11 @@ void	ft_put_blank(t_built *built)
 	temp_l = built->command;
 	while (temp_l)
 	{
-		if (!ft_strncmp(temp_l->str, " ", 1) && temp_l->next && !ft_strncmp(temp_l->next->str, " ", 1))
+		if (!ft_strncmp(temp_l->str, " ", 1) && temp_l->next && \
+			!ft_strncmp(temp_l->next->str, " ", 1))
 		{
 			str = ft_strndup(" ", 1);
-			new = ft_listnew(str,0);
+			new = ft_listnew(str, 0);
 			ft_listadd_back(&temp_l, &new);
 		}
 		temp_l = temp_l->next;

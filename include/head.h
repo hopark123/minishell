@@ -63,7 +63,7 @@ int		ft_redirect2(t_built *built, int *fd);
 int		ft_redirect3(t_built *built, int *fd);
 ///////////////passing
 int		ft_split_built(t_built *built, char *str);
-t_list	*ft_split2(const char *str, const char c);
+t_list	*ft_split2(char *str, char c);
 int		ft_listjoin(t_built *built);
 t_built	*ft_parse(char *line, t_list *env_list);
 void	ft_del_lastblank(t_built *built);

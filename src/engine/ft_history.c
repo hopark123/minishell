@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_history.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/02 21:10:56 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/02 21:11:09 by hjpark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "head.h"
 
 void	ft_add_history(void)
@@ -22,7 +34,8 @@ void	ft_up_arrow(int *cursor, int *len)
 	draw2();
 	ft_putstr_fd(g_mini.history->str, STDOUT, 0);
 	ft_free(g_mini.line);
-	g_mini.line = ft_strndup(g_mini.history->str, ft_strlen(g_mini.history->str));
+	g_mini.line = ft_strndup(g_mini.history->str, \
+							ft_strlen(g_mini.history->str));
 	g_mini.history = g_mini.history->next;
 	(*len) = ft_strlen(g_mini.line);
 	(*cursor) = (*len);
@@ -36,7 +49,8 @@ void	ft_down_arrow(int *cursor, int *len)
 	draw2();
 	ft_putstr_fd(g_mini.history->str, STDOUT, 0);
 	ft_free(g_mini.line);
-	g_mini.line = ft_strndup(g_mini.history->str, ft_strlen(g_mini.history->str));
+	g_mini.line = ft_strndup(g_mini.history->str, \
+				ft_strlen(g_mini.history->str));
 	g_mini.history = g_mini.history->prev;
 	(*len) = ft_strlen(g_mini.line);
 	(*cursor) = (*len);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/01 20:59:32 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/02 21:11:58 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,9 @@ int	ft_redirect3(t_built *built, int *fd)
 			ft_free(line);
 			return (SUCCESS);
 		}
-		else
-		{
-			ft_putstr_fd(line, g_mini.pip[1], 0);
-			ft_putstr_fd("\n", g_mini.pip[1], 0);
-			ft_free(line);
-		}
+		ft_putstr_fd(line, g_mini.pip[1], 0);
+		ft_putstr_fd("\n", g_mini.pip[1], 0);
+		ft_free(line);
 	}
 	return (SUCCESS);
 }
