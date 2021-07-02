@@ -5,7 +5,9 @@ void	ft_add_history(void)
 	t_list	*temp;
 	char	*str;
 
-	ft_putchar_fd('\n', STDOUT, "\x1b[34m");
+	ft_putchar_fd('\n', STDOUT, 0);
+	if (ft_strlen(g_mini.line) <= 0)
+		return ;
 	str = strndup(g_mini.line, ft_strlen(g_mini.line));
 	temp = ft_listnew(str, 0);
 	ft_listadd_front(&g_mini.head, &temp);

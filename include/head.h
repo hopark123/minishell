@@ -22,7 +22,6 @@ void	ft_add_history(void);
 void	ft_up_arrow(int *cursor, int *len);
 void	ft_down_arrow(int *cursor, int *len);
 
-void	ft_getchar(int *cursor, int *len, int n);
 void	ft_get_line(void);
 char	*ft_add_char(char *str, char c, int pt);
 char	*ft_del_char(char *str, int pt);
