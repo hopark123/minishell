@@ -11,6 +11,7 @@ void	loop(t_list *env_list)
 	{
 		draw2();
 		signal(SIGINT, signal_handler);
+		signal(SIGQUIT, signal_handler);
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();

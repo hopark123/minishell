@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 22:52:51 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 01:41:51 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 	envp = ft_listtochar(env_list);
 	g_mini.pid = fork();
 	signal(SIGINT, proc_signal_handler);
+	signal(SIGQUIT, proc_signal_handler);
 	if (g_mini.pid < 0)
 		ft_error("fork error");
 	else if (g_mini.pid == 0)

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 23:50:14 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 01:42:41 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ void	proc_signal_handler(int signo)
 	{
 		ft_putstr_fd("\n", 1, 0);
 		signal(SIGINT, proc_signal_handler);
+	}
+	if (signo == SIGQUIT)
+	{
+		kill(g_mini.pid, SIGQUIT);
+		printf("Quit: %d\n", signo);
+		signal(SIGQUIT, proc_signal_handler);
 	}
 }
 
@@ -32,11 +38,8 @@ void	signal_handler(int signo)
 		draw2();
 		signal(SIGINT, signal_handler);
 	}
+	if (signo == SIGQUIT)
+	{
+		signal(SIGQUIT, signal_handler);
+	}
 }
-
-void	ft_signal(void)
-{
-	signal(SIGINT, signal_handler);
-	signal(SIGINT, signal_handler);
-}
-
