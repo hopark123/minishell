@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/03 18:27:14 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 19:07:48 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 
 int	ft_execute(t_built *built, t_list **env_list)
 {
-	t_built	*temp;
 	t_list	*list;
 	int		fd[2];
 	int		temp_p[2];
@@ -93,13 +92,12 @@ int	ft_execute(t_built *built, t_list **env_list)
 	list = del_pipe_col(built);
 	if (!(list))
 		return (REDIRECTION_ERROR);
-	temp = ft_builtndup(list);
-	ft_split_built(temp, "><");
+	ft_split_built(built, "><");
 	ft_del_lastblank(built);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
-	status = ft_execute2(temp, env_list, fd);
+	status = ft_execute2(built, env_list, fd);
 	ft_close_execute(temp_p, fd);
-	ft_builtclear(&temp);
+	ft_builtclear(&built);
 	return (status);
 }
