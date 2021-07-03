@@ -23,4 +23,6 @@ void	ctrl_d_checker(int c);
 
 int		ft_status_control(int status);
 
+t_list		*ft_token_split(char *str, char c);
+
 #endif

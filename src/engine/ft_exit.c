@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 19:10:27 by hjpark           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "head.h"
 
@@ -24,7 +13,7 @@ int	ft_exit(t_built *built)
 	list = built->command;
 	if (!list->next)
 	{
-		ft_putstr_fd("exit", 1, 0);
+		ft_putstr_fd("exit", STDERR, 0);
 		exit(g_mini.status);
 	}
 	list = list->next;
