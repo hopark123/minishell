@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:35:34 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:54:04 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char	**ft_env_listtochar(t_list *list)
 char	**ft_listtochar(t_list *list)
 {
 	char	**res;
-	char	*str;
 	int		i;
 	int		n;
 	t_list	*temp;

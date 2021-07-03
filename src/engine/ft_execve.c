@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 06:11:35 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:48:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static char	**change_content(char **str)
 	int		i;
 
 	i = 0;
+	join = 0;
 	if (!str)
 		return (0);
 	while (str[i])
@@ -103,6 +104,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 	char	**argv;
 	char	**envp;
 
+	status = 0;
 	make_arg(built, env_list, &argv, &envp);
 	g_mini.pid = fork();
 	ft_proc_signal();

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:15:14 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:52:41 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,15 @@ void	ft_init_get_line(int *cursor, int *len)
 void	ft_get_line(void)
 {
 	int		n;
-	int		i;
-	int		c;
 
 	ft_init_get_line(&g_mini.cursor, &g_mini.len);
 	n = 0;
 	while (read(STDIN, &n, sizeof(int)) > 0)
 	{
 		if (n == LEFT_ARROW && g_mini.cursor > 0)
-			ft_left_arrow(&g_mini.cursor, &g_mini.len);
+			ft_left_arrow(&g_mini.cursor);
 		else if (n == RIGHT_ARROW && g_mini.cursor < g_mini.len)
-			ft_right_arrow(&g_mini.cursor, &g_mini.len);
+			ft_right_arrow(&g_mini.cursor);
 		else if (n == BACKSPACE && g_mini.cursor > 0)
 			ft_backspace(&g_mini.cursor, &g_mini.len);
 		else if (n == UP_ARROW)

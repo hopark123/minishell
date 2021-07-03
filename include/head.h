@@ -15,8 +15,8 @@ void		ft_sigint2(int code);
 void		ft_signal2(void);
 ///////////////term
 int			ft_putchar_tc(int tc);
-void		ft_left_arrow(int *cursor, int *len);
-void		ft_right_arrow(int *cursor, int *len);
+void		ft_left_arrow(int *cursor);
+void		ft_right_arrow(int *cursor);
 void		ft_backspace(int *cursor, int *len);
 void		ft_add_history(void);
 void		ft_up_arrow(int *cursor, int *len);
@@ -59,7 +59,7 @@ void		ft_init_termcap(void);
 
 //////////redirect
 int			ft_redirect(t_built *built, char *type, int *fd);
-int			ft_redirect2(t_built *built, int *fd);
+int			ft_redirect2(t_built *built);
 int			ft_redirect3(t_built *built, int *fd);
 ///////////////passing
 int			ft_split_built(t_built *built, char *str);

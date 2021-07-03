@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:15:27 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:53:51 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,35 +66,6 @@ void	draw(void)
 	ft_putstr_fd("                            \"{2o2o2oooo22o2oo2o2o2r\"a                \
 		          \n", STDERR, "\033[33m");
 	draw1_2();
-}
-
-static void	draw_2(void)
-{
-	ft_putstr_fd("                             \'_%\"{oo2o2oo2o2o2}\"\\_)                \
-		            \n", STDERR, "\033[33m");
-	ft_putstr_fd("                            _oX22os__s_%__s__anoo2o,4                  \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                           .Sor{ooomm22 mX2 mooor{o2,4                 \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                           )no()n          W  po()no(]                 \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                          [{oo()vm        W   mo()non.                 \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                           )no()v$            Do(=no(]                 \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                           ,{o()voW          @no(=2}_                  \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                            aa/)noodVU$  @VUnnoo(_aa                   \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                              [)vo2oo_ aa _2oo2o(]                     \
-		        \n", STDERR, "\033[33m");
-	ft_putstr_fd("                              f)no2ooe.\
-		,{Xo2o2(]", STDERR, "\033[33m");
-	ft_putstr_fd("        @hopark @suhong        \n", STDERR, "\033[36m");
-	ft_putstr_fd("                              g {Soo2'j  b-2oo2e'j                   \
-		          \n", STDERR, "\033[33m");
-	ft_putstr_fd("                                aaggaj    baggaa            \
-		 \n", STDERR, "\033[33m");
 }
 
 void	draw2(void)

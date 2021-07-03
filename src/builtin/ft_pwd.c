@@ -6,13 +6,13 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 21:23:24 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:11:29 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:47:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_pwd(t_built *built)
+int	ft_pwd(void)
 {
 	char	*cwd;
 

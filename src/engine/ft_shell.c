@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 16:24:47 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:50:47 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ static void	run_subshell(t_built **built, t_list **env_list)
 
 void	ft_shell(t_built *built, t_list **env_list)
 {
-	int	**fd;
-	int	order;
-	int	size;
-
 	g_mini.status = SUCCESS;
 	while (built && g_mini.status == SUCCESS)
 	{

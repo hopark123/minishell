@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:52:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:51:23 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ static int	face_space_at_start_case(char *str)
 static int	face_normal_char(char *str, int *i, int *flag)
 {
 	char	find;
-	char	*type;
 
 	if (str[*i] && ft_strchr("><;|", str[*i]))
 	{
@@ -69,7 +68,6 @@ int	ft_check_syntax(char *str)
 {
 	int		i;
 	int		flag;
-	int		res;
 
 	flag = 1;
 	if (face_space_at_start_case(str) != SUCCESS)

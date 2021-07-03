@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:26 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:35:09 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 18:04:05 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_builtin(t_built *built, t_list **env_list)
 	else if (ft_strncmp(built->command->str, "echo", 4))
 		res = ft_echo(built);
 	else if (ft_strncmp(built->command->str, "pwd", 3))
-		res = ft_pwd(built);
+		res = ft_pwd();
 	else if (ft_strncmp(built->command->str, "export", 6))
 		res = ft_export(built, env_list);
 	else if (ft_strncmp(built->command->str, "unset", 5))
