@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/03 06:10:50 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:20:15 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,83 +54,19 @@ static void	ft_close_execute(int *temp_p, int *fd)
 	g_mini.pip[1] = dup(STDOUT);
 }
 
-// int	ft_execute(t_built *built, t_list **env_list)
-// {
-// 	t_built	*temp;
-// 	t_list	*list;
-// 	int		fd[2];
-// 	int		temp_p[2];
-// 	int		status;
-
-// 	if (!built || !built->command || !built->command->str)
-// 		return (EXIT_SUCCESS);
-// 	list = del_pipe_col(built);
-// 	if (!(list))
-// 		return (REDIRECTION_ERROR);
-// 	// ft_open_execute(temp_p, fd);
-// 	temp_p[0] = dup(STDIN);
-// 	temp_p[1] = dup(STDOUT);
-// 	fd[0] = STDIN;
-// 	fd[1] = STDOUT;
-// 	temp = ft_builtndup(list);
-// 	ft_split_built(temp, "><");
-// 	ft_del_lastblank(built);
-// 	status = ft_execute2(temp, env_list, fd);
-// 	ft_close(fd[0]);
-// 	ft_close(fd[1]);
-// 	dup2(temp_p[1], STDOUT);
-// 	dup2(temp_p[0], STDIN);
-// 	// g_mini.pip[0] = dup(STDIN);
-// 	g_mini.pip[0] = temp_p[0];
-// 	g_mini.pip[1] = temp_p[1];
-
-// 	// g_mini.pip[1] = dup(STDOUT);
-// 	// ft_close_execute(temp_p, fd);
-// 	ft_builtclear(&temp);
-// 	return (status);
-// }
-
-// int	ft_execute2(t_built *built, t_list **env_list, int *fd)
-// {
-// 	int	res;
-
-// 	test_print_passing(built);
-// 	if (!built || !built->command || !built->command->str)
-// 		return (EXIT_SUCCESS);
-// 	if (built->next)
-// 	{
-// 		res = ft_execute2(built->next, env_list, fd);
-// 		if (res == ERROR)
-// 			return (res);
-// 	}
-// 	if (ft_strncmp(built->command->str, ">", 1))
-// 		res = ft_redirect(built, "TRUNC", fd);
-// 	else if (ft_strncmp(built->command->str, ">>", 2))
-// 		res = ft_redirect(built, "APPEND", fd);
-// 	else if (ft_strncmp(built->command->str, "<", 1))
-// 		res = ft_redirect2(built, fd);
-// 	else if (ft_strncmp(built->command->str, "<<", 2))
-// 		res = ft_redirect3(built, fd);
-// 	else
-// 		res = ft_builtin(built, env_list);
-// 	return (res);
-// }
 int	ft_execute(t_built *built, t_list **env_list)
 {
 	t_built	*temp;
 	t_list	*list;
 	int		fd[2];
-	int		tempout;
-	int		tempin;
+	int		temp_p[2];
 	int		status;
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	tempin = dup(STDIN);
-	tempout = dup(STDOUT);
-	fd[0] = STDIN;
-	fd[1] = STDOUT;
-	if (!(list = del_pipe_col(built)))
+	ft_open_execute(temp_p, fd);
+	list = del_pipe_col(built);
+	if (!(list))
 		return (REDIRECTION_ERROR);
 	temp = ft_builtndup(list);
 	ft_split_built(temp, "><");
@@ -138,14 +74,10 @@ int	ft_execute(t_built *built, t_list **env_list)
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
 	status = ft_execute2(temp, env_list, fd);
-	ft_close(fd[0]);
-	ft_close(fd[1]);
-	dup2(tempout, STDOUT);
-	dup2(tempin, STDIN);
+	ft_close_execute(temp_p, fd);
 	ft_builtclear(&temp);
 	return (status);
 }
-
 
 int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
@@ -153,7 +85,6 @@ int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	// test_print_passing(built);
 	if (built->next)
 	{
 		res = ft_execute2(built->next, env_list, fd);

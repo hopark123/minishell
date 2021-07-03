@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 02:34:49 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:19:39 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_redirect2(t_built *built, int *fd)
 	t_list	*list;
 	int		temp;
 
-	if (!ft_guard_next(built, 2))
+	if (ft_guard_next(built, 2) == ERROR)
 	{
 		ft_syntaxerror('<');
 		return (ERROR);
@@ -61,7 +61,7 @@ int	ft_redirect3(t_built *built, int *fd)
 
 	if (pipe(g_mini.pip) < 0)
 		ft_error("ft_redirect3: pipe error");
-	if (!ft_guard_next(built, 2))
+	if (ft_guard_next(built, 2) == ERROR)
 		return (ERROR);
 	list = built->command->next->next;
 	while (get_next_line(fd[0], &line) >= 0)

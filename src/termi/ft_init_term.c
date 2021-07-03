@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:17:04 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:11:12 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:31:38 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,9 @@ void	ft_init_term(void)
 	g_mini.term.c_cc[VMIN] = 1;
 	g_mini.term.c_cc[VTIME] = 0;
 	tcsetattr(STDIN, TCSANOW, &g_mini.term);
-	ft_init_termcap();
 }
 
 void	ft_reset_term(void)
 {
 	tcsetattr(STDIN_FILENO, TCSANOW, &g_mini.backup);
-}
-
-void	ft_init_termcap(void)
-{
-	g_mini.cm = tgetstr("g_mini.cm", NULL);
-	g_mini.ce = tgetstr("g_mini.ce", NULL);
 }
