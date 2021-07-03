@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/03 18:04:20 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 18:27:14 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,31 @@ static void	ft_close_execute(int *temp_p, int *fd)
 	g_mini.pip[1] = dup(STDOUT);
 }
 
+static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
+{
+	int	res;
+
+	if (!built || !built->command || !built->command->str)
+		return (EXIT_SUCCESS);
+	if (built->next)
+	{
+		res = ft_execute2(built->next, env_list, fd);
+		if (res == ERROR)
+			return (res);
+	}
+	if (ft_strncmp(built->command->str, ">", 1))
+		res = ft_redirect(built, "TRUNC", fd);
+	else if (ft_strncmp(built->command->str, ">>", 2))
+		res = ft_redirect(built, "APPEND", fd);
+	else if (ft_strncmp(built->command->str, "<", 1))
+		res = ft_redirect2(built);
+	else if (ft_strncmp(built->command->str, "<<", 2))
+		res = ft_redirect3(built, fd);
+	else
+		res = ft_builtin(built, env_list);
+	return (res);
+}
+
 int	ft_execute(t_built *built, t_list **env_list)
 {
 	t_built	*temp;
@@ -77,29 +102,4 @@ int	ft_execute(t_built *built, t_list **env_list)
 	ft_close_execute(temp_p, fd);
 	ft_builtclear(&temp);
 	return (status);
-}
-
-int	ft_execute2(t_built *built, t_list **env_list, int *fd)
-{
-	int	res;
-
-	if (!built || !built->command || !built->command->str)
-		return (EXIT_SUCCESS);
-	if (built->next)
-	{
-		res = ft_execute2(built->next, env_list, fd);
-		if (res == ERROR)
-			return (res);
-	}
-	if (ft_strncmp(built->command->str, ">", 1))
-		res = ft_redirect(built, "TRUNC", fd);
-	else if (ft_strncmp(built->command->str, ">>", 2))
-		res = ft_redirect(built, "APPEND", fd);
-	else if (ft_strncmp(built->command->str, "<", 1))
-		res = ft_redirect2(built);
-	else if (ft_strncmp(built->command->str, "<<", 2))
-		res = ft_redirect3(built, fd);
-	else
-		res = ft_builtin(built, env_list);
-	return (res);
 }
