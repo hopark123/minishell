@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 05:20:31 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:03:43 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 19:10:29 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	loop(t_list *env_list)
 			{
 				built = ft_parse(g_mini.line, env_list);
 				ft_shell(built, &env_list);
+				ft_builtclear(&built);
 			}
 		}
 	}
@@ -58,5 +59,6 @@ int	main(int argc, char **argv, char **envp)
 	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
+	ft_listclear(&g_mini.history);
 	return (g_mini.status);
 }
