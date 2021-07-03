@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unset.c                                         :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 18:20:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 17:43:30 by suhong           ###   ########.fr       */
+/*   Created: 2021/05/19 20:40:10 by suhong            #+#    #+#             */
+/*   Updated: 2021/07/03 18:21:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_unset(t_built *built, t_list **env_list)
+int	ft_env(t_built *built, t_list *env_list)
 {
-	t_list	*i;
-
-	if (ft_guard_next(built, 1) == ERROR)
+	if (!built)
 		return (ERROR);
-	if (!ft_strncmp2(built->command->next->str, " ", 1))
-		return (ERROR);
-	i = built->command->next->next;
-	while (i)
+	if (built->command->next)
 	{
-		if (!ft_strncmp2(i->str, " ", 1))
-			ft_delenv(env_list, i->str);
-		i = i->next;
+		printf("we need no arg\n");
+		return (ERROR);
 	}
+	ft_show_env_list(env_list, 0);
 	return (SUCCESS);
 }

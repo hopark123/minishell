@@ -67,8 +67,6 @@ typedef struct s_mini
 	int				cursor;
 	t_list			*history;
 	t_list			*head;
-	char			*cm;
-	char			*ce;
 	pid_t			pid;
 }				t_mini;
 

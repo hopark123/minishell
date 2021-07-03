@@ -15,6 +15,8 @@ void	ft_parent(pid_t pid, int *status);
 
 void	ft_show_env_list_2(t_list *list, char *str);
 
+void	proc_signal_handler(int signo);
+void	signal_handler(int signo);
 void	ft_prompt_signal(void);
 void	ft_proc_signal(void);
 void	ctrl_d_checker(int c);

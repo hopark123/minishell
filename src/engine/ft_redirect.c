@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 02:34:49 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 18:27:50 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 	t_list	*list;
 	int		temp;
 
+	temp = 0;
 	list = built->command;
 	if (!list->next || !list->next->next)
 	{
@@ -35,12 +36,12 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 	return (SUCCESS);
 }
 
-int	ft_redirect2(t_built *built, int *fd)
+int	ft_redirect2(t_built *built)
 {
 	t_list	*list;
 	int		temp;
 
-	if (!ft_guard_next(built, 2))
+	if (ft_guard_next(built, 2) == ERROR)
 	{
 		ft_syntaxerror('<');
 		return (ERROR);
@@ -57,11 +58,11 @@ int	ft_redirect3(t_built *built, int *fd)
 	t_list	*list;
 	char	*line;
 	int		temp;
-	int		heredoc[2];
 
+	temp = 0;
 	if (pipe(g_mini.pip) < 0)
 		ft_error("ft_redirect3: pipe error");
-	if (!ft_guard_next(built, 2))
+	if (ft_guard_next(built, 2) == ERROR)
 		return (ERROR);
 	list = built->command->next->next;
 	while (get_next_line(fd[0], &line) >= 0)

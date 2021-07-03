@@ -1,5 +1,7 @@
+.gitignore
 .DS_Store
 .makefile
 .vscode
 obj
+ca
 minishell
