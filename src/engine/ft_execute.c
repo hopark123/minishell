@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 15:16:07 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/03 06:10:50 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 20:00:56 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	ft_execute(t_built *built, t_list **env_list)
 	if (!(list = del_pipe_col(built)))
 		return (REDIRECTION_ERROR);
 	temp = ft_builtndup(list);
-	ft_split_built(temp, "><");
+	// ft_split_built(temp, "><");
 	ft_del_lastblank(built);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);

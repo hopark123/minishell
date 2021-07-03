@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:18:34 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 18:22:17 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ t_list	*ft_listnew(char *str, char *id)
 	t_list		*res;
 
 	if (!ft_malloc(&res, sizeof(t_list)))
-	{
-		return (0);
-	}
+		ft_error("malloc error");
 	res->str = str;
 	res->id = id;
 	res->next = res;
@@ -32,9 +30,7 @@ t_list	*ft_listnew2(char *str, char *id)
 	t_list		*res;
 
 	if (!ft_malloc(&res, sizeof(t_list)))
-	{
-		return (0);
-	}
+		ft_error("malloc error");
 	res->str = str;
 	res->id = id;
 	res->next = 0;

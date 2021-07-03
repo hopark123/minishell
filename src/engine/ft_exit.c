@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:19:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 06:20:18 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_exit(t_built *built)
 	list = built->command;
 	if (!list->next)
 	{
-		ft_putstr_fd("exit", 1, 0);
+		ft_putstr_fd("exit", STDERR, 0);
 		exit(g_mini.status);
 	}
 	list = list->next;

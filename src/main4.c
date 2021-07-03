@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 05:20:31 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:55:30 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 20:11:14 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	loop(t_list *env_list)
 	while (1)
 	{
 		draw2();
-		ft_prompt_signal();
+		// ft_prompt_signal();
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
@@ -30,8 +30,17 @@ void	loop(t_list *env_list)
 		{
 			if (ft_check_syntax(g_mini.line) == SUCCESS)
 			{
-				built = ft_parse(g_mini.line, env_list);
-				ft_shell(built, &env_list);
+				// built = ft_parse(g_mini.line, env_list);
+				t_list *token = ft_token_split(g_mini.line, ' ');
+				t_list *tmp = token;
+				while (tmp)
+				{
+					fprintf(stderr, "[id:%s][%s]\n", tmp->id, tmp->str);
+					tmp = tmp->next;
+				}
+				ft_listclear(&token);
+				ft_free(g_mini.line);
+				// ft_shell(built, &env_list);
 			}
 		}
 	}
