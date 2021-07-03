@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 21:23:24 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:11:29 by hjpark           ###   ########.fr       */
+/*   Created: 2021/05/17 17:24:08 by hopark            #+#    #+#             */
+/*   Updated: 2021/07/03 18:24:30 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-int	ft_pwd(t_built *built)
+char	*ft_getenv(t_list *list, const char *varname, int varlen)
 {
-	char	*cwd;
+	t_list	*env;
+	char	*res;
 
-	cwd = getcwd(0, BUFFER_SIZE);
-	ft_putstr_fd(cwd, 1, 0);
-	ft_putchar_fd('\n', 1, 0);
-	ft_free(cwd);
-	return (SUCCESS);
+	res = 0;
+	env = list;
+	if (ft_strncmp("?", (char *)varname, varlen))
+		return (ft_itoa(g_mini.status));
+	while (env)
+	{
+		if (ft_strncmp(env->id, (char *)varname, varlen))
+		{
+			res = ft_strndup(env->str, ft_strlen(env->str));
+			break ;
+		}
+		env = env->next;
+	}
+	return (res);
 }

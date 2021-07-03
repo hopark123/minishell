@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 05:20:31 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:55:30 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 18:03:43 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 void	loop(t_list *env_list)
 {
 	t_built	*built;
-	t_built	*temp;
-	char	*c;
-	char	*temp2;
 
 	while (1)
 	{
@@ -54,9 +51,11 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_list	*env_list;
 
+	(void)argc;
+	(void)argv;
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
-	// draw();
+	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
 	return (g_mini.status);

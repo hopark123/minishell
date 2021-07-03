@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 19:57:06 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:37:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:52:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	ft_putchar_tc(int tc)
 	return (0);
 }
 
-void	ft_left_arrow(int *cursor, int *len)
+void	ft_left_arrow(int *cursor)
 {
 	tputs(tgetstr("le", NULL), 1, ft_putchar_tc);
 	(*cursor)--;
 }
 
-void	ft_right_arrow(int *cursor, int *len)
+void	ft_right_arrow(int *cursor)
 {
 	tputs(tgetstr("nd", NULL), 1, ft_putchar_tc);
 	(*cursor)++;

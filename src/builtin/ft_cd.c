@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 19:57:03 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/03 17:47:04 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char	*ft_make_str(t_built *built, int *flag)
 	char	*temp;
 	t_list	*list;
 
+	prev = 0;
 	list = built->command->next->next;
 	if (*(list->str) == '/')
 	{
