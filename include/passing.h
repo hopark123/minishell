@@ -9,6 +9,7 @@ void		ft_del_blank3(t_built *built);
 int			*ft_del_quotes(t_list *list);
 
 void		ft_envswap(t_list *list, t_list *env_list);
+
 void		ft_init_get_line(int *cursor, int *len);
 void		ft_get_line(void);
 void		ft_put_blank(t_built *built);
