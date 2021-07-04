@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:58:42 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:03:05 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,13 @@ static char	**change_content(char **str)
 	return (str);
 }
 
-static void	make_arg(t_built *built, t_list *env_list, \
+static void	init_exec(t_built *built, t_list *env_list, \
 	char ***argv, char ***envp)
 {
 	ft_del_blank2(built);
 	(*argv) = change_content(ft_listtochar(built->command));
 	(*envp) = ft_env_listtochar(env_list);
+	g_mini.pid = fork();
 }
 
 int	ft_execve(t_built *built, t_list *env_list)
@@ -105,8 +106,7 @@ int	ft_execve(t_built *built, t_list *env_list)
 	char	**envp;
 
 	status = 0;
-	make_arg(built, env_list, &argv, &envp);
-	g_mini.pid = fork();
+	init_exec(built, env_list, &argv, &envp);
 	ft_proc_signal();
 	if (g_mini.pid < 0)
 		ft_error("fork error");
