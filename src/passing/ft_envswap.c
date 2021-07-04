@@ -3,28 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_envswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 20:07:25 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 21:29:18 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
+
+int	ft_isenv(char c)
+{
+	if (ft_isdigit(c) || ft_isalpha(c) || c == '_')
+		return (SUCCESS);
+	return (ERROR);
+}
 
 static int	ft_envlen(char *str, t_list *env_list)
 {
 	int		i;
 
 	i = 0;
+	if (ft_isdigit((int)str[i]))
+		return (1);
+	i++;
 	while (str[i])
 	{
-		if (ft_getenv(env_list, str, i + 1))
-			return (i + 1);
-		if (ft_strchr("$ ><|;\'\"=", str[i]))
+		if (ft_strchr("$ ><|;\'\"=", str[i]) || ft_isenv(str[i]) == ERROR)
 			return (i);
 		i++;
 	}
+	// if (ft_getenv(env_list, str, i + 1)
+			// return (i + 1);
 	return (i);
 }
 

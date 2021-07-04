@@ -19,6 +19,7 @@ void		test_built_list(t_built *built);
 
 void		ft_free(void *memory);
 void		ft_free2(char **s, int i);
+int			ft_isalpha(int c);
 char		*ft_itoa(int n);
 t_list		*ft_listnew(char *str, char *id);
 t_list		*ft_listnew2(char *str, char *id);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:36:21 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 21:25:18 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,18 @@ t_list	*ft_listdup(t_list *list)
 	t_list	*copy;
 	t_list	*dup;
 	t_list	*add;
+	char	*str;
+	char	*id;
 
-	dup = list;
 	copy = 0;
+	dup = list;
 	while (dup)
 	{
-		add = ft_listnew2(ft_strndup(dup->str, ft_strlen(dup->str)), \
-			ft_strndup(dup->id, ft_strlen(dup->id)));
+		if (dup->str)
+			add = ft_listnew2(ft_strndup(dup->str, ft_strlen(dup->str)), \
+				ft_strndup(dup->id, ft_strlen(dup->id)));
+		else
+			add = ft_listnew2(0, ft_strndup(dup->id, ft_strlen(dup->id)));
 		if (!add)
 			ft_error("malloc error");
 		ft_listadd_tail(&copy, &add);

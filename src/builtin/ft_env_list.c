@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:18:04 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 21:46:08 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,19 @@ t_list	*ft_init_env_list(char **envp)
 int	ft_add_env_list(t_list **list, char *id, char *str)
 {
 	t_list	*tmp;
+	int	i;
 
+	i = 0;
 	if (!id)
 		return (ERROR);
-	if (!str)
-		str = ft_strndup("", 1);
-	if (!str)
-		ft_error("malloc error");
+	if (ft_isdigit(id[0]) || id[0] == '%')
+		return (ERROR);
+	while (id[i])
+	{
+		if (ft_isenv(id[i]))
+			return (ERROR);
+		i++;
+	}
 	ft_delenv(list, id);
 	tmp = ft_listnew2(str, id);
 	if (!tmp)
@@ -87,10 +93,13 @@ void	ft_show_env_list(t_list *list, char *str)
 	{
 		if (str)
 			ft_putstr_fd(str, 1, 0);
-		ft_putstr_fd(list->id, 1, 0);
-		write(1, "=", 1);
-		ft_putstr_fd(list->str, 1, 0);
-		write(1, "\n", 1);
+		if (list->str)
+		{
+			ft_putstr_fd(list->id, 1, 0);
+			write(1, "=", 1);
+			ft_putstr_fd(list->str, 1, 0);
+			write(1, "\n", 1);
+		}
 		list = list->next;
 	}
 }
@@ -102,10 +111,13 @@ void	ft_show_env_list_2(t_list *list, char *str)
 		if (str)
 			ft_putstr_fd(str, 1, 0);
 		ft_putstr_fd(list->id, 1, 0);
-		write(1, "=", 1);
-		write(1, "\"", 1);
-		ft_putstr_fd(list->str, 1, 0);
-		write(1, "\"", 1);
+		if (list->str)
+		{
+			write(1, "=", 1);
+			write(1, "\"", 1);
+			ft_putstr_fd(list->str, 1, 0);
+			write(1, "\"", 1);
+		}
 		write(1, "\n", 1);
 		list = list->next;
 	}

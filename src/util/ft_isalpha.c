@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getenv.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/17 17:24:08 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 21:33:16 by suhong           ###   ########.fr       */
+/*   Created: 2020/09/29 11:31:47 by suhong            #+#    #+#             */
+/*   Updated: 2021/07/04 21:19:45 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "head.h"
 
-char	*ft_getenv(t_list *list, const char *varname, int varlen)
+int	ft_isalpha(int c)
 {
-	t_list	*env;
-	char	*res;
-
-	res = 0;
-	env = list;
-	if (ft_strncmp("?", (char *)varname, varlen))
-		return (ft_itoa(g_mini.status));
-	while (env)
-	{
-		if (ft_strncmp(env->id, (char *)varname, varlen))
-		{
-			if (env->str)
-				res = ft_strndup(env->str, ft_strlen(env->str));
-			break ;
-		}
-		env = env->next;
-	}
-	return (res);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

@@ -21,7 +21,7 @@ void	loop(t_list *env_list)
 				ft_envswap(list, env_list);
 				ft_del_quotes(list);
 				built = ft_builtndup(list);
-				ft_del_blank3(built);
+				ft_del_blank(built);
 				ft_put_blank(built);
 				ft_del_lastblank(built);
 				ft_split_built(built, "|;");
