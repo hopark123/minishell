@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:17:04 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:04:56 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:03 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "termi.h"
 
 void	ft_init_term(void)
 {

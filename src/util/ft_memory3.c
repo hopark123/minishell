@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memory3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:19:49 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 07:03:06 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 int	ft_isprint(int n)
 {

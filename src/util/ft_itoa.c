@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 13:32:06 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/02 21:18:07 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 static size_t	digit_size(int n)
 {

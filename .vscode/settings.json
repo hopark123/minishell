@@ -14,6 +14,7 @@
 		"_types.h": "c",
 		"__functional_03": "c",
 		"functional": "c",
-		"iterator": "c"
+		"iterator": "c",
+		"util.h": "c"
 	}
 }

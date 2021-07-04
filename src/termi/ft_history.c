@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:10:56 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 19:23:49 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "termi.h"
 
 void	ft_add_history(void)
 {

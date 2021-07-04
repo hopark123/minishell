@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 17:33:05 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:00:40 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "passing.h"
 
 int	ft_split_built(t_built *built, char *str)
 {

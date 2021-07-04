@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_envswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:45:06 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:00:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "passing.h"
 
 int	ft_isenv(char c)
 {
@@ -19,7 +19,7 @@ int	ft_isenv(char c)
 	return (ERROR);
 }
 
-static int	ft_envlen(char *str, t_list *env_list)
+static int	ft_envlen(char *str)
 {
 	int		i;
 
@@ -80,7 +80,7 @@ void	ft_envswap(t_list *list, t_list *env_list)
 			old = ft_strchr(&(list->str[i]), '$');
 			if (old)
 			{
-				oldlen = ft_envlen(old + 1, env_list);
+				oldlen = ft_envlen(old + 1);
 				new = ft_getenv(env_list, old + 1, oldlen);
 				ft_strswap(&list, old, new, oldlen);
 			}

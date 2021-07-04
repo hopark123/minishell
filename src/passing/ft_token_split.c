@@ -1,4 +1,16 @@
-#include "head.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_token_split.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/04 23:00:50 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/04 23:00:53 by hjpark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "passing.h"
 
 static int	check_quotes(char c, int *q_tmp)
 {
@@ -20,7 +32,6 @@ static int	check_quotes(char c, int *q_tmp)
 static t_list	*build_token(t_list *token, char **spot, int len, int id)
 {
 	t_list	*add;
-	t_list	*space;
 	char	*str_id;
 	char	*str;
 

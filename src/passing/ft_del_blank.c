@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:45:46 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:59:43 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "passing.h"
 
 void	ft_del_lastblank(t_built *built)
 {

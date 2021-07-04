@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_getenv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 17:24:08 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 21:33:16 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:58:04 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "builtin.h"
 
 char	*ft_getenv(t_list *list, const char *varname, int varlen)
 {

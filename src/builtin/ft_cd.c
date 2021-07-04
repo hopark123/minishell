@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 19:20:10 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:59:44 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "builtin.h"
 
 static char	*ft_make_str(t_built *built, int *flag)
 {

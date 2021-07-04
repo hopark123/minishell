@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:11:15 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 17:14:39 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:37 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 char	*ft_add_char(char *str, char c, int pt)
 {
