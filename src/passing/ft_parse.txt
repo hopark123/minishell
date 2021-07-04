@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.txt                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 20:30:36 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 15:24:00 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,3 +83,4 @@ t_built	*ft_parse(char *line, t_list *env_list)
 	ft_free(g_mini.line);
 	return (res);
 }
+
