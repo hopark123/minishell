@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 17:39:53 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 18:10:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	test_print_passing(t_built *built)
 
 	temp_l = built->command;
 	write(2, "          passing print : ", 26);
-	write(2,"\n",1);
 	while (temp_l)
 	{
 		write(2, "[", 1);
