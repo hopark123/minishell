@@ -22,8 +22,10 @@ void	loop(t_list *env_list)
 				ft_del_quotes(list);
 				built = ft_builtndup(list);
 				ft_put_blank(built);
-				// test_print_passing(built);
-				// ft_free(g_mini.line);
+				ft_split_built(built, "|;");
+				test_print_passing(built);
+				// test_built_list(built);
+				ft_free(g_mini.line);
 				ft_shell(built, &env_list);
 											// t_list *tmp = token;
 											// while (tmp)
@@ -33,7 +35,7 @@ void	loop(t_list *env_list)
 											// }
 											// ft_listclear(&token);
 				// built = ft_parse(g_mini.line, env_list);
-				// ft_builtclear(&built);
+				ft_builtclear(&built);
 			}
 		}
 	}

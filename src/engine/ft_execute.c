@@ -74,6 +74,7 @@ int	ft_execute(t_built *built, t_list **env_list)
 	int		fd[2];
 	int		temp_p[2];
 	int		status;
+	t_built	*temp;
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
@@ -81,12 +82,13 @@ int	ft_execute(t_built *built, t_list **env_list)
 	list = del_pipe_col(built);
 	if (!(list))
 		return (REDIRECTION_ERROR);
-	// ft_split_built(built, "><");
-	ft_del_lastblank(built);
+	temp = ft_builtndup(list);
+	ft_split_built(temp, "><");
+	ft_del_lastblank(temp);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
-	status = ft_execute2(built, env_list, fd);
+	status = ft_execute2(temp, env_list, fd);
 	ft_close_execute(temp_p, fd);
-	ft_builtclear(&built);
+	ft_free(temp); ////////TDO
 	return (status);
 }
