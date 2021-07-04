@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 18:02:51 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 18:11:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void	ft_del_blank3(t_built *built)
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
-		if (ft_strncmp(temp_l->str, " ", 1))
+		// if (ft_strncmp(temp_l->str, " ", 1))
+		if (ft_strlen(temp_l->str) == 0)
 			ft_listdelone(&temp_l);
 		temp_l = temp_l2;
 	}
