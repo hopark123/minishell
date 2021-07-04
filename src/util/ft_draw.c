@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 16:45:30 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 17:39:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,17 @@ void	test_print_passing(t_built *built)
 		temp_l = temp_l->next;
 	}
 	write(2, "\n", 1);
+}
+
+void	test_built_list(t_built *built)
+{
+	t_built	*tmp;
+
+	tmp = built;
+	while (tmp)
+	{
+		test_print_passing(tmp);
+		write(2,"\n",1);
+		tmp = tmp->next;
+	}
 }

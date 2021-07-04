@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 17:47:04 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 18:03:34 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	ft_cd(t_built *built, t_list *env_list)
 	int		res;
 
 	flag = 1;
-	list = built->command->next->next;
 	if (built->command->next && built->command->next->next)
 		prev = ft_make_str(built, &flag);
 	else
