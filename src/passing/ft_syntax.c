@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:32:25 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 19:40:23 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static int	face_normal_char(char *str, int *i, int *flag)
 		(*i)++;
 		while (str[*i] == ' ')
 			(*i)++;
-		if ((!str[(*i)] && ((find == ';' && *i == 0) \
+		if ((str[(*i)] && ft_strchr("|;", str[(*i)])) || \
+				(!str[(*i)] && ((find == ';' && *i == 0) \
 				|| ft_strchr("><|", find))))
 		{
 			ft_syntaxerror(find);
