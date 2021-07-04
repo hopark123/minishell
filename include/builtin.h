@@ -4,7 +4,7 @@
 # include "head.h"
 
 int			ft_builtin(t_built *built, t_list **env_list);
-int			ft_cd(t_built *built, t_list *env_list);
+int			ft_cd(t_built *built, t_list **env_list);
 int			ft_echo(t_built *built);
 t_list		*ft_init_env_list(char **envp);
 int			ft_add_env_list(t_list **list, char *id, char *str);

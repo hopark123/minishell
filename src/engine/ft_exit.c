@@ -38,11 +38,11 @@ int	ft_exit(t_built *built)
 			ft_putstr_fd(list->next->str, STDERR, "\x1b[31m");
 			ft_putstr_fd(": numeric argument required\n", STDERR, "\x1b[31m");
 		}
+		exit(255);
 	}
 	else
 		ft_putstr_fd("exit\nminish: exit: too many arguments\n", \
 			STDERR, "\x1b[31m" );
-	exit(255);
 	return (EXIT_FAILURE);
 }
 

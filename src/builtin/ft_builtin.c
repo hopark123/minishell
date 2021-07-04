@@ -19,7 +19,7 @@ int	ft_builtin(t_built *built, t_list **env_list)
 	if (!built || !built->command)
 		return (EXIT_FAILURE);
 	if (ft_strncmp(built->command->str, "cd", 2))
-		res = ft_cd(built, *env_list);
+		res = ft_cd(built, env_list);
 	else if (ft_strncmp(built->command->str, "echo", 4))
 		res = ft_echo(built);
 	else if (ft_strncmp(built->command->str, "pwd", 3))
