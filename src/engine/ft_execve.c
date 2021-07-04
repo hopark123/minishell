@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 17:59:33 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 20:50:16 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static char	**change_content(char **str)
 static void	make_arg(t_built *built, t_list *env_list, \
 	char ***argv, char ***envp)
 {
-	ft_del_blank3(built);
+	ft_del_blank2(built);
 	(*argv) = change_content(ft_listtochar(built->command));
 	(*envp) = ft_env_listtochar(env_list);
 }
