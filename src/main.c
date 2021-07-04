@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main4.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
+/*   Updated: 2021/07/04 23:01:25 by hjpark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 void	minishell(t_list *env_list)
 {
@@ -20,9 +31,6 @@ void	minishell(t_list *env_list)
 
 void	loop(t_list *env_list)
 {
-	t_built	*built;
-	t_list	*list;
-
 	while (1)
 	{
 		draw2();

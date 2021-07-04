@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 21:25:18 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:25 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 void	ft_listclear(t_list **list)
 {
@@ -107,8 +107,6 @@ t_list	*ft_listdup(t_list *list)
 	t_list	*copy;
 	t_list	*dup;
 	t_list	*add;
-	char	*str;
-	char	*id;
 
 	copy = 0;
 	dup = list;

@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:54 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 19:37:12 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 int	ft_strlen(const char *s)
 {

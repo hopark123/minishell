@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:52 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:19:44 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 int	ft_strncmp(const char *s1, const char *s2, int n)
 {

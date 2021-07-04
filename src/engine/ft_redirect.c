@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 17:50:25 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:59:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "engine.h"
 
 int	ft_redirect(t_built *built, char *type, int *fd)
 {

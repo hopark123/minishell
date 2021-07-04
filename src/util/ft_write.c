@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 15:07:08 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:20:52 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:01:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "util.h"
 
 int	ft_putchar_fd(char c, int fd, char *color)
 {

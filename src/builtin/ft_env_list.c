@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:44:11 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:57:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "builtin.h"
 
 t_list	*ft_init_env_list(char **envp)
 {
