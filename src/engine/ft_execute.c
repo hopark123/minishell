@@ -81,7 +81,7 @@ int	ft_execute(t_built *built, t_list **env_list)
 	list = del_pipe_col(built);
 	if (!(list))
 		return (REDIRECTION_ERROR);
-	ft_split_built(built, "><");
+	// ft_split_built(built, "><");
 	ft_del_lastblank(built);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
