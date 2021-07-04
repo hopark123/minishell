@@ -47,6 +47,7 @@ static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
 
+	// test_print_passing(built);
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
 	if (built->next)

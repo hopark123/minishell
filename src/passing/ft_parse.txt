@@ -1,22 +1,6 @@
 
 #include "head.h"
 
-static int	syntaxerror(t_built *built)
-{
-	t_list	*temp;
-
-	temp = built->command;
-	while (temp)
-	{
-		if (ft_strchr(";|><", temp->str[0]) && !temp->next)
-		{
-			ft_syntaxerror(temp->str[0]);
-			return (ERROR);
-		}
-		temp = temp->next;
-	}
-	return (SUCCESS);
-}
 
 void	ft_put_blank(t_built *built)
 {
