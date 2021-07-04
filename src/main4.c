@@ -16,8 +16,9 @@ void	loop(t_list *env_list)
 		{
 			if (ft_check_syntax(g_mini.line) == SUCCESS)
 			{
-				#if 0
+				#if 1
 				t_list *token = ft_token_split(g_mini.line, ' ');
+				// t_list *token = ft_split2(g_mini.line, ' ');
 				t_list *tmp = token;
 				while (tmp)
 				{

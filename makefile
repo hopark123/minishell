@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
+#    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/03 19:10:58 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/03 20:38:27 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -o2
 CLIBR =  -lncurses
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS = -g3 -fsanitize=address
 RM = rm
@@ -52,7 +52,7 @@ SRC = \
 	$(PASSING)\
 	$(TERMI) \
 	$(UTIL) \
-	main3.c \
+	main4.c \
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
