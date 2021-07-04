@@ -17,8 +17,8 @@ void	loop(t_list *env_list)
 		{
 			if (ft_check_syntax(g_mini.line) == SUCCESS)
 			{
-				ft_envswap(list, env_list);
 				list = ft_token_split(g_mini.line);
+				ft_envswap(list, env_list);
 				ft_del_quotes(list);
 				built = ft_builtndup(list);
 				ft_del_blank3(built);
