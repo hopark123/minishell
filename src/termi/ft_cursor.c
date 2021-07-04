@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 19:57:06 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 17:52:49 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 00:53:45 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "head.h"
+#include "termi.h"
 
 int	ft_putchar_tc(int tc)
 {

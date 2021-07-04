@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:59:06 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 01:09:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	signal_handler(int signo)
 	}
 	if (signo == SIGQUIT)
 	{
+		ft_listclear(&g_mini.history);
 		signal(SIGQUIT, signal_handler);
 	}
 }
