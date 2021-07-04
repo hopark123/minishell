@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:59:46 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 00:53:42 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 02:57:40 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_del_quotes(t_list *list)
 	while (list)
 	{
 		i = 0;
-		while (list->str[i])
+		while (list->str && list->str[i])
 		{
 			if (ft_strchr("\'\"", list->str[i]))
 			{

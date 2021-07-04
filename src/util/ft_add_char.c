@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:11:15 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:01:37 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 02:21:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	*ft_del_char(char *str, int pt)
 	char	*result;
 
 	len = ft_strlen(str);
+	if (len == 0)
+		return (0);
 	if (!(ft_malloc(&result, sizeof(char) * (len))))
 		return (0);
 	ft_memcpy(result, str, pt - 1);

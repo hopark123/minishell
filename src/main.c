@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 01:07:39 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 03:02:15 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ void	minishell(t_list *env_list)
 	t_built	*built;
 
 	list = ft_token_split(g_mini.line);
+	fprintf(stderr, "a[%s]\n", list->str);
 	ft_envswap(list, env_list);
+	fprintf(stderr, "b[%s]\n", list->str);
 	ft_del_quotes(list);
+	fprintf(stderr, "c[%s]\n", list->str);
 	built = ft_builtndup(list);
 	ft_del_blank(built);
+	fprintf(stderr, "d[%s]\n", built->command->str);
 	ft_put_blank(built);
 	ft_del_lastblank(built);
+	fprintf(stderr, "d[%s]\n", built->command->str);
 	ft_split_built(built, "|;");
 	ft_shell(built, &env_list);
 	ft_free(g_mini.line);

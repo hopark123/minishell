@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:00:46 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 02:13:36 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	ft_quotes(char const *s, int *i, int *flag, char c)
 {
-	(*i)++;
+	if (s[(*i)])
+		(*i)++;
 	while (s[(*i)] && s[(*i)] != c)
 		(*i)++;
 	(*flag) = 1;
@@ -71,6 +72,8 @@ int	ft_check_syntax(char *str)
 	int		flag;
 
 	flag = 1;
+	if (!str)
+		return (ERROR);
 	if (face_space_at_start_case(str) != SUCCESS)
 		return (ERROR_INVALID_ARGUMENT);
 	i = 0;
@@ -85,7 +88,8 @@ int	ft_check_syntax(char *str)
 			ft_quotes(str, &i, &flag, '"');
 		else if (flag == -2 && str[i] == '\'')
 			ft_quotes(str, &i, &flag, '\'');
-		i++;
+		if (str[i])
+			i++;
 	}
 	return (SUCCESS);
 }

@@ -1,5 +1,6 @@
 #ifndef UTIL_H
 # define UTIL_H
+
 # include "head.h"
 
 char		*ft_add_char(char *str, char c, int pt);
