@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:59:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 00:48:44 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 		temp = open(list->str, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
 	else if (ft_strncmp(type, "APPEND", 6))
 		temp = open(list->str, O_CREAT | O_WRONLY | O_APPEND, S_IRWXU);
+	if (temp < 0)
+	{
+		ft_perror(list->str, "No such file or directory");
+		return (ERROR);
+	}
 	dup2(temp, fd[1]);
 	ft_close(temp);
 	fd[1] = temp;
@@ -48,6 +53,11 @@ int	ft_redirect2(t_built *built)
 	}
 	list = built->command->next->next;
 	temp = open(list->str, O_RDONLY, S_IRWXU);
+	if (temp < 0)
+	{
+		ft_perror(list->str, "No such file or directory");
+		return (ERROR);
+	}
 	dup2(temp, g_mini.pip[0]);
 	ft_close(temp);
 	return (SUCCESS);
