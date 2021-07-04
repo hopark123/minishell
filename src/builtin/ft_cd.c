@@ -36,7 +36,17 @@ static char	*ft_make_str(t_built *built, int *flag)
 	return (prev);
 }
 
-int	ft_cd(t_built *built, t_list *env_list)
+static	int	change_pwd(t_list **env_list, char *dest, char *prev)
+{
+	int	res;
+
+	res = chdir(dest);
+	ft_add_env_list(env_list, ft_strndup("PWD",3), getcwd(0, BUFFER_SIZE));
+	ft_free(prev);
+	ft_free(dest);
+	return (res);
+}
+int	ft_cd(t_built *built, t_list **env_list)
 {
 	t_list	*list;
 	char	*prev;
@@ -56,11 +66,9 @@ int	ft_cd(t_built *built, t_list *env_list)
 	}
 	else
 	{
-		prev = ft_getenv(env_list, "HOME", 4);
+		prev = ft_getenv(*env_list, "HOME", 4);
 		dest = ft_strndup(prev, ft_strlen(prev));
 	}
-	res = chdir(dest);
-	ft_free(prev);
-	free(dest);
+	res = change_pwd(env_list, dest, prev);
 	return (res);
 }
