@@ -9,7 +9,7 @@ void	loop(t_list *env_list)
 	while (1)
 	{
 		draw2();
-		// ft_prompt_signal();
+		ft_prompt_signal();
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
