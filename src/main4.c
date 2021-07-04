@@ -26,6 +26,7 @@ void	loop(t_list *env_list)
 				ft_del_lastblank(built);
 				ft_split_built(built, "|;");
 				ft_free(g_mini.line);
+				test_print_passing(built);
 				ft_shell(built, &env_list);
 			}
 		}
