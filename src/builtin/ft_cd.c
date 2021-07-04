@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:59:44 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 00:33:51 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ static	int	change_pwd(t_list **env_list, char *dest, char *prev)
 	int	res;
 
 	res = chdir(dest);
-	ft_add_env_list(env_list, ft_strndup("PWD",3), getcwd(0, BUFFER_SIZE));
+	ft_add_env_list(env_list, ft_strndup("PWD", 3), getcwd(0, BUFFER_SIZE));
 	ft_free(prev);
 	ft_free(dest);
 	return (res);
 }
+
 int	ft_cd(t_built *built, t_list **env_list)
 {
 	t_list	*list;
