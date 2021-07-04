@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:46:02 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:49:10 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	test_built_list(t_built *built)
 	while (tmp)
 	{
 		test_print_passing(tmp);
-		write(2,"\n",1);
+		write(2, "\n", 1);
 		tmp = tmp->next;
 	}
 }

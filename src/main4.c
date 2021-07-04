@@ -1,6 +1,23 @@
 
 #include "head.h"
 
+void	minishell(t_list *env_list)
+{
+	t_list	*list;
+	t_built	*built;
+
+	list = ft_token_split(g_mini.line);
+	ft_envswap(list, env_list);
+	ft_del_quotes(list);
+	built = ft_builtndup(list);
+	ft_del_blank(built);
+	ft_put_blank(built);
+	ft_del_lastblank(built);
+	ft_split_built(built, "|;");
+	ft_shell(built, &env_list);
+	ft_free(g_mini.line);
+}
+
 void	loop(t_list *env_list)
 {
 	t_built	*built;
@@ -16,18 +33,7 @@ void	loop(t_list *env_list)
 		if (ft_strlen(g_mini.line))
 		{
 			if (ft_check_syntax(g_mini.line) == SUCCESS)
-			{
-				list = ft_token_split(g_mini.line);
-				ft_envswap(list, env_list);
-				ft_del_quotes(list);
-				built = ft_builtndup(list);
-				ft_del_blank(built);
-				ft_put_blank(built);
-				ft_del_lastblank(built);
-				ft_split_built(built, "|;");
-				ft_shell(built, &env_list);
-				ft_free(g_mini.line);
-			}
+				minishell(env_list);
 		}
 	}
 }
@@ -53,7 +59,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	env_list = ft_init_env_list(envp);
 	ft_init_mini();
-	// draw();
+	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
 	ft_listclear(&g_mini.history);
