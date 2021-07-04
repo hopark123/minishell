@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/03 18:24:26 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 20:28:25 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,20 @@ static char	**split_equal(char *str)
 	if (!tmp)
 		ft_error("malloc error");
 	spot = ft_strchr(str, '=');
-	tmp[0] = ft_strndup(str, spot - str);
-	tmp[1] = ft_strndup(spot + 1, ft_strlen(spot) - 1);
-	if (!tmp[0] || !tmp[1])
-		ft_error("malloc error");
+	if (spot)
+	{
+		tmp[0] = ft_strndup(str, spot - str);
+		tmp[1] = ft_strndup(spot + 1, ft_strlen(spot) - 1);
+		if (!tmp[0] || !tmp[1])
+			ft_error("malloc error");
+	}
+	else
+	{
+		tmp[0] = ft_strndup(str, ft_strlen(str));
+		if (!tmp[0])
+			ft_error("malloc error");
+		tmp[1] = 0;
+	}
 	tmp[2] = 0;
 	return (tmp);
 }
@@ -88,17 +98,18 @@ int	ft_export(t_built *built, t_list **env_list)
 	t_list	*order;
 	char	**tmp;
 
+	// if (!built->command->next || built->command->next->next->str[0] == 0)
 	if (!built->command->next)
 		return (print_sorted_env_list(*env_list));
 	if (!ft_strncmp(built->command->next->str, " ", 1))
+	{
+		write(2, "$$\n", 3);
 		return (ERROR);
+	}
 	order = built->command->next->next;
 	if (!order || !order->str)
-		return (ERROR);
-	if (!ft_strchr(order->str, '=') || order->str[0] == '=')
 	{
-		if (order->next && order->next->next)
-			ft_perror(order->next->next->str, "not a valid identifier");
+		write(2, "@@\n", 3);
 		return (ERROR);
 	}
 	tmp = split_equal(order->str);
