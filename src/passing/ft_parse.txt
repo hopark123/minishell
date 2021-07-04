@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_parse.txt                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/02 20:22:12 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 15:24:00 by hjpark           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "head.h"
 
@@ -65,19 +54,12 @@ t_built	*ft_parse(char *line, t_list *env_list)
 			res = 0;
 			break ;
 		}
-		test_print_passing(tmp);
 		ft_envswap(tmp, env_list);
-		test_print_passing(tmp);
 		ft_del_quotes(tmp);
-		test_print_passing(tmp);
 		ft_del_blank(tmp);
-		test_print_passing(tmp);
 		ft_del_blank2(tmp);
-		test_print_passing(tmp);
 		ft_listjoin(tmp);
-		test_print_passing(tmp);
 		ft_del_lastblank(tmp);
-		test_print_passing(tmp);
 		tmp = tmp->next;
 	}
 	ft_free(g_mini.line);

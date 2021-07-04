@@ -24,7 +24,7 @@ static t_list	*build_token(t_list *token, char **spot, int len, int id)
 	char	*str_id;
 	char	*str;
 
-	if (!(**spot))
+	if (!(**spot) || len == 0)
 		return (token);
 	str_id = 0;
 	if (id)
@@ -35,48 +35,69 @@ static t_list	*build_token(t_list *token, char **spot, int len, int id)
 		str_id[1] = 0;
 	}
 	str = ft_substr(*spot, 0, len);
+	// fprintf(stderr, "@@@@new[%s]\n", str);
 	add = ft_listnew2(ft_substr(*spot, 0, len), str_id);
 	ft_listadd_tail(&token, &add);
 	return (token);
 }
 
-// static void	split_order(t_list **token, char *start, char *end)
-// {
-// 	char	*tmp;
-// 	char	*spot;
+static int	ft_make_token(t_list **token, char **spot, char **str, int *q_tmp)
+{
+	int		i;
 
-// 	tmp = start;
-// 	while (tmp < end)
-// 	{
-// 		spot = ft_strnstr(tmp, )
-// 		tmp++;
-// 	}
-// }
+	i = 1;
+	if ((**spot) && (**str == 0 || **str == ' '))
+	{
+		(*token) = build_token((*token), spot, (*str) - (*spot), *q_tmp);
+		*q_tmp = 0;
+		(*spot) = 0;
+	}
+	else if (ft_strchr("><;|", **str))
+	{
+		(*token) = build_token((*token), spot, (*str) - (*spot), *q_tmp);
+		*q_tmp = 0;
+		if (ft_strchr("><", **str) && **str == *(*str + 1))
+			i++;
+		(*token) = build_token((*token), str, i, **str);
+		(*spot) = 0;
+	}
+	return (i);
+}
 
-t_list	*ft_token_split(char *str, char c)
+static void	split_init(t_list **token, char **spot, int *q_tmp, int *q_flag)
+{
+	(*token) = 0;
+	(*spot) = 0;
+	(*q_tmp) = 0;
+	(*q_flag) = 0;
+
+}
+
+t_list	*ft_token_split(char *str)
 {
 	t_list	*token;
 	char	*spot;
 	int		q_flag;
 	int		q_tmp;
+	int		i;
 
-	spot = 0;
-	token = 0;
-	q_tmp = 0;
+	split_init(&token, &spot, &q_tmp, &q_flag);
 	while (*str >= 0)
 	{
-		q_flag = check_quotes(*str, &q_tmp);
-		if (!spot && *str != c)
-			spot = str;
-		else if (!q_flag && spot && (*str == c || *str == 0))
+		i = 1;
+		if (!spot)
 		{
-			token = build_token(token, &spot, str - spot, q_tmp);
-			token = build_token(token, &str, 1, c);
-			spot = 0;
+			while (*str == ' ')
+				str++;
+			spot = str;
 		}
+		q_flag = check_quotes(*str, &q_tmp);
+		if (!q_flag)
+			i = ft_make_token(&token, &spot, &str, &q_tmp);
 		if (*str == 0)
 			break ;
-		str++;
+		str = str + i;
 	}
+	check_quotes(0, 0);
 	return (token);
 }

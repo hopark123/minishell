@@ -25,7 +25,7 @@ int		ft_status_control(int status);
 
 char	*ft_strnstr(const char *str, const char *tofind, size_t len);
 
-t_list		*ft_token_split(char *str, char c);
+t_list		*ft_token_split(char *str);
 
 
 #endif

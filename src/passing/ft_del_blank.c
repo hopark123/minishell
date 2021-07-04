@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 17:50:57 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 16:18:10 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ static int	ft_distinguish(t_list *list)
 
 	flag1 = 1;
 	flag2 = 1;
-	if (list->prev->id && ft_strncmp(list->prev->id, "quotes", 6))
+	if (list->prev->id && ft_strncmp(list->prev->id, "\"", 1))
 		flag1 = -1;
-	if (list->id && ft_strncmp(list->id, "quotes", 6))
+	if (list->id && ft_strncmp(list->id, "\'", 1))
 		flag2 = -1;
 	return (flag1 * flag2);
 }
