@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
+#    By: hopark <hopark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/04 22:54:53 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/04 23:13:40 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRC = \
 	$(PASSING)\
 	$(TERMI) \
 	$(UTIL) \
-	main4.c \
+	main.c \
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))
 
@@ -69,8 +69,8 @@ re : fclean all
 test : $(NAME)
 	./minishell
 $(OBJ_DIR)/%.o : %.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I $(CLIBR) -I $(INC_DIR)  -c $< -o $@
 	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -I $(CLIBR) -I $(INC_DIR)  -c $< -o $@
 
 $(NAME) : $(INCLUDES) $(OBJ)
 	@$(CC) $(CFLAGS) -I $(INC_DIR)  -o $(NAME) $(OBJ) $(CLIBR)

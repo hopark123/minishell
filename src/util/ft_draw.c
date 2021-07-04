@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:01:26 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:11:54 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	draw(void)
 	ft_putstr_fd("                          _xooooooo2o2o2o2o2o2ooooons,           \
 		            \n", STDERR, "\033[33m");
 	ft_putstr_fd("                        'Jno2r\"\"\"\"\"\"2o2o2o2o\"\"\"\"\"\"{2oos\"\
-		                        \n", STDERR, "\033[33m");
+				                        \n", STDERR, "\033[33m");
 	ft_putstr_fd("                        ooo2o222S22So2o2o2o22222S2So2ooo             \
 		         \n", STDERR, "\033[33m");
 	ft_putstr_fd("                        o2o2oo2o( )oo2o2oo2oo( )noooo2oo             \
