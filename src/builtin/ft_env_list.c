@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 21:46:08 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:44:11 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_list	*ft_init_env_list(char **envp)
 int	ft_add_env_list(t_list **list, char *id, char *str)
 {
 	t_list	*tmp;
-	int	i;
+	int		i;
 
 	i = 0;
 	if (!id)

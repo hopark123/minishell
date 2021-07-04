@@ -47,7 +47,6 @@ static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
 
-	// test_print_passing(built);
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
 	if (built->next)
@@ -90,6 +89,6 @@ int	ft_execute(t_built *built, t_list **env_list)
 	g_mini.pip[1] = dup(STDOUT);
 	status = ft_execute2(temp, env_list, fd);
 	ft_close_execute(temp_p, fd);
-	ft_free(temp); ////////TDO
+	ft_free(temp);
 	return (status);
 }

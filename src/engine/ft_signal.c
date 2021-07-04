@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 05:36:47 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:35:59 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	proc_signal_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
-		ft_putstr_fd("\n", 1, 0);
+		kill(g_mini.pid, SIGINT);
 		signal(SIGINT, proc_signal_handler);
 	}
 	if (signo == SIGQUIT)

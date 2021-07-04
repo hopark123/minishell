@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 21:29:18 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:45:06 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static int	ft_envlen(char *str, t_list *env_list)
 			return (i);
 		i++;
 	}
-	// if (ft_getenv(env_list, str, i + 1)
-			// return (i + 1);
 	return (i);
 }
 

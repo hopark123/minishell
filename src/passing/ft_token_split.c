@@ -35,7 +35,6 @@ static t_list	*build_token(t_list *token, char **spot, int len, int id)
 		str_id[1] = 0;
 	}
 	str = ft_substr(*spot, 0, len);
-	// fprintf(stderr, "@@@@new[%s]\n", str);
 	add = ft_listnew2(ft_substr(*spot, 0, len), str_id);
 	ft_listadd_tail(&token, &add);
 	return (token);
@@ -70,7 +69,6 @@ static void	split_init(t_list **token, char **spot, int *q_tmp, int *q_flag)
 	(*spot) = 0;
 	(*q_tmp) = 0;
 	(*q_flag) = 0;
-
 }
 
 t_list	*ft_token_split(char *str)

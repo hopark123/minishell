@@ -13,7 +13,7 @@ void	loop(t_list *env_list)
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
-		if (g_mini.line)
+		if (ft_strlen(g_mini.line))
 		{
 			if (ft_check_syntax(g_mini.line) == SUCCESS)
 			{
@@ -25,9 +25,8 @@ void	loop(t_list *env_list)
 				ft_put_blank(built);
 				ft_del_lastblank(built);
 				ft_split_built(built, "|;");
-				ft_free(g_mini.line);
-				test_print_passing(built);
 				ft_shell(built, &env_list);
+				ft_free(g_mini.line);
 			}
 		}
 	}

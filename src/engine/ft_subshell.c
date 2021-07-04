@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_subshell.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:12:08 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/02 21:12:20 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:10:45 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	ft_subshell(t_built *built, t_list **env_list, int **fd, int order)
 	int	w_status;
 
 	g_mini.pid = fork();
+	ft_proc_signal();
 	if (g_mini.pid < 0)
 		ft_error("Fork error");
 	if (g_mini.pid == 0)

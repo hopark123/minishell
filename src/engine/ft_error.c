@@ -40,7 +40,6 @@ void	ft_syntaxerror(char type)
 		ft_free(message);
 	}
 	ft_putstr_fd("'\n", STDERR, 0);
-
 }
 
 void	ft_error(char *str)

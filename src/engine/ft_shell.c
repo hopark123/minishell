@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shell.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 20:28:04 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 22:43:51 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_shell(t_built *built, t_list **env_list)
 	{
 		if (built->next && built->next->command->str[0] == '|')
 			run_subshell(&built, env_list);
-		else if (built->command->str[0] == ';' && !built->next)
+		else if (built->command->str[0] == ';' && !built->command->next)
 			break ;
 		else
 		{
