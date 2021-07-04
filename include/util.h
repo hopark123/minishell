@@ -15,6 +15,8 @@ int			ft_built_cnt(t_built *built);
 void		draw(void);
 void		draw2(void);
 void		test_print_passing(t_built *built);
+void		test_built_list(t_built *built);
+
 void		ft_free(void *memory);
 void		ft_free2(char **s, int i);
 char		*ft_itoa(int n);

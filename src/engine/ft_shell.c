@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:27:57 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 18:00:36 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	ft_shell(t_built *built, t_list **env_list)
 			built = built->next;
 		}
 	}
+
 }
