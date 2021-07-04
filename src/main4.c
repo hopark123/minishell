@@ -22,7 +22,7 @@ void	loop(t_list *env_list)
 				ft_del_quotes(list);
 				built = ft_builtndup(list);
 				ft_put_blank(built);
-				test_print_passing(built);
+				// test_print_passing(built);
 				// ft_free(g_mini.line);
 				ft_shell(built, &env_list);
 											// t_list *tmp = token;
