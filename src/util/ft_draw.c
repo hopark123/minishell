@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:48:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 16:45:30 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,16 @@ void	test_print_passing(t_built *built)
 
 	temp_l = built->command;
 	write(2, "          passing print : ", 26);
+	write(2,"\n",1);
 	while (temp_l)
 	{
 		write(2, "[", 1);
 		ft_putstr_fd(temp_l->str, 2, 0);
 		write(2, "]", 1);
+		// write(2, "{", 1);
+		// ft_putstr_fd(temp_l->id, 2, 0);
+		// write(2, "}", 1);
+		// write(2,"\n",1);
 		temp_l = temp_l->next;
 	}
 	write(2, "\n", 1);

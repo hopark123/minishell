@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:11:15 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/03 01:17:04 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 17:14:39 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_del_char(char *str, int pt)
 	char	*result;
 
 	len = ft_strlen(str);
-	if (!(ft_malloc(&result, sizeof(char) * (len - 1))))
+	if (!(ft_malloc(&result, sizeof(char) * (len))))
 		return (0);
 	ft_memcpy(result, str, pt - 1);
 	ft_memcpy(result + pt - 1, str + pt, len - pt);

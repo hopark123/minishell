@@ -12,7 +12,6 @@ void		ft_delenv(t_list **list, char *str);
 void		ft_show_env_list(t_list *list, char *str);
 void		ft_show_env_list_2(t_list *list, char *str);
 int			ft_env(t_built *built, t_list *env_list);
-int			*ft_envswap(t_built *built, t_list *env_list);
 int			ft_export(t_built *built, t_list **env_list);
 char		*ft_getenv(t_list *list, const char *varname, int varlen);
 int			ft_pwd(void);

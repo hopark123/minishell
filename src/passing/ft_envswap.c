@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_envswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/03 18:21:19 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/04 16:36:33 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,39 @@ static char	*ft_strswap(t_list **list, char *old, char *new, int oldlen)
 	return (res);
 }
 
-int	*ft_envswap(t_built *built, t_list *env_list)
+static void	jump_s_quotes(char *str, int *i)
 {
-	t_list	*temp_l;
+	if (str[*i] == '\'')
+	{
+		(*i)++;
+		while (str[*i] && str[*i] != '\'')
+			(*i)++;
+	}
+}
+
+void	ft_envswap(t_list *list, t_list *env_list)
+{
+	int		i;
 	char	*old;
 	char	oldlen;
 	char	*new;
 
-	temp_l = built->command;
-	while (temp_l)
+	while (list)
 	{
-		if (*(temp_l->str) != '\'')
-			old = ft_strchr(temp_l->str, '$');
-		if (old)
+		i = 0;
+		while (list->str[i])
 		{
-			oldlen = ft_envlen(old + 1, env_list);
-			new = ft_getenv(env_list, old + 1, oldlen);
-			ft_strswap(&temp_l, old, new, oldlen);
+			jump_s_quotes(list->str, &i);
+			old = ft_strchr(&(list->str[i]), '$');
+			if (old)
+			{
+				oldlen = ft_envlen(old + 1, env_list);
+				new = ft_getenv(env_list, old + 1, oldlen);
+				ft_strswap(&list, old, new, oldlen);
+			}
+			else
+				break ;
 		}
-		else
-			temp_l = temp_l->next;
-		old = 0;
+		list = list->next;
 	}
-	return (0);
 }
