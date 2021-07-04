@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:40:27 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/04 23:47:14 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,15 @@ static char	**change_content(char **str)
 	return (str);
 }
 
-static void	init_exec(t_built *built, t_list *env_list, \
+static int	init_exec(t_built *built, t_list *env_list, \
 	char ***argv, char ***envp)
 {
 	ft_del_blank2(built);
 	(*argv) = change_content(ft_listtochar(built->command));
 	(*envp) = ft_env_listtochar(env_list);
+	if (!(*argv)[0])
+		return (ERROR_COMMAND_NOT_FOUND);
+	return (SUCCESS);
 }
 
 int	ft_execve(t_built *built, t_list *env_list)
@@ -105,9 +108,8 @@ int	ft_execve(t_built *built, t_list *env_list)
 	char	**argv;
 	char	**envp;
 
-	status = 0;
-	init_exec(built, env_list, &argv, &envp);
-	if (!(argv)[0])
+	status = init_exec(built, env_list, &argv, &envp);
+	if (status != SUCCESS)
 		return (ERROR_COMMAND_NOT_FOUND);
 	g_mini.pid = fork();
 	ft_proc_signal();
