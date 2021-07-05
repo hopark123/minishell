@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 06:48:06 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 07:09:09 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*arraytostr(char ***array)
 	return (res);
 }
 
-static t_built	*resplit(t_built *built)
+static t_built	*resplit(t_built *built, int *n_flag)
 {
 	t_list		*list;
 	t_built		*temp_b;
@@ -45,8 +45,10 @@ static t_built	*resplit(t_built *built)
 	temp_a = ft_listtochar(list);
 	temp_s = arraytostr(&temp_a);
 	list = ft_token_split(temp_s);
-	temp_b = ft_builtndup(list);
+	ft_free(temp_s);
+	temp_b = ft_builtndup2(list);
 	ft_put_blank(temp_b);
+	(*n_flag) = 0;
 	return (temp_b);
 }
 
@@ -56,8 +58,7 @@ int	ft_echo(t_built *built)
 	t_list	*list;
 	int		n_flag;
 
-	n_flag = 0;
-	re_built = resplit(built);
+	re_built = resplit(built, &n_flag);
 	list = re_built->command;
 	if (list->next && ft_strncmp(list->next->str, " ", 1))
 	{
