@@ -6,12 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 04:47:12 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 04:48:17 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
-#include "type.h"
 
 void	minishell(t_list *env_list)
 {

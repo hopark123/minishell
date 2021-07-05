@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 04:33:27 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:10:22 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static int	face_normal_char(char *str, int *i, int *flag)
 			ft_free(str);
 			return (ERROR_INVALID_ARGUMENT);
 		}
-		(*i)++;
 	}
 	if (str[(*i)] == '"')
 		*flag = -1;
