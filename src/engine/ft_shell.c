@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shell.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 03:48:00 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:44:00 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	run_subshell(t_built **built, t_list **env_list)
 void	ft_shell(t_built *built, t_list **env_list)
 {
 	g_mini.status = SUCCESS;
-	while (built && built->command && g_mini.status == SUCCESS)
+	while (built && built->command)
 	{
 		if (built->next && built->next->command->str \
 			&& built->next->command->str[0] == '|')
