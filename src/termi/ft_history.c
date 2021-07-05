@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:10:56 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:01:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 00:59:05 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_add_history(void)
 	ft_putchar_fd('\n', STDOUT, 0);
 	if (ft_strlen(g_mini.line) <= 0)
 		return ;
-	str = strndup(g_mini.line, ft_strlen(g_mini.line));
+	str = ft_strndup(g_mini.line, ft_strlen(g_mini.line));
 	temp = ft_listnew(str, 0);
 	ft_listadd_front(&g_mini.head, &temp);
 	g_mini.history = temp;

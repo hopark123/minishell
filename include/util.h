@@ -1,5 +1,6 @@
 #ifndef UTIL_H
 # define UTIL_H
+
 # include "head.h"
 
 char		*ft_add_char(char *str, char c, int pt);
@@ -52,5 +53,6 @@ int			ft_putchar_fd(char c, int fd, char *color);
 int			ft_putstr_fd(char *s, int fd, char *color);
 int			ft_putnbr_fd(int n, int fd, char *color);
 int			get_next_line(int fd, char **line);
+void		*ft_calloc(size_t nmemb, size_t size);
 
 #endif

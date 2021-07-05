@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:11 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:00:32 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 02:51:04 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_put_blank(t_built *built)
 	t_list	*new;
 	char	*str;
 
+	if (built && built->command)
+		return ;
 	temp_l = built->command;
 	while (temp_l)
 	{

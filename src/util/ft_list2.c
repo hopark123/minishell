@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:01:25 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 01:08:24 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void	ft_listclear(t_list **list)
 	if (list == 0 || (*list) == 0)
 		return ;
 	temp2 = (*list);
-	while ((*list))
+	if (temp2->prev)
+		temp2->prev->next = 0;
+	while ((*list) && list)
 	{
 		if ((*list)->next)
 			temp = (*list)->next;

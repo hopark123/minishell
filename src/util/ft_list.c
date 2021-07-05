@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:01:25 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 06:33:15 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "head.h"
 
 t_list	*ft_listnew(char *str, char *id)
 {
@@ -50,7 +50,8 @@ void	ft_listadd_back(t_list **list, t_list **new)
 	}
 	else
 	{
-		(*list)->next->prev = (*new);
+		if ((*list)->next)
+			(*list)->next->prev = (*new);
 		(*new)->prev = (*list);
 		(*new)->next = (*list)->next;
 		(*list)->next = (*new);
@@ -93,5 +94,5 @@ void	ft_listdelone(t_list **list)
 	ft_free((*list)->id);
 	ft_free((*list)->str);
 	ft_free(*list);
-	(*list) = 0;
+	// (*list) = 0;
 }

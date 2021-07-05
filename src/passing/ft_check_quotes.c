@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malloc.c                                        :+:      :+:    :+:   */
+/*   ft_check_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/18 15:34:59 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 04:24:51 by hongseonghy      ###   ########.fr       */
+/*   Created: 2021/07/05 03:56:08 by hongseong         #+#    #+#             */
+/*   Updated: 2021/07/05 03:57:04 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "passing.h"
 
-t_bool	ft_malloc(void *target, int size)
+int	ft_check_quotes(char c, int *q_tmp)
 {
-	void		**pt;
+	static char	tmp = 0;
 
-	pt = (void **)target;
-	*pt = malloc(size);
-	if (*pt == NULLPTR)
-		return (FALSE);
-	return (1);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void		*p;
-	unsigned char	*c;
-	size_t		i;
-
-	i = 0;
-	p = (void *)malloc(nmemb * size);
-	if (!p)
-		ft_error("malloc error");
-	c = p;
-	while (i++ < nmemb * size)
-		*c++ = 0;
-	return (p);
+	if (!c || c == tmp)
+	{
+		tmp = 0;
+	}
+	else if (ft_strchr("\"\'", c) && !tmp)
+	{
+		tmp = c;
+	}
+	if (tmp && q_tmp)
+		*q_tmp = tmp;
+	return (tmp);
 }

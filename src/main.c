@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 02:39:06 by hongseong        ###   ########.fr       */
+/*   Updated: 2021/07/05 07:04:58 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
+#include "type.h"
 
 void	minishell(t_list *env_list)
 {
@@ -18,12 +19,20 @@ void	minishell(t_list *env_list)
 	t_built	*built;
 
 	list = ft_token_split(g_mini.line);
+		fprintf(stderr, "[%p]\n", list);
 	ft_envswap(list, env_list);
+		fprintf(stderr, "[%p]\n", list);
 	ft_del_quotes(list);
+		fprintf(stderr, "[%p]\n", list);
 	built = ft_builtndup(list);
+		fprintf(stderr, "[%p]\n", list);
 	ft_del_blank(built);
+		fprintf(stderr, "[%p]\n", list);
 	ft_put_blank(built);
+		fprintf(stderr, "[%p]\n", list);
 	ft_del_lastblank(built);
+	// test_print_passing(built);
+		fprintf(stderr, "[%p]\n", list);
 	ft_split_built(built, "|;");
 	ft_shell(built, &env_list);
 	ft_free(g_mini.line);

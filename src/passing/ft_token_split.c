@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_token_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:50 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:00:53 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 03:58:01 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "passing.h"
-
-static int	check_quotes(char c, int *q_tmp)
-{
-	static char	tmp = 0;
-
-	if (!c || c == tmp)
-	{
-		tmp = 0;
-	}
-	else if (ft_strchr("\"\'", c) && !tmp)
-	{
-		tmp = c;
-	}
-	if (tmp && q_tmp)
-		*q_tmp = tmp;
-	return (tmp);
-}
 
 static t_list	*build_token(t_list *token, char **spot, int len, int id)
 {
@@ -66,7 +49,7 @@ static int	ft_make_token(t_list **token, char **spot, char **str, int *q_tmp)
 	{
 		(*token) = build_token((*token), spot, (*str) - (*spot), *q_tmp);
 		*q_tmp = 0;
-		if (ft_strchr("><", **str) && **str == *(*str + 1))
+		if (**str && ft_strchr("><", **str) && **str == *((*str) + 1))
 			i++;
 		(*token) = build_token((*token), str, i, **str);
 		(*spot) = 0;
@@ -100,13 +83,13 @@ t_list	*ft_token_split(char *str)
 				str++;
 			spot = str;
 		}
-		q_flag = check_quotes(*str, &q_tmp);
+		q_flag = ft_check_quotes(*str, &q_tmp);
 		if (!q_flag)
 			i = ft_make_token(&token, &spot, &str, &q_tmp);
 		if (*str == 0)
 			break ;
 		str = str + i;
 	}
-	check_quotes(0, 0);
+	ft_check_quotes(0, 0);
 	return (token);
 }

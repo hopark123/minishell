@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
+#    By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/05 02:21:33 by hongseong        ###   ########.fr        #
+#    Updated: 2021/07/05 06:43:39 by hongseonghy      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 # CFLAGS = -o2
 CLIBR =  -lncurses
 # CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 # CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
@@ -71,6 +71,7 @@ PASSING = $(addprefix $(PASSING_DIR)/, \
 	ft_parse.c \
 	ft_split_built.c \
 	ft_syntax.c \
+	ft_check_quotes.c \
 	ft_token_split.c \
 )
 TERMI = $(addprefix $(TERMI_DIR)/, \

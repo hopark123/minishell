@@ -15,6 +15,11 @@
 		"__functional_03": "c",
 		"functional": "c",
 		"iterator": "c",
-		"util.h": "c"
+		"util.h": "c",
+		"passing.h": "c",
+		"termi.h": "c",
+		"engine.h": "c",
+		"builtin.h": "c",
+		"type.h": "c"
 	}
 }
