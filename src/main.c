@@ -6,12 +6,11 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 04:48:22 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:18:15 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
-#include "type.h"
 
 void	minishell(t_list *env_list)
 {

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:11:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_envlen(char *str)
 	int		i;
 
 	i = 0;
-	if (ft_isdigit((int)str[i]))
+	if (ft_isdigit((int)str[i]) || str[i] == '?')
 		return (0);
 	i++;
 	while (str[i])

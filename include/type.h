@@ -14,7 +14,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
-# include <termios.h>
 # include <termcap.h>
 # define ERROR  1
 # define SUCCESS 0
