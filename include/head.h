@@ -9,4 +9,5 @@
 # include "termi.h"
 # include "signal.h"
 
+char	*ft_strchr2(const char *s, char c);
 #endif

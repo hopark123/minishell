@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 23:36:22 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 01:52:11 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_list	*del_pipe_col(t_built *built)
 
 	if (!built->command || !built->command->next)
 	{
-		if (ft_strchr("|;", built->command->str[0]) && !built->command->next)
+		if (ft_strchr2("|;", built->command->str[0]) && !built->command->next)
 		{
 			if (built->command->id)
 				return (built->command);
@@ -30,7 +30,7 @@ static t_list	*del_pipe_col(t_built *built)
 		}
 		return (built->command);
 	}
-	if (ft_strchr("|;", built->command->str[0]))
+	if (ft_strchr2("|;", built->command->str[0]))
 		return (built->command->next->next);
 	return (built->command);
 }

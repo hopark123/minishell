@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 00:29:54 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 01:54:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,20 @@ static void	run_subshell(t_built **built, t_list **env_list)
 void	ft_shell(t_built *built, t_list **env_list)
 {
 	g_mini.status = SUCCESS;
-		write(1,"K\n",2);
 	while (built && built->command && g_mini.status == SUCCESS)
 	{
 		if (built->next && built->next->command->str && built->next->command->str[0] == '|')
 		{
-			write(1,"B\n",2);
 			run_subshell(&built, env_list);
 		}
-		else if (built->command->str && built->command->str[0] == ';' && !built->command->next)
+		else if (built->command && built->command->str && built->command->str[0] == ';' && !built->command->next)
 		{
-			write(1,"C\n",2);
-
 			break ;
 		}
 		else if (!built->command->str)
 			break ;
 		else
 		{
-			write(1,"D\n",2);
-
 			g_mini.status = ft_execute(built, env_list);
 			built = built->next;
 		}

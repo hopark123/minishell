@@ -15,12 +15,10 @@
 static	t_list	*ft_find_head(t_list *list)
 {
 	t_list	*temp;
+	t_list	*blank;
 
 	if (!list)
-	{
-		write(2,"BBBBBBB\n",8);
-		return (0);
-	}
+		return (ft_listnew(ft_strndup("", 0), 0));
 	temp = list;
 	while (temp && temp->prev)
 		temp = temp->prev;
@@ -46,25 +44,28 @@ void	ft_del_lastblank(t_built *built)
 		}
 		temp_l = temp_l2;
 	}
-	built->command = ft_find_head(temp_l);
 }
 
 void	ft_del_blank(t_built *built)
 {
 	t_list	*temp_l;
 	t_list	*temp_l2;
+	t_list	*head;
 
 	if (!built)
 		return ;
 	temp_l = built->command;
+	head = 0;
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
-		built->command = ft_find_head(temp_l);
 		if (!(temp_l->str) || (temp_l->str && ft_strlen(temp_l->str) == 0))
 			ft_listdelone(&temp_l);
+		else
+			head = temp_l;
 		temp_l = temp_l2;
 	}
+	built->command = ft_find_head(head);
 }
 
 void	ft_del_blank2(t_built *built)
