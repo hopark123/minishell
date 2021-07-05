@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 07:58:23 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,13 @@ static void	ft_getchar(int *cursor, int *len, int n)
 	(*cursor)++;
 	(*len)++;
 	c = (char)n;
-	ft_putchar_fd(c, STDERR, "\x1b[34m");
+	if (c != '\n')
+	{
+		ft_putchar_fd(c, STDERR, "\x1b[34m");
+	}
 	g_mini.line = ft_add_char(&g_mini.line, c, (*cursor));
+	// if (c == '\n')
+		// g_mini.line = ft_del_char(&g_mini.line, (*cursor));
 	tputs(tgetstr("ip", NULL), 1, ft_putchar_tc);
 	tputs(tgetstr("ei", NULL), 1, ft_putchar_tc);
 }
@@ -42,6 +47,7 @@ static int	ft_printchar(int *cursor, int *len, int n)
 			ft_getchar(cursor, len, c);
 		else if (c == '\n' || c == 4)
 		{
+			ft_getchar(cursor, len, c);
 			ft_add_history();
 			return (SUCCESS);
 		}
@@ -78,8 +84,10 @@ void	ft_get_line(void)
 		else if (n == DOWN_ARROW)
 			ft_down_arrow(&g_mini.cursor, &g_mini.len);
 		else if (ft_isprint(n) || n == '\n')
+		{
 			if (ft_printchar(&g_mini.cursor, &g_mini.len, n) == SUCCESS)
 				return ;
+		}
 		ctrl_d_checker(n);
 		n = 0;
 	}
