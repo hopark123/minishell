@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 16:37:08 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 18:34:56 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_list	*del_pipe_col(t_built *built)
 			if (built->command->id)
 				return (built->command);
 			temp = built->next;
-			ft_builtdelone(&built);
 			if (temp)
 				return (temp->command);
 			else
@@ -58,6 +57,7 @@ static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
 
+
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
 	if (built->next)
@@ -89,18 +89,17 @@ int	ft_execute(t_built *built, t_list **env_list)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	// ft_open_execute(temp_p, fd);
+	ft_open_execute(temp_p, fd);
 	list = del_pipe_col(built);
 	if (!(list))
 		return (REDIRECTION_ERROR);
 	temp = ft_builtndup(list);
 	ft_split_built(temp, "><");
-	// ft_del_lastblank(temp);
-	// g_mini.pip[0] = dup(STDIN);
-	// g_mini.pip[1] = dup(STDOUT);
-	// status = ft_execute2(temp, env_list, fd);
-	// ft_close_execute(temp_p, fd);
-	// ft_builtclear(&temp);
-	ft_builtonlyclear(&temp);
+	ft_del_lastblank(temp);
+	g_mini.pip[0] = dup(STDIN);
+	g_mini.pip[1] = dup(STDOUT);
+	status = ft_execute2(temp, env_list, fd);
+	ft_close_execute(temp_p, fd);
+	ft_builtclear(&temp);
 	return (status);
 }

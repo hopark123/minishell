@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 16:32:00 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:37:41 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ void	minishell(t_list *env_list)
 	ft_free(g_mini.line);
 	ft_envswap(list, env_list);
 	ft_del_quotes(list);
-	built = ft_builtndup(list);
+	built = ft_builtndup2(list);
 	g_mini.built = built;
 	ft_del_blank(built);
 	ft_put_blank(built);
 	ft_del_lastblank(built);
 	ft_split_built(built, "|;");
 	ft_shell(built, &env_list);
-	write(2,"out\n",4);
 	ft_builtclear(&built);
 }
 
@@ -66,12 +65,13 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	// env_list = ft_init_env_list(envp);
-	// g_mini.env_list = env_list;
+	env_list = ft_init_env_list(envp);
+	g_mini.env_list = env_list;
 	ft_init_mini();
-	// draw();
+	test_print_list(env_list);
+	draw();
 	loop(env_list);
-	// ft_listclear(&env_list);
-	// ft_listclear(&g_mini.head);
+	ft_listclear(&env_list);
+	ft_listclear(&g_mini.head);
 	return (g_mini.status);
 }

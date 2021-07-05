@@ -10,6 +10,7 @@ int			ft_sign(int sign);
 int			ft_is_num(const char *nptr);
 long long	ft_atoi(const char *nptr);
 t_built		*ft_builtndup(t_list *list);
+t_built		*ft_builtndup2(t_list *list);
 void		ft_builtclear(t_built **built);
 void		ft_builtonlyclear(t_built **built);
 void		ft_builtdelone(t_built **built);

@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 14:21:42 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:37:16 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,30 @@ t_list	*ft_init_env_list(char **envp)
 	char	**env_str;
 	t_list	*tmp;
 	t_list	*list;
+	t_list	*head;
 
 	list = 0;
 	i = 0;
+	head = list;
 	while (envp[i])
 	{
 		env_str = ft_split(envp[i], '=');
-		if (!env_str)
-			return (0);
-		if (!env_str[1])
-			env_str[1] = ft_strndup("", 1);
+		fprintf(stderr, "[%d][%s][%s]\n", ft_strlen2(env_str), env_str[0], env_str[1]);
+		// if (!env_str)
+		// 	ft_error("malloc failed");
+		// if (!env_str[1])
+		// 	env_str[1] = ft_strndup("", 0);
+		// tmp = ft_listnew2(ft_strndup(env_str[1], ft_strlen(env_str[1])), ft_strndup(env_str[0], ft_strlen(env_str[0])));
 		tmp = ft_listnew2(env_str[1], env_str[0]);
-		if (!tmp)
-		{
-			ft_listclear(&list);
-			return (0);
-		}
-		ft_listadd_tail(&list, &tmp);
+		ft_listadd_back(&list, &tmp);
+		if (i == 0)
+			head = tmp;
+		list = tmp;
+		ft_free(env_str);
 		i++;
 	}
-	return (list);
+	// test_print_list(head);
+	return (head);
 }
 
 int	ft_add_env_list(t_list **list, char *id, char *str)
