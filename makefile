@@ -6,7 +6,7 @@
 #    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 05:19:04 by suhong           ###   ########.fr        #
+#    Updated: 2021/07/06 05:32:54 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = minishell
 
 CC = gcc
 CLIBR = -lncurses
-# CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
