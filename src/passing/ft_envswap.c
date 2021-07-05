@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:00:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:43:56 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_envlen(char *str)
 
 	i = 0;
 	if (ft_isdigit((int)str[i]))
-		return (1);
+		return (0);
 	i++;
 	while (str[i])
 	{
@@ -68,7 +68,6 @@ void	ft_envswap(t_list *list, t_list *env_list)
 {
 	int		i;
 	char	*old;
-	char	oldlen;
 	char	*new;
 
 	while (list)
@@ -78,14 +77,17 @@ void	ft_envswap(t_list *list, t_list *env_list)
 		{
 			jump_s_quotes(list->str, &i);
 			old = ft_strchr(&(list->str[i]), '$');
-			if (old)
-			{
-				oldlen = ft_envlen(old + 1);
-				new = ft_getenv(env_list, old + 1, oldlen);
-				ft_strswap(&list, old, new, oldlen);
-			}
-			else
+			if (!old)
 				break ;
+			i = ft_envlen(old + 1);
+			if (i != 1)
+			{
+				if (i == 0)
+					i = 1;
+				new = ft_getenv(env_list, old + 1, i);
+				ft_strswap(&list, old, new, i);
+			}
+			i++;
 		}
 		list = list->next;
 	}

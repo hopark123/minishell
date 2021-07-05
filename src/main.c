@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 01:54:11 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:47:34 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	minishell(t_list *env_list)
 	built = ft_builtndup(list);
 	ft_listclear(&list);
 	g_mini.built = built;
-	ft_del_blank(built);
 	ft_put_blank(built);
 	ft_del_lastblank(built);
 	ft_split_built(built, "|;");

@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 01:47:54 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/06 03:14:21 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = gcc
 CLIBR =  -lncurses
 # CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-# CFLAGS = -g3 -fsanitize=address
+CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src
