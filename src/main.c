@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 22:43:35 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 23:16:12 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	minishell(t_list *env_list)
 	ft_envswap(list, env_list);
 	ft_del_quotes(list);
 	built = ft_builtndup(list);
-	ft_listclear(&list);
-	g_mini.built = built;
-	ft_del_blank(built);
-	ft_put_blank(built);
-	ft_del_lastblank(built);
-	ft_split_built(built, "|;");
+	// ft_listclear(&list);
+	// g_mini.built = built;
+	// ft_del_blank(built);
+	// ft_put_blank(built);
+	// ft_del_lastblank(built);
+	// ft_split_built(built, "|;");
 	ft_shell(built, &env_list);
 	ft_builtclear(&built);
 }
