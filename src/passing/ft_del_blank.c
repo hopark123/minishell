@@ -34,6 +34,7 @@ void	ft_del_lastblank(t_built *built)
 		return ;
 	head = 0;
 	temp_l = built->command;
+	head = 0;
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
