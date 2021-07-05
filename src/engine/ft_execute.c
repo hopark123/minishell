@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 02:07:38 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:20:07 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	ft_execute(t_built *built, t_list **env_list)
 	if (!(list))
 		return (REDIRECTION_ERROR);
 	temp = ft_builtndup(list);
-	ft_split_built(temp, "><");
+	if (!ft_strchr2("><", temp->command->str[0]))
+		ft_split_built(temp, "><");
 	ft_del_lastblank(temp);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
