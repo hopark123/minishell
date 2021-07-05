@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/05 14:08:43 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/05 19:43:10 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ UTIL = $(addprefix $(UTIL_DIR)/, \
 	ft_add_char.c \
 	ft_atoi.c \
 	ft_built.c \
+	ft_debug.c \
 	ft_draw.c \
 	ft_free.c \
 	ft_isalpha.c \

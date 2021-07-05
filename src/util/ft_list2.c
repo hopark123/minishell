@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 18:52:02 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:39:26 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,9 @@ void	ft_listclear(t_list **list)
 	{
 		temp->prev->next = 0;
 	}
-	int i = 0;
 	while ((*list) && list)
 	{
-		// if ((*list)->next)
 		temp = temp->next;
-		// else
-		// 	temp = 0;
-		// temp = (*list)->next;
 		ft_listdelone(list);
 		*list = temp;
 	}

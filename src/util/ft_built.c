@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 17:48:10 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:41:45 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,6 @@ t_built	*ft_builtndup(t_list *list)
 	res->prev = 0;
 	return (res);
 }
-void	ft_builtonlyclear(t_built **built)
-{
-	t_built	*temp;
-
-	if (built == 0 || (*built) == 0)
-		return ;
-	int i = 0;
-	while ((*built))
-	{
-		if ((*built)->next)
-			temp = (*built)->next;
-		else
-			temp = 0;
-		// fprintf(stderr, "o_b[%d]\n", i++);
-		ft_free(*built);
-		*built = temp;
-	}
-	(*built) = 0;
-}
 
 void	ft_builtclear(t_built **built)
 {
@@ -53,7 +34,6 @@ void	ft_builtclear(t_built **built)
 	if (built == 0 || (*built) == 0)
 		return ;
 	temp2 = (*built);
-	int i = 0;
 	while ((*built))
 	{
 		if ((*built)->next)
@@ -92,7 +72,6 @@ int	ft_built_cnt(t_built *built)
 	}
 	return (i);
 }
-
 
 t_built	*ft_builtndup2(t_list *list)
 {

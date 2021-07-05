@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:11 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 18:06:33 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:40:33 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_put_blank(t_built *built)
 	t_list	*new;
 	char	*str;
 
-	// if (built && built->command)
 	if (!built || !built->command)
 		return ;
 	temp_l = built->command;
@@ -32,8 +31,6 @@ void	ft_put_blank(t_built *built)
 			str = ft_strndup(" ", 1);
 			new = ft_listnew(str, 0);
 			ft_listadd_back(&temp_l, &new);
-			// new = ft_listnew2(str, 0);
-			// ft_listadd_tail(&head, &new);
 		}
 		temp_l = temp_l->next;
 	}

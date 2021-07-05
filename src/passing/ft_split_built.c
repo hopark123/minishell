@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:23 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 17:34:48 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:40:24 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ft_split_built(t_built *built, char *str)
 	{
 		if ((temp_l->str) && ft_strchr(str, *(temp_l->str)))
 		{
-
 			new_b = ft_builtndup2(temp_l);
 			temp_b->next = new_b;
 			new_b->prev = temp_b;

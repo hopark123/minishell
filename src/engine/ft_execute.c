@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 18:34:56 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:40:15 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	ft_close_execute(int *temp_p, int *fd)
 static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
-
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);

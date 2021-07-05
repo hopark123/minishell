@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 18:50:25 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:41:01 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	ft_listadd_back(t_list **list, t_list **new)
 	if ((*list) == 0)
 	{
 		(*list) = (*new);
-		// (*list)->next = (*list);
-		// (*list)->prev = (*list);
 		(*list)->next = 0;
 		(*list)->prev = 0;
 	}
