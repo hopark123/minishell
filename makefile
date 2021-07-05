@@ -6,7 +6,7 @@
 #    By: hopark <hopark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 05:15:07 by hopark           ###   ########.fr        #
+#    Updated: 2021/07/06 05:16:11 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = minishell
 
 CC = gcc
 CLIBR = -lncurses
-# CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 # CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
