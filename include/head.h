@@ -8,7 +8,5 @@
 # include "passing.h"
 # include "termi.h"
 # include "signal.h"
-void	ft_listdelone2(t_list *list);
-void	ft_listclear2(t_list *list);
 
 #endif

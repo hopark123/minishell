@@ -12,6 +12,21 @@
 
 #include "passing.h"
 
+static	t_list	*ft_find_head(t_list *list)
+{
+	t_list	*temp;
+
+	if (!list)
+	{
+		write(2,"BBBBBBB\n",8);
+		return (0);
+	}
+	temp = list;
+	while (temp && temp->prev)
+		temp = temp->prev;
+	return (temp);
+}
+
 void	ft_del_lastblank(t_built *built)
 {
 	t_list	*temp_l;
@@ -23,13 +38,15 @@ void	ft_del_lastblank(t_built *built)
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
+		built->command = ft_find_head(temp_l);
 		if (ft_strncmp(temp_l->str, " ", 1) && !(temp_l->next))
 		{
 			ft_listdelone(&temp_l);
-			return ;
+			break ;
 		}
 		temp_l = temp_l2;
 	}
+	built->command = ft_find_head(temp_l);
 }
 
 void	ft_del_blank(t_built *built)
@@ -43,6 +60,7 @@ void	ft_del_blank(t_built *built)
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
+		built->command = ft_find_head(temp_l);
 		if (!(temp_l->str) || (temp_l->str && ft_strlen(temp_l->str) == 0))
 			ft_listdelone(&temp_l);
 		temp_l = temp_l2;

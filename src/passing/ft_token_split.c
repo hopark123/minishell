@@ -12,7 +12,7 @@
 
 #include "passing.h"
 
-static int	check_quotes(char c, int *q_tmp)
+static int	ft_check_quotes(char c, int *q_tmp)
 {
 	static char	tmp = 0;
 
@@ -89,7 +89,7 @@ t_list	*ft_token_split(char *str)
 	int		i;
 
 	split_init(&token, &spot, &q_tmp, &q_flag);
-	while (*str >= 0)
+	while (*str != 0)
 	{
 		i = 1;
 		if (!spot)
@@ -98,13 +98,13 @@ t_list	*ft_token_split(char *str)
 				str++;
 			spot = str;
 		}
-		q_flag = check_quotes(*str, &q_tmp);
+		q_flag = ft_check_quotes(*str, &q_tmp);
 		if (!q_flag)
 			i = ft_make_token(&token, &spot, &str, &q_tmp);
-		if (*str == 0)
-			break ;
 		str = str + i;
 	}
-	check_quotes(0, 0);
+	if (spot)
+		token = build_token(token, &spot, str - spot, q_tmp);
+	ft_check_quotes(0, 0);
 	return (token);
 }

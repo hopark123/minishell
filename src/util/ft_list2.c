@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 23:00:08 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 00:32:54 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_listclear(t_list **list)
 	if (!list || !(*list))
 		return ;
 	temp = (*list);
+
 	if (temp->prev)
 	{
 		temp->prev->next = 0;
@@ -27,6 +28,7 @@ void	ft_listclear(t_list **list)
 	{
 		temp = temp->next;
 		ft_listdelone(list);
+
 		*list = temp;
 	}
 	*list = 0;
@@ -113,6 +115,7 @@ t_list	*ft_listdup(t_list *list)
 	dup = list;
 	while (dup)
 	{
+		add = 0;
 		if (dup->str)
 			add = ft_listnew2(ft_strndup(dup->str, ft_strlen(dup->str)), \
 				ft_strndup(dup->id, ft_strlen(dup->id)));

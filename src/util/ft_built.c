@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 22:57:45 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 23:47:02 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ void	ft_builtclear(t_built **built)
 			temp = (*built)->next;
 		else
 			temp = 0;
-		ft_listclear(&((*built)->command));
+		if (((*built)->command))
+			ft_listclear(&((*built)->command));
 		ft_free(*built);
 		*built = temp;
+
 	}
 }
 
