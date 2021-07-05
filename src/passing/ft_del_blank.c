@@ -28,21 +28,25 @@ void	ft_del_lastblank(t_built *built)
 {
 	t_list	*temp_l;
 	t_list	*temp_l2;
+	t_list	*head;
 
 	if (!built || !built->command)
 		return ;
 	temp_l = built->command;
+	head = 0;
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
-		built->command = ft_find_head(temp_l);
 		if (ft_strncmp(temp_l->str, " ", 1) && !(temp_l->next))
 		{
 			ft_listdelone(&temp_l);
 			break ;
 		}
+		else
+			head = temp_l;
 		temp_l = temp_l2;
 	}
+	built->command = ft_find_head(head);
 }
 
 void	ft_del_blank(t_built *built)
