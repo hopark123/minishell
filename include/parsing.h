@@ -1,5 +1,6 @@
-#ifndef PASSING_H
-# define PASSING_H
+#ifndef PARSING_H
+# define PARSING_H
+
 # include "head.h"
 
 void		ft_del_blank(t_built *built);

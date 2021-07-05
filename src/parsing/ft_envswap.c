@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 03:55:26 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
+#include "parsing.h"
 
 static int	ft_envlen(char *str)
 {

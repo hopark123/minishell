@@ -4,8 +4,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <curses.h>
 # include <term.h>
+# include <curses.h>
 # include <locale.h>
 # include <limits.h>
 # include <termios.h>
@@ -16,8 +16,6 @@
 # include <string.h>
 # include <termios.h>
 # include <termcap.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 # define ERROR  1
 # define SUCCESS 0
 # define FALSE 0 

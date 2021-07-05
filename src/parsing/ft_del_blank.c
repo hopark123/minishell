@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 03:45:01 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
+#include "parsing.h"
 
 static	t_list	*ft_find_head(t_list *list)
 {
