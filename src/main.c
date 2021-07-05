@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 05:32:39 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 08:07:30 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	minishell(t_list *env_list)
 	ft_listclear(&list);
 	g_mini.built = built;
 	ft_put_blank(built);
-	ft_del_lastblank(built);
 	ft_split_built(built, "|;");
+	ft_del_lastblank(built);
 	ft_shell(built, &env_list);
 	ft_builtclear(&built);
 }
@@ -51,6 +51,7 @@ void	loop(t_list *env_list)
 void	ft_init_mini(void)
 {
 	g_mini.pid = -1;
+	g_mini.signal = -1;
 	g_mini.history = ft_listnew(0, 0);
 	g_mini.history->next = g_mini.history;
 	g_mini.history->prev = g_mini.history;
