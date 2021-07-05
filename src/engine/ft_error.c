@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:58:27 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 04:52:55 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:28:39 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_perror(char *filename, char *message)
 	char	*error_str;
 
 	error_str = strerror(errno);
-	ft_putstr_fd("minish : ", STDERR, 0);
+	ft_putstr_fd("minish : ", STDERR, "\033[31m");
 	if (filename)
 	{
 		ft_putstr_fd(filename, STDERR, 0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 19:06:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 00:33:51 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:27:01 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ static	int	change_pwd(t_list **env_list, char *dest, char *prev)
 
 	res = chdir(dest);
 	ft_add_env_list(env_list, ft_strndup("PWD", 3), getcwd(0, BUFFER_SIZE));
+	if (res != SUCCESS)
+	{
+		res = ERROR;
+		ft_perror(dest, 0);
+	}
 	ft_free(prev);
 	ft_free(dest);
 	return (res);
