@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:50 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 14:33:58 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:43:19 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	*free_malloc(char **dest, int i)
 {
 	while (i >= 0)
-		ft_free(dest[i--]);
-	ft_free(dest);
+		free(dest[i--]);
+	free(dest);
 	return (0);
 }
 
@@ -56,7 +56,6 @@ static char	**do_malloc(char const *str, char c, size_t *size)
 	if (!str)
 		return (0);
 	*size = phrase_size(str, c);
-	// fprintf(stderr,"str[%s] c[%c]size : [%d]\n", str, c, (*size));
 	tmp = (char **)malloc(sizeof(char *) * (*size + 1));
 	if (!tmp)
 		return (0);
@@ -70,25 +69,22 @@ char	**ft_split(char const *s, char c)
 	size_t		size;
 	size_t		i;
 
-	// fprintf(stderr, "@@[%s]\n", s);
 	tmp = do_malloc(s, c, &size);
 	if (!tmp)
 		return (0);
 	start = s;
 	i = 0;
-	while (i < size && *s != '\0')
+	while (size > 0 && *s != '\0')
 	{
 		while (*s++ == c)
 			start = s;
 		if (*s == c || (*s == '\0' && *start != '\0'))
 		{
 			tmp[i] = ft_substr(start, 0, s - start);
-			if (!tmp[i])
-			{
-				return (free_malloc(tmp, i));
-			}
+			if (!tmp[i++])
+				return (free_malloc(tmp, --i));
+			size--;
 		}
-		i++;
 	}
 	tmp[i] = 0;
 	return (tmp);

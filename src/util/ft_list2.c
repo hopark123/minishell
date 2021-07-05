@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 16:33:16 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 00:04:08 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,9 @@ void	ft_listclear(t_list **list)
 	{
 		temp->prev->next = 0;
 	}
-	int i = 0;
 	while ((*list) && list)
 	{
-		// if ((*list)->next)
 		temp = temp->next;
-		// else
-		// 	temp = 0;
-		// temp = (*list)->next;
 		ft_listdelone(list);
 		*list = temp;
 	}
@@ -119,6 +114,7 @@ t_list	*ft_listdup(t_list *list)
 	dup = list;
 	while (dup)
 	{
+		add = 0;
 		if (dup->str)
 			add = ft_listnew2(ft_strndup(dup->str, ft_strlen(dup->str)), \
 				ft_strndup(dup->id, ft_strlen(dup->id)));

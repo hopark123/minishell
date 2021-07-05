@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+         #
+#    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/05 17:14:36 by hongseonghy      ###   ########.fr        #
+#    Updated: 2021/07/06 00:02:28 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -o2
 CLIBR =  -lncurses
 # CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS = -g3 -fsanitize=address
+# CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src
@@ -83,6 +83,7 @@ UTIL = $(addprefix $(UTIL_DIR)/, \
 	ft_add_char.c \
 	ft_atoi.c \
 	ft_built.c \
+	ft_debug.c \
 	ft_draw.c \
 	ft_free.c \
 	ft_isalpha.c \

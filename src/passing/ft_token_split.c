@@ -37,7 +37,7 @@ static int	ft_make_token(t_list **token, char **spot, char **str, int *q_tmp)
 	int		i;
 
 	i = 1;
-	if ((**spot) && (**str == 0 || **str == ' '))
+	if ((**spot) && **str == ' ')
 	{
 		(*token) = build_token((*token), spot, (*str) - (*spot), *q_tmp);
 		*q_tmp = 0;
@@ -72,7 +72,7 @@ t_list	*ft_token_split(char *str)
 	int		i;
 
 	split_init(&token, &spot, &q_tmp, &q_flag);
-	while (*str >= 0)
+	while (*str != 0)
 	{
 		i = 1;
 		if (!spot)
@@ -84,10 +84,10 @@ t_list	*ft_token_split(char *str)
 		q_flag = ft_check_quotes(*str, &q_tmp);
 		if (!q_flag)
 			i = ft_make_token(&token, &spot, &str, &q_tmp);
-		if (*str == 0)
-			break ;
 		str = str + i;
 	}
+	if (spot)
+		token = build_token(token, &spot, str - spot, q_tmp);
 	ft_check_quotes(0, 0);
 	return (token);
 }
