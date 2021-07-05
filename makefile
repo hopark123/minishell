@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 04:37:50 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/06 04:45:43 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,11 @@ OBJ_DIR = obj
 
 INCLUDE = $(addprefix $(INC_DIR)/, \
 	builtin.h \
-	engine.h  \
-	head.h  \
-	parsing.h  \
+	engine.h \
+	head.h \
+	parsing.h \
 	termi.h \
-	type.h  \
+	type.h \
 	util.h \
 )
 BUILTIN = $(addprefix $(BUILTIN_DIR)/, \
