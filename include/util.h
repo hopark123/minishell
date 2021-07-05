@@ -46,6 +46,7 @@ int			ft_strncmp(const char *s1, const char *s2, int n);
 int			ft_strncmp2(const char *s1, const char *s2, int n);
 int			ft_strncmp3(const char *s1, const char *s2, size_t n);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strchr2(const char *s, char c);
 int			ft_strlen2(char **s);
 int			ft_isprint(int n);
 int			ft_num_len(int num);

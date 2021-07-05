@@ -4,8 +4,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <curses.h>
 # include <term.h>
+# include <curses.h>
 # include <locale.h>
 # include <limits.h>
 # include <termios.h>

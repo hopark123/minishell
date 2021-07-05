@@ -6,7 +6,7 @@
 #    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 04:29:55 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/06 04:37:50 by hjpark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -138,6 +138,6 @@ $(OBJ_DIR)/%.o : %.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -I $(CLIBR) -I $(INC_DIR) -c $< -o $@
 
 $(NAME) : $(INCLUDES) $(OBJ)
-	@$(CC) $(CFLAGS) -I $(INC_DIR)  -o $(NAME) $(OBJ) -I $(CLIBR) 
+	@$(CC) $(CFLAGS) -I $(CLIBR) -I $(INC_DIR) -o $(NAME) $(OBJ)
 
 .PHONY: all clean fclean re test\
