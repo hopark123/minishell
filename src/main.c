@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 08:08:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 08:11:57 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	minishell(t_list *env_list)
 	char	*temp;
 
 	list = ft_token_split(g_mini.line);
-	temp = ft_strndup(g_mini.line, ft_strlen(g_mini.line));
 	ft_free(g_mini.line);
 	ft_envswap(list, env_list);
 	ft_del_quotes(list);
@@ -28,10 +27,8 @@ void	minishell(t_list *env_list)
 	ft_put_blank(built);
 	ft_split_built(built, "|;");
 	ft_del_lastblank(built);
-	g_mini.line = temp;
 	ft_shell(built, &env_list);
 	ft_builtclear(&built);
-	ft_free(g_mini.line);
 }
 
 void	loop(t_list *env_list)

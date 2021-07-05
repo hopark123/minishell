@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 07:58:23 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 08:12:28 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void	ft_getchar(int *cursor, int *len, int n)
 		ft_putchar_fd(c, STDERR, "\x1b[34m");
 	}
 	g_mini.line = ft_add_char(&g_mini.line, c, (*cursor));
-	// if (c == '\n')
-		// g_mini.line = ft_del_char(&g_mini.line, (*cursor));
 	tputs(tgetstr("ip", NULL), 1, ft_putchar_tc);
 	tputs(tgetstr("ei", NULL), 1, ft_putchar_tc);
 }
