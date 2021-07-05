@@ -6,25 +6,39 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 15:02:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 03:12:55 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:30:54 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "engine.h"
 
-static void	redirect1_1(t_built *built, int *fd)
+static int	redirect1_1(t_built *built, int temp, int *fd)
 {
 	char	*line;
 	int		len;
 
-	while (get_next_line(fd[0], &line) > 0)
+	if (temp < 0)
 	{
-		ft_putstr_fd(line, fd[1], 0);
-		ft_putstr_fd("\n", fd[1], 0);
-		ft_free(line);
+		ft_perror(built->command->next->next->str, "No such file or directory");
+		return (ERROR);
 	}
-	ft_free(line);
-	return ;
+	dup2(temp, fd[1]);
+	ft_close(temp);
+	fd[1] = temp;
+	if (!built->prev)
+	{
+		while (1)
+		{
+			len = get_next_line(fd[0], &line);
+			ft_putstr_fd(line, fd[1], 0);
+			ft_putstr_fd("\n", fd[1], 0);
+			if (len >= 0)
+				ft_free(line);
+			if (len <= 0)
+				break ;
+		}
+	}
+	return (SUCCESS);
 }
 
 int	ft_redirect(t_built *built, char *type, int *fd)
@@ -32,7 +46,7 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 	t_list	*list;
 	int		temp;
 
-	temp = 0;
+	temp = -1;
 	list = built->command;
 	if (!list->next || !list->next->next)
 	{
@@ -40,21 +54,12 @@ int	ft_redirect(t_built *built, char *type, int *fd)
 		ft_syntaxerror('>');
 		return (ERROR_INVALID_ARGUMENT);
 	}
+	list = list->next->next;
 	if (ft_strncmp(type, "TRUNC", 5))
-		temp = open(list->next->next->str, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
+		temp = open(list->str, O_CREAT | O_WRONLY | O_TRUNC, S_IRWXU);
 	else if (ft_strncmp(type, "APPEND", 6))
-		temp = open(list->next->next->str, O_CREAT | O_WRONLY | O_APPEND, S_IRWXU);
-	if (temp < 0)
-	{
-		ft_perror(list->next->next->str, "No such file or directory");
-		return (ERROR);
-	}
-	dup2(temp, fd[1]);
-	ft_close(temp);
-	fd[1] = temp;
-	if (!built->prev)
-		redirect1_1(built, fd);
-	return (SUCCESS);
+		temp = open(list->str, O_CREAT | O_WRONLY | O_APPEND, S_IRWXU);
+	return (redirect1_1(built, temp, fd));
 }
 
 int	ft_redirect2(t_built *built)

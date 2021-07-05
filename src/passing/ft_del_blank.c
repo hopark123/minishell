@@ -15,7 +15,6 @@
 static	t_list	*ft_find_head(t_list *list)
 {
 	t_list	*temp;
-	t_list	*blank;
 
 	if (!list)
 		return (ft_listnew(ft_strndup("", 0), 0));
