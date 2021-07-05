@@ -14,6 +14,7 @@ void		ft_put_blank(t_built *built);
 int			ft_split_built(t_built *built, char *str);
 int			ft_split_built2(t_built *built, char *str);
 int			ft_check_syntax(char *str);
+int			ft_check_quotes(char c, int *q_tmp);
 t_list		*ft_token_split(char *str);
 
 #endif

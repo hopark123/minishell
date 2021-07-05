@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 02:47:34 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:38:54 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
+#include "type.h"
 
 void	minishell(t_list *env_list)
 {
@@ -68,7 +69,7 @@ int	main(int argc, char **argv, char **envp)
 	env_list = ft_init_env_list(envp);
 	g_mini.env_list = env_list;
 	ft_init_mini();
-	// draw();
+	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
 	ft_listclear(&g_mini.head);

@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   .c                                   :+:      :+:    :+:   */
+/*   ft_token_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:50 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 03:10:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:52:25 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "passing.h"
-
-static int	ft_check_quotes(char c, int *q_tmp)
-{
-	static char	tmp = 0;
-
-	if (!c || c == tmp)
-	{
-		tmp = 0;
-	}
-	else if (ft_strchr("\"\'", c) && !tmp)
-	{
-		tmp = c;
-	}
-	if (tmp && q_tmp)
-		*q_tmp = tmp;
-	return (tmp);
-}
 
 static t_list	*build_token(t_list *token, char **spot, int len, int id)
 {
@@ -54,7 +37,7 @@ static int	ft_make_token(t_list **token, char **spot, char **str, int *q_tmp)
 	int		i;
 
 	i = 1;
-	if ((**spot) && (**str == 0 || **str == ' '))
+	if ((**spot) && **str == ' ')
 	{
 		(*token) = build_token((*token), spot, (*str) - (*spot), *q_tmp);
 		*q_tmp = 0;

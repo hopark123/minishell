@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 02:55:02 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:20:07 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
 
-	if (!built || !built->command || !built->command->str)
+	if (!built || !(built->command) || !(built->command->str))
 		return (EXIT_SUCCESS);
 	if (built->next)
 	{

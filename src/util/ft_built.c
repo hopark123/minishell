@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 01:52:57 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:50:44 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ t_built	*ft_builtndup(t_list *list)
 	if (!ft_malloc(&res, sizeof(t_built)))
 		return (0);
 	res->command = ft_listdup(list);
+	res->next = 0;
+	res->prev = 0;
+	return (res);
+}
+
+t_built	*ft_builtndup2(t_list *list)
+{
+	t_built		*res;
+
+	if (!list)
+		return (0);
+	if (!ft_malloc(&res, sizeof(t_built)))
+		return (0);
+	res->command = (list);
 	res->next = 0;
 	res->prev = 0;
 	return (res);
@@ -72,18 +86,4 @@ int	ft_built_cnt(t_built *built)
 		i++;
 	}
 	return (i);
-}
-
-t_built	*ft_builtndup2(t_list *list)
-{
-	t_built		*res;
-
-	if (!list)
-		return (0);
-	if (!ft_malloc(&res, sizeof(t_built)))
-		return (0);
-	res->command = (list);
-	res->next = 0;
-	res->prev = 0;
-	return (res);
 }

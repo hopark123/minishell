@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   .c                                     :+:      :+:    :+:   */
+/*   ft_del_blank.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 18:36:13 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:45:01 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_del_lastblank(t_built *built)
 
 	if (!built || !built->command)
 		return ;
+	head = 0;
 	temp_l = built->command;
 	head = 0;
 	while (temp_l)

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
+#    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 03:31:37 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/06 03:48:21 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ CC = gcc
 # CFLAGS = -o2
 CLIBR =  -lncurses
 # CFLAGS = -Wall -Wextra -Werror
-# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS = -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+# CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src
@@ -71,6 +71,7 @@ PASSING = $(addprefix $(PASSING_DIR)/, \
 	ft_parse.c \
 	ft_split_built.c \
 	ft_syntax.c \
+	ft_check_quotes.c \
 	ft_token_split.c \
 )
 TERMI = $(addprefix $(TERMI_DIR)/, \
