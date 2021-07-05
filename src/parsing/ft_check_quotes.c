@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_quotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 03:56:08 by hongseong         #+#    #+#             */
-/*   Updated: 2021/07/05 03:57:04 by hongseonghy      ###   ########.fr       */
+/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
+#include "parsing.h"
 
 int	ft_check_quotes(char c, int *q_tmp)
 {

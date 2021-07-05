@@ -16,7 +16,7 @@ void		ft_builtdelone(t_built **built);
 int			ft_built_cnt(t_built *built);
 void		draw(void);
 void		draw2(void);
-void		test_print_passing(t_built *built);
+void		test_print_parsing(t_built *built);
 void		test_built_list(t_built *built);
 void		test_print_list(t_list *list);
 void		ft_free(void *memory);
