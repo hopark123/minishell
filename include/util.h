@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   util.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/06 05:15:26 by hopark            #+#    #+#             */
+/*   Updated: 2021/07/06 05:15:27 by hopark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UTIL_H
 # define UTIL_H
 
@@ -16,7 +28,7 @@ void		ft_builtdelone(t_built **built);
 int			ft_built_cnt(t_built *built);
 void		draw(void);
 void		draw2(void);
-void		test_print_passing(t_built *built);
+void		test_print_parsing(t_built *built);
 void		test_built_list(t_built *built);
 void		test_print_list(t_list *list);
 void		ft_free(void *memory);
@@ -46,6 +58,7 @@ int			ft_strncmp(const char *s1, const char *s2, int n);
 int			ft_strncmp2(const char *s1, const char *s2, int n);
 int			ft_strncmp3(const char *s1, const char *s2, size_t n);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strchr2(const char *s, char c);
 int			ft_strlen2(char **s);
 int			ft_isprint(int n);
 int			ft_num_len(int num);
@@ -54,5 +67,6 @@ int			ft_putchar_fd(char c, int fd, char *color);
 int			ft_putstr_fd(char *s, int fd, char *color);
 int			ft_putnbr_fd(int n, int fd, char *color);
 int			get_next_line(int fd, char **line);
+void		*ft_calloc(size_t nmemb, size_t size);
 
 #endif

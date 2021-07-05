@@ -6,11 +6,22 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:59:46 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 22:37:35 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
+#include "parsing.h"
+
+static int	meet_q_blank_token(char **str)
+{
+	if (ft_strncmp(*str, "\"\"", 2) || ft_strncmp(*str, "\'\'", 2))
+	{
+		ft_free(*str);
+		*str = ft_strndup("", 1);
+		return (1);
+	}
+	return (0);
+}
 
 void	ft_del_quotes(t_list *list)
 {
@@ -24,20 +35,13 @@ void	ft_del_quotes(t_list *list)
 		i = 0;
 		while (list->str && list->str[i])
 		{
-			if (ft_strncmp(list->str, "\"\"", 2) || ft_strncmp(list->str, "\'\'", 2))
-			{
-				ft_free(list->str);
-				list->str = 0;
+			if (meet_q_blank_token(&(list->str)))
 				break ;
-			}
-			if (ft_strchr("\'\"", list->str[i]))
+			else if (ft_strchr("\'\"", list->str[i]))
 			{
 				c = list->str[i];
-				fprintf(stderr,"[%s][%s][%c][%d][%d]\n", list->str, &list->str[i], c, i, temp);
 				list->str = ft_del_char(&list->str, i + 1);
-				fprintf(stderr,"[%s][%s][%c][%d][%d]\n", list->str, &list->str[i], c, i, temp);
 				temp = ft_strchr(&list->str[i], c) - list->str;
-				fprintf(stderr,"[%s][%s][%c][%d][%d]\n", list->str, &list->str[i], c, i, temp);
 				list->str = ft_del_char(&list->str, temp + 1);
 				i = temp;
 			}

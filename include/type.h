@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   type.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/06 05:15:21 by hopark            #+#    #+#             */
+/*   Updated: 2021/07/06 05:15:23 by hopark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef TYPE_H
 # define TYPE_H
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <curses.h>
 # include <term.h>
+# include <curses.h>
 # include <locale.h>
 # include <limits.h>
 # include <termios.h>
@@ -14,10 +26,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
-# include <termios.h>
 # include <termcap.h>
-# include <readline/readline.h>
-# include <readline/history.h>
 # define ERROR  1
 # define SUCCESS 0
 # define FALSE 0 

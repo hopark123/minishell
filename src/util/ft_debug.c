@@ -6,18 +6,18 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 19:42:39 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:43:48 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-void	test_print_passing(t_built *built)
+void	test_print_parsing(t_built *built)
 {
 	t_list	*temp_l;
 
 	temp_l = built->command;
-	write(2, "          passing print : ", 26);
+	write(2, "          parsing print : ", 26);
 	while (temp_l)
 	{
 		write(2, "[", 1);
@@ -35,7 +35,7 @@ void	test_built_list(t_built *built)
 	tmp = built;
 	while (tmp)
 	{
-		test_print_passing(tmp);
+		test_print_parsing(tmp);
 		write(2, "\n", 1);
 		tmp = tmp->next;
 	}

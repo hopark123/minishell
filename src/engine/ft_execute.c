@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:40:15 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:20:07 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_list	*del_pipe_col(t_built *built)
 
 	if (!built->command || !built->command->next)
 	{
-		if (ft_strchr("|;", built->command->str[0]) && !built->command->next)
+		if (ft_strchr2("|;", built->command->str[0]) && !built->command->next)
 		{
 			if (built->command->id)
 				return (built->command);
@@ -30,7 +30,7 @@ static t_list	*del_pipe_col(t_built *built)
 		}
 		return (built->command);
 	}
-	if (ft_strchr("|;", built->command->str[0]))
+	if (ft_strchr2("|;", built->command->str[0]))
 		return (built->command->next->next);
 	return (built->command);
 }
@@ -57,7 +57,7 @@ static int	ft_execute2(t_built *built, t_list **env_list, int *fd)
 {
 	int	res;
 
-	if (!built || !built->command || !built->command->str)
+	if (!built || !(built->command) || !(built->command->str))
 		return (EXIT_SUCCESS);
 	if (built->next)
 	{
@@ -93,7 +93,8 @@ int	ft_execute(t_built *built, t_list **env_list)
 	if (!(list))
 		return (REDIRECTION_ERROR);
 	temp = ft_builtndup(list);
-	ft_split_built(temp, "><");
+	if (!ft_strchr2("><", temp->command->str[0]))
+		ft_split_built(temp, "><");
 	ft_del_lastblank(temp);
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);

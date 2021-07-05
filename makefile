@@ -6,36 +6,36 @@
 #    By: hopark <hopark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/05 22:48:16 by hopark           ###   ########.fr        #
+#    Updated: 2021/07/06 05:15:07 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-# CFLAGS = -o2
-CLIBR =  -lncurses
+CLIBR = -lncurses
 # CFLAGS = -Wall -Wextra -Werror
-# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS = -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+# CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
+
 SRC_DIR = src
 INC_DIR = include
-ENGINE_DIR = $(SRC_DIR)/engine
-UTIL_DIR = $(SRC_DIR)/util
-PASSING_DIR = $(SRC_DIR)/passing
-TERMI_DIR = $(SRC_DIR)/termi
 BUILTIN_DIR = $(SRC_DIR)/builtin
+ENGINE_DIR = $(SRC_DIR)/engine
+PARSING_DIR = $(SRC_DIR)/parsing
+TERMI_DIR = $(SRC_DIR)/termi
+UTIL_DIR = $(SRC_DIR)/util
 OBJ_DIR = obj
 
 INCLUDE = $(addprefix $(INC_DIR)/, \
 	builtin.h \
-	engine.h  \
-	head.h  \
-	passing.h  \
+	engine.h \
+	head.h \
+	parsing.h \
 	termi.h \
-	type.h  \
+	type.h \
 	util.h \
 )
 BUILTIN = $(addprefix $(BUILTIN_DIR)/, \
@@ -63,7 +63,7 @@ ENGINE = $(addprefix $(ENGINE_DIR)/, \
 	ft_signal.c \
 	ft_subshell.c \
 )
-PASSING = $(addprefix $(PASSING_DIR)/, \
+PARSING = $(addprefix $(PARSING_DIR)/, \
 	ft_del_blank.c \
 	ft_del_quotes.c \
 	ft_envswap.c \
@@ -71,6 +71,7 @@ PASSING = $(addprefix $(PASSING_DIR)/, \
 	ft_parse.c \
 	ft_split_built.c \
 	ft_syntax.c \
+	ft_check_quotes.c \
 	ft_token_split.c \
 )
 TERMI = $(addprefix $(TERMI_DIR)/, \
@@ -105,14 +106,14 @@ vpath %.c \
 	$(SRC_DIR) \
 	$(BUILTIN_DIR) \
 	$(ENGINE_DIR) \
-	$(PASSING_DIR)\
+	$(PARSING_DIR)\
 	$(TERMI_DIR) \
 	$(UTIL_DIR) \
 
 SRC = \
 	$(BUILTIN) \
 	$(ENGINE) \
-	$(PASSING)\
+	$(PARSING)\
 	$(TERMI) \
 	$(UTIL) \
 	main.c \
@@ -133,9 +134,9 @@ test : $(NAME)
 	./minishell
 $(OBJ_DIR)/%.o : %.c | $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I $(CLIBR) -I $(INC_DIR)  -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 $(NAME) : $(INCLUDES) $(OBJ)
-	@$(CC) $(CFLAGS) -I $(INC_DIR)  -o $(NAME) $(OBJ) $(CLIBR)
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -o $(NAME) $(OBJ) $(CLIBR)
 
 .PHONY: all clean fclean re test\

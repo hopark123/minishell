@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   .c                                   :+:      :+:    :+:   */
+/*   ft_token_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:50 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 03:10:31 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 04:16:53 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
-
-static int	check_quotes(char c, int *q_tmp)
-{
-	static char	tmp = 0;
-
-	if (!c || c == tmp)
-	{
-		tmp = 0;
-	}
-	else if (ft_strchr("\"\'", c) && !tmp)
-	{
-		tmp = c;
-	}
-	if (tmp && q_tmp)
-		*q_tmp = tmp;
-	return (tmp);
-}
+#include "parsing.h"
 
 static t_list	*build_token(t_list *token, char **spot, int len, int id)
 {
@@ -54,7 +37,7 @@ static int	ft_make_token(t_list **token, char **spot, char **str, int *q_tmp)
 	int		i;
 
 	i = 1;
-	if ((**spot) && (**str == 0 || **str == ' '))
+	if ((**spot) && **str == ' ')
 	{
 		(*token) = build_token((*token), spot, (*str) - (*spot), *q_tmp);
 		*q_tmp = 0;
@@ -89,7 +72,7 @@ t_list	*ft_token_split(char *str)
 	int		i;
 
 	split_init(&token, &spot, &q_tmp, &q_flag);
-	while (*str >= 0)
+	while (*str != 0)
 	{
 		i = 1;
 		if (!spot)
@@ -98,13 +81,13 @@ t_list	*ft_token_split(char *str)
 				str++;
 			spot = str;
 		}
-		q_flag = check_quotes(*str, &q_tmp);
+		q_flag = ft_check_quotes(*str, &q_tmp);
 		if (!q_flag)
 			i = ft_make_token(&token, &spot, &str, &q_tmp);
-		if (*str == 0)
-			break ;
 		str = str + i;
 	}
-	check_quotes(0, 0);
+	if (spot)
+		token = build_token(token, &spot, str - spot, q_tmp);
+	ft_check_quotes(0, 0);
 	return (token);
 }

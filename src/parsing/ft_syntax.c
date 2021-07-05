@@ -6,11 +6,11 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 02:13:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:10:22 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
+#include "parsing.h"
 
 static void	ft_quotes(char const *s, int *i, int *flag, char c)
 {
@@ -42,7 +42,7 @@ static int	face_normal_char(char *str, int *i, int *flag)
 {
 	char	find;
 
-	if (str[*i] && ft_strchr("><;|", str[*i]))
+	if (str[(*i)] && ft_strchr("><;|", str[*i]))
 	{
 		find = str[*i];
 		(*i)++;
@@ -57,9 +57,8 @@ static int	face_normal_char(char *str, int *i, int *flag)
 			ft_free(str);
 			return (ERROR_INVALID_ARGUMENT);
 		}
-		(*i)++;
 	}
-	if (str[*i] == '"')
+	if (str[(*i)] == '"')
 		*flag = -1;
 	else if (str[*i] == '\'')
 		*flag = -2;

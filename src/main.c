@@ -6,7 +6,7 @@
 /*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 22:48:04 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:15:01 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	minishell(t_list *env_list)
 	built = ft_builtndup(list);
 	ft_listclear(&list);
 	g_mini.built = built;
-	ft_del_blank(built);
 	ft_put_blank(built);
 	ft_del_lastblank(built);
 	ft_split_built(built, "|;");
@@ -69,7 +68,7 @@ int	main(int argc, char **argv, char **envp)
 	env_list = ft_init_env_list(envp);
 	g_mini.env_list = env_list;
 	ft_init_mini();
-	// draw();
+	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
 	ft_listclear(&g_mini.head);

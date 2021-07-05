@@ -6,26 +6,19 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:00:01 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 05:11:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "passing.h"
-
-int	ft_isenv(char c)
-{
-	if (ft_isdigit(c) || ft_isalpha(c) || c == '_')
-		return (SUCCESS);
-	return (ERROR);
-}
+#include "parsing.h"
 
 static int	ft_envlen(char *str)
 {
 	int		i;
 
 	i = 0;
-	if (ft_isdigit((int)str[i]))
-		return (1);
+	if (ft_isdigit((int)str[i]) || str[i] == '?')
+		return (0);
 	i++;
 	while (str[i])
 	{
@@ -64,27 +57,39 @@ static void	jump_s_quotes(char *str, int *i)
 	}
 }
 
-void	ft_envswap(t_list *list, t_list *env_list)
+static int	ft_envswap2(t_list *list, t_list *env_list, int *i)
 {
-	int		i;
 	char	*old;
 	char	oldlen;
 	char	*new;
+
+	jump_s_quotes(list->str, i);
+	old = ft_strchr(&(list->str[(*i)]), '$');
+	if (old)
+	{
+		oldlen = ft_envlen(old + 1);
+		if (oldlen == 1)
+			return (ERROR);
+		if (oldlen == 0)
+			oldlen = 1;
+		new = ft_getenv(env_list, old + 1, oldlen);
+		ft_strswap(&list, old, new, oldlen);
+		return (SUCCESS);
+	}
+	else
+		return (ERROR);
+}
+
+void	ft_envswap(t_list *list, t_list *env_list)
+{
+	int		i;
 
 	while (list)
 	{
 		i = 0;
 		while (list->str[i])
 		{
-			jump_s_quotes(list->str, &i);
-			old = ft_strchr(&(list->str[i]), '$');
-			if (old)
-			{
-				oldlen = ft_envlen(old + 1);
-				new = ft_getenv(env_list, old + 1, oldlen);
-				ft_strswap(&list, old, new, oldlen);
-			}
-			else
+			if (ft_envswap2(list, env_list, &i) == ERROR)
 				break ;
 		}
 		list = list->next;

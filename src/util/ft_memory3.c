@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:19:49 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 02:57:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 01:53:20 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,15 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 		i++;
 	}
 	return (0);
+}
+
+char	*ft_strchr(const char *s, char c)
+{
+	while (*s != c)
+	{
+		if (*s == 0)
+			return (0);
+		s++;
+	}
+	return ((char *)s);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:11:15 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 21:58:13 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:03:35 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_add_char(char **str, char c, int pt)
 	if ((*str))
 		ft_memcpy(result, (*str), pt);
 	result[pt] = c;
-	ft_memcpy(result + pt + 1, (*str)+ pt, len - pt);
+	ft_memcpy(result + pt + 1, (*str) + pt, len - pt);
 	result[len + 1] = 0;
 	ft_free((*str));
 	(*str) = 0;
