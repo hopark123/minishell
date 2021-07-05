@@ -65,12 +65,14 @@ typedef struct s_mini
 	int				signal;
 	int				status;
 	char			*line;
+	t_list			*env_list;
 	struct termios	term;
 	struct termios	backup;
 	int				len;
 	int				cursor;
 	t_list			*history;
 	t_list			*head;
+	t_built			*built;
 	pid_t			pid;
 }				t_mini;
 

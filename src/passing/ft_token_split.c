@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_token_split.c                                   :+:      :+:    :+:   */
+/*   .c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:50 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 03:05:42 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 03:10:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static t_list	*build_token(t_list *token, char **spot, int len, int id)
 {
 	t_list	*add;
 	char	*str_id;
-	char	*str;
 
 	if (!(**spot) || len == 0)
 		return (token);
@@ -45,7 +44,6 @@ static t_list	*build_token(t_list *token, char **spot, int len, int id)
 		str_id[0] = (char)id;
 		str_id[1] = 0;
 	}
-	str = ft_substr(*spot, 0, len);
 	add = ft_listnew2(ft_substr(*spot, 0, len), str_id);
 	ft_listadd_tail(&token, &add);
 	return (token);

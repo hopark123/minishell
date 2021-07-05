@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 03:02:15 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 16:32:00 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,18 @@ void	minishell(t_list *env_list)
 	t_built	*built;
 
 	list = ft_token_split(g_mini.line);
-	fprintf(stderr, "a[%s]\n", list->str);
+	ft_free(g_mini.line);
 	ft_envswap(list, env_list);
-	fprintf(stderr, "b[%s]\n", list->str);
 	ft_del_quotes(list);
-	fprintf(stderr, "c[%s]\n", list->str);
 	built = ft_builtndup(list);
+	g_mini.built = built;
 	ft_del_blank(built);
-	fprintf(stderr, "d[%s]\n", built->command->str);
 	ft_put_blank(built);
 	ft_del_lastblank(built);
-	fprintf(stderr, "d[%s]\n", built->command->str);
 	ft_split_built(built, "|;");
 	ft_shell(built, &env_list);
-	ft_free(g_mini.line);
+	write(2,"out\n",4);
+	ft_builtclear(&built);
 }
 
 void	loop(t_list *env_list)
@@ -58,8 +56,6 @@ void	ft_init_mini(void)
 	g_mini.history->next = g_mini.history;
 	g_mini.history->prev = g_mini.history;
 	g_mini.head = g_mini.history;
-	g_mini.head->next = g_mini.history;
-	g_mini.head->prev = g_mini.history;
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
 }
@@ -70,11 +66,12 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	env_list = ft_init_env_list(envp);
+	// env_list = ft_init_env_list(envp);
+	// g_mini.env_list = env_list;
 	ft_init_mini();
-	draw();
+	// draw();
 	loop(env_list);
-	ft_listclear(&env_list);
-	ft_listclear(&g_mini.history);
+	// ft_listclear(&env_list);
+	// ft_listclear(&g_mini.head);
 	return (g_mini.status);
 }

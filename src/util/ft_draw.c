@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:15:45 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:11:54 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/05 16:27:10 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,21 @@ void	test_built_list(t_built *built)
 		test_print_passing(tmp);
 		write(2, "\n", 1);
 		tmp = tmp->next;
+	}
+}
+
+void	test_print_list(t_list *list)
+{
+	t_list	*temp;
+
+	temp = list;
+	if (temp->prev)
+		temp->prev->next = 0;
+	while (temp)
+	{
+		write(2, "[", 1);
+		ft_putstr_fd(temp->str, 2, 0);
+		write(2, "]", 1);
+		temp = temp->next;
 	}
 }
