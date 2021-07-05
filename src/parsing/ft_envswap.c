@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:32 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 05:11:49 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 06:14:35 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ static int	ft_envlen(char *str)
 
 	i = 0;
 	if (ft_isdigit((int)str[i]) || str[i] == '?')
-		return (0);
-	i++;
+		return (-1);
 	while (str[i])
 	{
-		if (ft_strchr("$ ><|;\'\"=", str[i]) || ft_isenv(str[i]) == ERROR)
+		if (ft_strchr("$ ><|;\'\"=?", str[i]) || ft_isenv(str[i]) == ERROR)
 			return (i);
 		i++;
 	}
@@ -68,9 +67,9 @@ static int	ft_envswap2(t_list *list, t_list *env_list, int *i)
 	if (old)
 	{
 		oldlen = ft_envlen(old + 1);
-		if (oldlen == 1)
-			return (ERROR);
 		if (oldlen == 0)
+			return (ERROR);
+		if (oldlen == -1)
 			oldlen = 1;
 		new = ft_getenv(env_list, old + 1, oldlen);
 		ft_strswap(&list, old, new, oldlen);
