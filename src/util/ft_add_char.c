@@ -6,44 +6,47 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 20:11:15 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 21:58:58 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:03:35 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-char	*ft_add_char(char *str, char c, int pt)
+char	*ft_add_char(char **str, char c, int pt)
 {
 	int		len;
 	char	*result;
 
 	pt--;
-	len = ft_strlen(str);
+	len = ft_strlen((*str));
 	if (!(ft_malloc(&result, sizeof(char) * (len + 2))))
 		return (0);
-	if (str)
-		ft_memcpy(result, str, pt);
+	if ((*str))
+		ft_memcpy(result, (*str), pt);
 	result[pt] = c;
-	ft_memcpy(result + pt + 1, str + pt, len - pt);
+	ft_memcpy(result + pt + 1, (*str) + pt, len - pt);
 	result[len + 1] = 0;
-	ft_free(str);
+	ft_free((*str));
+	(*str) = 0;
 	return (result);
 }
 
-char	*ft_del_char(char *str, int pt)
+char	*ft_del_char(char **str, int pt)
 {
 	int		len;
 	char	*result;
 
 	result = 0;
-	len = ft_strlen(str);
-	if (len == 0)
+	len = ft_strlen((*str));
+	if (len <= 0 || pt < 1)
 		return (0);
 	if (!(ft_malloc(&result, sizeof(char) * (len))))
-		ft_error("malloc error");
-	ft_memcpy(result, str, pt - 1);
-	ft_memcpy(result + pt - 1, str + pt, len - pt);
+		return (0);
+	if (pt >= 1)
+		ft_memcpy(result, (*str), pt - 1);
+	ft_memcpy(result + pt - 1, (*str) + pt, len - pt);
 	result[len - 1] = 0;
-	ft_free(str);
+	ft_free((*str));
+	(*str) = 0;
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 19:42:39 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 20:20:38 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:29:39 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	test_print_list(t_list *list)
 	t_list	*temp;
 
 	temp = list;
-	// if (temp->prev)
-	// 	temp->prev->next = 0;
+	if (temp->prev)
+		temp->prev->next = 0;
 	while (temp)
 	{
 		write(2, "[", 1);

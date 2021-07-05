@@ -6,11 +6,23 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 01:13:20 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:02:18 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "passing.h"
+
+static	t_list	*ft_find_head(t_list *list)
+{
+	t_list	*temp;
+
+	if (!list)
+		return (ft_listnew(ft_strndup("", 0), 0));
+	temp = list;
+	while (temp && temp->prev)
+		temp = temp->prev;
+	return (temp);
+}
 
 void	ft_del_lastblank(t_built *built)
 {
@@ -22,47 +34,38 @@ void	ft_del_lastblank(t_built *built)
 	temp_l = built->command;
 	while (temp_l)
 	{
-		// fprintf(stderr, "now[%p], next[%p]\n", temp_l, temp_l->next);
+		temp_l2 = temp_l->next;
+		built->command = ft_find_head(temp_l);
 		if (ft_strncmp(temp_l->str, " ", 1) && !(temp_l->next))
 		{
 			fprintf(stderr, "now[%p], next[%p]\n", temp_l, temp_l->next);
 			ft_listdelone(&temp_l);
-			return ;
+			break ;
 		}
 		temp_l = temp_l->next;
 	}
-	// while (temp_l->next)
-	// {
-	// 	temp_l = temp_l->next;
-	// }
-	// if (ft_strncmp(temp_l->str, " ", 1))
-	// 	ft_listdelone(&temp_l);
 }
 
 void	ft_del_blank(t_built *built)
 {
 	t_list	*temp_l;
 	t_list	*temp_l2;
-	t_list	*prev;
+	t_list	*head;
 
 	if (!built)
 		return ;
 	temp_l = built->command;
-	prev = 0;
+	head = 0;
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
 		if (!(temp_l->str) || (temp_l->str && ft_strlen(temp_l->str) == 0))
 			ft_listdelone(&temp_l);
 		else
-			prev = temp_l;
-		temp_l = 0;
+			head = temp_l;
 		temp_l = temp_l2;
 	}
-	if (prev)
-		while (prev->prev)
-			prev = prev->prev;
-	built->command = prev;
+	built->command = ft_find_head(head);
 }
 
 void	ft_del_blank2(t_built *built)

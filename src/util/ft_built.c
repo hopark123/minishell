@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:09 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 22:44:06 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:50:44 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	ft_builtclear(t_built **built)
 			temp = (*built)->next;
 		else
 			temp = 0;
-		ft_listclear(&((*built)->command));
+		if (((*built)->command))
+			ft_listclear(&((*built)->command));
 		ft_free(*built);
 		*built = temp;
 	}
@@ -86,4 +87,3 @@ int	ft_built_cnt(t_built *built)
 	}
 	return (i);
 }
-

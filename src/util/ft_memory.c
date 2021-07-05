@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memory.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:54 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 03:23:21 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 03:03:26 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	*ft_memcpy(void *dst, const void *src, int n)
 	int					i;
 
 	i = 0;
-	if (!dst && !src)
+	if ((!dst && !src) || n <= 0)
 		return (0);
 	s1 = dst;
 	s2 = src;
@@ -70,8 +70,10 @@ char	*ft_strndup(const char *s, int len)
 	return (temp);
 }
 
-char	*ft_strchr(const char *s, char c)
+char	*ft_strchr2(const char *s, char c)
 {
+	if (c == 0)
+		return (0);
 	while (*s != c)
 	{
 		if (*s == 0)

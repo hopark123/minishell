@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:48:09 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:53:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,14 @@ void	ctrl_d_checker(int c)
 {
 	if (c == 4)
 	{
-		if (!*g_mini.line)
+		if (g_mini.line)
 		{
-			ft_putstr_fd("exit", 2, 0);
-			exit(0);
+			if (!*g_mini.line)
+			{
+				ft_free(g_mini.line);
+				ft_putstr_fd("exit", 2, 0);
+				exit(0);
+			}
 		}
 	}
 }

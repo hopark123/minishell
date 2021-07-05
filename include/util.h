@@ -3,8 +3,8 @@
 
 # include "head.h"
 
-char		*ft_add_char(char *str, char c, int pt);
-char		*ft_del_char(char *str, int pt);
+char		*ft_add_char(char **str, char c, int pt);
+char		*ft_del_char(char **str, int pt);
 int			ft_isdigit(int c);
 int			ft_sign(int sign);
 int			ft_is_num(const char *nptr);

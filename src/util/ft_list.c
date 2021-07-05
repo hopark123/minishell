@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 20:13:34 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:51:25 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_list	*ft_listnew(char *str, char *id)
 		ft_error("malloc error");
 	res->str = str;
 	res->id = id;
-	res->next = res;
-	res->prev = res;
+	res->next = 0;
+	res->prev = 0;
 	return (res);
 }
 
@@ -69,21 +69,18 @@ void	ft_listadd_tail(t_list **list, t_list **new)
 		(*list) = (*new);
 		(*list)->next = 0;
 		(*list)->prev = 0;
+		(*list)->str = (*new)->str;
+		(*list)->id = (*new)->id;
 	}
 	else
 	{
 		temp = (*list);
-		while (temp->next)
+		while (temp && temp->next)
 			temp = temp->next;
-		if (temp->next)
-			temp->next->prev = (*new);
 		(*new)->prev = temp;
 		(*new)->next = temp->next;
 		temp->next = (*new);
 	}
-	temp = (*list);
-	while (temp)
-		temp = temp->next;
 }
 
 void	ft_listdelone(t_list **list)
@@ -98,6 +95,10 @@ void	ft_listdelone(t_list **list)
 		ft_free((*list)->id);
 	if ((*list)->str)
 		ft_free((*list)->str);
+	(*list)->next = 0;
+	(*list)->prev = 0;
+	(*list)->str = 0;
+	(*list)->id = 0;
 	ft_free(*list);
-	// (*list) = 0;
+	(*list) = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shell.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 17:02:13 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 02:58:26 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,19 @@ static void	run_subshell(t_built **built, t_list **env_list)
 void	ft_shell(t_built *built, t_list **env_list)
 {
 	g_mini.status = SUCCESS;
-	while (built && g_mini.status == SUCCESS)
+	while (built && built->command && g_mini.status == SUCCESS)
 	{
-		if (built->next && built->next->command->str[0] == '|')
+		if (built->next && built->next->command->str \
+			&& built->next->command->str[0] == '|')
+		{
 			run_subshell(&built, env_list);
-		else if (built->command->str[0] == ';' && !built->command->next)
+		}
+		else if (built->command && built->command->str \
+			&& built->command->str[0] == ';' && !built->command->next)
+		{
+			break ;
+		}
+		else if (!built->command->str)
 			break ;
 		else
 		{
