@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:41:33 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 06:06:46 by hopark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int	ft_add_env_list(t_list **list, char *id, char *str)
 	}
 	ft_delenv(list, id);
 	tmp = ft_listnew2(str, id);
-	if (!tmp)
-		ft_error("malloc error");
 	ft_listadd_tail(list, &tmp);
 	return (SUCCESS);
 }
