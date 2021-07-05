@@ -6,7 +6,7 @@
 /*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 18:08:30 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 16:37:33 by hongseonghy      ###   ########.fr       */
+/*   Updated: 2021/07/05 17:12:59 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_del_lastblank(t_built *built)
 {
 	t_list	*temp_l;
+	t_list	*temp_l2;
 
 	fprintf(stderr, "lastin\n");
 	if (!built || !built->command)
@@ -58,6 +59,7 @@ void	ft_del_blank(t_built *built)
 		temp_l2 = temp_l->next;
 		if (temp_l->str && !ft_strlen(temp_l->str))
 		// if (ft_strlen(temp_l->str) == 0)
+		// if (!temp_l->str || (temp_l->str && ft_strlen(temp_l->str) == 0))
 			ft_listdelone(&temp_l);
 		temp_l = temp_l2;
 	}

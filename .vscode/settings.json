@@ -20,6 +20,7 @@
 		"termi.h": "c",
 		"engine.h": "c",
 		"builtin.h": "c",
-		"type.h": "c"
+		"type.h": "c",
+		"locale": "c"
 	}
 }

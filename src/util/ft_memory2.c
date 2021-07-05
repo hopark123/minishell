@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:34:52 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 03:05:28 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 03:08:45 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	p[i] = '\0';
-	fprintf(stderr,"aaaaa[%s]\n", p);
 	return (p);
 }
 

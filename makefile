@@ -6,18 +6,18 @@
 #    By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/05 06:43:39 by hongseonghy      ###   ########.fr        #
+#    Updated: 2021/07/05 17:14:36 by hongseonghy      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 CC = gcc
-# CFLAGS = -o2
+CFLAGS = -o2
 CLIBR =  -lncurses
 # CFLAGS = -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
-# CFLAGS = -g3 -fsanitize=address
+# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execve.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 21:08:47 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 23:56:46 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/05 17:12:14 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ static int	init_exec(t_built *built, t_list *env_list, \
 	ft_del_blank2(built);
 	(*argv) = change_content(ft_listtochar(built->command));
 	(*envp) = ft_env_listtochar(env_list);
+	ft_proc_signal();
 	if (!(*argv)[0])
 		return (ERROR_COMMAND_NOT_FOUND);
 	return (SUCCESS);
@@ -109,22 +110,22 @@ int	ft_execve(t_built *built, t_list *env_list)
 	char	**envp;
 
 	status = init_exec(built, env_list, &argv, &envp);
-	if (status != SUCCESS)
-		return (ERROR_COMMAND_NOT_FOUND);
-	g_mini.pid = fork();
-	ft_proc_signal();
-	if (g_mini.pid < 0)
-		ft_error("fork error");
-	else if (g_mini.pid == 0)
+	if (status == SUCCESS)
 	{
-		dup2(g_mini.pip[0], STDIN);
-		if (!g_mini.status && execve(argv[0], argv, envp) < 0)
-			ft_error("execve error");
-	}
-	else
-	{
-		dup2(g_mini.pip[1], STDOUT);
-		ft_parent(g_mini.pid, &status);
+		g_mini.pid = fork();
+		if (g_mini.pid < 0)
+			ft_error("fork error");
+		else if (g_mini.pid == 0)
+		{
+			dup2(g_mini.pip[0], STDIN);
+			if (!g_mini.status && execve(argv[0], argv, envp) < 0)
+				ft_error("execve error");
+		}
+		else
+		{
+			dup2(g_mini.pip[1], STDOUT);
+			ft_parent(g_mini.pid, &status);
+		}
 	}
 	ft_free2(argv, ft_strlen2(argv));
 	ft_free2(envp, ft_strlen2(envp));

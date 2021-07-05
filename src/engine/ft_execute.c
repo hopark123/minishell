@@ -6,7 +6,7 @@
 /*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 06:41:32 by hongseonghy      ###   ########.fr       */
+/*   Updated: 2021/07/05 17:25:45 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,18 @@ int	ft_execute(t_built *built, t_list **env_list)
 
 	if (!built || !built->command || !built->command->str)
 		return (EXIT_SUCCESS);
-	ft_open_execute(temp_p, fd);
+	// ft_open_execute(temp_p, fd);
 	list = del_pipe_col(built);
 	if (!(list))
 		return (REDIRECTION_ERROR);
 	temp = ft_builtndup(list);
 	ft_split_built(temp, "><");
-	ft_del_lastblank(temp);
-	g_mini.pip[0] = dup(STDIN);
-	g_mini.pip[1] = dup(STDOUT);
-	status = ft_execute2(temp, env_list, fd);
-	ft_close_execute(temp_p, fd);
-	ft_free(temp);
+	// ft_del_lastblank(temp);
+	// g_mini.pip[0] = dup(STDIN);
+	// g_mini.pip[1] = dup(STDOUT);
+	// status = ft_execute2(temp, env_list, fd);
+	// ft_close_execute(temp_p, fd);
+	// ft_builtclear(&temp);
+	ft_builtclear(&temp);
 	return (status);
 }

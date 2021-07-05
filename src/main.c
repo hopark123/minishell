@@ -6,7 +6,7 @@
 /*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 07:04:58 by hongseonghy      ###   ########.fr       */
+/*   Updated: 2021/07/05 17:14:14 by hongseonghy      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,19 @@ void	minishell(t_list *env_list)
 	t_built	*built;
 
 	list = ft_token_split(g_mini.line);
-		fprintf(stderr, "[%p]\n", list);
+	ft_free(g_mini.line);
 	ft_envswap(list, env_list);
-		fprintf(stderr, "[%p]\n", list);
 	ft_del_quotes(list);
-		fprintf(stderr, "[%p]\n", list);
 	built = ft_builtndup(list);
-		fprintf(stderr, "[%p]\n", list);
+	g_mini.built = built;
 	ft_del_blank(built);
-		fprintf(stderr, "[%p]\n", list);
 	ft_put_blank(built);
 		fprintf(stderr, "[%p]\n", list);
 	ft_del_lastblank(built);
-	// test_print_passing(built);
-		fprintf(stderr, "[%p]\n", list);
 	ft_split_built(built, "|;");
 	ft_shell(built, &env_list);
-	ft_free(g_mini.line);
+	write(2,"out\n",4);
+	ft_builtclear(&built);
 }
 
 void	loop(t_list *env_list)
@@ -62,8 +58,6 @@ void	ft_init_mini(void)
 	g_mini.history->next = g_mini.history;
 	g_mini.history->prev = g_mini.history;
 	g_mini.head = g_mini.history;
-	g_mini.head->next = g_mini.history;
-	g_mini.head->prev = g_mini.history;
 	g_mini.pip[0] = dup(STDIN);
 	g_mini.pip[1] = dup(STDOUT);
 }
@@ -74,11 +68,12 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	env_list = ft_init_env_list(envp);
+	// env_list = ft_init_env_list(envp);
+	// g_mini.env_list = env_list;
 	ft_init_mini();
-	draw();
+	// draw();
 	loop(env_list);
-	ft_listclear(&env_list);
-	ft_listclear(&g_mini.history);
+	// ft_listclear(&env_list);
+	// ft_listclear(&g_mini.head);
 	return (g_mini.status);
 }
