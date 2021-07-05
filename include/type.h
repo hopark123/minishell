@@ -20,6 +20,7 @@
 # include <readline/history.h>
 # define ERROR  1
 # define SUCCESS 0
+# define FALSE 0 
 # define FAIL -1
 # define NULLPTR 0
 # define STDIN 0
@@ -65,12 +66,14 @@ typedef struct s_mini
 	int				signal;
 	int				status;
 	char			*line;
+	t_list			*env_list;
 	struct termios	term;
 	struct termios	backup;
 	int				len;
 	int				cursor;
 	t_list			*history;
 	t_list			*head;
+	t_built			*built;
 	pid_t			pid;
 }				t_mini;
 

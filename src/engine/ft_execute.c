@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:51:53 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:58:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:40:15 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_list	*del_pipe_col(t_built *built)
 			if (built->command->id)
 				return (built->command);
 			temp = built->next;
-			ft_builtdelone(&built);
 			if (temp)
 				return (temp->command);
 			else
@@ -100,6 +99,6 @@ int	ft_execute(t_built *built, t_list **env_list)
 	g_mini.pip[1] = dup(STDOUT);
 	status = ft_execute2(temp, env_list, fd);
 	ft_close_execute(temp_p, fd);
-	ft_free(temp);
+	ft_builtclear(&temp);
 	return (status);
 }

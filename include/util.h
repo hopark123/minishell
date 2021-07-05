@@ -1,14 +1,16 @@
 #ifndef UTIL_H
 # define UTIL_H
+
 # include "head.h"
 
-char		*ft_add_char(char *str, char c, int pt);
-char		*ft_del_char(char *str, int pt);
+char		*ft_add_char(char **str, char c, int pt);
+char		*ft_del_char(char **str, int pt);
 int			ft_isdigit(int c);
 int			ft_sign(int sign);
 int			ft_is_num(const char *nptr);
 long long	ft_atoi(const char *nptr);
 t_built		*ft_builtndup(t_list *list);
+t_built		*ft_builtndup2(t_list *list);
 void		ft_builtclear(t_built **built);
 void		ft_builtdelone(t_built **built);
 int			ft_built_cnt(t_built *built);
@@ -16,7 +18,7 @@ void		draw(void);
 void		draw2(void);
 void		test_print_passing(t_built *built);
 void		test_built_list(t_built *built);
-
+void		test_print_list(t_list *list);
 void		ft_free(void *memory);
 void		ft_free2(char **s, int i);
 int			ft_isalpha(int c);

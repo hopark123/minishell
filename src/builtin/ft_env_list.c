@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:35 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:57:57 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:41:33 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,12 @@ t_list	*ft_init_env_list(char **envp)
 	{
 		env_str = ft_split(envp[i], '=');
 		if (!env_str)
-			return (0);
+			ft_error("malloc failed");
 		if (!env_str[1])
-			env_str[1] = ft_strndup("", 1);
+			env_str[1] = ft_strndup("", 0);
 		tmp = ft_listnew2(env_str[1], env_str[0]);
-		if (!tmp)
-		{
-			ft_listclear(&list);
-			return (0);
-		}
 		ft_listadd_tail(&list, &tmp);
+		ft_free(env_str);
 		i++;
 	}
 	return (list);

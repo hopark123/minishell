@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 14:13:25 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 01:11:20 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:53:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,11 @@ void	signal_handler(int signo)
 	{
 		ft_putstr_fd("\n", 1, 0);
 		ft_init_get_line(&g_mini.cursor, &g_mini.len);
-		if (ft_strlen(g_mini.line))
-			ft_free(g_mini.line);
 		draw2();
 		signal(SIGINT, signal_handler);
 	}
 	if (signo == SIGQUIT)
 	{
-		ft_listclear(&g_mini.history);
 		signal(SIGQUIT, signal_handler);
 	}
 }
@@ -61,10 +58,14 @@ void	ctrl_d_checker(int c)
 {
 	if (c == 4)
 	{
-		if (!*g_mini.line)
+		if (g_mini.line)
 		{
-			ft_putstr_fd("exit", 2, 0);
-			exit(0);
+			if (!*g_mini.line)
+			{
+				ft_free(g_mini.line);
+				ft_putstr_fd("exit", 2, 0);
+				exit(0);
+			}
 		}
 	}
 }

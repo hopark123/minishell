@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
+#    By: hopark <hopark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/05 01:13:12 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/05 22:48:16 by hopark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,7 @@ UTIL = $(addprefix $(UTIL_DIR)/, \
 	ft_add_char.c \
 	ft_atoi.c \
 	ft_built.c \
+	ft_debug.c \
 	ft_draw.c \
 	ft_free.c \
 	ft_isalpha.c \
