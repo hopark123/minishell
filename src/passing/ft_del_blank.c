@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_blank.c                                     :+:      :+:    :+:   */
+/*   .c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -43,7 +43,7 @@ void	ft_del_blank(t_built *built)
 	while (temp_l)
 	{
 		temp_l2 = temp_l->next;
-		if (!temp_l->str || (temp_l->str && ft_strlen(temp_l->str) == 0))
+		if (!(temp_l->str) || (temp_l->str && ft_strlen(temp_l->str) == 0))
 			ft_listdelone(&temp_l);
 		temp_l = temp_l2;
 	}

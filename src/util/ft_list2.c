@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 15:35:01 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:39:26 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:56:35 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_listclear(t_list **list)
 {
 	t_list		*temp;
-	t_list		*temp2;
 
 	if (!list || !(*list))
 		return ;

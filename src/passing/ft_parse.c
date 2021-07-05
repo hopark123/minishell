@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:11 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:40:33 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 22:44:43 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	ft_put_blank(t_built *built)
 	t_list	*new;
 	char	*str;
 
-	if (!built || !built->command)
+	if (!built || !(built->command))
 		return ;
 	temp_l = built->command;
 	head = temp_l;
 	while (temp_l)
 	{
-		if (!ft_strncmp(temp_l->str, " ", 1) && temp_l->next && \
+		if (temp_l->str && !ft_strncmp(temp_l->str, " ", 1) && temp_l->next && \
 			!ft_strncmp(temp_l->next->str, " ", 1))
 		{
 			str = ft_strndup(" ", 1);

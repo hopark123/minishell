@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 19:57:06 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 00:53:45 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 21:53:31 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_backspace(int *cursor, int *len)
 	tputs(tgetstr("dm", NULL), 1, ft_putchar_tc);
 	tputs(tgetstr("dc", NULL), 1, ft_putchar_tc);
 	tputs(tgetstr("ed", NULL), 1, ft_putchar_tc);
-	g_mini.line = ft_del_char(g_mini.line, *cursor);
+	g_mini.line = ft_del_char(&g_mini.line, *cursor);
 	(*cursor)--;
 	(*len)--;
 }

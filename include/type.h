@@ -20,6 +20,7 @@
 # include <readline/history.h>
 # define ERROR  1
 # define SUCCESS 0
+# define FALSE 0 
 # define FAIL -1
 # define NULLPTR 0
 # define STDIN 0
