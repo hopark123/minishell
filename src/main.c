@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 19:37:41 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/05 19:50:13 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	main(int argc, char **argv, char **envp)
 	env_list = ft_init_env_list(envp);
 	g_mini.env_list = env_list;
 	ft_init_mini();
-	test_print_list(env_list);
 	draw();
 	loop(env_list);
 	ft_listclear(&env_list);
