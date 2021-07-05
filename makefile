@@ -6,7 +6,7 @@
 #    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 03:21:26 by suhong           ###   ########.fr        #
+#    Updated: 2021/07/06 03:48:21 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ CC = gcc
 # CFLAGS = -o2
 CLIBR =  -lncurses
 # CFLAGS = -Wall -Wextra -Werror
-# CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-CFLAGS = -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+# CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 SRC_DIR = src
