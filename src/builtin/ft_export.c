@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/06 10:48:09 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 11:31:49 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	append_env(t_list *list, char **tmp)
 	char	*cut_id;
 	char	*plus;
 	char	*origin;
-	char	**ret;
 
 	if (tmp[0][ft_strlen(tmp[0]) - 1] != '+')
 		return ;
@@ -118,6 +117,7 @@ int	ft_export(t_built *built, t_list **env_list)
 		ft_perror(order->str, "not a valid identifier");
 		ft_free2(tmp, 2);
 	}
-	ft_free(tmp);
+	else
+		ft_free(tmp);
 	return (res);
 }
