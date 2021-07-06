@@ -6,60 +6,19 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:30:43 by hopark            #+#    #+#             */
-/*   Updated: 2021/07/06 07:09:09 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 08:12:02 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtin.h"
 
-static char	*arraytostr(char ***array)
-{
-	int		i;
-	char	*res;
-	char	*temp;
-
-	i = 0;
-	if (!ft_malloc(&res, sizeof(char) * 1))
-		return (0);
-	while ((*array)[i])
-	{
-		temp = res;
-		res = ft_strjoin(temp, (*array)[i]);
-		ft_free(temp);
-		ft_free((*array)[i]);
-		i++;
-	}
-	ft_free((*array));
-	(*array) = 0;
-	return (res);
-}
-
-static t_built	*resplit(t_built *built, int *n_flag)
-{
-	t_list		*list;
-	t_built		*temp_b;
-	char		**temp_a;
-	char		*temp_s;
-
-	list = built->command;
-	temp_a = ft_listtochar(list);
-	temp_s = arraytostr(&temp_a);
-	list = ft_token_split(temp_s);
-	ft_free(temp_s);
-	temp_b = ft_builtndup2(list);
-	ft_put_blank(temp_b);
-	(*n_flag) = 0;
-	return (temp_b);
-}
-
 int	ft_echo(t_built *built)
 {
-	t_built	*re_built;
 	t_list	*list;
 	int		n_flag;
 
-	re_built = resplit(built, &n_flag);
-	list = re_built->command;
+	n_flag = 0;
+	list = built->command;
 	if (list->next && ft_strncmp(list->next->str, " ", 1))
 	{
 		list = list->next->next;
@@ -77,6 +36,5 @@ int	ft_echo(t_built *built)
 	}
 	if (!n_flag)
 		ft_putchar_fd('\n', 1, 0);
-	ft_builtclear(&re_built);
 	return (SUCCESS);
 }
