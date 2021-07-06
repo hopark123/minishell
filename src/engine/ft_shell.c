@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shell.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/03 06:02:19 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 05:44:00 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/06 11:05:38 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_shell(t_built *built, t_list **env_list)
 	g_mini.status = SUCCESS;
 	while (built && built->command)
 	{
+		ft_envswap(built->command, *env_list);
 		if (built->next && built->next->command->str \
 			&& built->next->command->str[0] == '|')
 		{
