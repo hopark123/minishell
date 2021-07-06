@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+         #
+#    By: suhong <suhong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/22 14:12:16 by hjpark            #+#    #+#              #
-#    Updated: 2021/07/06 09:40:31 by hjpark           ###   ########.fr        #
+#    Updated: 2021/07/06 10:40:06 by suhong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CLIBR = -lncurses
 # CFLAGS = -Wall -Wextra -Werror
 # CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
-# CFLAGS = -g3 -fsanitize=address
+CFLAGS = -g3 -fsanitize=address
 RM = rm
 RMFLAGS = -f
 

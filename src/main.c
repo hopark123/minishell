@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 09:39:43 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 10:39:33 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	loop(t_list *env_list)
 void	ft_init_mini(void)
 {
 	g_mini.pid = -1;
+	g_mini.signal = -1;
 	g_mini.history = ft_listnew(0, 0);
 	g_mini.history->next = g_mini.history;
 	g_mini.history->prev = g_mini.history;

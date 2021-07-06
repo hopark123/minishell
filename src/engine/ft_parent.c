@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parent.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:58:51 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/04 22:58:54 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 10:43:36 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_status_control(int status)
 		signal = WTERMSIG(status);
 		return (128 + signal);
 	}
-	return (ERROR);
+	return (status);
 }
 
 void	ft_parent(pid_t pid, int *status)
