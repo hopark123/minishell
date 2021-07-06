@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 11:09:36 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 11:11:02 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	minishell(t_list *env_list)
 
 	list = ft_token_split(g_mini.line);
 	ft_free(g_mini.line);
-	// ft_envswap(list, *env_list);
 	ft_del_quotes(list);
 	built = ft_builtndup(list);
 	ft_listclear(&list);
