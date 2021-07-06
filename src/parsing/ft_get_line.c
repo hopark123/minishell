@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 19:15:41 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 09:33:08 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 09:41:50 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int	ft_printchar(int *cursor, int *len, int n)
 			ft_getchar(cursor, len, c);
 		else if (c == '\n' || c == 4)
 		{
-			// ft_getchar(cursor, len, c);
 			ft_add_history();
 			return (SUCCESS);
 		}
