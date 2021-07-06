@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/06 09:01:36 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 09:45:30 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,9 @@ int	ft_export(t_built *built, t_list **env_list)
 	tmp = split_equal(order->str);
 	res = ft_add_env_list(env_list, tmp[0], tmp[1]);
 	if (res == ERROR)
+	{
 		ft_perror(order->str, "not a valid identifier");
-	ft_free2(tmp, 2);
+		ft_free2(tmp, 2);
+	}
 	return (res);
 }
