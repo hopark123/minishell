@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 08:13:17 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 09:39:43 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	loop(t_list *env_list)
 		ft_init_term();
 		ft_get_line();
 		ft_reset_term();
-		if (ft_strlen(g_mini.line))
+		if ((g_mini.line))
 		{
-			if (ft_check_syntax(g_mini.line) == SUCCESS)
+			if (!ft_strlen(g_mini.line))
+				ft_free(g_mini.line);
+			else if (ft_check_syntax(g_mini.line) == SUCCESS)
 				minishell(env_list);
 		}
 	}

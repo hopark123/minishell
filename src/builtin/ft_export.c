@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/06 06:09:31 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/06 09:01:36 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ int	ft_export(t_built *built, t_list **env_list)
 	res = ft_add_env_list(env_list, tmp[0], tmp[1]);
 	if (res == ERROR)
 		ft_perror(order->str, "not a valid identifier");
+	ft_free2(tmp, 2);
 	return (res);
 }

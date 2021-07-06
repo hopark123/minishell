@@ -6,7 +6,7 @@
 /*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 23:00:50 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 08:06:35 by hjpark           ###   ########.fr       */
+/*   Updated: 2021/07/06 09:32:29 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_list	*ft_token_split(char *str)
 		str = str + i;
 	}
 	if (spot)
-		token = build_token(token, &spot, str - spot - 1, q_tmp);
+		token = build_token(token, &spot, str - spot, q_tmp);
 	ft_check_quotes(0, 0);
 	return (token);
 }
