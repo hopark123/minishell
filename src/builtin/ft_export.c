@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hopark <hopark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:09:30 by suhong            #+#    #+#             */
-/*   Updated: 2021/07/06 06:09:31 by hopark           ###   ########.fr       */
+/*   Updated: 2021/07/06 10:36:04 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,22 @@ static void	swap_node(t_list *node_1, t_list *node_2)
 	node_2->id = tmp;
 }
 
-static int	get_list_size(t_list *list)
+static void	append_env(t_list *list, char **tmp)
 {
-	t_list	*tmp;
-	int		i;
+	char	*cut_id;
+	char	*plus;
+	char	*origin;
+	char	**ret;
 
-	i = 0;
-	tmp = list;
-	while (tmp)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if (tmp[0][ft_strlen(tmp[0]) - 1] != '+')
+		return ;
+	cut_id = ft_del_char(&tmp[0], ft_strlen(tmp[0]));
+	origin = ft_getenv(list, cut_id, ft_strlen(cut_id));
+	plus = tmp[1];
+	tmp[0] = cut_id;
+	tmp[1] = ft_strjoin(origin, plus);
+	free(plus);
+	free(origin);
 }
 
 static int	print_sorted_env_list(t_list *env_list)
@@ -48,7 +51,7 @@ static int	print_sorted_env_list(t_list *env_list)
 
 	i = 0;
 	dup = ft_listdup(env_list);
-	while (i < get_list_size(dup))
+	while (i < ft_list_cnt(dup))
 	{
 		node_1 = dup;
 		node_2 = node_1->next;
@@ -108,8 +111,13 @@ int	ft_export(t_built *built, t_list **env_list)
 	if (!order || !order->str)
 		return (ERROR);
 	tmp = split_equal(order->str);
+	append_env(*env_list, tmp);
 	res = ft_add_env_list(env_list, tmp[0], tmp[1]);
 	if (res == ERROR)
+	{
 		ft_perror(order->str, "not a valid identifier");
+		ft_free2(tmp, 2);
+	}
+	ft_free(tmp);
 	return (res);
 }
