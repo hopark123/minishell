@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_syntax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/01 16:55:34 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 05:16:15 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 11:42:07 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static int	face_normal_char(char *str, int *i, int *flag)
 		(*i)++;
 		while (str[*i] == ' ')
 			(*i)++;
-		if ((str[(*i)] && (ft_strchr("|;", str[(*i)]) || (find == str[(*i)] && !str[(*i + 1)]))) || \
+		if ((str[(*i)] && (ft_strchr("|;", str[(*i)]) || \
+				(find == str[(*i)] && !str[(*i + 1)]))) || \
 				(!str[(*i)] && ((find == ';' && *i == 0) \
 				|| ft_strchr("><|", find))))
 		{
