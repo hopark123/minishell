@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hongseonghyeon <hongseonghyeon@student.    +#+  +:+       +#+        */
+/*   By: hjpark <hjpark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 19:38:11 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/05 17:12:26 by hongseonghy      ###   ########.fr       */
+/*   Updated: 2021/07/06 11:07:41 by hjpark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ static int	ll_cut(long long n)
 {
 	return ((int)(n % 256));
 }
-
-// int	safe_exit(int status, t_list *env_list)
-// {
-
-// }
 
 int	ft_exit(t_built *built)
 {
