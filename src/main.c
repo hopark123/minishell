@@ -6,7 +6,7 @@
 /*   By: suhong <suhong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/04 22:52:01 by hjpark            #+#    #+#             */
-/*   Updated: 2021/07/06 11:09:36 by suhong           ###   ########.fr       */
+/*   Updated: 2021/07/06 11:14:26 by suhong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	minishell(t_list *env_list)
 	ft_put_blank(built);
 	ft_split_built(built, "|;");
 	ft_del_lastblank(built);
-	ft_shell(built, env_list);
+	ft_shell(built, &env_list);
 	ft_builtclear(&built);
 }
 
