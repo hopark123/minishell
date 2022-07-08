@@ -1,10 +1,11 @@
-
 ## 😀 프로젝트 소개
 The objective of this project is for you to create a simple shell. Yes, your own little bash or zsh. You will learn a lot about processes and file descriptors.
 <p>
   <img width="500" src="https://user-images.githubusercontent.com/67721631/177960844-888d4980-d16c-45e6-bc8c-8e02bdec3af8.gif">
 </p>
-
+<p>
+<img src="https://user-images.githubusercontent.com/67721631/177964953-9e10a2a3-ceea-46f7-a733-c0c30c70247c.jpeg">
+</p>
 With Minishell, you’ll be able to travel through time and come back to problems people faced when Windows didn’t exist.
 
 ## 💻 사용언어
